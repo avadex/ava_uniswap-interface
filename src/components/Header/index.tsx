@@ -147,7 +147,7 @@ const UNIAmount = styled(AccountElement)`
   height: 36px;
   font-weight: 500;
   background-color: ${({ theme }) => theme.bg3};
-  background: radial-gradient(174.47% 188.91% at 1.84% 0%, #ff007a 0%, #2172e5 100%), #edeef2;
+  background: radial-gradient(174.47% 188.91% at 1.84% 0%, #21e54b 0%, #6de521 100%), #edeef2;
 `
 
 const UNIWrapper = styled.span`
@@ -308,7 +308,7 @@ const NETWORK_LABELS: { [chainId in SupportedChainId | number]: string } = {
   [SupportedChainId.ROPSTEN]: 'Ropsten',
   [SupportedChainId.GOERLI]: 'Görli',
   [SupportedChainId.KOVAN]: 'Kovan',
-  [SupportedChainId.ARBITRUM_KOVAN]: 'kArbitrum',
+  [SupportedChainId.FUJI]: 'FUJI',
   [SupportedChainId.ARBITRUM_ONE]: 'Arbitrum One',
 }
 

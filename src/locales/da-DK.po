@@ -14,7 +14,7 @@ msgstr ""
 "X-Crowdin-File-ID: 4\n"
 "Project-Id-Version: uniswap-interface\n"
 "Language-Team: Danish\n"
-"PO-Revision-Date: 2021-06-14 08:07\n"
+"PO-Revision-Date: 2021-06-10 18:14\n"
 
 #: src/pages/Pool/PositionPage.tsx
 #: src/pages/Pool/PositionPage.tsx
@@ -37,7 +37,7 @@ msgstr "(Maks)"
 
 #: src/components/Header/UniBalanceContent.tsx
 msgid "(claim)"
-msgstr "(krav)"
+msgstr "(claim)"
 
 #: src/components/AccountDetails/index.tsx
 msgid "(clear all)"
@@ -68,7 +68,7 @@ msgstr "0 UNI / uge"
 
 #: src/components/FeeSelector/index.tsx
 msgid "0.05% fee"
-msgstr "0,05 % gebyr"
+msgstr "0,05% gebyr"
 
 #: src/components/FeeSelector/index.tsx
 msgid "0.3% fee"
@@ -84,11 +84,11 @@ msgstr "25%"
 
 #: src/pages/RemoveLiquidity/V3.tsx
 msgid "50%"
-msgstr "50 %"
+msgstr "50%"
 
 #: src/pages/RemoveLiquidity/V3.tsx
 msgid "75%"
-msgstr "75 %"
+msgstr "75%"
 
 #: src/pages/Vote/VotePage.tsx
 msgid "<0/> All Proposals"
@@ -101,15 +101,15 @@ msgstr "<0/> Stemmer"
 
 #: src/pages/Pool/v2.tsx
 msgid "<0>Account analytics and accrued fees</0><1> ↗ </1>"
-msgstr "<0>Kontoanalyser og påløbne gebyrer</0><1> ↗ </1>"
+msgstr "<0>Konto analyser og påløbne gebyrer</0><1> :up-ϊ: </1>"
 
 #: src/pages/Swap/index.tsx
 msgid "<0>Back to </0>V3"
-msgstr "<0>Tilbage til </0> V3"
+msgstr "<0> Tilbage til</0> V3"
 
 #: src/pages/RemoveLiquidity/index.tsx
 msgid "<0>Tip:</0> Removing pool tokens converts your position back into underlying tokens at the current rate, proportional to your share of the pool. Accrued fees are included in the amounts you receive."
-msgstr "<0>Tip:</0> Fjernelse af puljetokens konverterer din position tilbage til underliggende tokens med den aktuelle sats, proportionalt med din andel af puljen. Påløbne gebyrer er inkluderet i de beløb, du modtager."
+msgstr "<0>Tip:</0> Fjernelse af pool tokens konverterer din position tilbage til underliggende tokens med den aktuelle sats, proportionalt med din andel af poolen. Påløbne gebyrer er inkluderet i de beløb, du modtager."
 
 #: src/pages/PoolFinder/index.tsx
 msgid "<0>Tip:</0> Use this tool to find v2 pools that don't automatically appear in the interface."
@@ -117,15 +117,15 @@ msgstr "<0> Tip:</0> Brug dette værktøj til at finde v2-puljer, der ikke autom
 
 #: src/pages/AddLiquidityV2/index.tsx
 msgid "<0>Tip:</0> When you add liquidity, you will receive pool tokens representing your position. These tokens automatically earn fees proportional to your share of the pool, and can be redeemed at any time."
-msgstr "<0>Tip:</0> Når du tilføjer likviditet, vil du modtage puljetokens, som repræsenterer din position. Disse tokens optjener automatisk gebyrer, der er proportionale med din andel af puljen, og kan indløses til enhver tid."
+msgstr "<0>Tip:</0> Når du tilføjer likviditet, vil du modtage pools tokens som repræsenterer din position. Disse poletter optjener automatisk gebyrer, der er proportionale med din andel af puljen, og kan indløses til enhver tid."
 
 #: src/pages/Vote/VotePage.tsx
 msgid "<0>Unlock voting</0> to prepare for the next proposal."
-msgstr "<0>Lås op for at stemme</0>for at forberede det næste forslag."
+msgstr "<0>Lås op for at stemme </0> for at forberede det næste forslag."
 
 #: src/components/claim/ClaimModal.tsx
 msgid "<0>🎉 </0>Welcome to team Unicorn :) <1>🎉</1>"
-msgstr "<0>🎉 </0>Velkommen til team Unicorn :) <1>🎉</1>"
+msgstr "<0>🎉 </0>Velkommen til holdet Enicorn :) <1>🎉</1>"
 
 #: src/pages/Vote/index.tsx
 msgid "A minimum threshold of 1% of the total UNI supply is required to submit proposals"
@@ -155,15 +155,15 @@ msgstr "Tilføj"
 
 #: src/components/vote/DelegateModal.tsx
 msgid "Add Delegate +"
-msgstr "Tilføj delegeret +"
+msgstr "Tilføj Delegeret +"
 
 #: src/components/NavigationTabs/index.tsx
 msgid "Add Liquidity"
-msgstr "Tilføj likviditet"
+msgstr "Tilføj Likviditet"
 
 #: src/pages/Pool/v2.tsx
 msgid "Add V2 Liquidity"
-msgstr "Tilføj V2-likviditet"
+msgstr "Tilføj V2 Likviditet"
 
 #: src/pages/PoolFinder/index.tsx
 msgid "Add liquidity."
@@ -200,15 +200,15 @@ msgstr "Imod"
 
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
 msgid "Allow LP token migration"
-msgstr "Tillad overførsel af LP-token"
+msgstr "Tillad overførsel af LP token"
 
 #: src/components/Settings/index.tsx
 msgid "Allow high price impact trades and skip the confirm screen. Use at your own risk."
-msgstr "Tillad høj pris påvirkning handler og springer over bekræftelsesskærmen. Brug på egen risiko."
+msgstr "Tillad høj pris påvirkning handler og springe over bekræftelsesskærmen. Brug på egen risiko."
 
 #: src/pages/Swap/index.tsx
 msgid "Allow the Uniswap Protocol to use your {0}"
-msgstr "Tillad Uniswap-protokollen at bruge din {0}"
+msgstr "Tillad Uniswap protokollen at bruge din {0}"
 
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
 msgid "Allowed"
@@ -216,7 +216,7 @@ msgstr "Tilladt"
 
 #: src/components/Header/URLWarning.tsx
 msgid "Always make sure the URL is<0>app.uniswap.org</0> - bookmark it to be safe."
-msgstr "Sørg altid for, at URL'en er <0>app.uniswap.org</0> – gem den for at være helt sikker."
+msgstr "Sørg altid for, at URL'en er <0>app.uniswap.org</0> - bogmærke den for at være sikker."
 
 #: src/pages/RemoveLiquidity/V3.tsx
 msgid "Amount"
@@ -224,7 +224,7 @@ msgstr "Beløb"
 
 #: src/hooks/useSwapCallback.ts
 msgid "An error occurred when trying to execute this swap. You may need to increase your slippage tolerance. If that does not work, there may be an incompatibility with the token you are trading. Note fee on transfer and rebase tokens are incompatible with Uniswap V3."
-msgstr "Der opstod en fejl under forsøg på at udføre denne swap. Det kan være nødvendigt at øge din glidningstolerance. Hvis det ikke virker, kan der være en uforenelighed med det token, du handler. Bemærk, at gebyr ved overførsel og rebase-tokens er inkompatibelt med Uniswap V3."
+msgstr "Der opstod en fejl under forsøg på at udføre denne swap. Det kan være nødvendigt at øge din glidningstolerance. Hvis det ikke virker, kan der være en uforenelighed med det token, du handler. Bemærkningsgebyr ved overførsel og rebase-tokens er inkompatibelt med Uniswap V3."
 
 #: src/components/Menu/index.tsx
 msgid "Analytics"
@@ -249,7 +249,7 @@ msgstr "Godkendt"
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
 #: src/pages/RemoveLiquidity/index.tsx
 msgid "Approving"
-msgstr "Godkender"
+msgstr "Godkendelse"
 
 #: src/pages/AddLiquidity/index.tsx
 #: src/pages/AddLiquidity/index.tsx
@@ -264,7 +264,7 @@ msgstr "Er du sikker?"
 
 #: src/components/claim/ClaimModal.tsx
 msgid "As a member of the Uniswap community you may claim UNI to be used for voting and governance.<0/><1/><2>Read more about UNI</2>"
-msgstr "Som medlem af Uniswap-fællesskabet kan du kræve, at UNI skal bruges til afstemning og styring.<0/><1/><2>Læs mere om UNI</2>"
+msgstr "Som medlem af Uniswap fællesskabet kan du gøre krav på, at UNI skal bruges til afstemning og styring.<0/><1/><2>Læs mere om UNI</2>"
 
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
 msgid "At least {0} {1} and {2} {3} will be refunded to your wallet due to selected price range."
@@ -288,7 +288,7 @@ msgstr "Saldo:"
 
 #: src/components/CurrencyInputPanel/index.tsx
 msgid "Balance: {0} {1}"
-msgstr "Saldo: {0} {1}"
+msgstr "Balance: {0} {1}"
 
 #: src/components/FeeSelector/index.tsx
 msgid "Best for exotic pairs."
@@ -308,7 +308,7 @@ msgstr "Blokeret adresse"
 
 #: src/components/PositionCard/index.tsx
 msgid "By adding liquidity you'll earn 0.3% of all trades on this pair proportional to your share of the pool. Fees are added to the pool, accrue in real time and can be claimed by withdrawing your liquidity."
-msgstr "Ved at tilføje likviditet optjener du 0,3 % af alle handler på dette par proportionalt med din andel af puljen. Gebyrer tilføjes til puljen, tilfalder i realtid og kan hævdes ved at trække din likviditet tilbage."
+msgstr "Ved at tilføje likviditet optjener du 0,3% af alle handler på dette par proportionalt med din andel af puljen. Gebyrer tilføjes til puljen, tilfalder i realtid og kan hævdes ved at trække din likviditet tilbage."
 
 #: src/components/SearchModal/ImportList.tsx
 msgid "By adding this list you are implicitly trusting that the data is correct. Anyone can create a list, including creating fake versions of existing lists and lists that claim to represent projects that do not have one."
@@ -316,7 +316,7 @@ msgstr "Ved at tilføje denne liste har du implicit tillid til, at dataene er ko
 
 #: src/components/WalletModal/index.tsx
 msgid "By connecting a wallet, you agree to Uniswap Labs’ <0>Terms of Service</0> and acknowledge that you have read and understand the <1>Uniswap protocol disclaimer</1>."
-msgstr "Ved at forbinde en tegnebog accepterer du Uniswap Labs’ <0>Servicevilkår </0> og anerkender, at du har læst og forstået <1>Uniswap protokolansvarsfraskrivelsen</1>."
+msgstr "Ved at forbinde en tegnebog accepterer du Uniswap Labs’ <0>Servicevilkår </0> og anerkender, at du har læst og forstået de <1>Uniswap protokolansvarsfraskrivelse</1>."
 
 #: src/components/AccountDetails/index.tsx
 msgid "Change"
@@ -328,13 +328,13 @@ msgstr "Diagrammer"
 
 #: src/pages/Pool/CTACards.tsx
 msgid "Check out our v3 LP walkthrough and migration guides."
-msgstr "Tjek vores v3 LP-gennemgang og migrationsguider."
+msgstr "Tjek vores v3 LP gennemgang og migration guider."
 
 #: src/components/earn/ClaimRewardModal.tsx
 #: src/components/earn/ClaimRewardModal.tsx
 #: src/pages/Earn/Manage.tsx
 msgid "Claim"
-msgstr "Gør krav på"
+msgstr "Claim"
 
 #: src/components/Header/index.tsx
 #: src/components/Menu/index.tsx
@@ -342,20 +342,20 @@ msgstr "Gør krav på"
 #: src/components/claim/ClaimModal.tsx
 #: src/components/claim/ClaimModal.tsx
 msgid "Claim UNI"
-msgstr "Gør krav på UNI"
+msgstr "Claim UNI"
 
 #: src/components/claim/AddressClaimModal.tsx
 msgid "Claim UNI Token"
-msgstr "Gør krav på UNI-token"
+msgstr "Claim UNI Token"
 
 #: src/components/earn/ClaimRewardModal.tsx
 #: src/components/earn/ClaimRewardModal.tsx
 msgid "Claim accumulated UNI rewards"
-msgstr "Gør krav på akkumulerede UNI-belønninger"
+msgstr "Påstand akkumulerede UNI-belønninger"
 
 #: src/pages/Pool/PositionPage.tsx
 msgid "Claim fees"
-msgstr "Gør krav på gebyrer"
+msgstr "Anmod om gebyrer"
 
 #: src/components/Popups/ClaimPopup.tsx
 msgid "Claim your UNI tokens"
@@ -363,29 +363,29 @@ msgstr "Gør krav på dine UNI-tokens"
 
 #: src/components/claim/AddressClaimModal.tsx
 msgid "Claimed"
-msgstr "Gjort krav på"
+msgstr "Påstået"
 
 #: src/components/earn/ClaimRewardModal.tsx
 #: src/components/earn/UnstakingModal.tsx
 msgid "Claimed UNI!"
-msgstr "Gjort krav på UNI!"
+msgstr "Påstået UNI!"
 
 #: src/components/claim/AddressClaimModal.tsx
 msgid "Claiming"
-msgstr "Gør krav"
+msgstr "Påstand"
 
 #: src/components/Header/index.tsx
 msgid "Claiming UNI"
-msgstr "Gør krav på UNI"
+msgstr "Påstand Om UNI"
 
 #: src/components/earn/ClaimRewardModal.tsx
 #: src/components/earn/UnstakingModal.tsx
 msgid "Claiming {0} UNI"
-msgstr "Gør krav på {0} UNI"
+msgstr "Påkræver {0} UNI"
 
 #: src/pages/AddLiquidity/index.tsx
 msgid "Clear All"
-msgstr "Ryd alle"
+msgstr "Ryd Alle"
 
 #: src/components/SearchModal/ManageTokens.tsx
 msgid "Clear all"
@@ -423,15 +423,15 @@ msgstr "Indsamlet"
 
 #: src/pages/Pool/PositionPage.tsx
 msgid "Collecting"
-msgstr "Indsamler"
+msgstr "Indsamling"
 
 #: src/pages/Pool/PositionPage.tsx
 msgid "Collecting fees"
-msgstr "Indsamler gebyrer"
+msgstr "Indhenter gebyrer"
 
 #: src/pages/Pool/PositionPage.tsx
 msgid "Collecting fees will withdraw currently available fees for you."
-msgstr "Indsamling af gebyrer vil hæve aktuelt tilgængelige gebyrer for dig."
+msgstr "Opkrævning af gebyrer vil hæve aktuelt tilgængelige gebyrer for dig."
 
 #: src/components/SearchModal/CommonBases.tsx
 msgid "Common bases"
@@ -695,15 +695,15 @@ msgstr "Ekspanderede resultater fra inaktive token-lister"
 
 #: src/components/Settings/index.tsx
 msgid "Expert mode turns off the confirm transaction prompt and allows high slippage trades that often result in bad rates and lost funds."
-msgstr "Eksperttilstand slukker for bekræft transaktion-prompten og tillader høj slippage-handler, der ofte resulterer i dårlige satser og tabte midler."
+msgstr "Eksperttilstand slukker for bekræftelsen transaktion prompt og tillader høj slippage handler, der ofte resulterer i dårlige satser og tabte midler."
 
 #: src/pages/Pool/CTACards.tsx
 msgid "Explore popular pools on Uniswap Analytics."
-msgstr "Udforsk populære puljer på Uniswap Analytics."
+msgstr "Udforsk populære pools på Uniswap Analytics."
 
 #: src/components/PositionPreview/index.tsx
 msgid "Fee Tier"
-msgstr "Gebyrniveau"
+msgstr "Gebyr Niveau"
 
 #: src/pages/Vote/VotePage.tsx
 msgid "For"
@@ -711,7 +711,7 @@ msgstr "Til"
 
 #: src/pages/MigrateV2/index.tsx
 msgid "For each pool shown below, click migrate to remove your liquidity from Uniswap V2 and deposit it into Uniswap V3."
-msgstr "For hver pulje vist nedenfor skal du klikke på migrer for at fjerne din likviditet fra Uniswap V2 og indsætte den i Uniswap V3."
+msgstr "For hver pulje vist nedenfor, skal du klikke migrere for at fjerne din likviditet fra Uniswap V2 og indsætte den i Uniswap V3."
 
 #: src/components/swap/SwapModalHeader.tsx
 #: src/pages/Swap/index.tsx
@@ -732,15 +732,15 @@ msgstr "Skjul lukkede positioner"
 
 #: src/pages/Swap/index.tsx
 msgid "High Price Impact"
-msgstr "Høj prispåvirkning"
+msgstr "Høj Prisvirkning"
 
 #: src/components/SearchModal/ImportList.tsx
 msgid "I understand"
-msgstr "Jeg har forstået"
+msgstr "Jeg forstår"
 
 #: src/components/SearchModal/ImportList.tsx
 msgid "If you purchase a token from this list, you may not be able to sell it back."
-msgstr "Hvis du køber et token fra denne liste, kan du muligvis ikke sælge det tilbage."
+msgstr "Hvis du køber et tegn fra denne liste, kan du muligvis ikke sælge det tilbage."
 
 #: src/components/SearchModal/ImportList.tsx
 #: src/components/SearchModal/ImportRow.tsx
@@ -751,15 +751,15 @@ msgstr "Importér"
 
 #: src/components/SearchModal/ImportList.tsx
 msgid "Import List"
-msgstr "Importeringsliste"
+msgstr "Importér Liste"
 
 #: src/pages/Pool/v2.tsx
 msgid "Import Pool"
-msgstr "Importeringspulje"
+msgstr "Importér Pool"
 
 #: src/components/NavigationTabs/index.tsx
 msgid "Import V2 Pool"
-msgstr "Importer V2-pulje"
+msgstr "Importer V2-pool"
 
 #: src/components/SearchModal/ImportList.tsx
 msgid "Import at your own risk"
@@ -767,15 +767,15 @@ msgstr "Importer på egen risiko"
 
 #: src/components/Badge/RangeBadge.tsx
 msgid "In range"
-msgstr "Indenfor intervallet"
+msgstr "I området"
 
 #: src/pages/Pool/PositionPage.tsx
 msgid "Increase Liquidity"
-msgstr "Forøg likviditet"
+msgstr "Forøg Likviditet"
 
 #: src/pages/AddLiquidityV2/index.tsx
 msgid "Initial prices and pool share"
-msgstr "Oprindelige priser og puljeaktie"
+msgstr "Oprindelige priser og pool aktie"
 
 #: src/components/WalletModal/PendingView.tsx
 msgid "Initializing..."
@@ -783,7 +783,7 @@ msgstr "Initialiserer..."
 
 #: src/components/swap/SwapModalHeader.tsx
 msgid "Input is estimated. You will sell at most <0>{0} {1}</0> or the transaction will revert."
-msgstr "Input er estimeret. Du vil sælge ved højst <0>{0} {1}</0> ellers vil transaktionen vende tilbage."
+msgstr "Input er estimeret. Du vil sælge højst <0>{0} {1}</0> ellers vil transaktionen vende tilbage."
 
 #: src/components/WalletModal/index.tsx
 msgid "Install Metamask"
@@ -795,7 +795,7 @@ msgstr "Utilstrækkelig likviditet til denne handel."
 
 #: src/pages/Swap/index.tsx
 msgid "Insufficient liquidity for this trade. Try enabling multi-hop trades."
-msgstr "Utilstrækkelig likviditet til denne handel. Prøv at aktivere multi-hop-handler."
+msgstr "Utilstrækkelig likviditet til denne handel. Prøv at aktivere multi-hop handler."
 
 #: src/state/mint/hooks.ts
 #: src/state/mint/hooks.ts
@@ -803,7 +803,7 @@ msgstr "Utilstrækkelig likviditet til denne handel. Prøv at aktivere multi-hop
 #: src/state/mint/v3/hooks.ts
 #: src/state/swap/hooks.ts
 msgid "Insufficient {0} balance"
-msgstr "Utilstrækkelig {0} saldo"
+msgstr "Utilstrækkelig {0} balance"
 
 #: src/components/Settings/index.tsx
 msgid "Interface Settings"
@@ -825,7 +825,7 @@ msgstr "Ugyldig prisinput"
 #: src/pages/AddLiquidity/index.tsx
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
 msgid "Invalid range selected. The min price must be lower than the max price."
-msgstr "Ugyldigt interval valgt. Minimumspris skal være lavere end den maksimale pris."
+msgstr "Ugyldigt interval valgt. Min pris skal være lavere end den maksimale pris."
 
 #: src/state/swap/hooks.ts
 msgid "Invalid recipient"
@@ -846,11 +846,11 @@ msgstr "Gebyr for likviditetsudbyder"
 
 #: src/pages/Pool/v2.tsx
 msgid "Liquidity provider rewards"
-msgstr "Likviditetsudbyderbelønninger"
+msgstr "Likviditetsudbyder belønninger"
 
 #: src/pages/Pool/v2.tsx
 msgid "Liquidity providers earn a 0.3% fee on all trades proportional to their share of the pool. Fees are added to the pool, accrue in real time and can be claimed by withdrawing your liquidity."
-msgstr "Likviditetsudbydere optjener et gebyr på 0,3 % på alle handler i forhold til deres andel af puljen. Gebyrer tilføjes til puljen, tilfalder i realtid og kan kræves ved at trække din likviditet tilbage."
+msgstr "Likviditetsudbydere optjener et gebyr på 0,3 % på alle handler i forhold til deres andel af puljen. Gebyrer tilføjes til puljen, tilfalder i realtid og kan hævdes ved at trække din likviditet tilbage."
 
 #: src/components/SearchModal/Manage.tsx
 msgid "Lists"
@@ -886,15 +886,15 @@ msgstr "Administrer"
 
 #: src/components/PositionCard/index.tsx
 msgid "Manage Liquidity in Rewards Pool"
-msgstr "Administrer likviditet i belønningspuljen"
+msgstr "Administrer likviditet i belønninger Pool"
 
 #: src/components/SearchModal/CurrencySearch.tsx
 msgid "Manage Token Lists"
-msgstr "Administrer token-lister"
+msgstr "Administrer Token-Lister"
 
 #: src/pages/PoolFinder/index.tsx
 msgid "Manage this pool."
-msgstr "Administrer denne pulje."
+msgstr "Administrer denne pool."
 
 #: src/pages/RemoveLiquidity/V3.tsx
 msgid "Max"
@@ -903,7 +903,7 @@ msgstr "Maks."
 #: src/components/PositionPreview/index.tsx
 #: src/components/RangeSelector/index.tsx
 msgid "Max Price"
-msgstr "Maks. pris"
+msgstr "Max Pris"
 
 #: src/pages/Pool/PositionPage.tsx
 msgid "Max price"
@@ -927,24 +927,24 @@ msgstr "Migrér"
 
 #: src/pages/Pool/index.tsx
 msgid "Migrate Liquidity"
-msgstr "Migrer likviditet"
+msgstr "Migrere Likviditet"
 
 #: src/pages/Pool/v2.tsx
 msgid "Migrate Liquidity to V3"
-msgstr "Migrer likviditet til V3"
+msgstr "Migrere Likviditet til V3"
 
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
 #: src/pages/MigrateV2/index.tsx
 msgid "Migrate V2 Liquidity"
-msgstr "Migrer V2-likviditet"
+msgstr "Migrere V2 Likviditet"
 
 #: src/pages/Pool/index.tsx
 msgid "Migrate V2 liquidity"
-msgstr "Migrer V2-likviditet"
+msgstr "Migrer V2 likviditet"
 
 #: src/pages/MigrateV2/index.tsx
 msgid "Migrate your liquidity tokens from Uniswap V2 to Uniswap V3."
-msgstr "Migrer dine likviditetstokens fra Uniswap V2 til Uniswap V3."
+msgstr "Migrér dine likviditetstokens fra Uniswap V2 til Uniswap V3."
 
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
 msgid "Migrating"
@@ -953,7 +953,7 @@ msgstr "Migrerer"
 #: src/components/PositionPreview/index.tsx
 #: src/components/RangeSelector/index.tsx
 msgid "Min Price"
-msgstr "Min. pris"
+msgstr "Min. Pris"
 
 #: src/pages/Pool/PositionPage.tsx
 msgid "Min price"
@@ -973,11 +973,11 @@ msgstr "Mere"
 
 #: src/pages/Pool/index.tsx
 msgid "New Position"
-msgstr "Ny position"
+msgstr "Ny Position"
 
 #: src/pages/MigrateV2/index.tsx
 msgid "No V2 Liquidity found."
-msgstr "Ingen V2-likviditet fundet."
+msgstr "Ingen V2 likviditet fundet."
 
 #: src/pages/Earn/index.tsx
 #: src/pages/Earn/index.tsx
@@ -990,7 +990,7 @@ msgstr "Ingen likviditet fundet."
 
 #: src/pages/PoolFinder/index.tsx
 msgid "No pool found."
-msgstr "Ingen pulje fundet."
+msgstr "Ingen pool fundet."
 
 #: src/pages/Vote/index.tsx
 msgid "No proposals found."
@@ -1002,35 +1002,35 @@ msgstr "Ingen resultater fundet."
 
 #: src/components/Toggle/ListToggle.tsx
 msgid "OFF"
-msgstr "FRA"
+msgstr "AF"
 
 #: src/components/Toggle/ListToggle.tsx
 msgid "ON"
-msgstr "TIL"
+msgstr "PÅ"
 
 #: src/components/Settings/index.tsx
 msgid "ONLY USE THIS MODE IF YOU KNOW WHAT YOU ARE DOING."
-msgstr "KUN BRUG DENNE TILSTAND, HVIS DU VED, HVAD DU LAVER."
+msgstr "KUN BRUG DETTE MODE, HVIS DU VIDE, HVAD DU ER DOSER."
 
 #: src/components/Toggle/index.tsx
 msgid "Off"
-msgstr "Fra"
+msgstr "Af"
 
 #: src/components/Toggle/index.tsx
 msgid "On"
-msgstr "Til"
+msgstr "På"
 
 #: src/pages/AddLiquidityV2/index.tsx
 msgid "Once you are happy with the rate click supply to review."
-msgstr "Når du er tilfreds med satsen, skal du klikke på forsyning for at gennemgå."
+msgstr "Når du er tilfreds med satsen klik forsyning for at gennemgå."
 
 #: src/pages/Vote/VotePage.tsx
 msgid "Only UNI votes that were self delegated or delegated to another address before block {0} are eligible for voting."
-msgstr "Kun UNI-stemmer, der blev selvdelegeret eller delegeret til en anden adresse før blok {0}, er berettiget til at stemme."
+msgstr "Kun UNI stemmer, der blev selv delegeret eller delegeret til en anden adresse, før blok {0} er berettiget til at stemme."
 
 #: src/components/Web3ReactManager/index.tsx
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device."
-msgstr "Ups! Der opstod en ukendt fejl. Opdater siden, eller besøg fra en anden browser eller enhed."
+msgstr "Ups! Der opstod en ukendt fejl. Opdater venligst siden, eller besøg fra en anden browser eller enhed."
 
 #: src/components/Badge/RangeBadge.tsx
 msgid "Out of range"
@@ -1039,11 +1039,11 @@ msgstr "Ikke inden for rækkevidde"
 #: src/pages/AddLiquidityV2/index.tsx
 #: src/pages/RemoveLiquidity/index.tsx
 msgid "Output is estimated. If the price changes by more than {0}% your transaction will revert."
-msgstr "Output er et estimat. Hvis prisen ændrer sig mere end {0} %, bliver din transaktion tilbageført."
+msgstr "Output anslås. Hvis prisændringerne med mere end {0}% vil din transaktion vende tilbage."
 
 #: src/components/swap/SwapModalHeader.tsx
 msgid "Output is estimated. You will receive at least <0>{0} {1}</0> or the transaction will revert."
-msgstr "Output er anslået. Du vil modtage mindst <0>{0} {1}</0> ellers bliver din transaktion tilbageført."
+msgstr "Output er anslået. Du vil modtage mindst <0>{0} {1}</0> ellers vil transaktionen vende tilbage."
 
 #: src/components/swap/SwapModalHeader.tsx
 msgid "Output will be sent to <0>{0}</0>"
@@ -1063,29 +1063,29 @@ msgstr "Opret forbindelse til det relevante Ethereum-netværk."
 
 #: src/components/Settings/index.tsx
 msgid "Please type the word \"{confirmWord}\" to enable expert mode."
-msgstr "Skriv ordet \"{confirmWord}\" for at aktivere eksperttilstand."
+msgstr "Skriv venligst ordet \"{confirmWord}\" for at aktivere eksperttilstand."
 
 #: src/components/Header/index.tsx
 #: src/components/NavigationTabs/index.tsx
 msgid "Pool"
-msgstr "Pulje"
+msgstr "Pool"
 
 #: src/pages/PoolFinder/index.tsx
 msgid "Pool Found!"
-msgstr "Pulje fundet!"
+msgstr "Pool Fundet!"
 
 #: src/pages/Earn/Manage.tsx
 msgid "Pool Rate"
-msgstr "Puljesats"
+msgstr "Pool Rate"
 
 #: src/components/earn/PoolCard.tsx
 msgid "Pool rate"
-msgstr "Puljesats"
+msgstr "Pool rate"
 
 #: src/components/PositionCard/V2.tsx
 #: src/components/PositionCard/index.tsx
 msgid "Pool tokens in rewards pool:"
-msgstr "Puljetokens i belønningspuljen:"
+msgstr "Pool tokens i belønninger pulje:"
 
 #: src/components/PositionCard/V2.tsx
 #: src/components/PositionCard/V2.tsx
@@ -1096,11 +1096,11 @@ msgstr "Puljetokens i belønningspuljen:"
 #: src/pages/RemoveLiquidity/V3.tsx
 #: src/pages/RemoveLiquidity/V3.tsx
 msgid "Pooled {0}:"
-msgstr "Pulje {0}:"
+msgstr "Pooled {0}:"
 
 #: src/pages/Pool/index.tsx
 msgid "Pools Overview"
-msgstr "Puljeoversigt"
+msgstr "Pools Oversigt"
 
 #: src/components/swap/SwapModalHeader.tsx
 #: src/pages/RemoveLiquidity/index.tsx
@@ -1336,11 +1336,11 @@ msgstr "Byt {0} {1} til {2} {3}"
 
 #: src/components/Popups/ClaimPopup.tsx
 msgid "Thanks for being part of the Uniswap community <0/>"
-msgstr "Tak, fordi du er en del af Uniswap-gruppen <0 />"
+msgstr "Tak for at være en del af Uniswap-gruppen <0 />"
 
 #: src/hooks/useSwapCallback.ts
 msgid "The Uniswap invariant x*y=k was not satisfied by the swap. This usually means one of the tokens you are swapping incorporates custom behavior on transfer."
-msgstr "Uniswap-invarianten x * y = k var ikke tilfreds med byttet. Dette betyder normalt, at et af de tokens, du bytter, indeholder brugerdefineret adfærd ved overførsel."
+msgstr "Uniswap-invarianten x * y = k blev ikke tilfreds med byttet. Dette betyder normalt, at et af de tokens, du bytter, indeholder brugerdefineret adfærd ved overførsel."
 
 #: src/hooks/useSwapCallback.ts
 msgid "The input token cannot be transferred. There may be an issue with the input token."
@@ -1348,7 +1348,7 @@ msgstr "Input-token kan ikke overføres. Der kan være et problem med input-toke
 
 #: src/components/CurrencyInputPanel/index.tsx
 msgid "The market price is outside your specified price range. Single-asset deposit only."
-msgstr "Markedsprisen ligger uden for din angivne prisklasse. Kun enkeltindskud."
+msgstr "Markedsprisen ligger uden for din angivne prisklasse. Kun et enkelt indskud."
 
 #: src/hooks/useSwapCallback.ts
 msgid "The output token cannot be transferred. There may be an issue with the output token."
@@ -1356,19 +1356,19 @@ msgstr "Output-token kan ikke overføres. Der kan være et problem med output-to
 
 #: src/hooks/useSwapCallback.ts
 msgid "The output token cannot be transferred. There may be an issue with the output token. Note fee on transfer and rebase tokens are incompatible with Uniswap V3."
-msgstr "Output-token kan ikke overføres. Der kan være et problem med output-token. Bemærk, at der er gebyr ved overførsel og rebase-tokens er inkompatible med Uniswap V3."
+msgstr "Output-token kan ikke overføres. Der kan være et problem med output-token. Bemærkningsgebyr ved overførsel og rebase-tokens er inkompatibelt med Uniswap V3."
 
 #: src/components/Badge/RangeBadge.tsx
 msgid "The price of this pool is outside of your selected range. Your position is not currently earning fees."
-msgstr "Prisen på denne pulje ligger uden for dit valgte område. Din position tjener ikke i øjeblikket gebyrer."
+msgstr "Prisen på denne pool ligger uden for dit valgte område. Din position er ikke i øjeblikket at tjene gebyrer."
 
 #: src/components/Badge/RangeBadge.tsx
 msgid "The price of this pool is within your selected range. Your position is currently earning fees."
-msgstr "Prisen på denne pulje ligger inden for dit valgte interval. Din position tjener i øjeblikket gebyrer."
+msgstr "Prisen på denne pool ligger inden for dit valgte interval. Din position tjener i øjeblikket gebyrer."
 
 #: src/pages/AddLiquidityV2/index.tsx
 msgid "The ratio of tokens you add will set the price of this pool."
-msgstr "Forholdet mellem tokens du tilføjer, vil sætte prisen på denne pulje."
+msgstr "Forholdet mellem tokens du tilføjer, vil sætte prisen på denne pool."
 
 #: src/hooks/useSwapCallback.ts
 msgid "The transaction could not be sent because the deadline has passed. Please check that your transaction deadline is not too low."
@@ -1380,15 +1380,15 @@ msgstr "Disse tokens er almindeligt parret med andre tokens."
 
 #: src/components/SearchModal/ImportToken.tsx
 msgid "This token doesn't appear on the active token list(s). Make sure this is the token that you want to trade."
-msgstr "Dette token vises ikke på den/de aktive tokenlister. Sørg for, at dette er det token, du vil handle."
+msgstr "Dette token vises ikke på den / de aktive tokenlister. Sørg for, at dette er det token, du vil handle."
 
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
 msgid "This tool will safely migrate your {0} liquidity to V3. The process is completely trustless thanks to the"
-msgstr "Dette værktøj vil sikkert overføre din {0}-likviditet til V3. Processen er helt troværdig takket være"
+msgstr "Dette værktøj vil sikkert overføre din {0} likviditet til V3. Processen er helt troværdig takket være"
 
 #: src/hooks/useSwapCallback.ts
 msgid "This transaction will not succeed due to price movement. Try increasing your slippage tolerance. Note fee on transfer and rebase tokens are incompatible with Uniswap V3."
-msgstr "Denne transaktion lykkes ikke på grund af prisbevægelse. Prøv at øge din glidningstolerance. Bemærk, at der er gebyr ved overførsel og rebase-tokens er inkompatible med Uniswap V3."
+msgstr "Denne transaktion lykkes ikke på grund af prisbevægelse. Prøv at øge din glidningstolerance. Bemærkningsgebyr ved overførsel og rebase-tokens er inkompatibelt med Uniswap V3."
 
 #: src/hooks/useSwapCallback.ts
 msgid "This transaction will not succeed either due to price movement or fee on transfer. Try increasing your slippage tolerance."
@@ -1421,11 +1421,11 @@ msgstr "Tokens fra inaktive lister. Importer specifikke tokens nedenfor, eller k
 
 #: src/pages/Pool/CTACards.tsx
 msgid "Top pools"
-msgstr "Toppuljer"
+msgstr "Top puljer"
 
 #: src/components/Header/UniBalanceContent.tsx
 msgid "Total Supply"
-msgstr "Tilgang i alt"
+msgstr "Tilgang I Alt"
 
 #: src/components/earn/PoolCard.tsx
 msgid "Total deposited"
@@ -1446,7 +1446,7 @@ msgstr "Transaktionsindstillinger"
 #: src/components/vote/DelegateModal.tsx
 #: src/components/vote/VoteModal.tsx
 msgid "Transaction Submitted"
-msgstr "Transaktion indsendt"
+msgstr "Transaktion Indsendt"
 
 #: src/components/TransactionSettings/index.tsx
 msgid "Transaction deadline"
@@ -1454,11 +1454,11 @@ msgstr "Frist for transaktion"
 
 #: src/components/WalletModal/PendingView.tsx
 msgid "Try Again"
-msgstr "Prøv igen"
+msgstr "Prøv Igen"
 
 #: src/components/Settings/index.tsx
 msgid "Turn On Expert Mode"
-msgstr "Slå Eksperttilstand til"
+msgstr "Slå Eksperttilstand Til"
 
 #: src/components/Popups/ClaimPopup.tsx
 msgid "UNI has arrived"
@@ -1478,11 +1478,11 @@ msgstr "UNI-tokens repræsenterer stemmeandele i Uniswap governance. Du kan selv
 
 #: src/pages/RemoveLiquidity/index.tsx
 msgid "UNI {0}/{1} Burned"
-msgstr "UNI {0}/{1} brændt"
+msgstr "UNI {0}/{1} Brændt"
 
 #: src/pages/Earn/Manage.tsx
 msgid "UNI-V2 LP tokens are required. Once you've added liquidity to the {0}-{1} pool you can stake your liquidity tokens on this page."
-msgstr "UNI-V2 LP-tokens er påkrævet. Når du har tilføjet likviditet til {0}-{1} puljen, kan du satse dine likviditettokens på denne side."
+msgstr "UNI-V2 LP tokens er påkrævet. Når du har tilføjet likviditet til {0}-{1} puljen, kan du satse dine likviditet tokens på denne side."
 
 #: src/pages/Earn/Manage.tsx
 msgid "UNI-V2 {0}-{1}"
@@ -1491,15 +1491,15 @@ msgstr "UNI-V2 {0}-{1}"
 #: src/components/earn/ClaimRewardModal.tsx
 #: src/components/earn/UnstakingModal.tsx
 msgid "Unclaimed UNI"
-msgstr "UNI, der ikke er gjort krav på"
+msgstr "Uhævdet UNI"
 
 #: src/pages/Pool/PositionPage.tsx
 msgid "Unclaimed fees"
-msgstr "Gebyrer, der ikke er gjort krav på"
+msgstr "Udestående gebyrer"
 
 #: src/components/Header/UniBalanceContent.tsx
 msgid "Unclaimed:"
-msgstr "Der ikke er gjort krav på:"
+msgstr "Uerstattet:"
 
 #: src/pages/Vote/index.tsx
 msgid "Uniswap Governance"
@@ -1515,11 +1515,11 @@ msgstr "Uniswap tilgængelig i: <0>{0}</0>"
 
 #: src/pages/Earn/index.tsx
 msgid "Uniswap liquidity mining"
-msgstr "Uiswap likviditetsmining"
+msgstr "Uiswap likviditet minedrift"
 
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
 msgid "Uniswap migration contract↗"
-msgstr "Uniswap migrationskontrakt↗"
+msgstr "Uniswap migration kontrakt:up-opdatering:"
 
 #: src/components/SearchModal/ImportToken.tsx
 msgid "Unknown Source"
@@ -1527,38 +1527,38 @@ msgstr "Ukendt kilde"
 
 #: src/hooks/useSwapCallback.ts
 msgid "Unknown error{0}. Try increasing your slippage tolerance. Note fee on transfer and rebase tokens are incompatible with Uniswap V3."
-msgstr "Ukendt fejl{0}. Prøv at øge din glidningstolerance. Bemærk, at der er gebyr ved overførsel og rebase-tokens er inkompatible med Uniswap V3."
+msgstr "Ukendt fejl{0}. Prøv at øge din glidningstolerance. Bemærkningsgebyr ved overførsel og rebase-tokens er inkompatibelt med Uniswap V3."
 
 #: src/pages/Vote/VotePage.tsx
 #: src/pages/Vote/index.tsx
 msgid "Unlock Votes"
-msgstr "Lås op for stemmer"
+msgstr "Lås Stemmer Op"
 
 #: src/pages/Vote/index.tsx
 msgid "Unlock Voting"
-msgstr "Oplås afstemning"
+msgstr "Oplås Afstemning"
 
 #: src/components/vote/DelegateModal.tsx
 msgid "Unlocking Votes"
-msgstr "Låse op for stemmer"
+msgstr "Oplåsning Af Stemmer"
 
 #: src/pages/AddLiquidity/index.tsx
 #: src/pages/AddLiquidityV2/index.tsx
 #: src/pages/Swap/index.tsx
 msgid "Unsupported Asset"
-msgstr "Ikke-understøttet aktiv"
+msgstr "Ikke Understøttet Aktiv"
 
 #: src/components/swap/UnsupportedCurrencyFooter.tsx
 msgid "Unsupported Assets"
-msgstr "Ikke-understøttede aktiver"
+msgstr "Ikke-Understøttede Aktiver"
 
 #: src/pages/Swap/index.tsx
 msgid "Unwrap"
-msgstr "Pak ud"
+msgstr "Unwrap"
 
 #: src/pages/Vote/index.tsx
 msgid "Update Delegation"
-msgstr "Opdater delegation"
+msgstr "Opdater Delegation"
 
 #: src/components/SearchModal/ManageLists.tsx
 msgid "Update list"
@@ -1570,7 +1570,7 @@ msgstr "Bruger"
 
 #: src/pages/Pool/index.tsx
 msgid "V2 liquidity"
-msgstr "V2-likviditet"
+msgstr "V2 likviditet"
 
 #: src/pages/Swap/index.tsx
 msgid "V3"
@@ -1579,7 +1579,7 @@ msgstr "V3"
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
 msgid "V3 {0} Price:"
-msgstr "V3 {0}-pris:"
+msgstr "V3 {0} Pris:"
 
 #: src/components/Header/UniBalanceContent.tsx
 msgid "View UNI Analytics"
@@ -1587,11 +1587,11 @@ msgstr "Se UNI Analytics"
 
 #: src/pages/Pool/index.tsx
 msgid "View V2 Liquidity"
-msgstr "Se V2-likviditet"
+msgstr "Se V2 Likviditet"
 
 #: src/components/PositionCard/index.tsx
 msgid "View accrued fees and analytics<0>↗</0>"
-msgstr "Se påløbne gebyrer og analyser<0>↗</0>"
+msgstr "Se påløbne gebyrer og analytiker<0>:up-Χ:</0>"
 
 #: src/components/SearchModal/ManageLists.tsx
 msgid "View list"
@@ -1612,11 +1612,11 @@ msgstr "Se transaktion i Explorer"
 
 #: src/components/Header/index.tsx
 msgid "Vote"
-msgstr "Stem"
+msgstr "AFSTEMNING"
 
 #: src/pages/Vote/VotePage.tsx
 msgid "Vote Against"
-msgstr "Stem imod"
+msgstr "Stem Mod"
 
 #: src/pages/Vote/VotePage.tsx
 msgid "Vote For"
@@ -1642,11 +1642,11 @@ msgstr "Afstemning slutter ca. {0}"
 
 #: src/components/TransactionConfirmationModal/index.tsx
 msgid "Waiting For Confirmation"
-msgstr "Afventer bekræftelse"
+msgstr "Venter På Bekræftelse"
 
 #: src/components/earn/StakingModal.tsx
 msgid "Weekly Rewards"
-msgstr "Ugentlige belønninger"
+msgstr "Ugentlige Belønninger"
 
 #: src/components/claim/AddressClaimModal.tsx
 msgid "Welcome to team Unicorn :)"
@@ -1654,7 +1654,7 @@ msgstr "Velkommen til team Unicorn :)"
 
 #: src/components/earn/ClaimRewardModal.tsx
 msgid "When you claim without withdrawing your liquidity remains in the mining pool."
-msgstr "Når du gør krav uden at trække dig tilbage, forbliver din likviditet i miningpuljen."
+msgstr "Når du hævder uden at hæve din likviditet forbliver i minedrift puljen."
 
 #: src/pages/Earn/Manage.tsx
 msgid "When you withdraw, the contract will automagically claim UNI on your behalf!"
@@ -1662,16 +1662,16 @@ msgstr "Når du hæver, vil kontrakten automatisk gøre krav på UNI på dine ve
 
 #: src/components/earn/UnstakingModal.tsx
 msgid "When you withdraw, your UNI is claimed and your liquidity is removed from the mining pool."
-msgstr "Når du hæver, gøres der krav på din UNI, og din likviditet fjernes fra miningpuljen."
+msgstr "Når du hæver, hæves din UNI og din likviditet fjernes fra minepuljen."
 
 #: src/components/earn/UnstakingModal.tsx
 #: src/pages/Earn/Manage.tsx
 msgid "Withdraw"
-msgstr "Hævning"
+msgstr "Udbetal"
 
 #: src/components/earn/UnstakingModal.tsx
 msgid "Withdraw & Claim"
-msgstr "Udbetal & gør krav på"
+msgstr "Udbetal & Påstand"
 
 #: src/components/earn/UnstakingModal.tsx
 #: src/components/earn/UnstakingModal.tsx
@@ -1684,7 +1684,7 @@ msgstr "Udbetal {0} UNI-V2"
 
 #: src/components/earn/UnstakingModal.tsx
 msgid "Withdrew UNI-V2!"
-msgstr "Hæv UNI-V2!"
+msgstr "Tilbagetræk UNI-V2!"
 
 #: src/pages/Swap/index.tsx
 msgid "Wrap"
@@ -1693,15 +1693,15 @@ msgstr "Ombryd"
 #: src/components/WalletModal/index.tsx
 #: src/components/Web3Status/index.tsx
 msgid "Wrong Network"
-msgstr "Forkert netværk"
+msgstr "Forkert Netværk"
 
 #: src/pages/AddLiquidityV2/index.tsx
 msgid "You are creating a pool"
-msgstr "Du opretter en pulje"
+msgstr "Du opretter en pool"
 
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
 msgid "You are the first liquidity provider for this Uniswap V3 pool. Your liquidity will migrate at the current {0} price."
-msgstr "Du er den første likviditetsudbyder til denne Uniswap V3-pulje. Din likviditet vil migrere til den aktuelle {0}-pris."
+msgstr "Du er den første likviditetsudbyder til denne Uniswap V3-pool. Din likviditet vil migrere til den aktuelle {0} pris."
 
 #: src/pages/AddLiquidityV2/index.tsx
 msgid "You are the first liquidity provider."
@@ -1746,11 +1746,11 @@ msgstr "Din UNI-opdeling"
 
 #: src/pages/Pool/v2.tsx
 msgid "Your V2 liquidity"
-msgstr "Din V2-likviditet"
+msgstr "Din V2 likviditet"
 
 #: src/pages/Pool/index.tsx
 msgid "Your V3 liquidity positions will appear here."
-msgstr "Dine V3-likviditetspositioner vises her."
+msgstr "Dine V3 likviditetspositioner vises her."
 
 #: src/pages/Earn/Manage.tsx
 msgid "Your liquidity deposits"
@@ -1764,7 +1764,7 @@ msgstr "Din likviditet tjener kun gebyrer, når markedsprisen for parret er inde
 #: src/components/PositionCard/index.tsx
 #: src/components/PositionCard/index.tsx
 msgid "Your pool share:"
-msgstr "Din puljedeling:"
+msgstr "Din pulje deling:"
 
 #: src/components/PositionCard/index.tsx
 msgid "Your position"
@@ -1777,12 +1777,12 @@ msgstr "Din stilling har 0 likviditet, og tjener ikke gebyrer."
 #: src/components/PositionPreview/index.tsx
 #: src/components/PositionPreview/index.tsx
 msgid "Your position will be 100% composed of {0} at this price"
-msgstr "Din position vil være 100 % sammensat af {0} til denne pris"
+msgstr "Din position vil være 100% sammensat af {0} til denne pris"
 
 #: src/pages/Pool/PositionPage.tsx
 #: src/pages/Pool/PositionPage.tsx
 msgid "Your position will be 100% {0} at this price."
-msgstr "Din position vil være 100 % {0} til denne pris."
+msgstr "Din position vil være 100% {0} til denne pris."
 
 #: src/pages/AddLiquidity/index.tsx
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
@@ -1801,11 +1801,11 @@ msgstr "Din sats"
 #: src/components/PositionCard/V2.tsx
 #: src/components/PositionCard/index.tsx
 msgid "Your total pool tokens:"
-msgstr "Dine samlede puljetokener:"
+msgstr "Dine samlede pools tokenser:"
 
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
 msgid "Your transaction cost will be much higher as it includes the gas to create the pool."
-msgstr "Dine transaktionsomkostninger vil være meget højere, da det omfatter gas til at skabe puljen."
+msgstr "Din transaktion omkostninger vil være meget højere, da det omfatter gas til at skabe puljen."
 
 #: src/components/TransactionSettings/index.tsx
 msgid "Your transaction may be frontrun"
@@ -1817,11 +1817,11 @@ msgstr "Din transaktion kan mislykkes"
 
 #: src/components/TransactionSettings/index.tsx
 msgid "Your transaction will revert if it is pending for more than this period of time."
-msgstr "Din transaktion tilbageføres, hvis den afventer i mere end denne periode."
+msgstr "Din transaktion vil vende tilbage, hvis den afventer mere end denne periode."
 
 #: src/components/TransactionSettings/index.tsx
 msgid "Your transaction will revert if the price changes unfavorably by more than this percentage."
-msgstr "Din transaktion vil blive tilbageført, hvis prisen ændres ugunstigt med mere end denne procentdel."
+msgstr "Din transaktion vil vende tilbage, hvis prisen ændres ugunstigt med mere end denne procentdel."
 
 #: src/components/AccountDetails/index.tsx
 msgid "Your transactions will appear here..."
@@ -1829,7 +1829,7 @@ msgstr "Dine transaktioner vises her..."
 
 #: src/pages/Earn/Manage.tsx
 msgid "Your unclaimed UNI"
-msgstr "Din ikke-krævede UNI"
+msgstr "Deres uindfriede UNI"
 
 #: src/components/Settings/index.tsx
 msgid "confirm"
@@ -1841,7 +1841,7 @@ msgstr "for {0}"
 
 #: src/components/Web3Status/index.tsx
 msgid "has socks emoji"
-msgstr "har sokker-emoji"
+msgstr "har sokker emoji"
 
 #: src/components/SearchModal/ManageLists.tsx
 msgid "https:// or ipfs:// or ENS name"
@@ -1876,7 +1876,7 @@ msgstr "{0} <0/> per <1/>"
 
 #: src/components/SearchModal/ManageTokens.tsx
 msgid "{0} Custom Tokens"
-msgstr "{0} Brugerdefinerede tokens"
+msgstr "{0} Brugerdefinerede poletter"
 
 #: src/pages/AddLiquidityV2/ConfirmAddModalBottom.tsx
 #: src/pages/AddLiquidityV2/ConfirmAddModalBottom.tsx
@@ -1920,7 +1920,7 @@ msgstr "{0} UNI-V2"
 
 #: src/pages/Earn/Manage.tsx
 msgid "{0} UNI-V2 LP tokens available"
-msgstr "{0} UNI-V2 LP-tokens tilgængelige"
+msgstr "{0} UNI-V2 LP tokens tilgængelige"
 
 #: src/components/vote/VoteModal.tsx
 msgid "{0} Votes"
@@ -1967,11 +1967,11 @@ msgstr "{0} • Tilføjet af bruger"
 #: src/pages/Pool/PositionPage.tsx
 #: src/pages/Pool/PositionPage.tsx
 msgid "{0}%"
-msgstr "{0} %"
+msgstr "{0}%"
 
 #: src/pages/Earn/Manage.tsx
 msgid "{0}-{1} Liquidity Mining"
-msgstr "{0}-{1} Likviditetsmining"
+msgstr "{0}-{1} Likviditet minedrift"
 
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
 msgid "{0}/{1} LP NFT"
@@ -1979,7 +1979,7 @@ msgstr "{0}/{1} LP NFT"
 
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
 msgid "{0}/{1} LP Tokens"
-msgstr "{0}/{1} LP-tokens"
+msgstr "{0}/{1} LP Tokens"
 
 #: src/components/claim/ClaimModal.tsx
 msgid "{SOCKS_AMOUNT} UNI"
@@ -1991,7 +1991,7 @@ msgstr "{USER_AMOUNT} UNI"
 
 #: src/pages/RemoveLiquidity/V3.tsx
 msgid "{percentForSlider}%"
-msgstr "{percentForSlider} %"
+msgstr "{percentForSlider}%"
 
 #: src/components/InputStepCounter/InputStepCounter.tsx
 msgid "{tokenB} per {tokenA}"
@@ -2003,5 +2003,5 @@ msgstr "~$ <0/>"
 
 #: src/pages/Pool/PositionPage.tsx
 msgid "← Back to Pools Overview"
-msgstr "← Tilbage til puljeoversigt"
+msgstr "← Tilbage til Pools Oversigt"
 

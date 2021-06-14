@@ -32,12 +32,12 @@ export const UNI: { [chainId: number]: Token } = {
 }
 export const WETH9_EXTENDED: { [chainId: number]: Token } = {
   ...WETH9,
-  [SupportedChainId.ARBITRUM_KOVAN]: new Token(
-    SupportedChainId.ARBITRUM_KOVAN,
-    '0x4A5e4A42dC430f669086b417AADf2B128beFEfac',
+  [SupportedChainId.FUJI]: new Token(
+    SupportedChainId.FUJI,
+    '0xd00ae08403B9bbb9124bB305C09058E32C39A48c',
     18,
-    'WETH9',
-    'Wrapped Ether'
+    'WAVAX',
+    'Wrapped Avax'
   ),
   [SupportedChainId.ARBITRUM_ONE]: new Token(
     SupportedChainId.ARBITRUM_ONE,

@@ -22,16 +22,16 @@ export enum ExplorerDataType {
  * @param type the type of the data
  */
 export function getExplorerLink(chainId: number, data: string, type: ExplorerDataType): string {
-  if (chainId === SupportedChainId.ARBITRUM_KOVAN) {
+  if (chainId === SupportedChainId.FUJI) {
     switch (type) {
       case ExplorerDataType.TRANSACTION:
-        return `https://explorer5.arbitrum.io/#/tx/${data}`
+        return `https://cchain.explorer.avax-test.network/#/tx/${data}`
       case ExplorerDataType.ADDRESS:
-        return `https://explorer5.arbitrum.io/#/address/${data}`
+        return `https://cchain.explorer.avax-test.network/#/address/${data}`
       case ExplorerDataType.BLOCK:
-        return `https://explorer5.arbitrum.io/#/block/${data}`
+        return `https://cchain.explorer.avax-test.network/#/block/${data}`
       default:
-        return `https://explorer5.arbitrum.io`
+        return `https://cchain.explorer.avax-test.network`
     }
   }
 

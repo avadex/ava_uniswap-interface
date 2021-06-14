@@ -50,7 +50,7 @@ export function colors(darkMode: boolean): Colors {
 
     // backgrounds / greys
     bg0: darkMode ? '#191B1F' : '#FFF',
-    bg1: darkMode ? '#212429' : '#F7F8FA',
+    bg1: darkMode ? '#212429' : '#d4f2c894',
     bg2: darkMode ? '#2C2F36' : '#EDEEF2',
     bg3: darkMode ? '#40444F' : '#CED0D9',
     bg4: darkMode ? '#565A69' : '#888D9B',
@@ -62,19 +62,19 @@ export function colors(darkMode: boolean): Colors {
     advancedBG: darkMode ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.6)',
 
     //primary colors
-    primary1: darkMode ? '#2172E5' : '#ff007a',
+    primary1: darkMode ? '#6de521' : '#21e54b',
     primary2: darkMode ? '#3680E7' : '#FF8CC3',
     primary3: darkMode ? '#4D8FEA' : '#FF99C9',
     primary4: darkMode ? '#376bad70' : '#F6DDE8',
-    primary5: darkMode ? '#153d6f70' : '#FDEAF1',
+    primary5: darkMode ? '#ff0000b5' : '#59ff7e75',
 
     // color text
-    primaryText1: darkMode ? '#6da8ff' : '#ff007a',
+    primaryText1: darkMode ? '#ffffff' : '#21e54b',
 
     // secondary colors
-    secondary1: darkMode ? '#2172E5' : '#ff007a',
+    secondary1: darkMode ? '#6de521' : '#21e54b',
     secondary2: darkMode ? '#17000b26' : '#F6DDE8',
-    secondary3: darkMode ? '#17000b26' : '#FDEAF1',
+    secondary3: darkMode ? '#17000b26' : '#59ff7e75',
 
     // other
     red1: '#FD4040',
@@ -84,7 +84,7 @@ export function colors(darkMode: boolean): Colors {
     yellow1: '#e3a507',
     yellow2: '#ff8f00',
     yellow3: '#F3B71E',
-    blue1: '#2172E5',
+    blue1: '#6de521',
     blue2: '#5199FF',
 
     error: '#FD4040',
@@ -92,8 +92,8 @@ export function colors(darkMode: boolean): Colors {
     warning: '#ff8f00',
 
     // dont wanna forget these blue yet
-    // blue4: darkMode ? '#153d6f70' : '#C4D9F8',
-    // blue5: darkMode ? '#153d6f70' : '#EBF4FF',
+    // blue4: darkMode ? '#ff0000b5' : '#C4D9F8',
+    // blue5: darkMode ? '#ff0000b5' : '#EBF4FF',
   }
 }
 

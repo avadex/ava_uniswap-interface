@@ -8,7 +8,7 @@ type AddressMap = { [chainId: number]: string }
 export const UNI_ADDRESS: AddressMap = constructSameAddressMap('0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984', false)
 export const MULTICALL2_ADDRESSES: AddressMap = {
   ...constructSameAddressMap('0x5BA1e12693Dc8F9c48aAD8770482f4739bEeD696', false),
-  [SupportedChainId.ARBITRUM_KOVAN]: '0xc80e33a6f02cf08557a0ca3d94d1474d73f64bc1',
+  [SupportedChainId.FUJI]: '0x7a94E80Aa49449272f11cbBd2F3883c2e13d0E0F',
   [SupportedChainId.ARBITRUM_ONE]: '0x021CeAC7e681dBCE9b5039d2535ED97590eB395c',
 }
 export const V2_FACTORY_ADDRESSES: AddressMap = constructSameAddressMap(V2_FACTORY_ADDRESS, false)
@@ -31,15 +31,15 @@ export const ARGENT_WALLET_DETECTOR_ADDRESS: AddressMap = {
 }
 export const V3_CORE_FACTORY_ADDRESSES: AddressMap = {
   ...constructSameAddressMap(V3_FACTORY_ADDRESS, true),
-  [SupportedChainId.ARBITRUM_KOVAN]: '0xf594DEF7751440197879149f46E98b334E6DF1fa',
+  [SupportedChainId.FUJI]: '0xF0e8A2197Bf142f509f0c78B88E62C7036c0AB80',
 }
 export const QUOTER_ADDRESSES: AddressMap = {
   ...constructSameAddressMap('0xb27308f9F90D607463bb33eA1BeBb41C27CE5AB6', true),
-  [SupportedChainId.ARBITRUM_KOVAN]: '0xAC06b88FA9adB7584A659b190F37F085352cB783',
+  [SupportedChainId.FUJI]: '0x27cfa516190c8ba6CC39E3Cfa54F6E7A7A85Bccd',
 }
 export const NONFUNGIBLE_POSITION_MANAGER_ADDRESSES: AddressMap = {
   ...constructSameAddressMap('0xC36442b4a4522E871399CD717aBDD847Ab11FE88', true),
-  [SupportedChainId.ARBITRUM_KOVAN]: '0x9E1498aE1F508E86462e8A0F213CF385A6622464',
+  [SupportedChainId.FUJI]: '0xc33615ba069b5AebdFf3814c3BD7A029fce3f3aD',
 }
 export const ENS_REGISTRAR_ADDRESSES: AddressMap = {
   [SupportedChainId.MAINNET]: '0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e',
@@ -52,7 +52,7 @@ export const SOCKS_CONTROLLER_ADDRESSES: AddressMap = {
 }
 export const SWAP_ROUTER_ADDRESSES: AddressMap = {
   ...constructSameAddressMap('0xE592427A0AEce92De3Edee1F18E0157C05861564', true),
-  [SupportedChainId.ARBITRUM_KOVAN]: '0x6ae2DE23F2BE35B3921ba15DA52e4b173667dCb9',
+  [SupportedChainId.FUJI]: '0xA4DCf4082A2270e95BB60Db0C5Ff4BBB63e29178',
 }
 export const V3_MIGRATOR_ADDRESSES: AddressMap = constructSameAddressMap(
   '0xA5644E29708357803b5A882D272c41cC0dF92B34',
