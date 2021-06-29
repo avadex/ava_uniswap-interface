@@ -5,5 +5,5 @@ export enum SupportedChainId {
   GOERLI = 5,
   KOVAN = 42,
   FUJI = 43113,
-  ARBITRUM_ONE = 42161,
+  AVA = 43114,
 }

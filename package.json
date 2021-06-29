@@ -142,5 +142,7 @@
     ]
   },
   "license": "GPL-3.0-or-later",
-  "dependencies": {}
+  "dependencies": {
+    "@uniswap/sdk-core": "^3.0.0"
+  }
 }

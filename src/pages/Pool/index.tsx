@@ -140,21 +140,21 @@ export default function Pool() {
       content: (
         <MenuItem>
           <ChevronsRight size={16} style={{ marginRight: '12px' }} />
-          <Trans>Migrate</Trans>
+          <Trans>Code</Trans>
         </MenuItem>
       ),
-      link: '/migrate/v2',
-      external: false,
+      link: 'https://github.com/avadex/',
+      external: true,
     },
     {
       content: (
         <MenuItem>
           <Layers size={16} style={{ marginRight: '12px' }} />
-          <Trans>V2 liquidity</Trans>
+          <Trans>Avalanche</Trans>
         </MenuItem>
       ),
-      link: '/pool/v2',
-      external: false,
+      link: 'https://avax.network/',
+      external: true,
     },
     {
       content: (
@@ -246,11 +246,11 @@ export default function Pool() {
                   ) : (
                     <ButtonGray
                       as={Link}
-                      to="/migrate/v2"
+                      to="/pool"
                       id="import-pool-link"
                       style={{ marginTop: '2em', padding: '8px 16px', borderRadius: '12px', width: 'fit-content' }}
                     >
-                      <Trans>Migrate V2 liquidity</Trans>?&nbsp;&nbsp;
+                      <Trans>Build on Avalanche</Trans>?&nbsp;&nbsp;
                       <Download size={16} />
                     </ButtonGray>
                   )}
@@ -260,7 +260,7 @@ export default function Pool() {
             <RowFixed justify="center" style={{ width: '100%' }}>
               <ButtonOutlined
                 as={Link}
-                to="/pool/v2"
+                to="/pool"
                 id="import-pool-link"
                 style={{
                   padding: '8px 16px',
@@ -272,12 +272,12 @@ export default function Pool() {
               >
                 <Layers size={14} style={{ marginRight: '8px' }} />
 
-                <Trans>View V2 Liquidity</Trans>
+                <Trans>Build on Avalanche</Trans>
               </ButtonOutlined>
               {positions && positions.length > 0 && (
                 <ButtonOutlined
                   as={Link}
-                  to="/migrate/v2"
+                  to="/pool"
                   id="import-pool-link"
                   style={{
                     padding: '8px 16px',

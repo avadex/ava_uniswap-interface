@@ -134,7 +134,7 @@ export default function CTACards() {
           </RowBetween>
         </ResponsiveColumn>
       </CTA1>
-      <CTA2 href={'https://info.uniswap.org/#/pools'}>
+      <CTA2 href={'https://avaxchain.github.io/#/pools'}>
         <ResponsiveColumn>
           <HeaderText style={{ alignSelf: 'flex-start' }}>
             <Trans>Top pools</Trans>

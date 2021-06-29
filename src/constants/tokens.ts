@@ -39,12 +39,12 @@ export const WETH9_EXTENDED: { [chainId: number]: Token } = {
     'WAVAX',
     'Wrapped Avax'
   ),
-  [SupportedChainId.ARBITRUM_ONE]: new Token(
-    SupportedChainId.ARBITRUM_ONE,
-    '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1',
+  [SupportedChainId.AVA]: new Token(
+    SupportedChainId.AVA,
+    '0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7',
     18,
-    'WETH',
-    'Wrapped Ether'
+    'WAVAX',
+    'Wrapped AVAX'
   ),
 }
 

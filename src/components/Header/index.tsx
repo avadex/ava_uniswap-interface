@@ -303,13 +303,10 @@ export const StyledMenuButton = styled.button`
 `
 
 const NETWORK_LABELS: { [chainId in SupportedChainId | number]: string } = {
-  [SupportedChainId.MAINNET]: 'Mainnet',
-  [SupportedChainId.RINKEBY]: 'Rinkeby',
-  [SupportedChainId.ROPSTEN]: 'Ropsten',
-  [SupportedChainId.GOERLI]: 'Görli',
+  [SupportedChainId.KOVAN]: 'MAINNET',
   [SupportedChainId.KOVAN]: 'Kovan',
   [SupportedChainId.FUJI]: 'FUJI',
-  [SupportedChainId.ARBITRUM_ONE]: 'Arbitrum One',
+  [SupportedChainId.AVA]: 'V3_TEST',
 }
 
 export default function Header() {
@@ -339,7 +336,7 @@ export default function Header() {
       <HeaderRow>
         <Title href=".">
           <UniIcon>
-            <img width={'24px'} src={darkMode ? LogoDark : Logo} alt="logo" />
+            <img width={'44px'} src={darkMode ? LogoDark : Logo} alt="logo" />
           </UniIcon>
         </Title>
       </HeaderRow>
@@ -360,10 +357,11 @@ export default function Header() {
         >
           <Trans>Pool</Trans>
         </StyledNavLink>
-        <StyledNavLink id={`stake-nav-link`} to={'/vote'}>
-          <Trans>Vote</Trans>
-        </StyledNavLink>
-        <StyledExternalLink id={`stake-nav-link`} href={'https://info.uniswap.org'}>
+        <StyledExternalLink id={`stake-nav-link`} href={'https://aeb.xyz'}>
+          <Trans>Bridge</Trans>
+          <sup>↗</sup>
+        </StyledExternalLink>
+        <StyledExternalLink id={`stake-nav-link`} href={'https://avaxchain.github.io'}>
           <Trans>Charts</Trans>
           <sup>↗</sup>
         </StyledExternalLink>
@@ -394,7 +392,7 @@ export default function Header() {
           <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
             {account && userEthBalance ? (
               <BalanceText style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>
-                <Trans>{userEthBalance?.toSignificant(4)} ETH</Trans>
+                <Trans>{userEthBalance?.toSignificant(4)} AVAX</Trans>
               </BalanceText>
             ) : null}
             <Web3Status />

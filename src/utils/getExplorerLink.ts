@@ -35,16 +35,16 @@ export function getExplorerLink(chainId: number, data: string, type: ExplorerDat
     }
   }
 
-  if (chainId === SupportedChainId.ARBITRUM_ONE) {
+  if (chainId === SupportedChainId.AVA) {
     switch (type) {
       case ExplorerDataType.TRANSACTION:
-        return `https://mainnet-arb-explorer.netlify.app/tx/${data}`
+        return `https://cchain.explorer.avax.network/tx/${data}`
       case ExplorerDataType.ADDRESS:
-        return `https://mainnet-arb-explorer.netlify.app/address/${data}`
+        return `https://cchain.explorer.avax.network/address/${data}`
       case ExplorerDataType.BLOCK:
-        return `https://mainnet-arb-explorer.netlify.app/block/${data}`
+        return `https://cchain.explorer.avax.network/${data}`
       default:
-        return `https://mainnet-arb-explorer.netlify.app`
+        return `https://cchain.explorer.avax.network`
     }
   }
 

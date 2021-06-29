@@ -28,7 +28,7 @@ const NETWORK_URLS: {
   [SupportedChainId.GOERLI]: `https://goerli.infura.io/v3/${INFURA_KEY}`,
   [SupportedChainId.KOVAN]: `https://kovan.infura.io/v3/${INFURA_KEY}`,
   [SupportedChainId.FUJI]: `https://api.avax-test.network/ext/bc/C/rpc`,
-  [SupportedChainId.ARBITRUM_ONE]: `https://arb1.arbitrum.io/rpc`,
+  [SupportedChainId.AVA]: `https://api.avax.network/ext/bc/C/rpc`,
 }
 
 const SUPPORTED_CHAIN_IDS: SupportedChainId[] = [
@@ -38,12 +38,12 @@ const SUPPORTED_CHAIN_IDS: SupportedChainId[] = [
   SupportedChainId.RINKEBY,
   SupportedChainId.ROPSTEN,
   SupportedChainId.FUJI,
-  SupportedChainId.ARBITRUM_ONE,
+  SupportedChainId.AVA,
 ]
 
 export const network = new NetworkConnector({
   urls: NETWORK_URLS,
-  defaultChainId: 1,
+  defaultChainId: 43114,
 })
 
 let networkLibrary: Web3Provider | undefined
