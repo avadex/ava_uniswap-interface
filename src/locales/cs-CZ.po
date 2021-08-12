@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-06-10 17:43+0000\n"
+"POT-Creation-Date: 2021-08-02 14:52+0000\n"
 "Mime-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,7 +14,7 @@ msgstr ""
 "X-Crowdin-File-ID: 4\n"
 "Project-Id-Version: uniswap-interface\n"
 "Language-Team: Czech\n"
-"PO-Revision-Date: 2021-06-12 23:05\n"
+"PO-Revision-Date: 2021-08-02 15:05\n"
 
 #: src/pages/Pool/PositionPage.tsx
 #: src/pages/Pool/PositionPage.tsx
@@ -27,13 +27,13 @@ msgstr "$-"
 msgid "${0}"
 msgstr "${0}"
 
-#: src/components/earn/PoolCard.tsx
-msgid "${0} ETH"
-msgstr "${0} ETH"
-
 #: src/components/CurrencyInputPanel/index.tsx
 msgid "(Max)"
 msgstr "(Max)"
+
+#: src/components/AddressInputPanel/index.tsx
+msgid "(View on Explorer)"
+msgstr "(Zobrazit v Průzkumníkovi)"
 
 #: src/components/Header/UniBalanceContent.tsx
 msgid "(claim)"
@@ -47,17 +47,9 @@ msgstr "(vyprázdnit vše)"
 msgid "(edit)"
 msgstr "(upravit)"
 
-#: src/components/InputStepCounter/InputStepCounter.tsx
-msgid "+{feeAmountFormatted}%"
-msgstr "+{feeAmountFormatted}%"
-
 #: src/pages/Swap/index.tsx
 msgid "- Remove send"
 msgstr "- Odebrat odeslání"
-
-#: src/components/InputStepCounter/InputStepCounter.tsx
-msgid "-{feeAmountFormatted}%"
-msgstr "-{feeAmountFormatted}%"
 
 #: src/components/earn/PoolCard.tsx
 #: src/components/earn/PoolCard.tsx
@@ -107,9 +99,17 @@ msgstr "<0>Analýza účtu a naběhlé poplatky</0><1> ↗ </1>"
 msgid "<0>Back to </0>V3"
 msgstr "<0> Zpět na</0> V3"
 
+#: src/pages/AddLiquidity/index.tsx
+msgid "<0>Current Price:</0><1><2/></1><3>{0} per {1}</3>"
+msgstr "<0> Aktuální cena:</0> <1> <2 /></1> <3>{0} za {1}</3>"
+
 #: src/pages/RemoveLiquidity/index.tsx
 msgid "<0>Tip:</0> Removing pool tokens converts your position back into underlying tokens at the current rate, proportional to your share of the pool. Accrued fees are included in the amounts you receive."
 msgstr "<0>Tip:</0> Odstranění žetonů fondu převede Vaši pozici zpět na základní žetony při aktuální sazbě, úměrně Vašemu podílu na fondu. Do částek, které obdržíte, jsou zahrnuty naběhlé poplatky."
+
+#: src/pages/CreateProposal/index.tsx
+msgid "<0>Tip:</0> Select an action and describe your proposal for the community. The proposal cannot be modified after submission, so please verify all information before submitting. The voting period will begin immediately and last for 7 days. To propose a custom action, <1>read the docs</1>."
+msgstr "<0> Tip:</0> Vyberte akci a popište svůj návrh pro komunitu. Po odeslání nelze nabídku upravit, proto prosím před odesláním ověřte všechny informace. Hlasovací období začne okamžitě a bude trvat 7 dní. Chcete-li navrhnout vlastní akci, přečtěte si <1> dokumenty</1> ."
 
 #: src/pages/PoolFinder/index.tsx
 msgid "<0>Tip:</0> Use this tool to find v2 pools that don't automatically appear in the interface."
@@ -128,8 +128,8 @@ msgid "<0>🎉 </0>Welcome to team Unicorn :) <1>🎉</1>"
 msgstr "<0>🎉 </0>Vítejte v týmu Unicorn :) <1>🎉</1>"
 
 #: src/pages/Vote/index.tsx
-msgid "A minimum threshold of 1% of the total UNI supply is required to submit proposals"
-msgstr "K předkládání návrhů je nutná minimální prahová hodnota 1 % celkové zásoby UNI."
+msgid "A minimum threshold of 0.25% of the total UNI supply is required to submit proposals"
+msgstr "K podání návrhů je nutná minimální hranice 0,25% z celkové nabídky UNI"
 
 #: src/components/Menu/index.tsx
 msgid "About"
@@ -144,6 +144,7 @@ msgid "Account"
 msgstr "Účet"
 
 #: src/components/SearchModal/ImportRow.tsx
+#: src/pages/Vote/styled.tsx
 msgid "Active"
 msgstr "Aktivní"
 
@@ -158,6 +159,7 @@ msgid "Add Delegate +"
 msgstr "Přidat delegáta +"
 
 #: src/components/NavigationTabs/index.tsx
+#: src/pages/AddLiquidity/index.tsx
 msgid "Add Liquidity"
 msgstr "Přidat likviditu"
 
@@ -168,6 +170,10 @@ msgstr "Přidat likviditu V2"
 #: src/pages/PoolFinder/index.tsx
 msgid "Add liquidity."
 msgstr "Přidat likviditu."
+
+#: src/pages/AddLiquidity/index.tsx
+msgid "Add more liquidity"
+msgstr "Přidejte více likvidity"
 
 #: src/components/TransactionConfirmationModal/index.tsx
 msgid "Add {0} to Metamask <0/>"
@@ -214,17 +220,13 @@ msgstr "Povolit protokolu Uniswap používat váš {0}"
 msgid "Allowed"
 msgstr "Povoleno"
 
-#: src/components/Header/URLWarning.tsx
-msgid "Always make sure the URL is<0>app.uniswap.org</0> - bookmark it to be safe."
-msgstr "Vždy zajistěte, aby URL bylo <0>app.uniswap.org</0> - dejte si jej do záložek jako bezpečné."
-
 #: src/pages/RemoveLiquidity/V3.tsx
 msgid "Amount"
 msgstr "Částka"
 
 #: src/hooks/useSwapCallback.ts
-msgid "An error occurred when trying to execute this swap. You may need to increase your slippage tolerance. If that does not work, there may be an incompatibility with the token you are trading. Note fee on transfer and rebase tokens are incompatible with Uniswap V3."
-msgstr "Při pokusu o provedení tohoto swapu došlo k chybě. Možná budete muset zvýšit toleranci skluzu. Pokud to nefunguje, může to být způsobeno nekompatibilitou s žetonem, s nímž obchodujete. Pamatujte, že poplatky za převod a zpětné převzetí žetonů nejsou kompatibilní s Uniswap V3."
+msgid "An error occurred when trying to execute this swap. You may need to increase your slippage tolerance. If that does not work, there may be an incompatibility with the token you are trading. Note: fee on transfer and rebase tokens are incompatible with Uniswap V3."
+msgstr "Při pokusu o provedení tohoto swapu došlo k chybě. Možná budete muset zvýšit toleranci skluzu. Pokud to nefunguje, může dojít k nekompatibilitě s tokenem, s nímž obchodujete. Poznámka: Poplatky za tokeny za převody a rebase nejsou kompatibilní s Uniswap V3."
 
 #: src/components/Menu/index.tsx
 msgid "Analytics"
@@ -234,6 +236,10 @@ msgstr "Analýza"
 #: src/pages/RemoveLiquidity/index.tsx
 msgid "Approve"
 msgstr "Schválit"
+
+#: src/pages/CreateProposal/ProposalActionSelector.tsx
+msgid "Approve Token"
+msgstr "Schválit token"
 
 #: src/pages/AddLiquidity/index.tsx
 #: src/pages/AddLiquidity/index.tsx
@@ -291,13 +297,16 @@ msgid "Balance: {0} {1}"
 msgstr "Zůstatek: {0} {1}"
 
 #: src/components/FeeSelector/index.tsx
+#: src/components/FeeSelector/index.tsx
 msgid "Best for exotic pairs."
 msgstr "Nejlepší pro exotické páry."
 
 #: src/components/FeeSelector/index.tsx
+#: src/components/FeeSelector/index.tsx
 msgid "Best for most pairs."
 msgstr "Nejlepší pro většinu párů."
 
+#: src/components/FeeSelector/index.tsx
 #: src/components/FeeSelector/index.tsx
 msgid "Best for stable pairs."
 msgstr "Nejlepší pro stabilní páry."
@@ -318,9 +327,17 @@ msgstr "Přidáním tohoto seznamu implicitně vyjadřujete důvěru v to, že d
 msgid "By connecting a wallet, you agree to Uniswap Labs’ <0>Terms of Service</0> and acknowledge that you have read and understand the <1>Uniswap protocol disclaimer</1>."
 msgstr "Připojením peněženky souhlasíte s <0>Podmínkami služeb</0> společnosti Uniswap Labs a potvrzujete, že jste si přečetli <1>Odřeknutí odpovědnosti za protokol Uniswap</1> a porozuměli jste mu."
 
+#: src/pages/Vote/styled.tsx
+msgid "Canceled"
+msgstr "Zrušeno"
+
 #: src/components/AccountDetails/index.tsx
 msgid "Change"
 msgstr "Změnit"
+
+#: src/components/Header/NetworkCard.tsx
+msgid "Change your network to go back to L1"
+msgstr "Změňte síť a vraťte se zpět na L1"
 
 #: src/components/Header/index.tsx
 msgid "Charts"
@@ -392,6 +409,7 @@ msgid "Clear all"
 msgstr "Vymazat vše"
 
 #: src/components/TransactionConfirmationModal/index.tsx
+#: src/components/TransactionConfirmationModal/index.tsx
 msgid "Close"
 msgstr "Zavřít"
 
@@ -441,6 +459,10 @@ msgstr "Společné základny"
 msgid "Confirm"
 msgstr "Potvrdit"
 
+#: src/pages/AddLiquidity/index.tsx
+msgid "Confirm Create"
+msgstr "Potvrďte vytvoření"
+
 #: src/pages/AddLiquidityV2/ConfirmAddModalBottom.tsx
 msgid "Confirm Supply"
 msgstr "Potvrdit zásobu"
@@ -458,6 +480,10 @@ msgstr "Potvrdit výměnu"
 msgid "Confirm this transaction in your wallet"
 msgstr "Potvrďte tuto transakci ve své peněžence"
 
+#: src/components/TransactionConfirmationModal/index.tsx
+msgid "Confirm transaction in wallet"
+msgstr "Potvrďte transakci v peněžence"
+
 #: src/pages/AddLiquidityV2/index.tsx
 #: src/pages/RemoveLiquidity/index.tsx
 #: src/pages/Swap/index.tsx
@@ -465,7 +491,6 @@ msgstr "Potvrďte tuto transakci ve své peněžence"
 #: src/state/burn/v3/hooks.ts
 #: src/state/mint/hooks.ts
 #: src/state/mint/v3/hooks.ts
-#: src/state/stake/hooks.ts
 #: src/state/stake/hooks.ts
 #: src/state/swap/hooks.ts
 msgid "Connect Wallet"
@@ -511,9 +536,18 @@ msgstr "Zkopírováno"
 msgid "Copy Address"
 msgstr "Zkopírovat adresu"
 
+#: src/pages/AddLiquidity/index.tsx
+msgid "Create"
+msgstr "Vytvořit"
+
 #: src/pages/AddLiquidityV2/ConfirmAddModalBottom.tsx
 msgid "Create Pool & Supply"
 msgstr "Vytvořit fond a zásobu"
+
+#: src/pages/CreateProposal/index.tsx
+#: src/pages/Vote/index.tsx
+msgid "Create Proposal"
+msgstr "Vytvořit návrh"
 
 #: src/components/NavigationTabs/index.tsx
 #: src/pages/Pool/v2.tsx
@@ -537,8 +571,8 @@ msgid "Create pool."
 msgstr "Vytvořit fond."
 
 #: src/pages/AddLiquidity/index.tsx
-msgid "Current Price"
-msgstr "Aktuální cena"
+msgid "Create {0}/{1} V3 pool"
+msgstr "Vytvoření {0}/{1} V3 bazén"
 
 #: src/components/PositionPreview/index.tsx
 #: src/pages/Pool/PositionPage.tsx
@@ -549,6 +583,14 @@ msgstr "Aktuální cena"
 msgid "Current {0} Price:"
 msgstr "Aktuální {0} cena:"
 
+#: src/components/Menu/index.tsx
+msgid "Dark Theme"
+msgstr "Tmavé téma"
+
+#: src/pages/Vote/styled.tsx
+msgid "Defeated"
+msgstr "Poražený"
+
 #: src/components/vote/DelegateModal.tsx
 msgid "Delegate Votes"
 msgstr "Delegovat hlasy"
@@ -556,6 +598,10 @@ msgstr "Delegovat hlasy"
 #: src/pages/Vote/index.tsx
 msgid "Delegated to:"
 msgstr "Delegováno (komu):"
+
+#: src/state/governance/hooks.ts
+msgid "Delegated votes"
+msgstr "Delegované hlasy"
 
 #: src/components/vote/DelegateModal.tsx
 msgid "Delegating votes"
@@ -579,6 +625,12 @@ msgstr "Uložit žetony UNI-V2 LP"
 #: src/components/earn/StakingModal.tsx
 msgid "Deposit liquidity"
 msgstr "Uložit likviditu"
+
+#: src/components/NetworkAlert/AddLiquidityNetworkAlert.tsx
+#: src/components/NetworkAlert/MinimalNetworkAlert.tsx
+#: src/components/NetworkAlert/NetworkAlert.tsx
+msgid "Deposit to {0}"
+msgstr "Vložit na {0}"
 
 #: src/pages/Earn/index.tsx
 msgid "Deposit your Liquidity Provider tokens to receive UNI, the Uniswap protocol governance token."
@@ -636,6 +688,14 @@ msgstr "Nevidíte některou ze svých pozic v2? <0>Importujte ji.</0>"
 msgid "Earned UNI tokens represent voting shares in Uniswap governance."
 msgstr "Získané žetony UNI představují hlasovací podíly ve správě Uniswap."
 
+#: src/components/FeeSelector/index.tsx
+msgid "Edit"
+msgstr "Upravit"
+
+#: src/pages/AddLiquidity/index.tsx
+msgid "Efficiency Comparison"
+msgstr "Porovnání efektivity"
+
 #: src/state/burn/v3/hooks.ts
 msgid "Enter a percent"
 msgstr "Zadejte procento"
@@ -658,7 +718,6 @@ msgstr "Chcete-li spustit nárokování UNI, zadejte adresu. Jestliže bude mít
 #: src/state/mint/hooks.ts
 #: src/state/mint/v3/hooks.ts
 #: src/state/stake/hooks.ts
-#: src/state/stake/hooks.ts
 #: src/state/swap/hooks.ts
 msgid "Enter an amount"
 msgstr "Zadejte částku"
@@ -671,6 +730,7 @@ msgstr "Zadejte platnou polohu seznamu"
 msgid "Enter valid token address"
 msgstr "Zadejte platnou adresu žetonu"
 
+#: src/components/TransactionConfirmationModal/index.tsx
 #: src/components/TransactionConfirmationModal/index.tsx
 #: src/components/Web3Status/index.tsx
 msgid "Error"
@@ -689,6 +749,10 @@ msgstr "Chyba připojení. Zkuste obnovit stránku."
 msgid "Error importing list"
 msgstr "Chyba importu seznamu"
 
+#: src/pages/Vote/styled.tsx
+msgid "Executed"
+msgstr "Popraven"
+
 #: src/components/SearchModal/CurrencyList.tsx
 msgid "Expanded results from inactive Token Lists"
 msgstr "Rozšířené výsledky z neaktivních seznamů žetonů"
@@ -697,12 +761,20 @@ msgstr "Rozšířené výsledky z neaktivních seznamů žetonů"
 msgid "Expert mode turns off the confirm transaction prompt and allows high slippage trades that often result in bad rates and lost funds."
 msgstr "Režim Expert vypne výzvu k potvrzení transakce a umožní obchody s velkým skluzem, které často vedou ke špatným kurzům a ztrátě finančních prostředků."
 
+#: src/pages/Vote/styled.tsx
+msgid "Expired"
+msgstr "Vypršela"
+
 #: src/pages/Pool/CTACards.tsx
 msgid "Explore popular pools on Uniswap Analytics."
 msgstr "Prozkoumejte populární fondy na Analýze Uniswap."
 
 #: src/components/PositionPreview/index.tsx
 msgid "Fee Tier"
+msgstr "Úroveň poplatku"
+
+#: src/components/FeeSelector/index.tsx
+msgid "Fee tier"
 msgstr "Úroveň poplatku"
 
 #: src/pages/Vote/VotePage.tsx
@@ -722,17 +794,29 @@ msgstr "Od"
 msgid "From (at most)"
 msgstr "Od (nanejvýš)"
 
+#: src/components/RangeSelector/PresetsButtons.tsx
+msgid "Full Range"
+msgstr "Plný rozsah"
+
+#: src/pages/AddLiquidity/index.tsx
+msgid "Full range positions may earn less fees than concentrated positions. Learn more <0>here</0>."
+msgstr "Pozice v celém rozsahu mohou vydělávat méně poplatků než koncentrované pozice. Více informací <0> zde</0> ."
+
 #: src/components/ErrorBoundary/index.tsx
 msgid "Get support on Discord"
 msgstr "Získejte podporu o Discord"
 
-#: src/pages/Pool/index.tsx
-msgid "Hide closed positions"
-msgstr "Skrýt zavřené pozice"
+#: src/components/FeeSelector/index.tsx
+msgid "Hide"
+msgstr "Skrýt"
 
 #: src/pages/Swap/index.tsx
 msgid "High Price Impact"
 msgstr "Vysoký dopad na cenu"
+
+#: src/pages/AddLiquidity/index.tsx
+msgid "I Understand"
+msgstr "Chápu"
 
 #: src/components/SearchModal/ImportList.tsx
 msgid "I understand"
@@ -831,9 +915,25 @@ msgstr "Vybrán neplatný rozsah. Minimální cena musí být nižší než maxi
 msgid "Invalid recipient"
 msgstr "Neplatný příjemce"
 
+#: src/components/Menu/index.tsx
+msgid "Language"
+msgstr "Jazyk"
+
 #: src/pages/Pool/index.tsx
 msgid "Learn"
 msgstr "Učit se"
+
+#: src/pages/Pool/CTACards.tsx
+msgid "Learn about providing liquidity"
+msgstr "Zjistěte více o poskytování likvidity"
+
+#: src/components/Header/NetworkCard.tsx
+msgid "Learn more"
+msgstr "Zjistit více"
+
+#: src/components/Menu/index.tsx
+msgid "Light Theme"
+msgstr "Lehké téma"
 
 #: src/components/claim/ClaimModal.tsx
 #: src/pages/Pool/PositionPage.tsx
@@ -843,6 +943,10 @@ msgstr "Likvidita"
 #: src/components/swap/AdvancedSwapDetails.tsx
 msgid "Liquidity Provider Fee"
 msgstr "Poplatek poskytovateli likvidity"
+
+#: src/components/LiquidityChartRangeInput/index.tsx
+msgid "Liquidity data not available."
+msgstr "Údaje o likviditě nejsou k dispozici."
 
 #: src/pages/Pool/v2.tsx
 msgid "Liquidity provider rewards"
@@ -870,10 +974,6 @@ msgstr "Načteno"
 #: src/pages/Swap/index.tsx
 msgid "Loading"
 msgstr "Načítání"
-
-#: src/components/Header/URLWarning.tsx
-msgid "Make sure the URL is<0>app.uniswap.org</0>"
-msgstr "Zajistěte, aby URL bylo <0>app.uniswap.org</0>"
 
 #: src/components/PositionCard/V2.tsx
 #: src/components/PositionCard/V2.tsx
@@ -938,10 +1038,6 @@ msgstr "Migrovat likviditu na V3"
 msgid "Migrate V2 Liquidity"
 msgstr "Migrovat likviditu V2"
 
-#: src/pages/Pool/index.tsx
-msgid "Migrate V2 liquidity"
-msgstr "Migrovat likviditu V2"
-
 #: src/pages/MigrateV2/index.tsx
 msgid "Migrate your liquidity tokens from Uniswap V2 to Uniswap V3."
 msgstr "Migrujte své žetony likvidity z Uniswap V2 do Uniswap V3."
@@ -984,6 +1080,10 @@ msgstr "Nebyla nalezena likvidita V2."
 msgid "No active pools"
 msgstr "Žádné aktivní fondy"
 
+#: src/state/governance/hooks.ts
+msgid "No description."
+msgstr "Bez popisu."
+
 #: src/pages/Pool/v2.tsx
 msgid "No liquidity found."
 msgstr "Nebyla nalezena žádná likvidita."
@@ -992,13 +1092,17 @@ msgstr "Nebyla nalezena žádná likvidita."
 msgid "No pool found."
 msgstr "Nebyl nalezen žádný fond."
 
-#: src/pages/Vote/index.tsx
+#: src/components/vote/ProposalEmptyState.tsx
 msgid "No proposals found."
 msgstr "Nebyly nalezeny žádné návrhy."
 
 #: src/components/SearchModal/CurrencySearch.tsx
 msgid "No results found."
 msgstr "Nebyly nalezeny žádné výsledky."
+
+#: src/components/FeeSelector/index.tsx
+msgid "Not created"
+msgstr "Není vytvořeno"
 
 #: src/components/Toggle/ListToggle.tsx
 msgid "OFF"
@@ -1032,6 +1136,22 @@ msgstr "Způsobilé k hlasování jsou jen hlasy UNI, které byly delegovány so
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device."
 msgstr "Jejda! Došlo k neznámé chybě. Obnovte prosím stránku nebo ji navštivte z jiného prohlížeče nebo zařízení."
 
+#: src/components/OptimismDowntimeWarning/index.tsx
+msgid "Optimism Planned Downtime"
+msgstr "Optimismus plánované prostoje"
+
+#: src/components/OptimismDowntimeWarning/index.tsx
+msgid "Optimism expects planned downtime in the near future. Unplanned downtime may also occur. While the network is down, fees will not be generated and you will be unable to remove liquidity. <0>Read more.</0>"
+msgstr "Optimismus v blízké budoucnosti očekává plánované prostoje. Může dojít také k neplánovanému výpadku. I když je síť nefunkční, nebudou generovány poplatky a nebudete moci odstranit likviditu. <0> Přečtěte si více.</0>"
+
+#: src/components/Header/NetworkCard.tsx
+msgid "Optimistic Etherscan"
+msgstr "Optimistický Etherscan"
+
+#: src/components/Header/NetworkCard.tsx
+msgid "Optimistic L2 Gateway"
+msgstr "Optimistická brána L2"
+
 #: src/components/Badge/RangeBadge.tsx
 msgid "Out of range"
 msgstr "Mimo rozsah"
@@ -1056,6 +1176,18 @@ msgstr "Vlastník"
 #: src/pages/Earn/index.tsx
 msgid "Participating pools"
 msgstr "Zúčastněné fondy"
+
+#: src/pages/Vote/styled.tsx
+msgid "Pending"
+msgstr "čekající"
+
+#: src/components/SearchModal/ManageLists.tsx
+msgid "Please confirm you would like to remove this list by typing REMOVE"
+msgstr "Potvrďte, že chcete tento seznam odstranit, zadáním ODSTRANIT"
+
+#: src/components/vote/ProposalEmptyState.tsx
+msgid "Please connect to Layer 1 Ethereum"
+msgstr "Připojte se k Ethereu vrstvy 1"
 
 #: src/components/WalletModal/index.tsx
 msgid "Please connect to the appropriate Ethereum network."
@@ -1102,6 +1234,10 @@ msgstr "Sestaveno do fondu {0}:"
 msgid "Pools Overview"
 msgstr "Přehled fondů"
 
+#: src/pages/AddLiquidity/index.tsx
+msgid "Preview"
+msgstr "Náhled"
+
 #: src/components/swap/SwapModalHeader.tsx
 #: src/pages/RemoveLiquidity/index.tsx
 msgid "Price"
@@ -1123,7 +1259,6 @@ msgstr "Příliš vysoký dopad ceny"
 msgid "Price Updated"
 msgstr "Cena byla aktualizována"
 
-#: src/components/PositionList/index.tsx
 #: src/pages/Pool/PositionPage.tsx
 msgid "Price range"
 msgstr "Cenové rozpětí"
@@ -1136,21 +1271,47 @@ msgstr "Cena:"
 msgid "Prices and pool share"
 msgstr "Ceny a podíl na trhu"
 
+#: src/pages/CreateProposal/ProposalEditor.tsx
+msgid "Proposal"
+msgstr "Návrh"
+
+#: src/pages/CreateProposal/ProposalSubmissionModal.tsx
+msgid "Proposal Submitted"
+msgstr "Návrh předložen"
+
+#: src/pages/CreateProposal/ProposalEditor.tsx
+msgid "Proposal Title"
+msgstr "Název návrhu"
+
 #: src/pages/Vote/index.tsx
 msgid "Proposals"
 msgstr "Návrhy"
 
-#: src/pages/Vote/index.tsx
+#: src/components/vote/ProposalEmptyState.tsx
 msgid "Proposals submitted by community members will appear here."
 msgstr "Zde se budou zobrazovat návrhy předkládané členy komunity."
+
+#: src/pages/CreateProposal/ProposalActionSelector.tsx
+msgid "Proposed Action"
+msgstr "Navrhovaná akce"
 
 #: src/pages/Vote/VotePage.tsx
 msgid "Proposer"
 msgstr "Navrhovatel"
 
+#: src/pages/Vote/styled.tsx
+msgid "Queued"
+msgstr "Ve frontě"
+
 #: src/pages/AddLiquidityV2/ConfirmAddModalBottom.tsx
 msgid "Rates"
 msgstr "Sazby"
+
+#: src/components/NetworkAlert/AddLiquidityNetworkAlert.tsx
+#: src/components/NetworkAlert/MinimalNetworkAlert.tsx
+#: src/components/NetworkAlert/NetworkAlert.tsx
+msgid "Read more"
+msgstr "Přečtěte si více"
 
 #: src/pages/Earn/index.tsx
 msgid "Read more about UNI"
@@ -1171,6 +1332,10 @@ msgstr "Přečtěte si více o nepodporovaných aktivech"
 #: src/components/AccountDetails/index.tsx
 msgid "Recent Transactions"
 msgstr "Nedávné transakce"
+
+#: src/components/AddressInputPanel/index.tsx
+msgid "Recipient"
+msgstr "Příjemce"
 
 #: src/components/PositionCard/V2.tsx
 #: src/components/PositionCard/index.tsx
@@ -1216,6 +1381,8 @@ msgid "Restricts swaps to direct pairs only."
 msgstr "Omezte swapy jen na přímé páry."
 
 #: src/components/TransactionConfirmationModal/index.tsx
+#: src/components/TransactionConfirmationModal/index.tsx
+#: src/pages/CreateProposal/ProposalSubmissionModal.tsx
 msgid "Return"
 msgstr "Návrat"
 
@@ -1227,13 +1394,9 @@ msgstr "Trasa"
 msgid "Search name or paste address"
 msgstr "Vyhledejte název nebo vložte adresu"
 
-#: src/components/FeeSelector/index.tsx
-msgid "Select Pool"
-msgstr "Vyberte fond"
-
-#: src/components/FeeSelector/index.tsx
-msgid "Select a pool type based on your preferred liquidity provider fee."
-msgstr "Na základě preferovaného poplatku poskytovateli likvidity vyberte typ fondu."
+#: src/pages/AddLiquidity/index.tsx
+msgid "Select Pair"
+msgstr "Vyberte možnost Párovat"
 
 #: src/components/CurrencyInputPanel/index.tsx
 #: src/components/SearchModal/CurrencySearch.tsx
@@ -1247,9 +1410,9 @@ msgstr "Vyberte žeton"
 msgid "Select a token to find your v2 liquidity."
 msgstr "Chcete-li najít svou likviditu v2, vyberte žeton."
 
-#: src/pages/AddLiquidity/index.tsx
-msgid "Select pair"
-msgstr "Vyberte pár"
+#: src/pages/CreateProposal/ProposalActionSelector.tsx
+msgid "Select an action"
+msgstr "Vyberte akci"
 
 #: src/pages/AddLiquidity/index.tsx
 msgid "Selected Range"
@@ -1263,6 +1426,7 @@ msgstr "Sám"
 msgid "Self Delegate"
 msgstr "Sobě delegovat"
 
+#: src/pages/AddLiquidity/index.tsx
 #: src/pages/AddLiquidity/index.tsx
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
 msgid "Set Price Range"
@@ -1284,6 +1448,10 @@ msgstr "Podíl na fondu:"
 msgid "Show Portis"
 msgstr "Zobrazit Portis"
 
+#: src/pages/Pool/index.tsx
+msgid "Show closed positions"
+msgstr "Zobrazit uzavřené pozice"
+
 #: src/pages/RemoveLiquidity/index.tsx
 msgid "Simple"
 msgstr "Jednoduché"
@@ -1301,13 +1469,33 @@ msgstr "Některá aktiva nejsou přes toto rozhraní dostupná, protože nemusí
 msgid "Something went wrong"
 msgstr "Něco je špatně"
 
+#: src/components/PositionList/index.tsx
+msgid "Status"
+msgstr "Postavení"
+
 #: src/pages/Earn/Manage.tsx
 msgid "Step 1. Get UNI-V2 Liquidity tokens"
 msgstr "Krok 1. Získejte žetony likvidity UNI-V2"
 
+#: src/state/governance/hooks.ts
+msgid "Submitted new proposal"
+msgstr "Předložený nový návrh"
+
+#: src/pages/CreateProposal/ProposalSubmissionModal.tsx
+msgid "Submitting Proposal"
+msgstr "Podání návrhu"
+
 #: src/components/vote/VoteModal.tsx
 msgid "Submitting Vote"
 msgstr "Odesílání hlasů"
+
+#: src/pages/Vote/styled.tsx
+msgid "Succeeded"
+msgstr "Uspěl"
+
+#: src/components/TransactionConfirmationModal/index.tsx
+msgid "Success"
+msgstr "Úspěch"
 
 #: src/pages/AddLiquidityV2/index.tsx
 msgid "Supply"
@@ -1334,9 +1522,17 @@ msgstr "Přesto prohodit"
 msgid "Swapping {0} {1} for {2} {3}"
 msgstr "Výměna {0} {1} za {2} {3}"
 
+#: src/components/Header/NetworkCard.tsx
+msgid "Switch to L1 (Mainnet)"
+msgstr "Přepnout na L1 (Mainnet)"
+
 #: src/components/Popups/ClaimPopup.tsx
 msgid "Thanks for being part of the Uniswap community <0/>"
-msgstr "Děkujeme, že jste součástí komunity Uniswap <0 />"
+msgstr "Děkujeme, že jste součástí komunity Uniswap <0/>"
+
+#: src/components/FeeSelector/index.tsx
+msgid "The % you will earn in fees."
+msgstr "Procento, které získáte na poplatcích."
 
 #: src/hooks/useSwapCallback.ts
 msgid "The Uniswap invariant x*y=k was not satisfied by the swap. This usually means one of the tokens you are swapping incorporates custom behavior on transfer."
@@ -1355,9 +1551,8 @@ msgid "The output token cannot be transferred. There may be an issue with the ou
 msgstr "Výstupní žeton nelze přenést. Možná je s výstupním žetonem nějaký problém."
 
 #: src/hooks/useSwapCallback.ts
-msgid "The output token cannot be transferred. There may be an issue with the output token. Note fee on transfer and rebase tokens are incompatible with Uniswap V3."
-msgstr "Výstupní žeton nelze přenést. Možná je s výstupním žetonem nějaký problém. \n"
-"Pamatujte, že poplatky za převod a zpětné převzetí žetonů nejsou kompatibilní s Uniswap V3."
+msgid "The output token cannot be transferred. There may be an issue with the output token. Note: fee on transfer and rebase tokens are incompatible with Uniswap V3."
+msgstr "Výstupní žeton nelze přenést. Může dojít k problému s výstupním žetonem. Poznámka: Poplatky za žetony za převody a rebase nejsou kompatibilní s Uniswap V3."
 
 #: src/components/Badge/RangeBadge.tsx
 msgid "The price of this pool is outside of your selected range. Your position is not currently earning fees."
@@ -1375,9 +1570,30 @@ msgstr "Cenu tohoto fondu stanoví poměr žetonů, které přidáte."
 msgid "The transaction could not be sent because the deadline has passed. Please check that your transaction deadline is not too low."
 msgstr "Transakci nebylo možno odeslat, protože uplynula lhůta. Zkontrolujte, zda není Vaše lhůta pro transakce příliš krátká."
 
+#: src/components/LiquidityChartRangeInput/index.tsx
+msgid "There is no liquidity data."
+msgstr "Neexistují žádné údaje o likviditě."
+
 #: src/components/SearchModal/CommonBases.tsx
 msgid "These tokens are commonly paired with other tokens."
 msgstr "Tyto žetony bývají spárovány s jinými žetony."
+
+#: src/components/NetworkAlert/AddLiquidityNetworkAlert.tsx
+#: src/components/NetworkAlert/MinimalNetworkAlert.tsx
+msgid "This is an alpha release of Uniswap on the {0} network."
+msgstr "Toto je alfa verze Uniswap v síti {0}"
+
+#: src/components/NetworkAlert/NetworkAlert.tsx
+msgid "This is an alpha release of Uniswap on the {0} network. You must bridge L1 assets to the network to swap them."
+msgstr "Toto je alfa verze Uniswap v síti {0} Musíte přemostit aktiva L1 do sítě a vyměnit je."
+
+#: src/pages/AddLiquidity/index.tsx
+msgid "This pool must be initialized before you can add liquidity. To initialize, select a starting price for the pool. Then, enter your liquidity price range and deposit amount. Gas fees will be higher than usual due to the initialization transaction."
+msgstr "Tento fond musí být inicializován, než budete moci přidat likviditu. Chcete-li inicializovat, vyberte počáteční cenu fondu. Poté zadejte rozsah cen likvidity a částku vkladu. Poplatky za plyn budou kvůli inicializační transakci vyšší než obvykle."
+
+#: src/pages/AddLiquidity/index.tsx
+msgid "This pool must be initialized on {0} before you can add liquidity. To initialize, select a starting price for the pool. Then, enter your liquidity price range and deposit amount."
+msgstr "Tento fond musí být inicializován na {0} než budete moci přidat likviditu. Chcete-li inicializovat, vyberte počáteční cenu fondu. Poté zadejte rozsah cen likvidity a částku vkladu."
 
 #: src/components/SearchModal/ImportToken.tsx
 msgid "This token doesn't appear on the active token list(s). Make sure this is the token that you want to trade."
@@ -1388,8 +1604,8 @@ msgid "This tool will safely migrate your {0} liquidity to V3. The process is co
 msgstr "Tento nástroj bezpečně migruje vaši {0} likviditu do V3. Proces je zcela bez důvěry, a to díky"
 
 #: src/hooks/useSwapCallback.ts
-msgid "This transaction will not succeed due to price movement. Try increasing your slippage tolerance. Note fee on transfer and rebase tokens are incompatible with Uniswap V3."
-msgstr "Tato transakce nebude úspěšná z důvodu cenového pohybu. Zkuste zvýšit svou toleranci skluzu. Pamatujte, že poplatky za převod a zpětné převzetí žetonů nejsou kompatibilní s Uniswap V3."
+msgid "This transaction will not succeed due to price movement. Try increasing your slippage tolerance. Note: fee on transfer and rebase tokens are incompatible with Uniswap V3."
+msgstr "Tato transakce nebude úspěšná z důvodu cenového pohybu. Zkuste zvýšit toleranci skluzu. Poznámka: Poplatky za žetony za převody a rebase nejsou kompatibilní s Uniswap V3."
 
 #: src/hooks/useSwapCallback.ts
 msgid "This transaction will not succeed either due to price movement or fee on transfer. Try increasing your slippage tolerance."
@@ -1400,6 +1616,8 @@ msgid "Tip: Custom tokens are stored locally in your browser"
 msgstr "Tip: Vlastní žetony jsou uloženy lokálně ve Vašem prohlížeči"
 
 #: src/components/swap/SwapModalHeader.tsx
+#: src/pages/CreateProposal/ProposalActionDetail.tsx
+#: src/pages/CreateProposal/ProposalActionDetail.tsx
 #: src/pages/Swap/index.tsx
 msgid "To"
 msgstr "Do"
@@ -1441,6 +1659,7 @@ msgid "Transaction Settings"
 msgstr "Nastavení transakcí"
 
 #: src/components/TransactionConfirmationModal/index.tsx
+#: src/components/TransactionConfirmationModal/index.tsx
 #: src/components/earn/ClaimRewardModal.tsx
 #: src/components/earn/StakingModal.tsx
 #: src/components/earn/UnstakingModal.tsx
@@ -1449,9 +1668,17 @@ msgstr "Nastavení transakcí"
 msgid "Transaction Submitted"
 msgstr "Transakce odeslána"
 
+#: src/components/TransactionConfirmationModal/index.tsx
+msgid "Transaction completed in"
+msgstr "Transakce dokončena v"
+
 #: src/components/TransactionSettings/index.tsx
 msgid "Transaction deadline"
 msgstr "Lhůta pro transakce"
+
+#: src/pages/CreateProposal/ProposalActionSelector.tsx
+msgid "Transfer Token"
+msgstr "Přenosový token"
 
 #: src/components/WalletModal/PendingView.tsx
 msgid "Try Again"
@@ -1502,17 +1729,21 @@ msgstr "Nenárokované poplatky"
 msgid "Unclaimed:"
 msgstr "Nenárokované:"
 
+#: src/pages/Vote/styled.tsx
+msgid "Undetermined"
+msgstr "Neurčeno"
+
 #: src/pages/Vote/index.tsx
 msgid "Uniswap Governance"
 msgstr "Správa Uniswap"
 
-#: src/pages/Pool/CTACards.tsx
-msgid "Uniswap V3 is here!"
-msgstr "Uniswap V3 je tady!"
-
 #: src/components/SwitchLocaleLink/index.tsx
-msgid "FOR TESTING ONLY: <0>{0}</0>"
+msgid "Uniswap available in: <0>{0}</0>"
 msgstr "Uniswap k dispozici za: <0>{0}</0>"
+
+#: src/components/vote/ProposalEmptyState.tsx
+msgid "Uniswap governance is only available on Layer 1. Switch your network to Ethereum Mainnet to view Proposals and Vote."
+msgstr "Uniswap governance je k dispozici pouze na vrstvě 1. Přepněte svou síť na síť Ethereum Mainnet a zobrazte návrhy a hlasování."
 
 #: src/pages/Earn/index.tsx
 msgid "Uniswap liquidity mining"
@@ -1522,13 +1753,17 @@ msgstr "Těžba likvidity Uniswap"
 msgid "Uniswap migration contract↗"
 msgstr "Migrační kontrakt Uniswap↗"
 
+#: src/components/NetworkAlert/NetworkAlert.tsx
+msgid "Uniswap on {0}"
+msgstr "Uniswap na {0}"
+
 #: src/components/SearchModal/ImportToken.tsx
 msgid "Unknown Source"
 msgstr "Neznámý zdroj"
 
 #: src/hooks/useSwapCallback.ts
-msgid "Unknown error{0}. Try increasing your slippage tolerance. Note fee on transfer and rebase tokens are incompatible with Uniswap V3."
-msgstr "Neznámá chyba{0}. Zkuste zvýšit toleranci skluzu. Pamatujte, že poplatky za převod a zpětné převzetí žetonů nejsou kompatibilní s Uniswap V3."
+msgid "Unknown error{0}. Try increasing your slippage tolerance. Note: fee on transfer and rebase tokens are incompatible with Uniswap V3."
+msgstr "Neznámá chyba{0}. Zkuste zvýšit toleranci skluzu. Poznámka: Poplatky za žetony za převody a rebase nejsou kompatibilní s Uniswap V3."
 
 #: src/pages/Vote/VotePage.tsx
 #: src/pages/Vote/index.tsx
@@ -1553,6 +1788,10 @@ msgstr "Nepodporované aktivum"
 msgid "Unsupported Assets"
 msgstr "Nepodporovaná aktiva"
 
+#: src/state/governance/hooks.ts
+msgid "Untitled"
+msgstr "Nepojmenovaná"
+
 #: src/pages/Swap/index.tsx
 msgid "Unwrap"
 msgstr "Rozbalit"
@@ -1568,6 +1807,10 @@ msgstr "Aktualizovat seznam"
 #: src/components/claim/ClaimModal.tsx
 msgid "User"
 msgstr "Uživatel"
+
+#: src/pages/Pool/v2.tsx
+msgid "V2 is not available on Layer 2. Switch to Layer 1 Ethereum."
+msgstr "V2 není k dispozici na vrstvě 2. Přepněte na vrstvu 1 Ethereum."
 
 #: src/pages/Pool/index.tsx
 msgid "V2 liquidity"
@@ -1598,8 +1841,13 @@ msgstr "Zobrazit naběhlé poplatky a analýzy<0>↗</0>"
 msgid "View list"
 msgstr "Zobrazit seznam"
 
+#: src/pages/CreateProposal/ProposalSubmissionModal.tsx
+msgid "View on Etherscan"
+msgstr "Pohled na Etherscan"
+
 #: src/components/AccountDetails/index.tsx
 #: src/components/AccountDetails/index.tsx
+#: src/components/TransactionConfirmationModal/index.tsx
 #: src/components/TransactionConfirmationModal/index.tsx
 msgid "View on Explorer"
 msgstr "Zobrazit v Průzkumníku"
@@ -1644,6 +1892,10 @@ msgstr "Hlasování končí přibližně v {0}"
 #: src/components/TransactionConfirmationModal/index.tsx
 msgid "Waiting For Confirmation"
 msgstr "Čeká se na potvrzení"
+
+#: src/components/AddressInputPanel/index.tsx
+msgid "Wallet Address or ENS name"
+msgstr "Adresa peněženky nebo název ENS"
 
 #: src/components/earn/StakingModal.tsx
 msgid "Weekly Rewards"
@@ -1696,6 +1948,10 @@ msgstr "Zalomit"
 msgid "Wrong Network"
 msgstr "Nesprávná síť"
 
+#: src/pages/CreateProposal/index.tsx
+msgid "You already have an active or pending proposal"
+msgstr "Již máte aktivní nebo nevyřízenou nabídku"
+
 #: src/pages/AddLiquidityV2/index.tsx
 msgid "You are creating a pool"
 msgstr "Vytváříte fond"
@@ -1716,9 +1972,18 @@ msgstr "Buď můžete o každém návrhu hlasovat sami, nebo můžete své hlasy
 msgid "You can now trade {0}"
 msgstr "Nyní můžete obchodovat {0}"
 
+#: src/pages/CreateProposal/index.tsx
+msgid "You don't have enough votes to submit a proposal"
+msgstr "Nemáte dostatek hlasů k odeslání návrhu"
+
 #: src/pages/PoolFinder/index.tsx
 msgid "You don’t have liquidity in this pool yet."
 msgstr "V tomto fondu zatím nemáte likviditu."
+
+#: src/components/NetworkAlert/AddLiquidityNetworkAlert.tsx
+#: src/components/NetworkAlert/MinimalNetworkAlert.tsx
+msgid "You must bridge L1 assets to the network to use them."
+msgstr "Chcete-li aktiva L1 použít, musíte je přemostit do sítě."
 
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
 msgid "You must connect an account."
@@ -1727,6 +1992,10 @@ msgstr "Musíte připojit nějaký účet."
 #: src/pages/Swap/index.tsx
 msgid "You must give the Uniswap smart contracts permission to use your {0}. You only have to do this once per token."
 msgstr "Musíte chytrým smlouvám Uniswap udělit oprávnění používat Vaše {0}. Toto musíte udělat pouze jednou pro každý žeton."
+
+#: src/pages/CreateProposal/index.tsx
+msgid "You must have {formattedProposalThreshold} votes to submit a proposal"
+msgstr "K podání nabídky musíte mít {formattedProposalThreshold}"
 
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
 msgid "You should only deposit liquidity into Uniswap V3 at a price you believe is correct. <0/>If the price seems incorrect, you can either make a swap to move the price or wait for someone else to do so."
@@ -1757,10 +2026,6 @@ msgstr "Zde se objeví vaše pozice likvidity V3."
 msgid "Your liquidity deposits"
 msgstr "Vaše vklady likvidity"
 
-#: src/pages/AddLiquidity/index.tsx
-msgid "Your liquidity will only earn fees when the market price of the pair is within your range. <0>Need help picking a range?</0>"
-msgstr "Vaše likvidita bude vynášet poplatky, pouze pokud bude tržní cena páru ve vašem rozmezí. <0>Potřebujete pomoci s výběrem rozmezí?</0>"
-
 #: src/components/PositionCard/V2.tsx
 #: src/components/PositionCard/index.tsx
 #: src/components/PositionCard/index.tsx
@@ -1774,6 +2039,10 @@ msgstr "Vaše pozice"
 #: src/components/Badge/RangeBadge.tsx
 msgid "Your position has 0 liquidity, and is not earning fees."
 msgstr "Vaše pozice má likviditu 0 a nevynáší poplatky."
+
+#: src/components/LiquidityChartRangeInput/index.tsx
+msgid "Your position will appear here."
+msgstr "Zde se zobrazí vaše pozice."
 
 #: src/components/PositionPreview/index.tsx
 #: src/components/PositionPreview/index.tsx
@@ -1864,6 +2133,11 @@ msgstr "prostřednictvím seznamu žetonů {0}"
 msgid "{0, plural, one {Import token} other {Import tokens}}"
 msgstr "{0, plural, one {Importovat žeton} other {Importovat žetony}}"
 
+#: src/components/RateToggle/index.tsx
+#: src/components/RateToggle/index.tsx
+msgid "{0}"
+msgstr "{0}"
+
 #: src/components/PositionCard/index.tsx
 #: src/pages/Vote/VotePage.tsx
 #: src/pages/Vote/VotePage.tsx
@@ -1875,6 +2149,10 @@ msgstr "{0} %"
 msgid "{0} <0/> per <1/>"
 msgstr "{0} <0/> za <1/>"
 
+#: src/components/Header/NetworkCard.tsx
+msgid "{0} Bridge"
+msgstr "{0} Most"
+
 #: src/components/SearchModal/ManageTokens.tsx
 msgid "{0} Custom Tokens"
 msgstr "{0} vlastních žetonů"
@@ -1885,8 +2163,13 @@ msgid "{0} Deposited"
 msgstr "{0} uloženo"
 
 #: src/components/Header/index.tsx
+#: src/components/earn/PoolCard.tsx
 msgid "{0} ETH"
 msgstr "{0} ETH"
+
+#: src/components/Header/NetworkCard.tsx
+msgid "{0} Explorer"
+msgstr "{0} Průzkumník"
 
 #: src/pages/RemoveLiquidity/V3.tsx
 #: src/pages/RemoveLiquidity/V3.tsx
@@ -1930,7 +2213,6 @@ msgstr "{0} hlasů"
 #: src/components/PositionPreview/index.tsx
 #: src/components/PositionPreview/index.tsx
 #: src/components/PositionPreview/index.tsx
-#: src/pages/AddLiquidity/index.tsx
 #: src/pages/AddLiquidityV2/PoolPriceBar.tsx
 #: src/pages/AddLiquidityV2/PoolPriceBar.tsx
 #: src/pages/Pool/PositionPage.tsx
@@ -1939,13 +2221,7 @@ msgstr "{0} hlasů"
 msgid "{0} per {1}"
 msgstr "{0} za {1}"
 
-#: src/components/RateToggle/index.tsx
-#: src/components/RateToggle/index.tsx
-msgid "{0} price"
-msgstr "{0} cena"
-
 #: src/components/SearchModal/ImportList.tsx
-#: src/components/SearchModal/ManageLists.tsx
 #: src/components/SearchModal/ManageLists.tsx
 msgid "{0} tokens"
 msgstr "{0} žetonů"
@@ -1970,6 +2246,14 @@ msgstr "{0} • Přidáno uživatelem"
 msgid "{0}%"
 msgstr "{0} %"
 
+#: src/components/FeeSelector/index.tsx
+msgid "{0}% fee tier"
+msgstr "Úroveň poplatku {0}"
+
+#: src/components/FeeSelector/index.tsx
+msgid "{0}% select"
+msgstr "{0}% vyberte"
+
 #: src/pages/Earn/Manage.tsx
 msgid "{0}-{1} Liquidity Mining"
 msgstr "Těžba likvidity {0}-{1}"
@@ -1989,6 +2273,10 @@ msgstr "{SOCKS_AMOUNT} UNI"
 #: src/components/claim/ClaimModal.tsx
 msgid "{USER_AMOUNT} UNI"
 msgstr "{USER_AMOUNT} UNI"
+
+#: src/components/SearchModal/ManageLists.tsx
+msgid "{activeTokensOnThisChain} tokens"
+msgstr "{activeTokensOnThisChain} žetonů"
 
 #: src/pages/RemoveLiquidity/V3.tsx
 msgid "{percentForSlider}%"

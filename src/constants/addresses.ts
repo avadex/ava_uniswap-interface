@@ -6,23 +6,29 @@ import { SupportedChainId } from './chains'
 type AddressMap = { [chainId: number]: string }
 
 export const UNI_ADDRESS: AddressMap = constructSameAddressMap('0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984', false)
-export const MULTICALL2_ADDRESSES: AddressMap = {
+export const MULTICALL_ADDRESSES: AddressMap = {
   ...constructSameAddressMap('0x143430fD8449952f0f0E030dc78e84962ED40107', false),
   [SupportedChainId.FUJI]: '0x7a94E80Aa49449272f11cbBd2F3883c2e13d0E0F',
   [SupportedChainId.AVA]: '0x143430fD8449952f0f0E030dc78e84962ED40107',
 }
-export const V2_FACTORY_ADDRESSES: AddressMap = constructSameAddressMap(V2_FACTORY_ADDRESS, false)
-export const V2_ROUTER_ADDRESS: AddressMap = constructSameAddressMap(
-  '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D',
-  false
+export const V2_FACTORY_ADDRESSES: AddressMap = constructSameAddressMap(V2_FACTORY_ADDRESS)
+export const V2_ROUTER_ADDRESS: AddressMap = constructSameAddressMap('0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D')
+
+/**
+ * The older V0 governance account
+ */
+export const GOVERNANCE_ALPHA_V0_ADDRESSES: AddressMap = constructSameAddressMap(
+  '0x5e4be8Bc9637f0EAA1A755019e06A68ce081D58F'
 )
-export const GOVERNANCE_ADDRESSES: AddressMap[] = [
-  constructSameAddressMap('0x5e4be8Bc9637f0EAA1A755019e06A68ce081D58F', false),
-  {
-    [SupportedChainId.MAINNET]: '0xC4e172459f1E7939D522503B81AFAaC1014CE6F6',
-  },
-]
-export const TIMELOCK_ADDRESS: AddressMap = constructSameAddressMap('0x1a9C8182C09F50C8318d769245beA52c32BE35BC', false)
+/**
+ * The latest governor alpha that is currently admin of timelock
+ */
+export const GOVERNANCE_ALPHA_V1_ADDRESSES: AddressMap = {
+  [SupportedChainId.MAINNET]: '0xC4e172459f1E7939D522503B81AFAaC1014CE6F6',
+}
+
+export const TIMELOCK_ADDRESS: AddressMap = constructSameAddressMap('0x1a9C8182C09F50C8318d769245beA52c32BE35BC')
+
 export const MERKLE_DISTRIBUTOR_ADDRESS: AddressMap = {
   [SupportedChainId.MAINNET]: '0x090D4613473dEE047c3f2706764f49E0821D256e',
 }

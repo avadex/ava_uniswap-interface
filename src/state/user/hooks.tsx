@@ -1,14 +1,17 @@
 import { Percent, Token } from '@uniswap/sdk-core'
 import { computePairAddress, Pair } from '@uniswap/v2-sdk'
+import { L2_CHAIN_IDS } from 'constants/chains'
+import { SupportedLocale } from 'constants/locales'
+import { L2_DEADLINE_FROM_NOW } from 'constants/misc'
 import JSBI from 'jsbi'
 import flatMap from 'lodash.flatmap'
 import { useCallback, useMemo } from 'react'
 import { shallowEqual } from 'react-redux'
+import { useAppDispatch, useAppSelector } from 'state/hooks'
 import { V2_FACTORY_ADDRESSES } from '../../constants/addresses'
 import { BASES_TO_TRACK_LIQUIDITY_FOR, PINNED_PAIRS } from '../../constants/routing'
-
-import { useActiveWeb3React } from '../../hooks/web3'
 import { useAllTokens } from '../../hooks/Tokens'
+import { useActiveWeb3React } from '../../hooks/web3'
 import { AppState } from '../index'
 import {
   addSerializedPair,
@@ -16,17 +19,15 @@ import {
   removeSerializedToken,
   SerializedPair,
   SerializedToken,
-  toggleURLWarning,
+  updateArbitrumAlphaAcknowledged,
+  updateHideClosedPositions,
   updateUserDarkMode,
   updateUserDeadline,
-  updateHideClosedPositions,
   updateUserExpertMode,
+  updateUserLocale,
   updateUserSingleHopOnly,
   updateUserSlippageTolerance,
-  updateUserLocale,
 } from './actions'
-import { SupportedLocale } from 'constants/locales'
-import { useAppDispatch, useAppSelector } from 'state/hooks'
 
 function serializeToken(token: Token): SerializedToken {
   return {
@@ -183,10 +184,11 @@ export function useUserSlippageToleranceWithDefault(defaultSlippageTolerance: Pe
 }
 
 export function useUserTransactionTTL(): [number, (slippage: number) => void] {
+  const { chainId } = useActiveWeb3React()
   const dispatch = useAppDispatch()
-  const userDeadline = useAppSelector((state) => {
-    return state.user.userDeadline
-  })
+  const userDeadline = useAppSelector((state) => state.user.userDeadline)
+  const onL2 = Boolean(chainId && L2_CHAIN_IDS.includes(chainId))
+  const deadline = onL2 ? L2_DEADLINE_FROM_NOW : userDeadline
 
   const setUserDeadline = useCallback(
     (userDeadline: number) => {
@@ -195,7 +197,7 @@ export function useUserTransactionTTL(): [number, (slippage: number) => void] {
     [dispatch]
   )
 
-  return [userDeadline, setUserDeadline]
+  return [deadline, setUserDeadline]
 }
 
 export function useAddUserToken(): (token: Token) => void {
@@ -248,11 +250,6 @@ export function usePairAdder(): (pair: Pair) => void {
 
 export function useURLWarningVisible(): boolean {
   return useAppSelector((state: AppState) => state.user.URLWarningVisible)
-}
-
-export function useURLWarningToggle(): () => void {
-  const dispatch = useAppDispatch()
-  return useCallback(() => dispatch(toggleURLWarning()), [dispatch])
 }
 
 /**
@@ -339,4 +336,14 @@ export function useTrackedTokenPairs(): [Token, Token][] {
 
     return Object.keys(keyed).map((key) => keyed[key])
   }, [combinedList])
+}
+
+export function useArbitrumAlphaAlert(): [boolean, (arbitrumAlphaAcknowledged: boolean) => void] {
+  const dispatch = useAppDispatch()
+  const arbitrumAlphaAcknowledged = useAppSelector(({ user }) => user.arbitrumAlphaAcknowledged)
+  const setArbitrumAlphaAcknowledged = (arbitrumAlphaAcknowledged: boolean) => {
+    dispatch(updateArbitrumAlphaAcknowledged({ arbitrumAlphaAcknowledged }))
+  }
+
+  return [arbitrumAlphaAcknowledged, setArbitrumAlphaAcknowledged]
 }

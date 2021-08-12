@@ -1,7 +1,7 @@
 import JSBI from 'jsbi'
 import { CurrencyAmount, Token } from '@uniswap/sdk-core'
 import { isAddress } from 'ethers/lib/utils'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Text } from 'rebass'
 import styled from 'styled-components/macro'
 import Circle from '../../assets/images/blue-loader.svg'
@@ -28,7 +28,7 @@ const ContentWrapper = styled(AutoColumn)`
 
 const ModalUpper = styled(DataCard)`
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  background: radial-gradient(76.02% 75.41% at 1.84% 0%, #0211c7e0 0%, #021d43 100%);
+  background: radial-gradient(76.02% 75.41% at 1.84% 0%, #ff007a 0%, #021d43 100%);
 `
 
 const ConfirmOrLoadingWrapper = styled.div<{ activeBG: boolean }>`
@@ -161,7 +161,7 @@ export default function ClaimModal() {
               disabled={!isAddress(account ?? '')}
               padding="16px 16px"
               width="100%"
-              borderRadius="12px"
+              $borderRadius="12px"
               mt="1rem"
               onClick={onClaim}
             >
@@ -191,7 +191,7 @@ export default function ClaimModal() {
                 {claimConfirmed ? 'Claimed!' : 'Claiming'}
               </TYPE.largeHeader>
               {!claimConfirmed && (
-                <Text fontSize={36} color={'#0211c7e0'} fontWeight={800}>
+                <Text fontSize={36} color={'#ff007a'} fontWeight={800}>
                   <Trans>{unclaimedAmount?.toFixed(0, { groupSeparator: ',' } ?? '-')} UNI</Trans>
                 </Text>
               )}

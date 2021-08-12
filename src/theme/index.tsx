@@ -5,7 +5,7 @@ import styled, {
   css,
   DefaultTheme,
   ThemeProvider as StyledComponentsThemeProvider,
-} from 'styled-components'
+} from 'styled-components/macro'
 import { useIsDarkMode } from '../state/user/hooks'
 import { Colors } from './styled'
 
@@ -35,7 +35,7 @@ const mediaWidthTemplates: { [width in keyof typeof MEDIA_WIDTHS]: typeof css } 
 const white = '#FFFFFF'
 const black = '#000000'
 
-export function colors(darkMode: boolean): Colors {
+function colors(darkMode: boolean): Colors {
   return {
     // base
     white,
@@ -92,12 +92,12 @@ export function colors(darkMode: boolean): Colors {
     warning: '#ff8f00',
 
     // dont wanna forget these blue yet
-    // blue4: darkMode ? '#ff0000b5' : '#C4D9F8',
-    // blue5: darkMode ? '#ff0000b5' : '#EBF4FF',
+    blue4: darkMode ? '#153d6f70' : '#C4D9F8',
+    // blue5: darkMode ? '#153d6f70' : '#EBF4FF',
   }
 }
 
-export function theme(darkMode: boolean): DefaultTheme {
+function theme(darkMode: boolean): DefaultTheme {
   return {
     ...colors(darkMode),
 
