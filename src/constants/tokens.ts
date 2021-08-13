@@ -44,6 +44,13 @@ export const USDT = new Token(
   'USDT',
   'Tether USD'
 )
+export const USDTE_AVA = new Token(
+  SupportedChainId.AVA,
+  '0xc7198437980c041c805A1EDcbA50c1Ce5db95118',
+  6,
+  'USDTE',
+  'Tether USD'
+)
 export const USDT_OPTIMISM = new Token(
   SupportedChainId.OPTIMISM,
   '0x94b008aA00579c1307B0EF2c499aD98a8ce58e58',
@@ -105,7 +112,7 @@ export const ETH2X_FLI = new Token(
   '0xAa6E8127831c9DE45ae56bB1b0d4D4Da6e5665BD',
   18,
   'ETH2x-FLI',
-  'ETH 2x Flexible Leverage Index'
+  'AVAX 2x Flexible Leverage Index'
 )
 export const UNI: { [chainId: number]: Token } = {
   [SupportedChainId.MAINNET]: new Token(SupportedChainId.MAINNET, UNI_ADDRESS[1], 18, 'UNI', 'Uniswap'),
@@ -130,6 +137,34 @@ export const WETH9_EXTENDED: { [chainId: number]: Token } = {
     18,
     'WAVAX',
     'Wrapped AVAX'
+  ),
+  [SupportedChainId.OPTIMISM]: new Token(
+    SupportedChainId.OPTIMISM,
+    '0x4200000000000000000000000000000000000006',
+    18,
+    'WETH',
+    'Wrapped Ether'
+  ),
+  [SupportedChainId.OPTIMISTIC_KOVAN]: new Token(
+    SupportedChainId.OPTIMISTIC_KOVAN,
+    '0x4200000000000000000000000000000000000006',
+    18,
+    'WETH',
+    'Wrapped Ether'
+  ),
+  [SupportedChainId.ARBITRUM_ONE]: new Token(
+    SupportedChainId.ARBITRUM_ONE,
+    '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1',
+    18,
+    'WETH',
+    'Wrapped Ether'
+  ),
+  [SupportedChainId.ARBITRUM_RINKEBY]: new Token(
+    SupportedChainId.ARBITRUM_RINKEBY,
+    '0xB47e6A5f8b33b3F17603C83a0535A9dcD7E32681',
+    18,
+    'WETH',
+    'Wrapped Ether'
   ),
 }
 

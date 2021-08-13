@@ -177,7 +177,7 @@ const ToggleMenuItem = styled.button`
   }
 `
 
-const CODE_LINK = 'https://github.com/Uniswap/uniswap-interface'
+const CODE_LINK = 'https://github.com/Avadex/uniswap-interface'
 
 function LanguageMenuItem({ locale, active, key }: { locale: SupportedLocale; active: boolean; key: string }) {
   const { to, onClick } = useLocationLinkProps(locale)
@@ -242,15 +242,15 @@ export default function Menu() {
             default:
               return (
                 <MenuFlyout>
-                  <MenuItem href="https://uniswap.org/">
+                  <MenuItem href="https://avax.network/">
                     <div>
                       <Trans>About</Trans>
                     </div>
                     <Info opacity={0.6} size={16} />
                   </MenuItem>
-                  <MenuItem href="https://docs.uniswap.org/">
+                  <MenuItem href="https://bridge.avax.network/">
                     <div>
-                      <Trans>Docs</Trans>
+                      <Trans>Bridge</Trans>
                     </div>
                     <BookOpen opacity={0.6} size={16} />
                   </MenuItem>
@@ -262,7 +262,7 @@ export default function Menu() {
                   </MenuItem>
                   <MenuItem href="https://discord.gg/FCfyBSbCU5">
                     <div>
-                      <Trans>Discord</Trans>
+                      <Trans>Community</Trans>
                     </div>
                     <MessageCircle opacity={0.6} size={16} />
                   </MenuItem>

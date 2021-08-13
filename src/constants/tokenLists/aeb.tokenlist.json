@@ -1,5 +1,5 @@
 {
-    "name": "AVAX ETH Tokens",
+    "name": "AVAX AVAX Tokens",
     "logoURI": "https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7/logo.png",
     "keywords": [
         "avalanche",
@@ -34,7 +34,7 @@
             "address": "0xf20d962a6c8f70c731bd838a3a388D7d48fA6e15",
             "decimals": 18,
             "name": "Ether",
-            "symbol": "ETH",
+            "symbol": "AVAX",
             "logoURI": "https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0xf20d962a6c8f70c731bd838a3a388D7d48fA6e15/logo.png"
         },
         {
@@ -785,7 +785,7 @@
             "chainId": 43114,
             "address": "0x6FEC3a5e49748088C2b9b1Ef9A6a762ABdD07805",
             "decimals": 18,
-            "name": "DMM - ETH",
+            "name": "DMM - AVAX",
             "symbol": "mETH",
             "logoURI": "https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0x6FEC3a5e49748088C2b9b1Ef9A6a762ABdD07805/logo.png"
         },
@@ -905,7 +905,7 @@
             "chainId": 43114,
             "address": "0xD7b63a3Cf593E72c385A72e28029Bcae6db766D5",
             "decimals": 18,
-            "name": "ETH RSI 60/40 Yield II",
+            "name": "AVAX RSI 60/40 Yield II",
             "symbol": "ETHRSIAPY",
             "logoURI": "https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0xD7b63a3Cf593E72c385A72e28029Bcae6db766D5/logo.png"
         },
@@ -1057,7 +1057,7 @@
             "chainId": 43114,
             "address": "0x2Ae2CD4e23c09a2B68a24D56D5cf3c4e887Da849",
             "decimals": 18,
-            "name": "Fulcrum ETH iToken",
+            "name": "Fulcrum AVAX iToken",
             "symbol": "iETH",
             "logoURI": "https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0x2Ae2CD4e23c09a2B68a24D56D5cf3c4e887Da849/logo.png"
         },
@@ -2473,7 +2473,7 @@
             "chainId": 43114,
             "address": "0x390ba0fb0Bd3Aa2a5484001606329701148074e6",
             "decimals": 18,
-            "name": "THORChain ETH.RUNE",
+            "name": "THORChain AVAX.RUNE",
             "symbol": "RUNE",
             "logoURI": "https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0x390ba0fb0Bd3Aa2a5484001606329701148074e6/logo.png"
         },

@@ -69,13 +69,17 @@ type ChainInfo = { readonly [chainId: number]: L1ChainInfo | L2ChainInfo } & {
   { readonly [chainId in SupportedL1ChainId]: L1ChainInfo }
 
 export const CHAIN_INFO: ChainInfo = {
-  SupportedChainId.AVA]: {
-    bridge: 'https://bridge.avax.network/',
+  [SupportedChainId.AVA]: {
     docs: 'https://avax.network/',
-    explorer: 'https://explorer.arbitrum.io/',
-    infoLink: 'https://cchain.explorer.avax.network/',
+    explorer: 'https://cchain.explorer.avax.network/',
+    infoLink: 'https://avaxchain.github.io',
     label: 'Avalanche',
-    logoUrl: arbitrumLogoUrl,
+  },
+  [SupportedChainId.FUJI]: {
+    docs: 'https://avax.network/',
+    explorer: 'https://cchain.test-explorer.avax.network/',
+    infoLink: 'https://avaxchain.github.io',
+    label: 'Fuji',
   },
   [SupportedChainId.ARBITRUM_ONE]: {
     bridge: 'https://bridge.arbitrum.io/',

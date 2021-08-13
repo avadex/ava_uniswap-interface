@@ -71,9 +71,9 @@ export const COMMON_BASES: ChainCurrencyList = {
     WBTC,
     WETH9_EXTENDED[SupportedChainId.MAINNET],
   ],
-  [SupportedChainId.AVA]: [
-    ExtendedEther.onChain(SupportedChainId.AVA),
-    WETH9_EXTENDED[SupportedChainId.AVA],
+  [SupportedChainId.AVA]: [ExtendedEther.onChain(SupportedChainId.AVA), WETH9_EXTENDED[SupportedChainId.AVA],
+  ],
+  [SupportedChainId.FUJI]: [ExtendedEther.onChain(SupportedChainId.FUJI), WETH9_EXTENDED[SupportedChainId.FUJI],
   ],
   [SupportedChainId.ROPSTEN]: [
     ExtendedEther.onChain(SupportedChainId.ROPSTEN),

@@ -293,7 +293,7 @@ export default function AddLiquidity({
           history.push(`/add/v2/${newCurrencyIdB}`)
         }
       } else {
-        history.push(`/add/v2/${currencyIdA ? currencyIdA : 'ETH'}/${newCurrencyIdB}`)
+        history.push(`/add/v2/${currencyIdA ? currencyIdA : 'AVAX'}/${newCurrencyIdB}`)
       }
     },
     [currencyIdA, history, currencyIdB]

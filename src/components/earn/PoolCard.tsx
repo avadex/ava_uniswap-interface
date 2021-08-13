@@ -89,7 +89,7 @@ export default function PoolCard({ stakingInfo }: { stakingInfo: StakingInfo }) 
   // let returnOverMonth: Percent = new Percent('0')
   let valueOfTotalStakedAmountInWETH: CurrencyAmount<Token> | undefined
   if (totalSupplyOfStakingToken && stakingTokenPair) {
-    // take the total amount of LP tokens staked, multiply by ETH value of all LP tokens, divide by all LP tokens
+    // take the total amount of LP tokens staked, multiply by AVAX value of all LP tokens, divide by all LP tokens
     valueOfTotalStakedAmountInWETH = CurrencyAmount.fromRawAmount(
       WETH,
       JSBI.divide(
@@ -134,7 +134,7 @@ export default function PoolCard({ stakingInfo }: { stakingInfo: StakingInfo }) 
             {valueOfTotalStakedAmountInUSDC ? (
               <Trans>${valueOfTotalStakedAmountInUSDC.toFixed(0, { groupSeparator: ',' })}</Trans>
             ) : (
-              <Trans>{valueOfTotalStakedAmountInWETH?.toSignificant(4, { groupSeparator: ',' }) ?? '-'} ETH</Trans>
+              <Trans>{valueOfTotalStakedAmountInWETH?.toSignificant(4, { groupSeparator: ',' }) ?? '-'} AVAX</Trans>
             )}
           </TYPE.white>
         </RowBetween>
