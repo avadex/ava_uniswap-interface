@@ -536,11 +536,11 @@ export default function RemoveLiquidity({
                           </StyledInternalLink>
                         ) : oneCurrencyIsWETH ? (
                           <StyledInternalLink
-                            to={`/remove/v2/${currencyA?.equals(WETH9_EXTENDED[chainId]) ? 'AVAX' : currencyIdA}/${
-                              currencyB?.equals(WETH9_EXTENDED[chainId]) ? 'AVAX' : currencyIdB
+                            to={`/remove/v2/${currencyA?.equals(WETH9_EXTENDED[chainId]) ? 'ETH' : currencyIdA}/${
+                              currencyB?.equals(WETH9_EXTENDED[chainId]) ? 'ETH' : currencyIdB
                             }`}
                           >
-                            Receive AVAX
+                            Receive ETH
                           </StyledInternalLink>
                         ) : null}
                       </RowBetween>

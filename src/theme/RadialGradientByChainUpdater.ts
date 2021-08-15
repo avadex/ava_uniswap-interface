@@ -33,7 +33,7 @@ export default function RadialGradientByChainUpdater(): null {
     }
 
     switch (chainId) {
-      case SupportedChainId.ARBITRUM_ONE:
+      case SupportedChainId.AVA:
       case SupportedChainId.ARBITRUM_RINKEBY:
         setBackground(backgroundResetStyles)
         const arbitrumLightGradient = 'radial-gradient(150% 100% at 50% 0%, #CDE8FB 0%, #FCF3F9 50%, #FFFFFF 100%)'

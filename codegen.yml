@@ -1,5 +1,5 @@
 overrideExisting: true
-schema: 'https://api.thegraph.com/subgraphs/name/avadex/v35'
+schema: 'https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3'
 documents: 'src/**/!(*.d).{ts,tsx}'
 generates:
   ./src/state/data/generated.ts:

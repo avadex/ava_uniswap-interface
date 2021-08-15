@@ -1,5 +1,6 @@
 import arbitrumLogoUrl from 'assets/svg/arbitrum_logo.svg'
 import optimismLogoUrl from 'assets/svg/optimism_logo.svg'
+import avaLogoUrl from 'assets/svg/ava_logo.svg'
 
 export enum SupportedChainId {
   MAINNET = 1,
@@ -7,10 +8,8 @@ export enum SupportedChainId {
   RINKEBY = 4,
   GOERLI = 5,
   KOVAN = 42,
-  FUJI = 43113,
-  AVA = 43114,
 
-  ARBITRUM_ONE = 42161,
+  AVA = 43114,
   ARBITRUM_RINKEBY = 421611,
   OPTIMISM = 10,
   OPTIMISTIC_KOVAN = 69,
@@ -22,10 +21,8 @@ export const ALL_SUPPORTED_CHAIN_IDS: SupportedChainId[] = [
   SupportedChainId.RINKEBY,
   SupportedChainId.GOERLI,
   SupportedChainId.KOVAN,
-  SupportedChainId.FUJI,
-  SupportedChainId.AVA,
 
-  SupportedChainId.ARBITRUM_ONE,
+  SupportedChainId.AVA,
   SupportedChainId.ARBITRUM_RINKEBY,
   SupportedChainId.OPTIMISM,
   SupportedChainId.OPTIMISTIC_KOVAN,
@@ -37,14 +34,12 @@ export const L1_CHAIN_IDS = [
   SupportedChainId.RINKEBY,
   SupportedChainId.GOERLI,
   SupportedChainId.KOVAN,
-  SupportedChainId.FUJI,
-  SupportedChainId.AVA,
 ] as const
 
 export type SupportedL1ChainId = typeof L1_CHAIN_IDS[number]
 
 export const L2_CHAIN_IDS = [
-  SupportedChainId.ARBITRUM_ONE,
+  SupportedChainId.AVA,
   SupportedChainId.ARBITRUM_RINKEBY,
   SupportedChainId.OPTIMISM,
   SupportedChainId.OPTIMISTIC_KOVAN,
@@ -75,19 +70,13 @@ export const CHAIN_INFO: ChainInfo = {
     infoLink: 'https://avaxchain.github.io',
     label: 'Avalanche',
   },
-  [SupportedChainId.FUJI]: {
+  [SupportedChainId.AVA]: {
+    bridge: 'https://bridge.avax.network/',
     docs: 'https://avax.network/',
-    explorer: 'https://cchain.test-explorer.avax.network/',
+    explorer: 'https://explorer.avax.network/',
     infoLink: 'https://avaxchain.github.io',
-    label: 'Fuji',
-  },
-  [SupportedChainId.ARBITRUM_ONE]: {
-    bridge: 'https://bridge.arbitrum.io/',
-    docs: 'https://offchainlabs.com/',
-    explorer: 'https://explorer.arbitrum.io/',
-    infoLink: 'https://info.uniswap.org/#/arbitrum',
-    label: 'Arbitrum',
-    logoUrl: arbitrumLogoUrl,
+    label: 'Avalanche',
+    logoUrl: avaLogoUrl,
   },
   [SupportedChainId.ARBITRUM_RINKEBY]: {
     bridge: 'https://bridge.arbitrum.io/',

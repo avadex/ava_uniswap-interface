@@ -24,19 +24,6 @@ export enum ExplorerDataType {
  * @param type the type of the data
  */
 export function getExplorerLink(chainId: number, data: string, type: ExplorerDataType): string {
-  if (chainId === SupportedChainId.FUJI) {
-    switch (type) {
-      case ExplorerDataType.TRANSACTION:
-        return `https://cchain.explorer.avax-test.network/#/tx/${data}`
-      case ExplorerDataType.ADDRESS:
-        return `https://cchain.explorer.avax-test.network/#/address/${data}`
-      case ExplorerDataType.BLOCK:
-        return `https://cchain.explorer.avax-test.network/#/block/${data}`
-      default:
-        return `https://cchain.explorer.avax-test.network`
-    }
-  }
-
   if (chainId === SupportedChainId.AVA) {
     switch (type) {
       case ExplorerDataType.TRANSACTION:
@@ -60,6 +47,9 @@ export function getExplorerLink(chainId: number, data: string, type: ExplorerDat
       return `${prefix}/token/${data}`
 
     case ExplorerDataType.BLOCK:
+      if (chainId === SupportedChainId.OPTIMISM || chainId === SupportedChainId.OPTIMISTIC_KOVAN) {
+        return `${prefix}/tx/${data}`
+      }
       return `${prefix}/block/${data}`
 
     case ExplorerDataType.ADDRESS:

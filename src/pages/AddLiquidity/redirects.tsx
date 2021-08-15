@@ -16,9 +16,9 @@ export function RedirectDuplicateTokenIds(
 
   // prevent weth + eth
   const isETHOrWETHA =
-    currencyIdA === 'AVAX' || (chainId !== undefined && currencyIdA === WETH9_EXTENDED[chainId]?.address)
+    currencyIdA === 'ETH' || (chainId !== undefined && currencyIdA === WETH9_EXTENDED[chainId]?.address)
   const isETHOrWETHB =
-    currencyIdB === 'AVAX' || (chainId !== undefined && currencyIdB === WETH9_EXTENDED[chainId]?.address)
+    currencyIdB === 'ETH' || (chainId !== undefined && currencyIdB === WETH9_EXTENDED[chainId]?.address)
 
   if (
     currencyIdA &&

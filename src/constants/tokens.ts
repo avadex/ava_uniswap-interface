@@ -23,12 +23,12 @@ export const USDC = new Token(
   'USDC',
   'USD//C'
 )
-export const USDC_ARBITRUM = new Token(
-  SupportedChainId.ARBITRUM_ONE,
-  '0xe865dF68133fcEd7c2285ff3896B406CAfAa2dB8',
+export const USDT_AVA = new Token(
+  SupportedChainId.AVA,
+  '0xc7198437980c041c805A1EDcbA50c1Ce5db95118',
   6,
-  'USDC',
-  'USD//C'
+  'USDT.e',
+  'USD//e'
 )
 export const DAI_OPTIMISM = new Token(
   SupportedChainId.OPTIMISM,
@@ -42,13 +42,6 @@ export const USDT = new Token(
   '0xdAC17F958D2ee523a2206206994597C13D831ec7',
   6,
   'USDT',
-  'Tether USD'
-)
-export const USDTE_AVA = new Token(
-  SupportedChainId.AVA,
-  '0xc7198437980c041c805A1EDcbA50c1Ce5db95118',
-  6,
-  'USDTE',
   'Tether USD'
 )
 export const USDT_OPTIMISM = new Token(
@@ -112,7 +105,7 @@ export const ETH2X_FLI = new Token(
   '0xAa6E8127831c9DE45ae56bB1b0d4D4Da6e5665BD',
   18,
   'ETH2x-FLI',
-  'AVAX 2x Flexible Leverage Index'
+  'ETH 2x Flexible Leverage Index'
 )
 export const UNI: { [chainId: number]: Token } = {
   [SupportedChainId.MAINNET]: new Token(SupportedChainId.MAINNET, UNI_ADDRESS[1], 18, 'UNI', 'Uniswap'),
@@ -124,19 +117,12 @@ export const UNI: { [chainId: number]: Token } = {
 
 export const WETH9_EXTENDED: { [chainId: number]: Token } = {
   ...WETH9,
-  [SupportedChainId.FUJI]: new Token(
-    SupportedChainId.FUJI,
-    '0xd00ae08403B9bbb9124bB305C09058E32C39A48c',
-    18,
-    'WAVAX',
-    'Wrapped Avax'
-  ),
   [SupportedChainId.AVA]: new Token(
     SupportedChainId.AVA,
     '0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7',
     18,
     'WAVAX',
-    'Wrapped AVAX'
+    'Wrapped Avax'
   ),
   [SupportedChainId.OPTIMISM]: new Token(
     SupportedChainId.OPTIMISM,
@@ -148,13 +134,6 @@ export const WETH9_EXTENDED: { [chainId: number]: Token } = {
   [SupportedChainId.OPTIMISTIC_KOVAN]: new Token(
     SupportedChainId.OPTIMISTIC_KOVAN,
     '0x4200000000000000000000000000000000000006',
-    18,
-    'WETH',
-    'Wrapped Ether'
-  ),
-  [SupportedChainId.ARBITRUM_ONE]: new Token(
-    SupportedChainId.ARBITRUM_ONE,
-    '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1',
     18,
     'WETH',
     'Wrapped Ether'
@@ -174,9 +153,7 @@ export class ExtendedEther extends Ether {
     throw new Error('Unsupported chain ID')
   }
 
-  private static _cachedEther: { [chainId: number]: ExtendedEther } = {}
-
   public static onChain(chainId: number): ExtendedEther {
-    return this._cachedEther[chainId] ?? (this._cachedEther[chainId] = new ExtendedEther(chainId))
+    return new ExtendedEther(chainId)
   }
 }

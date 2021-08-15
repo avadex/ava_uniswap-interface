@@ -578,9 +578,9 @@ function V2PairMigration({
                   <TYPE.black fontSize={12}>
                     <Trans>
                       At least {formatCurrencyAmount(refund0, 4)}{' '}
-                      {token0.equals(WETH9_EXTENDED[chainId]) ? 'AVAX' : token0.symbol} and{' '}
+                      {token0.equals(WETH9_EXTENDED[chainId]) ? 'ETH' : token0.symbol} and{' '}
                       {formatCurrencyAmount(refund1, 4)}{' '}
-                      {token1.equals(WETH9_EXTENDED[chainId]) ? 'AVAX' : token1.symbol} will be refunded to your wallet
+                      {token1.equals(WETH9_EXTENDED[chainId]) ? 'ETH' : token1.symbol} will be refunded to your wallet
                       due to selected price range.
                     </Trans>
                   </TYPE.black>

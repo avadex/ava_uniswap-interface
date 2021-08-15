@@ -776,8 +776,8 @@
     {
       "chainId": 1,
       "address": "0x90f802c7e8fb5d40b0de583e34c065a3bd2020d8",
-      "name": "YD-AVAX-MAR21 Token Expiring 31 Mar 2021",
-      "symbol": "YD-AVAX-MAR21",
+      "name": "YD-ETH-MAR21 Token Expiring 31 Mar 2021",
+      "symbol": "YD-ETH-MAR21",
       "decimals": 18
     },
     {
@@ -917,7 +917,7 @@
       "chainId": 1,
       "address": "0xe813b65da6c38a04591aed3f082d32db7d53c382",
       "name": "Yield Dollar [WETH Dec 2021]",
-      "symbol": "YD-AVAX-DEC21",
+      "symbol": "YD-ETH-DEC21",
       "decimals": 18
     },
     {
@@ -959,7 +959,7 @@
       "chainId": 1,
       "address": "0xcbe430927370e95b4b10cfc702c6017ec7abefc3",
       "name": "Yield Dollar [WETH Jun 2021]",
-      "symbol": "YD-AVAX-JUN21",
+      "symbol": "YD-ETH-JUN21",
       "decimals": 18
     },
     {

@@ -154,7 +154,7 @@ export function getPriceOrderingFromPositionForUI(position?: Position): {
     }
   }
 
-  // if token1 is an AVAX-/BTC-stable asset, set it as the base token
+  // if token1 is an ETH-/BTC-stable asset, set it as the base token
   const bases = [...Object.values(WETH9_EXTENDED), WBTC]
   if (bases.some((base) => base.equals(token1))) {
     return {

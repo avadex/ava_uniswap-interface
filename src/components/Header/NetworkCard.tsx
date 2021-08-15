@@ -94,7 +94,7 @@ const MenuFlyout = styled.span`
   z-index: 100;
   width: 237px;
   ${({ theme }) => theme.mediaWidth.upToMedium`
-   
+
     bottom: unset;
     top: 4.5em
     right: 0;
@@ -188,7 +188,7 @@ export default function NetworkCard() {
 
   if (L2_CHAIN_IDS.includes(chainId)) {
     const info = CHAIN_INFO[chainId as SupportedL2ChainId]
-    const isArbitrum = [SupportedChainId.ARBITRUM_ONE, SupportedChainId.ARBITRUM_RINKEBY].includes(chainId)
+    const isArbitrum = [SupportedChainId.AVA, SupportedChainId.ARBITRUM_RINKEBY].includes(chainId)
     return (
       <L2Wrapper ref={node}>
         <NetworkInfo onClick={toggle} chainId={chainId}>

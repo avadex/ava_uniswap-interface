@@ -154,7 +154,7 @@ export default function Pool() {
           <PlusCircle size={16} />
         </MenuItem>
       ),
-      link: '/add/AVAX',
+      link: '/add/ETH',
       external: false,
     },
     {
@@ -214,7 +214,7 @@ export default function Pool() {
                     )}
                   />
                 )}
-                <ResponsiveButtonPrimary id="join-pool-button" as={Link} to="/add/AVAX">
+                <ResponsiveButtonPrimary id="join-pool-button" as={Link} to="/add/ETH">
                   + <Trans>New Position</Trans>
                 </ResponsiveButtonPrimary>
               </ButtonRow>

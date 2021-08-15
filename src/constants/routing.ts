@@ -71,10 +71,6 @@ export const COMMON_BASES: ChainCurrencyList = {
     WBTC,
     WETH9_EXTENDED[SupportedChainId.MAINNET],
   ],
-  [SupportedChainId.AVA]: [ExtendedEther.onChain(SupportedChainId.AVA), WETH9_EXTENDED[SupportedChainId.AVA],
-  ],
-  [SupportedChainId.FUJI]: [ExtendedEther.onChain(SupportedChainId.FUJI), WETH9_EXTENDED[SupportedChainId.FUJI],
-  ],
   [SupportedChainId.ROPSTEN]: [
     ExtendedEther.onChain(SupportedChainId.ROPSTEN),
     WETH9_EXTENDED[SupportedChainId.ROPSTEN],
@@ -85,10 +81,7 @@ export const COMMON_BASES: ChainCurrencyList = {
   ],
   [SupportedChainId.GOERLI]: [ExtendedEther.onChain(SupportedChainId.GOERLI), WETH9_EXTENDED[SupportedChainId.GOERLI]],
   [SupportedChainId.KOVAN]: [ExtendedEther.onChain(SupportedChainId.KOVAN), WETH9_EXTENDED[SupportedChainId.KOVAN]],
-  [SupportedChainId.ARBITRUM_ONE]: [
-    ExtendedEther.onChain(SupportedChainId.ARBITRUM_ONE),
-    WETH9_EXTENDED[SupportedChainId.ARBITRUM_ONE],
-  ],
+  [SupportedChainId.AVA]: [ExtendedEther.onChain(SupportedChainId.AVA), WETH9_EXTENDED[SupportedChainId.AVA]],
   [SupportedChainId.ARBITRUM_RINKEBY]: [
     ExtendedEther.onChain(SupportedChainId.ARBITRUM_RINKEBY),
     WETH9_EXTENDED[SupportedChainId.ARBITRUM_RINKEBY],
