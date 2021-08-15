@@ -1,65 +1,56 @@
 import { useEffect, useMemo, useRef } from 'react'
+import { Multicall2 } from '../../abis/types'
 import { useActiveWeb3React } from '../../hooks/web3'
 import { useMulticall2Contract } from '../../hooks/useContract'
 import useDebounce from '../../hooks/useDebounce'
 import chunkArray from '../../utils/chunkArray'
 import { retry, RetryableError } from '../../utils/retry'
+import { updateBlockNumber } from '../application/actions'
 import { useBlockNumber } from '../application/hooks'
 import { AppState } from '../index'
-import { errorFetchingMulticallResults, fetchingMulticallResults, updateMulticallResults } from './actions'
+import {
+  Call,
+  errorFetchingMulticallResults,
+  fetchingMulticallResults,
+  parseCallKey,
+  updateMulticallResults,
+} from './actions'
 import { useAppDispatch, useAppSelector } from 'state/hooks'
-import { Call, parseCallKey } from './utils'
-import { UniswapInterfaceMulticall } from 'types/v3'
-
-const DEFAULT_GAS_REQUIRED = 1_000_000
 
 /**
  * Fetches a chunk of calls, enforcing a minimum block number constraint
- * @param multicall multicall contract to fetch against
+ * @param multicall2Contract multicall contract to fetch against
  * @param chunk chunk of calls to make
- * @param blockNumber block number passed as the block tag in the eth_call
+ * @param minBlockNumber minimum block number of the result set
  */
 async function fetchChunk(
-  multicall: UniswapInterfaceMulticall,
+  multicall2Contract: Multicall2,
   chunk: Call[],
+  minBlockNumber: number
+): Promise<{
+  results: { success: boolean; returnData: string }[]
   blockNumber: number
-): Promise<{ success: boolean; returnData: string }[]> {
-  console.debug('Fetching chunk', chunk, blockNumber)
+}> {
+  console.debug('Fetching chunk', chunk, minBlockNumber)
+  let resultsBlockNumber: number
+  let results: { success: boolean; returnData: string }[]
   try {
-    const { returnData } = await multicall.callStatic.multicall(
-      chunk.map((obj) => ({
-        target: obj.address,
-        callData: obj.callData,
-        gasLimit: obj.gasRequired ?? DEFAULT_GAS_REQUIRED,
-      })),
-      { blockTag: blockNumber }
+    const { blockNumber, returnData } = await multicall2Contract.callStatic.tryBlockAndAggregate(
+      false,
+      chunk.map((obj) => ({ target: obj.address, callData: obj.callData }))
     )
-
-    if (process.env.NODE_ENV === 'development') {
-      returnData.forEach(({ gasUsed, returnData, success }, i) => {
-        if (
-          !success &&
-          returnData.length === 2 &&
-          gasUsed.gte(Math.floor((chunk[i].gasRequired ?? DEFAULT_GAS_REQUIRED) * 0.95))
-        ) {
-          console.warn(
-            `A call failed due to requiring ${gasUsed.toString()} vs. allowed ${
-              chunk[i].gasRequired ?? DEFAULT_GAS_REQUIRED
-            }`,
-            chunk[i]
-          )
-        }
-      })
-    }
-
-    return returnData
+    resultsBlockNumber = blockNumber.toNumber()
+    results = returnData
   } catch (error) {
-    if (error.code === -32000 || error.message?.indexOf('header not found') !== -1) {
-      throw new RetryableError(`header not found for block number ${blockNumber}`)
-    }
-    console.error('Failed to fetch chunk', error)
+    console.debug('Failed to fetch chunk', error)
     throw error
   }
+  if (resultsBlockNumber < minBlockNumber) {
+    const retryMessage = `Fetched results for old block number: ${resultsBlockNumber.toString()} vs. ${minBlockNumber}`
+    console.debug(retryMessage)
+    throw new RetryableError(retryMessage)
+  }
+  return { results, blockNumber: resultsBlockNumber }
 }
 
 /**
@@ -180,7 +171,7 @@ export default function Updater(): null {
           maxWait: 2500,
         })
         promise
-          .then((returnData) => {
+          .then(({ results: returnData, blockNumber: fetchBlockNumber }) => {
             // accumulates the length of all previous indices
             const firstCallKeyIndex = chunkedCalls.slice(0, index).reduce<number>((memo, curr) => memo + curr.length, 0)
             const lastCallKeyIndex = firstCallKeyIndex + returnData.length
@@ -209,7 +200,7 @@ export default function Updater(): null {
                 updateMulticallResults({
                   chainId,
                   results,
-                  blockNumber: latestBlockNumber,
+                  blockNumber: fetchBlockNumber,
                 })
               )
 
@@ -220,9 +211,13 @@ export default function Updater(): null {
                 errorFetchingMulticallResults({
                   calls: erroredCalls,
                   chainId,
-                  fetchingBlockNumber: latestBlockNumber,
+                  fetchingBlockNumber: fetchBlockNumber,
                 })
               )
+            }
+
+            if (fetchBlockNumber > latestBlockNumber) {
+              dispatch(updateBlockNumber({ chainId, blockNumber: fetchBlockNumber }))
             }
           })
           .catch((error: any) => {

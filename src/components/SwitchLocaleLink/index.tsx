@@ -1,10 +1,13 @@
 import { Trans } from '@lingui/macro'
 import { useMemo } from 'react'
+import ReactGA from 'react-ga'
+import { useLocation } from 'react-router'
 import styled from 'styled-components/macro'
 import { DEFAULT_LOCALE, LOCALE_LABEL, SupportedLocale } from '../../constants/locales'
 import { navigatorLocale, useActiveLocale } from '../../hooks/useActiveLocale'
+import useParsedQueryString from '../../hooks/useParsedQueryString'
 import { StyledInternalLink, TYPE } from '../../theme'
-import { useLocationLinkProps } from 'hooks/useLocationLinkProps'
+import { stringify } from 'qs'
 
 const Container = styled(TYPE.small)`
   opacity: 0.6;
@@ -14,35 +17,46 @@ const Container = styled(TYPE.small)`
   margin-top: 1rem !important;
 `
 
-const useTargetLocale = (activeLocale: SupportedLocale) => {
-  const browserLocale = useMemo(() => navigatorLocale(), [])
-
-  if (browserLocale && (browserLocale !== DEFAULT_LOCALE || activeLocale !== DEFAULT_LOCALE)) {
-    if (activeLocale === browserLocale) {
-      return DEFAULT_LOCALE
-    } else {
-      return browserLocale
-    }
-  }
-  return null
-}
-
 export function SwitchLocaleLink() {
   const activeLocale = useActiveLocale()
-  const targetLocale = useTargetLocale(activeLocale)
+  const browserLocale = useMemo(() => navigatorLocale(), [])
+  const location = useLocation()
+  const qs = useParsedQueryString()
 
-  const { to, onClick } = useLocationLinkProps(targetLocale)
+  if (browserLocale && (browserLocale !== DEFAULT_LOCALE || activeLocale !== DEFAULT_LOCALE)) {
+    let targetLocale: SupportedLocale
+    if (activeLocale === browserLocale) {
+      targetLocale = DEFAULT_LOCALE
+    } else {
+      targetLocale = browserLocale
+    }
 
-  if (!targetLocale || !to) return null
+    const target = {
+      ...location,
+      search: stringify({ ...qs, lng: targetLocale }),
+    }
 
-  return (
-    <Container>
-      <Trans>
-        Uniswap available in:{' '}
-        <StyledInternalLink onClick={onClick} to={to}>
-          {LOCALE_LABEL[targetLocale]}
-        </StyledInternalLink>
-      </Trans>
-    </Container>
-  )
+    return (
+      <Container>
+        <Trans>
+          FOR TESTING ONLY:{' '}
+          {
+            <StyledInternalLink
+              onClick={() => {
+                ReactGA.event({
+                  category: 'Localization',
+                  action: 'Switch Locale',
+                  label: `${activeLocale} -> ${targetLocale}`,
+                })
+              }}
+              to={target}
+            >
+              {LOCALE_LABEL[targetLocale]}
+            </StyledInternalLink>
+          }
+        </Trans>
+      </Container>
+    )
+  }
+  return null
 }

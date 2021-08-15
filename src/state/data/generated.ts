@@ -4220,27 +4220,13 @@ export enum _SubgraphErrorPolicy_ {
   Deny = 'deny'
 }
 
-export type AllV3TicksQueryVariables = Exact<{
-  poolAddress: Scalars['String'];
-  skip: Scalars['Int'];
-}>;
-
-
-export type AllV3TicksQuery = (
-  { __typename?: 'Query' }
-  & { ticks: Array<(
-    { __typename?: 'Tick' }
-    & Pick<Tick, 'tickIdx' | 'liquidityNet' | 'price0' | 'price1'>
-  )> }
-);
-
-export type FeeTierDistributionQueryVariables = Exact<{
+export type PoolsQueryVariables = Exact<{
   token0: Scalars['String'];
   token1: Scalars['String'];
 }>;
 
 
-export type FeeTierDistributionQuery = (
+export type PoolsQuery = (
   { __typename?: 'Query' }
   & { _meta?: Maybe<(
     { __typename?: '_Meta_' }
@@ -4258,23 +4244,8 @@ export type FeeTierDistributionQuery = (
 );
 
 
-export const AllV3TicksDocument = `
-    query allV3Ticks($poolAddress: String!, $skip: Int!) {
-  ticks(
-    first: 1000
-    skip: $skip
-    where: {poolAddress: $poolAddress}
-    orderBy: tickIdx
-  ) {
-    tickIdx
-    liquidityNet
-    price0
-    price1
-  }
-}
-    `;
-export const FeeTierDistributionDocument = `
-    query feeTierDistribution($token0: String!, $token1: String!) {
+export const PoolsDocument = `
+    query pools($token0: String!, $token1: String!) {
   _meta {
     block {
       number
@@ -4303,15 +4274,12 @@ export const FeeTierDistributionDocument = `
 
 const injectedRtkApi = api.injectEndpoints({
   endpoints: (build) => ({
-    allV3Ticks: build.query<AllV3TicksQuery, AllV3TicksQueryVariables>({
-      query: (variables) => ({ document: AllV3TicksDocument, variables })
-    }),
-    feeTierDistribution: build.query<FeeTierDistributionQuery, FeeTierDistributionQueryVariables>({
-      query: (variables) => ({ document: FeeTierDistributionDocument, variables })
+    pools: build.query<PoolsQuery, PoolsQueryVariables>({
+      query: (variables) => ({ document: PoolsDocument, variables })
     }),
   }),
 });
 
 export { injectedRtkApi as api };
-export const { useAllV3TicksQuery, useLazyAllV3TicksQuery, useFeeTierDistributionQuery, useLazyFeeTierDistributionQuery } = injectedRtkApi;
+export const { usePoolsQuery, useLazyPoolsQuery } = injectedRtkApi;
 

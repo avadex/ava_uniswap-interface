@@ -10,12 +10,6 @@ import QuestionHelper from '../QuestionHelper'
 import { AutoRow } from '../Row'
 import CurrencyLogo from '../CurrencyLogo'
 
-const MobileWrapper = styled(AutoColumn)`
-  ${({ theme }) => theme.mediaWidth.upToSmall`
-    display: none;
-  `};
-`
-
 const BaseWrapper = styled.div<{ disable?: boolean }>`
   border: 1px solid ${({ theme, disable }) => (disable ? 'transparent' : theme.bg3)};
   border-radius: 10px;
@@ -45,12 +39,12 @@ export default function CommonBases({
   const bases = typeof chainId !== 'undefined' ? COMMON_BASES[chainId] ?? [] : []
 
   return bases.length > 0 ? (
-    <MobileWrapper gap="md">
+    <AutoColumn gap="md">
       <AutoRow>
         <Text fontWeight={500} fontSize={14}>
-          <Trans>Common bases</Trans>
+          <Trans>Token base</Trans>
         </Text>
-        <QuestionHelper text={<Trans>These tokens are commonly paired with other tokens.</Trans>} />
+        <QuestionHelper text={<Trans>.e tokens represent assets on ethereum.</Trans>} />
       </AutoRow>
       <AutoRow gap="4px">
         {bases.map((currency: Currency) => {
@@ -69,6 +63,6 @@ export default function CommonBases({
           )
         })}
       </AutoRow>
-    </MobileWrapper>
+    </AutoColumn>
   ) : null
 }

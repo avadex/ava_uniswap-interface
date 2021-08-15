@@ -13,6 +13,7 @@ import {
   updateUserExpertMode,
   updateUserSlippageTolerance,
   updateUserDeadline,
+  toggleURLWarning,
   updateUserSingleHopOnly,
   updateHideClosedPositions,
   updateUserLocale,
@@ -187,5 +188,8 @@ export default createReducer(initialState, (builder) =>
         delete state.pairs[chainId][pairKey(tokenBAddress, tokenAAddress)]
       }
       state.timestamp = currentTimestamp()
+    })
+    .addCase(toggleURLWarning, (state) => {
+      state.URLWarningVisible = !state.URLWarningVisible
     })
 )

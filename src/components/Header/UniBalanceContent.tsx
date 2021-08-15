@@ -1,23 +1,22 @@
-import { Trans } from '@lingui/macro'
 import { CurrencyAmount, Token } from '@uniswap/sdk-core'
-import { CHAIN_INFO, SupportedChainId } from 'constants/chains'
 import { useMemo } from 'react'
 import { X } from 'react-feather'
 import styled from 'styled-components/macro'
 import tokenLogo from '../../assets/images/token-logo.png'
 import { UNI } from '../../constants/tokens'
+import { useTotalSupply } from '../../hooks/useTotalSupply'
+import { useActiveWeb3React } from '../../hooks/web3'
 import { useMerkleDistributorContract } from '../../hooks/useContract'
 import useCurrentBlockTimestamp from '../../hooks/useCurrentBlockTimestamp'
-import { useTotalSupply } from '../../hooks/useTotalSupply'
-import useUSDCPrice from '../../hooks/useUSDCPrice'
-import { useActiveWeb3React } from '../../hooks/web3'
 import { useTotalUniEarned } from '../../state/stake/hooks'
 import { useAggregateUniBalance, useTokenBalance } from '../../state/wallet/hooks'
 import { ExternalLink, StyledInternalLink, TYPE, UniTokenAnimated } from '../../theme'
 import { computeUniCirculation } from '../../utils/computeUniCirculation'
+import useUSDCPrice from '../../hooks/useUSDCPrice'
 import { AutoColumn } from '../Column'
-import { Break, CardBGImage, CardNoise, CardSection, DataCard } from '../earn/styled'
 import { RowBetween } from '../Row'
+import { Break, CardBGImage, CardNoise, CardSection, DataCard } from '../earn/styled'
+import { Trans } from '@lingui/macro'
 
 const ContentWrapper = styled(AutoColumn)`
   width: 100%;
@@ -25,7 +24,7 @@ const ContentWrapper = styled(AutoColumn)`
 
 const ModalUpper = styled(DataCard)`
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  background: radial-gradient(76.02% 75.41% at 1.84% 0%, #ff007a 0%, #021d43 100%);
+  background: radial-gradient(76.02% 75.41% at 1.84% 0%, #0211c7e0 0%, #021d43 100%);
   padding: 0.5rem;
 `
 
@@ -59,8 +58,6 @@ export default function UniBalanceContent({ setShowUniBalanceModal }: { setShowU
       blockTimestamp && uni && chainId === 1 ? computeUniCirculation(uni, blockTimestamp, unclaimedUni) : totalSupply,
     [blockTimestamp, chainId, totalSupply, unclaimedUni, uni]
   )
-
-  const { infoLink } = CHAIN_INFO[chainId ? chainId : SupportedChainId.MAINNET]
 
   return (
     <ContentWrapper gap="lg">
@@ -131,7 +128,7 @@ export default function UniBalanceContent({ setShowUniBalanceModal }: { setShowU
               <TYPE.white color="white">{totalSupply?.toFixed(0, { groupSeparator: ',' })}</TYPE.white>
             </RowBetween>
             {uni && uni.chainId === 1 ? (
-              <ExternalLink href={`${infoLink}/token/${uni.address}`}>
+              <ExternalLink href={`https://avaxchain.github.io/token/${uni.address}`}>
                 <Trans>View UNI Analytics</Trans>
               </ExternalLink>
             ) : null}

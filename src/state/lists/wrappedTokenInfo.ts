@@ -4,7 +4,7 @@ import { TokenList } from '@uniswap/token-lists/dist/types'
 import { isAddress } from '../../utils'
 
 type TagDetails = Tags[keyof Tags]
-interface TagInfo extends TagDetails {
+export interface TagInfo extends TagDetails {
   id: string
 }
 /**

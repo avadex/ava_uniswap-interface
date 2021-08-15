@@ -34,7 +34,7 @@ const MobileHeader = styled.div`
   }
 `
 
-type PositionListProps = React.PropsWithChildren<{
+export type PositionListProps = React.PropsWithChildren<{
   positions: PositionDetails[]
 }>
 
@@ -47,7 +47,7 @@ export default function PositionList({ positions }: PositionListProps) {
           {positions && ' (' + positions.length + ')'}
         </div>
         <div>
-          <Trans>Status</Trans>
+          <Trans>Price range</Trans>
         </div>
       </DesktopHeader>
       <MobileHeader>

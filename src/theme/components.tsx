@@ -1,8 +1,9 @@
+import { darken } from 'polished'
 import React, { HTMLProps } from 'react'
 import { ArrowLeft, ExternalLink as LinkIconFeather, Trash, X } from 'react-feather'
 import ReactGA from 'react-ga'
 import { Link } from 'react-router-dom'
-import styled, { keyframes } from 'styled-components/macro'
+import styled, { keyframes } from 'styled-components'
 import { anonymizeLink } from '../utils/anonymizeLink'
 
 export const ButtonText = styled.button`
@@ -20,6 +21,36 @@ export const ButtonText = styled.button`
 
   :focus {
     text-decoration: underline;
+  }
+`
+
+export const Button = styled.button.attrs<{ warning: boolean }, { backgroundColor: string }>(({ warning, theme }) => ({
+  backgroundColor: warning ? theme.red1 : theme.primary1,
+}))`
+  padding: 1rem 2rem 1rem 2rem;
+  border-radius: 3rem;
+  cursor: pointer;
+  user-select: none;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  background-color: ${({ backgroundColor }) => backgroundColor};
+  color: ${({ theme }) => theme.white};
+  width: 100%;
+
+  :hover,
+  :focus {
+    background-color: ${({ backgroundColor }) => darken(0.05, backgroundColor)};
+  }
+
+  :active {
+    background-color: ${({ backgroundColor }) => darken(0.1, backgroundColor)};
+  }
+
+  :disabled {
+    background-color: ${({ theme }) => theme.bg1};
+    color: ${({ theme }) => theme.text4};
+    cursor: auto;
   }
 `
 
@@ -128,7 +159,7 @@ const LinkIconWrapper = styled.a`
   }
 `
 
-const LinkIcon = styled(LinkIconFeather)`
+export const LinkIcon = styled(LinkIconFeather)`
   height: 16px;
   width: 18px;
   margin-left: 10px;
@@ -220,7 +251,7 @@ const rotate = keyframes`
   }
 `
 
-const Spinner = styled.img`
+export const Spinner = styled.img`
   animation: 2s ${rotate} linear infinite;
   width: 16px;
   height: 16px;
@@ -257,6 +288,13 @@ export const HideExtraSmall = styled.span`
 export const SmallOnly = styled.span`
   display: none;
   ${({ theme }) => theme.mediaWidth.upToSmall`
+    display: block;
+  `};
+`
+
+export const ExtraSmallOnly = styled.span`
+  display: none;
+  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
     display: block;
   `};
 `

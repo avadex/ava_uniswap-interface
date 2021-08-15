@@ -1,17 +1,23 @@
-import {
-  GOVERNANCE_ALPHA_V0_ADDRESSES,
-  GOVERNANCE_ALPHA_V1_ADDRESSES,
-  TIMELOCK_ADDRESS,
-  UNI_ADDRESS,
-} from './addresses'
+import { GOVERNANCE_ADDRESSES, TIMELOCK_ADDRESS, UNI_ADDRESS } from './addresses'
 import { SupportedChainId } from './chains'
+
+// returns { [address]: `Governance (V${n})`} for each address in GOVERNANCE_ADDRESSES except the current, which gets no version indicator
+const governanceContracts = (): Record<string, string> =>
+  GOVERNANCE_ADDRESSES.reduce(
+    (acc, addressMap, i) => ({
+      ...acc,
+      [addressMap[SupportedChainId.MAINNET]]: `Governance${
+        i === 0 ? '' : ` (V${GOVERNANCE_ADDRESSES.length - 1 - i})`
+      }`,
+    }),
+    {}
+  )
 
 export const COMMON_CONTRACT_NAMES: Record<number, { [address: string]: string }> = {
   [SupportedChainId.MAINNET]: {
     [UNI_ADDRESS[SupportedChainId.MAINNET]]: 'UNI',
     [TIMELOCK_ADDRESS[SupportedChainId.MAINNET]]: 'Timelock',
-    [GOVERNANCE_ALPHA_V0_ADDRESSES[SupportedChainId.MAINNET]]: 'Governance (V0)',
-    [GOVERNANCE_ALPHA_V1_ADDRESSES[SupportedChainId.MAINNET]]: 'Governance',
+    ...governanceContracts(),
   },
 }
 

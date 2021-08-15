@@ -13,8 +13,6 @@ import { resetMintState } from 'state/mint/actions'
 import { resetMintState as resetMintV3State } from 'state/mint/v3/actions'
 import { TYPE } from 'theme'
 import useTheme from 'hooks/useTheme'
-import { ReactNode } from 'react'
-import { Box } from 'rebass'
 
 const Tabs = styled.div`
   ${({ theme }) => theme.flexRowNoWrap}
@@ -51,15 +49,6 @@ const StyledNavLink = styled(NavLink).attrs({
   }
 `
 
-const StyledHistoryLink = styled(HistoryLink)<{ flex: string | undefined }>`
-  flex: ${({ flex }) => flex ?? 'none'};
-
-  ${({ theme }) => theme.mediaWidth.upToMedium`
-    flex: none;
-    margin-right: 10px;
-  `};
-`
-
 const ActiveText = styled.div`
   font-weight: 500;
   font-size: 20px;
@@ -85,11 +74,11 @@ export function SwapPoolTabs({ active }: { active: 'swap' | 'pool' }) {
 export function FindPoolTabs({ origin }: { origin: string }) {
   return (
     <Tabs>
-      <RowBetween style={{ padding: '1rem 1rem 0 1rem', position: 'relative' }}>
+      <RowBetween style={{ padding: '1rem 1rem 0 1rem' }}>
         <HistoryLink to={origin}>
           <StyledArrowLeft />
         </HistoryLink>
-        <ActiveText style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
+        <ActiveText>
           <Trans>Import V2 Pool</Trans>
         </ActiveText>
       </RowBetween>
@@ -102,14 +91,11 @@ export function AddRemoveTabs({
   creating,
   defaultSlippage,
   positionID,
-  children,
 }: {
   adding: boolean
   creating: boolean
   defaultSlippage: Percent
   positionID?: string | undefined
-  showBackLink?: boolean
-  children?: ReactNode | undefined
 }) {
   const theme = useTheme()
   // reset states on back
@@ -124,7 +110,7 @@ export function AddRemoveTabs({
   return (
     <Tabs>
       <RowBetween style={{ padding: '1rem 1rem 0 1rem' }}>
-        <StyledHistoryLink
+        <HistoryLink
           to={poolLink}
           onClick={() => {
             if (adding) {
@@ -133,15 +119,10 @@ export function AddRemoveTabs({
               dispatch(resetMintV3State())
             }
           }}
-          flex={children ? '1' : undefined}
         >
           <StyledArrowLeft stroke={theme.text2} />
-        </StyledHistoryLink>
-        <TYPE.mediumHeader
-          fontWeight={500}
-          fontSize={20}
-          style={{ flex: '1', margin: 'auto', textAlign: children ? 'start' : 'center' }}
-        >
+        </HistoryLink>
+        <TYPE.mediumHeader fontWeight={500} fontSize={20}>
           {creating ? (
             <Trans>Create a pair</Trans>
           ) : adding ? (
@@ -150,7 +131,6 @@ export function AddRemoveTabs({
             <Trans>Remove Liquidity</Trans>
           )}
         </TYPE.mediumHeader>
-        <Box style={{ marginRight: '.5rem' }}>{children}</Box>
         <SettingsTab placeholderSlippage={defaultSlippage} />
       </RowBetween>
     </Tabs>

@@ -46,14 +46,13 @@ const PageWrapper = styled(AutoColumn)`
 `
 
 const ProposalInfo = styled(AutoColumn)`
-  background: ${({ theme }) => theme.bg0};
+  border: 1px solid ${({ theme }) => theme.bg4};
   border-radius: 12px;
   padding: 1.5rem;
   position: relative;
   max-width: 640px;
   width: 100%;
 `
-
 const ArrowWrapper = styled(StyledInternalLink)`
   display: flex;
   align-items: center;
@@ -175,7 +174,7 @@ export default function VotePage({
     availableVotes &&
     JSBI.greaterThan(availableVotes.quotient, JSBI.BigInt(0)) &&
     proposalData &&
-    proposalData.status === ProposalState.ACTIVE
+    proposalData.status === ProposalState.Active
 
   const uniBalance: CurrencyAmount<Token> | undefined = useTokenBalance(
     account ?? undefined,
@@ -212,7 +211,9 @@ export default function VotePage({
                 <ArrowLeft size={20} /> All Proposals
               </Trans>
             </ArrowWrapper>
-            {proposalData && <ProposalStatus status={proposalData.status} />}
+            {proposalData && (
+              <ProposalStatus status={proposalData.status}>{ProposalState[proposalData.status]}</ProposalStatus>
+            )}
           </RowBetween>
           <AutoColumn gap="10px" style={{ width: '100%' }}>
             <TYPE.largeHeader style={{ marginBottom: '.5rem' }}>{proposalData?.title}</TYPE.largeHeader>
@@ -227,7 +228,7 @@ export default function VotePage({
                 )}
               </TYPE.main>
             </RowBetween>
-            {proposalData && proposalData.status === ProposalState.ACTIVE && !showVotingButtons && (
+            {proposalData && proposalData.status === ProposalState.Active && !showVotingButtons && (
               <GreyCard>
                 <TYPE.black>
                   <Trans>
@@ -250,7 +251,7 @@ export default function VotePage({
             <RowFixed style={{ width: '100%', gap: '12px' }}>
               <ButtonPrimary
                 padding="8px"
-                $borderRadius="8px"
+                borderRadius="8px"
                 onClick={() => {
                   setSupport(true)
                   toggleVoteModal()
@@ -260,7 +261,7 @@ export default function VotePage({
               </ButtonPrimary>
               <ButtonPrimary
                 padding="8px"
-                $borderRadius="8px"
+                borderRadius="8px"
                 onClick={() => {
                   setSupport(false)
                   toggleVoteModal()

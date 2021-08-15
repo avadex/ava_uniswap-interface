@@ -1,5 +1,5 @@
 import { createStore, Store } from 'redux'
-import { addPopup, ApplicationModal, removePopup, setOpenModal, updateBlockNumber, updateChainId } from './actions'
+import { addPopup, ApplicationModal, removePopup, setOpenModal, updateBlockNumber } from './actions'
 import reducer, { ApplicationState } from './reducer'
 
 describe('application reducer', () => {
@@ -7,7 +7,6 @@ describe('application reducer', () => {
 
   beforeEach(() => {
     store = createStore(reducer, {
-      chainId: null,
       popupList: [],
       blockNumber: {
         [1]: 3,
@@ -49,16 +48,6 @@ describe('application reducer', () => {
       expect(store.getState().openModal).toEqual(ApplicationModal.CLAIM_POPUP)
       store.dispatch(setOpenModal(null))
       expect(store.getState().openModal).toEqual(null)
-    })
-  })
-
-  describe('updateChainId', () => {
-    it('updates chain id', () => {
-      expect(store.getState().chainId).toEqual(null)
-
-      store.dispatch(updateChainId({ chainId: 1 }))
-
-      expect(store.getState().chainId).toEqual(1)
     })
   })
 

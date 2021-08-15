@@ -1,5 +1,5 @@
 import { ActionCreatorWithPayload, createAction } from '@reduxjs/toolkit'
-import { TokenList } from '@uniswap/token-lists'
+import { TokenList, Version } from '@uniswap/token-lists'
 
 export const fetchTokenList: Readonly<{
   pending: ActionCreatorWithPayload<{ url: string; requestId: string }>
@@ -20,3 +20,4 @@ export const disableList = createAction<string>('lists/disableList')
 
 // versioning
 export const acceptListUpdate = createAction<string>('lists/acceptListUpdate')
+export const rejectVersionUpdate = createAction<Version>('lists/rejectVersionUpdate')

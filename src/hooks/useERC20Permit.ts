@@ -75,11 +75,11 @@ interface BaseSignatureData {
   permitType: PermitType
 }
 
-interface StandardSignatureData extends BaseSignatureData {
+export interface StandardSignatureData extends BaseSignatureData {
   amount: string
 }
 
-interface AllowedSignatureData extends BaseSignatureData {
+export interface AllowedSignatureData extends BaseSignatureData {
   allowed: true
 }
 
@@ -114,7 +114,7 @@ const PERMIT_ALLOWED_TYPE = [
   { name: 'allowed', type: 'bool' },
 ]
 
-function useERC20Permit(
+export function useERC20Permit(
   currencyAmount: CurrencyAmount<Currency> | null | undefined,
   spender: string | null | undefined,
   overridePermitInfo: PermitInfo | undefined | null

@@ -1,30 +1,35 @@
-import { Trans } from '@lingui/macro'
-import { CurrencyAmount, Token } from '@uniswap/sdk-core'
-import ProposalEmptyState from 'components/vote/ProposalEmptyState'
-import JSBI from 'jsbi'
-import { darken } from 'polished'
-import { Link } from 'react-router-dom'
-import { Button } from 'rebass/styled-components'
+import { AutoColumn } from '../../components/Column'
 import styled from 'styled-components/macro'
-import { ButtonPrimary } from 'components/Button'
-import { AutoColumn } from 'components/Column'
-import { CardBGImage, CardNoise, CardSection, DataCard } from 'components/earn/styled'
-import FormattedCurrencyAmount from 'components/FormattedCurrencyAmount'
-import Loader from 'components/Loader'
-import { AutoRow, RowBetween, RowFixed } from 'components/Row'
-import { SwitchLocaleLink } from 'components/SwitchLocaleLink'
-import DelegateModal from 'components/vote/DelegateModal'
-import { ZERO_ADDRESS } from '../../constants/misc'
+import { SwitchLocaleLink } from '../../components/SwitchLocaleLink'
 import { UNI } from '../../constants/tokens'
-import { useActiveWeb3React } from 'hooks/web3'
-import { ApplicationModal } from 'state/application/actions'
-import { useModalOpen, useToggleDelegateModal } from 'state/application/hooks'
-import { ProposalData, useAllProposalData, useUserDelegatee, useUserVotes } from 'state/governance/hooks'
-import { useTokenBalance } from 'state/wallet/hooks'
-import { ExternalLink, TYPE } from 'theme'
-import { shortenAddress } from 'utils'
-import { ExplorerDataType, getExplorerLink } from 'utils/getExplorerLink'
+import { ExternalLink, TYPE } from '../../theme'
+import { AutoRow, RowBetween, RowFixed } from '../../components/Row'
+import { Link } from 'react-router-dom'
+import { getExplorerLink, ExplorerDataType } from '../../utils/getExplorerLink'
 import { ProposalStatus } from './styled'
+import { ButtonPrimary } from '../../components/Button'
+import { Button } from 'rebass/styled-components'
+import { darken } from 'polished'
+import { CardBGImage, CardNoise, CardSection, DataCard } from '../../components/earn/styled'
+import {
+  ProposalData,
+  ProposalState,
+  useAllProposalData,
+  useUserDelegatee,
+  useUserVotes,
+} from '../../state/governance/hooks'
+import DelegateModal from '../../components/vote/DelegateModal'
+import { useTokenBalance } from '../../state/wallet/hooks'
+import { useActiveWeb3React } from '../../hooks/web3'
+import { ZERO_ADDRESS } from '../../constants/misc'
+import { Token, CurrencyAmount } from '@uniswap/sdk-core'
+import JSBI from 'jsbi'
+import { shortenAddress } from '../../utils'
+import Loader from '../../components/Loader'
+import FormattedCurrencyAmount from '../../components/FormattedCurrencyAmount'
+import { useModalOpen, useToggleDelegateModal } from '../../state/application/hooks'
+import { ApplicationModal } from '../../state/application/actions'
+import { Trans } from '@lingui/macro'
 
 const PageWrapper = styled(AutoColumn)``
 
@@ -96,6 +101,16 @@ const StyledExternalLink = styled(ExternalLink)`
   color: ${({ theme }) => theme.text1};
 `
 
+const EmptyProposals = styled.div`
+  border: 1px solid ${({ theme }) => theme.text4};
+  padding: 16px 12px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
 export default function Vote() {
   const { account, chainId } = useActiveWeb3React()
 
@@ -104,10 +119,10 @@ export default function Vote() {
   const toggleDelegateModal = useToggleDelegateModal()
 
   // get data to list all proposals
-  const { data: allProposals, loading: loadingProposals } = useAllProposalData()
+  const allProposals: ProposalData[] = useAllProposalData()
 
   // user data
-  const { loading: loadingAvailableVotes, votes: availableVotes } = useUserVotes()
+  const availableVotes: CurrencyAmount<Token> | undefined = useUserVotes()
   const uniBalance: CurrencyAmount<Token> | undefined = useTokenBalance(
     account ?? undefined,
     chainId ? UNI[chainId] : undefined
@@ -118,6 +133,8 @@ export default function Vote() {
   const showUnlockVoting = Boolean(
     uniBalance && JSBI.notEqual(uniBalance.quotient, JSBI.BigInt(0)) && userDelegatee === ZERO_ADDRESS
   )
+
+  const maxGovernorIndex = allProposals.reduce((max, p) => Math.max(p.governorIndex, max), 0)
 
   return (
     <>
@@ -167,12 +184,12 @@ export default function Vote() {
               <Trans>Proposals</Trans>
             </TYPE.mediumHeader>
             <AutoRow gap="6px" justify="flex-end">
-              {loadingProposals || loadingAvailableVotes ? <Loader /> : null}
+              {(!allProposals || allProposals.length === 0) && !availableVotes && <Loader />}
               {showUnlockVoting ? (
                 <ButtonPrimary
                   style={{ width: 'fit-content' }}
                   padding="8px"
-                  $borderRadius="8px"
+                  borderRadius="8px"
                   onClick={toggleDelegateModal}
                 >
                   <Trans>Unlock Voting</Trans>
@@ -230,21 +247,29 @@ export default function Vote() {
               )}
             </RowBetween>
           )}
-          {allProposals?.length === 0 && <ProposalEmptyState />}
-          {allProposals
-            ?.slice(0)
-            ?.reverse()
-            ?.map((p: ProposalData) => {
-              return (
-                <Proposal as={Link} to={`/vote/${p.governorIndex}/${p.id}`} key={`${p.governorIndex}${p.id}`}>
-                  <ProposalNumber>
-                    {p.governorIndex}.{p.id}
-                  </ProposalNumber>
-                  <ProposalTitle>{p.title}</ProposalTitle>
-                  <ProposalStatus status={p.status} />
-                </Proposal>
-              )
-            })}
+          {allProposals?.length === 0 && (
+            <EmptyProposals>
+              <TYPE.body style={{ marginBottom: '8px' }}>
+                <Trans>No proposals found.</Trans>
+              </TYPE.body>
+              <TYPE.subHeader>
+                <i>
+                  <Trans>Proposals submitted by community members will appear here.</Trans>
+                </i>
+              </TYPE.subHeader>
+            </EmptyProposals>
+          )}
+          {allProposals?.reverse()?.map((p: ProposalData) => {
+            return (
+              <Proposal as={Link} to={`/vote/${p.governorIndex}/${p.id}`} key={`${p.governorIndex}${p.id}`}>
+                <ProposalNumber>
+                  {maxGovernorIndex - p.governorIndex}.{p.id}
+                </ProposalNumber>
+                <ProposalTitle>{p.title}</ProposalTitle>
+                <ProposalStatus status={p.status}>{ProposalState[p.status]}</ProposalStatus>
+              </Proposal>
+            )
+          })}
         </TopSection>
         <TYPE.subHeader color="text3">
           <Trans>A minimum threshold of 0.25% of the total UNI supply is required to submit proposals</Trans>
