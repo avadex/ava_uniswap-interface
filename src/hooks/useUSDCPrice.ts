@@ -10,6 +10,8 @@ import { useActiveWeb3React } from './web3'
 // The amount is large enough to filter low liquidity pairs.
 const STABLECOIN_AMOUNT_OUT: { [chainId: number]: CurrencyAmount<Token> } = {
   [SupportedChainId.MAINNET]: CurrencyAmount.fromRawAmount(USDC, 100_000e6),
+  //[SupportedChainId.AVA]: CurrencyAmount.fromRawAmount(USDT_AVA, 10_000e6),
+  //[SupportedChainId.OPTIMISM]: CurrencyAmount.fromRawAmount(DAI_OPTIMISM, 10_000e18),
 }
 
 /**

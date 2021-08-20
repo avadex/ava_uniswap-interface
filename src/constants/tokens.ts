@@ -27,7 +27,7 @@ export const USDT_AVA = new Token(
   SupportedChainId.AVA,
   '0xc7198437980c041c805A1EDcbA50c1Ce5db95118',
   6,
-  'USDT',
+  'USDT_e',
   'USD//e'
 )
 export const CRACK = new Token(
@@ -51,6 +51,13 @@ export const WETH_e = new Token(
   'WETH_e',
   'Wrapped ETH'
 )
+export const DAI_OPTIMISM = new Token(
+  SupportedChainId.OPTIMISM,
+  '0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1',
+  18,
+  'DAI',
+  'Dai stable coin'
+)
 export const USDT = new Token(
   SupportedChainId.MAINNET,
   '0xdAC17F958D2ee523a2206206994597C13D831ec7',
@@ -58,9 +65,23 @@ export const USDT = new Token(
   'USDT',
   'Tether USD'
 )
+export const USDT_OPTIMISM = new Token(
+  SupportedChainId.OPTIMISM,
+  '0x94b008aA00579c1307B0EF2c499aD98a8ce58e58',
+  6,
+  'USDT',
+  'Tether USD'
+)
 export const WBTC = new Token(
   SupportedChainId.MAINNET,
   '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599',
+  8,
+  'WBTC',
+  'Wrapped BTC'
+)
+export const WBTC_OPTIMISM = new Token(
+  SupportedChainId.OPTIMISM,
+  '0x68f180fcCe6836688e9084f035309E29Bf0A2095',
   8,
   'WBTC',
   'Wrapped BTC'
@@ -100,34 +121,12 @@ export const renBTC = new Token(
   'renBTC',
   'renBTC'
 )
-export const UMA = new Token(
-  SupportedChainId.MAINNET,
-  '0x04Fa0d235C4abf4BcF4787aF4CF447DE572eF828',
-  18,
-  'UMA',
-  'UMA Voting Token v1'
-)
 export const ETH2X_FLI = new Token(
   SupportedChainId.MAINNET,
   '0xAa6E8127831c9DE45ae56bB1b0d4D4Da6e5665BD',
   18,
   'ETH2x-FLI',
   'ETH 2x Flexible Leverage Index'
-)
-// Mirror Protocol compat.
-export const UST = new Token(
-  SupportedChainId.MAINNET,
-  '0xa47c8bf37f92abed4a126bda807a7b7498661acd',
-  18,
-  'UST',
-  'Wrapped UST'
-)
-export const MIR = new Token(
-  SupportedChainId.MAINNET,
-  '0x09a3ecafa817268f77be1283176b946c4ff2e608',
-  18,
-  'MIR',
-  'Wrapped MIR'
 )
 export const UNI: { [chainId: number]: Token } = {
   [SupportedChainId.MAINNET]: new Token(SupportedChainId.MAINNET, UNI_ADDRESS[1], 18, 'UNI', 'Uniswap'),
@@ -144,7 +143,21 @@ export const WETH9_EXTENDED: { [chainId: number]: Token } = {
     '0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7',
     18,
     'WAVAX',
-    'Wrapped AVAX'
+    'Wrapped Avax'
+  ),
+  [SupportedChainId.OPTIMISM]: new Token(
+    SupportedChainId.OPTIMISM,
+    '0x4200000000000000000000000000000000000006',
+    18,
+    'WETH',
+    'Wrapped Ether'
+  ),
+  [SupportedChainId.OPTIMISTIC_KOVAN]: new Token(
+    SupportedChainId.OPTIMISTIC_KOVAN,
+    '0x4200000000000000000000000000000000000006',
+    18,
+    'WETH',
+    'Wrapped Ether'
   ),
   [SupportedChainId.ARBITRUM_RINKEBY]: new Token(
     SupportedChainId.ARBITRUM_RINKEBY,
@@ -161,7 +174,9 @@ export class ExtendedEther extends Ether {
     throw new Error('Unsupported chain ID')
   }
 
+  private static _cachedEther: { [chainId: number]: ExtendedEther } = {}
+
   public static onChain(chainId: number): ExtendedEther {
-    return new ExtendedEther(chainId)
+    return this._cachedEther[chainId] ?? (this._cachedEther[chainId] = new ExtendedEther(chainId))
   }
 }
