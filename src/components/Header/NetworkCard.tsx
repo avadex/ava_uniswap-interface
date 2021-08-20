@@ -181,7 +181,7 @@ export default function NetworkCard() {
           <MenuFlyout>
             <MenuItem href="https://bridge.avax.network/">
               <div>
-                <Trans>ETH Bridge</Trans>
+                <Trans>ETH - AVA Bridge</Trans>
               </div>
               <LinkOutCircle />
             </MenuItem>

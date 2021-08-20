@@ -336,7 +336,7 @@ export default function Header() {
           <Trans>Bridge</Trans>
           <sup>↗</sup>
         </StyledExternalLink>
-        <StyledExternalLink id={`stake-nav-link`} href={'https://avaxchain.github.io'}>
+        <StyledExternalLink id={`stake-nav-link`} href={'https://avaxchain.github.io/#/tokens'}>
           <Trans>Charts</Trans>
           <sup>↗</sup>
         </StyledExternalLink>
@@ -365,7 +365,7 @@ export default function Header() {
           <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
             {account && userEthBalance ? (
               <BalanceText style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>
-                <Trans>{userEthBalance?.toSignificant(4)} ETH</Trans>
+                <Trans>{userEthBalance?.toSignificant(4)} AVAX</Trans>
               </BalanceText>
             ) : null}
             <Web3Status />

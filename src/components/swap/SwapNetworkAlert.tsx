@@ -16,12 +16,12 @@ const CloseIcon = styled(X)`
 `
 const Wrapper = styled.div`
   border-radius: 20px;
-  background: radial-gradient(285.11% 8200.45% at 29.05% 48.94%, rgba(40, 160, 240, 0.1) 0%, rgba(219, 255, 0, 0) 100%),
-    radial-gradient(76.02% 75.41% at 1.84% 0%, rgba(150, 190, 220, 0.3) 0%, rgba(33, 114, 229, 0.3) 100%);
+  radial-gradient(285.11% 8200.45% at 29.05% 48.94%,rgba(40,160,240,0.1) 0%,rgba(219,255,0,0) 100%),
+   radial-gradient(76.02% 75.41% at 1.84% 0%,rgba(150,190,220,0.3) 0%,rgb(39 11 11 / 78%) 100%)
   display: flex;
   flex-direction: column;
   max-width: 480px;
-  min-height: 212px;
+  min-height: 150px;
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -40,8 +40,8 @@ const Wrapper = styled.div`
 const ArbitrumTextStyles = styled.span`
   font-style: italic;
   font-weight: 900;
-  color: #f3de1e;
-  background: linear-gradient(to right, #f3de1e, #ffffff);
+  color: #f9f9f9;
+  background: linear-gradient(to right, #19180f, #bdb9b9;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

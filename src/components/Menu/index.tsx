@@ -121,7 +121,7 @@ const InternalMenuItem = styled(Link)`
   }
 `
 
-const CODE_LINK = 'https://github.com/Uniswap/uniswap-interface'
+const CODE_LINK = 'https://github.com/avadex/uniswap-interface'
 
 export default function Menu() {
   const { account } = useActiveWeb3React()
@@ -159,13 +159,13 @@ export default function Menu() {
               <Trans>Code</Trans>
             </div>
           </MenuItem>
-          <MenuItem href="https://t.me/ava_uniswapv3">
+          <MenuItem href="https://t.me/avalanche_trading">
             <MessageCircle size={14} />
             <div>
               <Trans>Community</Trans>
             </div>
           </MenuItem>
-          <MenuItem href="https://avaxchain.github.io/">
+          <MenuItem href="https://avaxchain.github.io/#/tokens">
             <PieChart size={14} />
             <div>
               <Trans>Analytics</Trans>

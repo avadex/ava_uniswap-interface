@@ -122,10 +122,10 @@ export default function CTACards() {
       <CTA1 href={'https://avax.network'}>
         <ResponsiveColumn>
           <HeaderText>
-            <Trans>Uniswap V3 is here!</Trans>
+            <Trans>Uniswap Fork V3 Testrelease is here!</Trans>
           </HeaderText>
           <TYPE.body fontWeight={300} style={{ alignItems: 'center', display: 'flex', maxWidth: '80%' }}>
-            <Trans> V3 Build on Avalanche.</Trans>
+            <Trans> Build on Avalanche.</Trans>
           </TYPE.body>
           <RowBetween align="flex-end">
             <HeaderText>↗</HeaderText>
@@ -133,13 +133,13 @@ export default function CTACards() {
           </RowBetween>
         </ResponsiveColumn>
       </CTA1>
-      <CTA2 href={'https://avaxchain.github.io/#/pools'}>
+      <CTA2 href={'https://avaxchain.github.io/#/tokens'}>
         <ResponsiveColumn>
           <HeaderText style={{ alignSelf: 'flex-start' }}>
             <Trans>Top pools</Trans>
           </HeaderText>
           <TYPE.body fontWeight={300} style={{ alignSelf: 'flex-start' }}>
-            <Trans>Explore popular pools on Analytics.</Trans>
+            <Trans>Explore popular tokens on Analytics.</Trans>
           </TYPE.body>
           <HeaderText style={{ alignSelf: 'flex-end' }}>↗</HeaderText>
         </ResponsiveColumn>
