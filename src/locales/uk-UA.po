@@ -358,11 +358,11 @@ msgstr "Забрати"
 #: src/components/claim/AddressClaimModal.tsx
 #: src/components/claim/ClaimModal.tsx
 #: src/components/claim/ClaimModal.tsx
-msgid "Claim UNI"
+msgid "Nothing"
 msgstr "Забрати UNI"
 
 #: src/components/claim/AddressClaimModal.tsx
-msgid "Claim UNI Token"
+msgid "Nothing Token"
 msgstr "Забрати токени UNI"
 
 #: src/components/earn/ClaimRewardModal.tsx
@@ -428,7 +428,7 @@ msgstr "Зібрати"
 
 #: src/pages/Pool/PositionPage.tsx
 #: src/pages/RemoveLiquidity/V3.tsx
-msgid "Collect as WETH"
+msgid "Collect as WAVAX"
 msgstr "Зібрати як WETH"
 
 #: src/pages/Pool/PositionPage.tsx
@@ -782,7 +782,7 @@ msgid "For"
 msgstr "Для"
 
 #: src/pages/MigrateV2/index.tsx
-msgid "For each pool shown below, click migrate to remove your liquidity from Uniswap V2 and deposit it into Uniswap V3."
+msgid "For each pool shown below, click migrate to remove your liquidity from V2 and deposit it into V3 NOT TESTED."
 msgstr "Для кожного пула, показаного нижче, клацніть на перенесення, щоб видалити ліквідність з Uniswap V2 та внести її в Uniswap V3."
 
 #: src/components/swap/SwapModalHeader.tsx

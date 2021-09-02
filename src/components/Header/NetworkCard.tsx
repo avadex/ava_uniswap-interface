@@ -9,7 +9,7 @@ import { useModalOpen, useToggleModal } from 'state/application/hooks'
 import styled, { css } from 'styled-components/macro'
 import { ExternalLink } from 'theme'
 import { switchToNetwork } from 'utils/switchToNetwork'
-import { CHAIN_INFO, L2_CHAIN_IDS, SupportedChainId, SupportedL2ChainId } from '../../constants/chains'
+import { CHAIN_INFO, L1_CHAIN_IDS, SupportedChainId, SupportedL1ChainId } from '../../constants/chains'
 
 const BaseWrapper = css`
   position: relative;
@@ -186,8 +186,8 @@ export default function NetworkCard() {
     return null
   }
 
-  if (L2_CHAIN_IDS.includes(chainId)) {
-    const info = CHAIN_INFO[chainId as SupportedL2ChainId]
+  if (L1_CHAIN_IDS.includes(chainId)) {
+    const info = CHAIN_INFO[chainId as SupportedL1ChainId]
     const isArbitrum = [SupportedChainId.AVA, SupportedChainId.ARBITRUM_RINKEBY].includes(chainId)
     return (
       <L2Wrapper ref={node}>
@@ -215,7 +215,7 @@ export default function NetworkCard() {
             {implements3085 ? (
               <ButtonMenuItem onClick={() => switchToNetwork({ library, chainId: SupportedChainId.MAINNET })}>
                 <div>
-                  <Trans>Switch to L1 (Mainnet)</Trans>
+                  <Trans>Switch to (Ethereum)</Trans>
                 </div>
                 <ToggleLeft opacity={0.6} size={16} />
               </ButtonMenuItem>

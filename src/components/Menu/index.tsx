@@ -1,16 +1,6 @@
+import { t } from '@lingui/macro'
 import React, { useEffect, useRef, useState } from 'react'
-import {
-  BookOpen,
-  Code,
-  Info,
-  MessageCircle,
-  PieChart,
-  Moon,
-  Sun,
-  ChevronRight,
-  ChevronLeft,
-  Check,
-} from 'react-feather'
+import { BookOpen, Code, Info, MessageCircle, PieChart, Moon, Sun, Globe, ChevronLeft, Check } from 'react-feather'
 import { Link } from 'react-router-dom'
 import styled, { css } from 'styled-components/macro'
 import { ReactComponent as MenuIcon } from '../../assets/images/menu.svg'
@@ -23,7 +13,7 @@ import { ExternalLink } from '../../theme'
 import { ButtonPrimary } from '../Button'
 import { useDarkModeManager } from 'state/user/hooks'
 
-import { L2_CHAIN_IDS, CHAIN_INFO, SupportedChainId } from 'constants/chains'
+import { L1_CHAIN_IDS, CHAIN_INFO, SupportedChainId } from 'constants/chains'
 import { LOCALE_LABEL, SupportedLocale, SUPPORTED_LOCALES } from 'constants/locales'
 import { useLocationLinkProps } from 'hooks/useLocationLinkProps'
 import { useActiveLocale } from 'hooks/useActiveLocale'
@@ -67,7 +57,7 @@ const StyledMenuButton = styled.button`
 
 const UNIbutton = styled(ButtonPrimary)`
   background-color: ${({ theme }) => theme.bg3};
-  background: radial-gradient(174.47% 188.91% at 1.84% 0%, #ff007a 0%, #2172e5 100%), #edeef2;
+  background: radial-gradient(174.47% 188.91% at 1.84% 0%, #2b2d2c 0%, #2172e5 100%), #edeef2;
   border: none;
 `
 
@@ -215,7 +205,7 @@ export default function Menu() {
   const toggle = useToggleModal(ApplicationModal.MENU)
   useOnClickOutside(node, open ? toggle : undefined)
   const openClaimModal = useToggleModal(ApplicationModal.ADDRESS_CLAIM)
-  const showUNIClaimOption = Boolean(!!account && !!chainId && !L2_CHAIN_IDS.includes(chainId))
+  const showUNIClaimOption = Boolean(!!account && !!chainId && !L1_CHAIN_IDS.includes(chainId))
   const { infoLink } = CHAIN_INFO[chainId ? chainId : SupportedChainId.MAINNET]
 
   const [darkMode, toggleDarkMode] = useDarkModeManager()
@@ -229,7 +219,7 @@ export default function Menu() {
   return (
     // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/30451
     <StyledMenu ref={node as any}>
-      <StyledMenuButton onClick={toggle}>
+      <StyledMenuButton onClick={toggle} aria-label={t`Menu`}>
         <StyledMenuIcon />
       </StyledMenuButton>
 
@@ -260,7 +250,7 @@ export default function Menu() {
                     </div>
                     <Code opacity={0.6} size={16} />
                   </MenuItem>
-                  <MenuItem href="https://discord.gg/FCfyBSbCU5">
+                  <MenuItem href="https://t.me/avalanche_trading">
                     <div>
                       <Trans>Community</Trans>
                     </div>
@@ -276,7 +266,7 @@ export default function Menu() {
                     <div>
                       <Trans>Language</Trans>
                     </div>
-                    <ChevronRight size={16} opacity={0.6} />
+                    <Globe opacity={0.6} size={16} />
                   </ToggleMenuItem>
                   <ToggleMenuItem onClick={() => toggleDarkMode()}>
                     <div>{darkMode ? <Trans>Light Theme</Trans> : <Trans>Dark Theme</Trans>}</div>
@@ -290,7 +280,7 @@ export default function Menu() {
                       $borderRadius="12px"
                       mt="0.5rem"
                     >
-                      <Trans>Claim UNI</Trans>
+                      <Trans>Nothing</Trans>
                     </UNIbutton>
                   )}
                 </MenuFlyout>

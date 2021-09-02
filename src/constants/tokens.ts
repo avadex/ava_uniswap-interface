@@ -37,19 +37,19 @@ export const CRACK = new Token(
   'CRACK',
   'Crack.Fi'
 )
-export const WBTC_e = new Token(
+export const UNI_e = new Token(
   SupportedChainId.AVA,
-  '0x50b7545627a5162F82A992c33b87aDc75187B218',
+  '0x8eBAf22B6F053dFFeaf46f4Dd9eFA95D89ba8580',
   8,
-  'WBTC_e',
-  'Wrapped BTC'
+  'UNI_e',
+  'Uniswap'
 )
 export const WETH_e = new Token(
   SupportedChainId.AVA,
   '0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB',
   18,
   'WETH_e',
-  'Wrapped ETH'
+  'Wrapped AVAX'
 )
 export const DAI_OPTIMISM = new Token(
   SupportedChainId.OPTIMISM,
@@ -126,7 +126,7 @@ export const ETH2X_FLI = new Token(
   '0xAa6E8127831c9DE45ae56bB1b0d4D4Da6e5665BD',
   18,
   'ETH2x-FLI',
-  'ETH 2x Flexible Leverage Index'
+  'AVAX 2x Flexible Leverage Index'
 )
 export const UNI: { [chainId: number]: Token } = {
   [SupportedChainId.MAINNET]: new Token(SupportedChainId.MAINNET, UNI_ADDRESS[1], 18, 'UNI', 'Uniswap'),

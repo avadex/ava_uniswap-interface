@@ -15,7 +15,7 @@ import MetaMaskLogo from '../../assets/images/metamask.png'
 import { useActiveWeb3React } from '../../hooks/web3'
 import useAddTokenToMetamask from 'hooks/useAddTokenToMetamask'
 import { Trans } from '@lingui/macro'
-import { CHAIN_INFO, L2_CHAIN_IDS, SupportedL2ChainId } from 'constants/chains'
+import { CHAIN_INFO, L1_CHAIN_IDS, SupportedL1ChainId } from 'constants/chains'
 import { useIsTransactionConfirmed, useTransaction } from 'state/transactions/hooks'
 import Badge from 'components/Badge'
 import AnimatedConfirmation from './AnimatedConfirmation'
@@ -232,7 +232,7 @@ function L2Content({
     ? (transaction.confirmedTime - transaction.addedTime) / 1000
     : undefined
 
-  const info = CHAIN_INFO[chainId as SupportedL2ChainId]
+  const info = CHAIN_INFO[chainId as SupportedL1ChainId]
 
   return (
     <Wrapper>
@@ -328,7 +328,7 @@ export default function TransactionConfirmationModal({
 }: ConfirmationModalProps) {
   const { chainId } = useActiveWeb3React()
 
-  const isL2 = Boolean(chainId && L2_CHAIN_IDS.includes(chainId))
+  const isL2 = Boolean(chainId && L1_CHAIN_IDS.includes(chainId))
 
   if (!chainId) return null
 

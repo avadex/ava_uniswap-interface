@@ -358,11 +358,11 @@ msgstr "مطالبة"
 #: src/components/claim/AddressClaimModal.tsx
 #: src/components/claim/ClaimModal.tsx
 #: src/components/claim/ClaimModal.tsx
-msgid "Claim UNI"
+msgid "Nothing"
 msgstr "مطالبة UNI"
 
 #: src/components/claim/AddressClaimModal.tsx
-msgid "Claim UNI Token"
+msgid "Nothing Token"
 msgstr "مطالبة برمز UNI"
 
 #: src/components/earn/ClaimRewardModal.tsx
@@ -428,7 +428,7 @@ msgstr "اجمع"
 
 #: src/pages/Pool/PositionPage.tsx
 #: src/pages/RemoveLiquidity/V3.tsx
-msgid "Collect as WETH"
+msgid "Collect as WAVAX"
 msgstr "اجمع كـ WETH"
 
 #: src/pages/Pool/PositionPage.tsx
@@ -782,7 +782,7 @@ msgid "For"
 msgstr "لـ"
 
 #: src/pages/MigrateV2/index.tsx
-msgid "For each pool shown below, click migrate to remove your liquidity from Uniswap V2 and deposit it into Uniswap V3."
+msgid "For each pool shown below, click migrate to remove your liquidity from V2 and deposit it into V3 NOT TESTED."
 msgstr "لكل مجموعة موضحة أدناه، انقر فوق ترحيل لإزالة السيولة الخاصة بك من Uniswap V2 وإيداعها في Uniswap V3."
 
 #: src/components/swap/SwapModalHeader.tsx
@@ -2164,8 +2164,8 @@ msgstr "{0} مودعة"
 
 #: src/components/Header/index.tsx
 #: src/components/earn/PoolCard.tsx
-msgid "{0} ETH"
-msgstr "{0} ETH"
+msgid "{0} AVAX"
+msgstr "{0} AVAX"
 
 #: src/components/Header/NetworkCard.tsx
 msgid "{0} Explorer"

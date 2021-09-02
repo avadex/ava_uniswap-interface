@@ -358,11 +358,11 @@ msgstr "Réclamer"
 #: src/components/claim/AddressClaimModal.tsx
 #: src/components/claim/ClaimModal.tsx
 #: src/components/claim/ClaimModal.tsx
-msgid "Claim UNI"
+msgid "Nothing"
 msgstr "Réclamer vos UNI"
 
 #: src/components/claim/AddressClaimModal.tsx
-msgid "Claim UNI Token"
+msgid "Nothing Token"
 msgstr "Réclamer les jetons UNI"
 
 #: src/components/earn/ClaimRewardModal.tsx
@@ -428,7 +428,7 @@ msgstr "Collecter"
 
 #: src/pages/Pool/PositionPage.tsx
 #: src/pages/RemoveLiquidity/V3.tsx
-msgid "Collect as WETH"
+msgid "Collect as WAVAX"
 msgstr "Collecter en WETH"
 
 #: src/pages/Pool/PositionPage.tsx
@@ -782,7 +782,7 @@ msgid "For"
 msgstr "Pour"
 
 #: src/pages/MigrateV2/index.tsx
-msgid "For each pool shown below, click migrate to remove your liquidity from Uniswap V2 and deposit it into Uniswap V3."
+msgid "For each pool shown below, click migrate to remove your liquidity from V2 and deposit it into V3 NOT TESTED."
 msgstr "Pour chaque pool indiqué ci-dessous, cliquez sur migrer pour retirer votre liquidité de Uniswap V2 et déposez-la dans Uniswap V3."
 
 #: src/components/swap/SwapModalHeader.tsx
@@ -2164,8 +2164,8 @@ msgstr "{0} Déposé"
 
 #: src/components/Header/index.tsx
 #: src/components/earn/PoolCard.tsx
-msgid "{0} ETH"
-msgstr "{0} ETH"
+msgid "{0} AVAX"
+msgstr "{0} AVAX"
 
 #: src/components/Header/NetworkCard.tsx
 msgid "{0} Explorer"

@@ -52,6 +52,8 @@ interface L1ChainInfo {
   readonly explorer: string
   readonly infoLink: string
   readonly label: string
+  readonly bridge: string
+  readonly logoUrl: string
 }
 export interface L2ChainInfo extends L1ChainInfo {
   readonly bridge: string
@@ -65,55 +67,67 @@ type ChainInfo = { readonly [chainId: number]: L1ChainInfo | L2ChainInfo } & {
 
 export const CHAIN_INFO: ChainInfo = {
   [SupportedChainId.AVA]: {
+    bridge: 'https://bridge.avax.network/',
     docs: 'https://avax.network/',
     explorer: 'https://explorer.avax.network/',
-    infoLink: 'https://avaxchain.github.io',
+    infoLink: 'https://info.wavax.org/#/',
     label: 'Avalanche',
+    logoUrl: avaLogoUrl,
   },
   [SupportedChainId.ARBITRUM_RINKEBY]: {
-    bridge: 'https://bridge.arbitrum.io/',
-    docs: 'https://offchainlabs.com/',
-    explorer: 'https://explorer.arbitrum.io/',
-    infoLink: 'https://info.uniswap.org/#/arbitrum/',
-    label: 'Arbitrum Rinkeby',
-    logoUrl: arbitrumLogoUrl,
+    bridge: 'https://bridge.avax.network/',
+    docs: 'https://avax.network/',
+    explorer: 'https://explorer.avax.network/',
+    infoLink: 'https://info.wavax.org/#/',
+    label: 'notsupported',
+    logoUrl: avaLogoUrl,
   },
   [SupportedChainId.MAINNET]: {
-    docs: 'https://docs.uniswap.org/',
-    explorer: 'https://etherscan.io/',
-    infoLink: 'https://info.uniswap.org/#/',
-    label: 'Mainnet',
+    bridge: 'https://bridge.avax.network/',
+    docs: 'https://avax.network/',
+    explorer: 'https://explorer.avax.network/',
+    infoLink: 'https://info.wavax.org/#/',
+    label: 'notsupported',
+    logoUrl: avaLogoUrl,
   },
   [SupportedChainId.RINKEBY]: {
-    docs: 'https://docs.uniswap.org/',
-    explorer: 'https://rinkeby.etherscan.io/',
-    infoLink: 'https://info.uniswap.org/#/',
-    label: 'Rinkeby',
+    bridge: 'https://bridge.avax.network/',
+    docs: 'https://avax.network/',
+    explorer: 'https://explorer.avax.network/',
+    infoLink: 'https://info.wavax.org/#/',
+    label: 'notsupported',
+    logoUrl: avaLogoUrl,
   },
   [SupportedChainId.ROPSTEN]: {
-    docs: 'https://docs.uniswap.org/',
-    explorer: 'https://ropsten.etherscan.io/',
-    infoLink: 'https://info.uniswap.org/#/',
-    label: 'Ropsten',
+    bridge: 'https://bridge.avax.network/',
+    docs: 'https://avax.network/',
+    explorer: 'https://explorer.avax.network/',
+    infoLink: 'https://info.wavax.org/#/',
+    label: 'notsupported',
+    logoUrl: avaLogoUrl,
   },
   [SupportedChainId.KOVAN]: {
-    docs: 'https://docs.uniswap.org/',
-    explorer: 'https://kovan.etherscan.io/',
-    infoLink: 'https://info.uniswap.org/#/',
-    label: 'Kovan',
+    bridge: 'https://bridge.avax.network/',
+    docs: 'https://avax.network/',
+    explorer: 'https://explorer.avax.network/',
+    infoLink: 'https://info.wavax.org/#/',
+    label: 'notsupported',
+    logoUrl: avaLogoUrl,
   },
   [SupportedChainId.GOERLI]: {
-    docs: 'https://docs.uniswap.org/',
-    explorer: 'https://goerli.etherscan.io/',
-    infoLink: 'https://info.uniswap.org/#/',
-    label: 'Görli',
+    bridge: 'https://bridge.avax.network/',
+    docs: 'https://avax.network/',
+    explorer: 'https://explorer.avax.network/',
+    infoLink: 'https://info.wavax.org/#/',
+    label: 'notsupported',
+    logoUrl: avaLogoUrl,
   },
   [SupportedChainId.OPTIMISM]: {
     bridge: 'https://gateway.optimism.io/',
     docs: 'https://optimism.io/',
     explorer: 'https://optimistic.etherscan.io/',
     infoLink: 'https://info.uniswap.org/#/optimism/',
-    label: 'Optimism',
+    label: 'notsupported',
     logoUrl: optimismLogoUrl,
   },
   [SupportedChainId.OPTIMISTIC_KOVAN]: {
@@ -121,7 +135,7 @@ export const CHAIN_INFO: ChainInfo = {
     docs: 'https://optimism.io/',
     explorer: 'https://optimistic.etherscan.io/',
     infoLink: 'https://info.uniswap.org/#/optimism',
-    label: 'Optimistic Kovan',
+    label: 'notsupported',
     logoUrl: optimismLogoUrl,
   },
 }

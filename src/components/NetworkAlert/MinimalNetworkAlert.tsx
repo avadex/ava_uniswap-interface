@@ -5,7 +5,7 @@ import {
   OptimismWrapperBackgroundDarkMode,
   OptimismWrapperBackgroundLightMode,
 } from 'components/NetworkAlert/NetworkAlert'
-import { CHAIN_INFO, L2_CHAIN_IDS, SupportedChainId, SupportedL2ChainId } from 'constants/chains'
+import { CHAIN_INFO, L1_CHAIN_IDS, SupportedChainId, SupportedL1ChainId } from 'constants/chains'
 import { useActiveWeb3React } from 'hooks/web3'
 import { ArrowDownCircle } from 'react-feather'
 import { useArbitrumAlphaAlert, useDarkModeManager } from 'state/user/hooks'
@@ -28,9 +28,9 @@ const DesktopTextBreak = styled.div`
     display: block;
   }
 `
-const Wrapper = styled.div<{ chainId: SupportedL2ChainId; darkMode: boolean; logoUrl: string }>`
+const Wrapper = styled.div<{ chainId: SupportedL1ChainId; darkMode: boolean; logoUrl: string }>`
   ${({ chainId, darkMode }) =>
-    [SupportedChainId.OPTIMISM, SupportedChainId.OPTIMISTIC_KOVAN].includes(chainId)
+    [SupportedChainId.AVA, SupportedChainId.OPTIMISTIC_KOVAN].includes(chainId)
       ? darkMode
         ? OptimismWrapperBackgroundDarkMode
         : OptimismWrapperBackgroundLightMode
@@ -106,20 +106,20 @@ export function MinimalNetworkAlert() {
   const [darkMode] = useDarkModeManager()
   const [arbitrumAlphaAcknowledged] = useArbitrumAlphaAlert()
 
-  if (!chainId || !L2_CHAIN_IDS.includes(chainId) || arbitrumAlphaAcknowledged) {
+  if (!chainId || !L1_CHAIN_IDS.includes(chainId) || arbitrumAlphaAcknowledged) {
     return null
   }
-  const info = CHAIN_INFO[chainId as SupportedL2ChainId]
-  const depositUrl = [SupportedChainId.OPTIMISM, SupportedChainId.OPTIMISTIC_KOVAN].includes(chainId)
+  const info = CHAIN_INFO[chainId as SupportedL1ChainId]
+  const depositUrl = [SupportedChainId.AVA, SupportedChainId.OPTIMISTIC_KOVAN].includes(chainId)
     ? `${info.bridge}?chainId=1`
     : info.bridge
   return (
     <Wrapper darkMode={darkMode} chainId={chainId} logoUrl={info.logoUrl}>
       <L2Icon src={info.logoUrl} />
       <Body>
-        <Trans>This is an alpha release of Uniswap on the {info.label} network.</Trans>
-        <DesktopTextBreak /> <Trans>You must bridge L1 assets to the network to use them.</Trans>{' '}
-        <ReadMoreLink href="https://help.uniswap.org/en/articles/5392809-how-to-deposit-tokens-to-optimism">
+        <Trans>This is an test release of Uniswap V3 on the {info.label} network.</Trans>
+        <DesktopTextBreak /> <Trans>You can bridge Ethereum assets to Avalanche.</Trans>{' '}
+        <ReadMoreLink href="https://docs.avax.network/learn/avalanche-bridge-faq">
           <Trans>Read more</Trans>
         </ReadMoreLink>
       </Body>

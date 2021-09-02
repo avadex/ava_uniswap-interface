@@ -10,7 +10,7 @@ import { RowBetween, RowFixed } from '../Row'
 import { DEFAULT_DEADLINE_FROM_NOW } from 'constants/misc'
 import { darken } from 'polished'
 import { useSetUserSlippageTolerance, useUserSlippageTolerance, useUserTransactionTTL } from 'state/user/hooks'
-import { L2_CHAIN_IDS } from 'constants/chains'
+import { L1_CHAIN_IDS } from 'constants/chains'
 import { useActiveWeb3React } from 'hooks/web3'
 
 enum SlippageError {
@@ -154,7 +154,7 @@ export default function TransactionSettings({ placeholderSlippage }: Transaction
     }
   }
 
-  const showCustomDeadlineRow = Boolean(chainId && !L2_CHAIN_IDS.includes(chainId))
+  const showCustomDeadlineRow = Boolean(chainId && !L1_CHAIN_IDS.includes(chainId))
 
   return (
     <AutoColumn gap="md">

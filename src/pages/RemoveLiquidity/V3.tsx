@@ -387,7 +387,7 @@ function Remove({ tokenId }: { tokenId: BigNumber }) {
               {showCollectAsWeth && (
                 <RowBetween>
                   <TYPE.main>
-                    <Trans>Collect as WETH</Trans>
+                    <Trans>Collect as WAVAX</Trans>
                   </TYPE.main>
                   <Toggle
                     id="receive-as-weth"

@@ -358,11 +358,11 @@ msgstr "Talep"
 #: src/components/claim/AddressClaimModal.tsx
 #: src/components/claim/ClaimModal.tsx
 #: src/components/claim/ClaimModal.tsx
-msgid "Claim UNI"
+msgid "Nothing"
 msgstr "UNI talep et"
 
 #: src/components/claim/AddressClaimModal.tsx
-msgid "Claim UNI Token"
+msgid "Nothing Token"
 msgstr "UNI Jetonu talep et"
 
 #: src/components/earn/ClaimRewardModal.tsx
@@ -428,7 +428,7 @@ msgstr "Topla"
 
 #: src/pages/Pool/PositionPage.tsx
 #: src/pages/RemoveLiquidity/V3.tsx
-msgid "Collect as WETH"
+msgid "Collect as WAVAX"
 msgstr "WETH olarak toplayın"
 
 #: src/pages/Pool/PositionPage.tsx
@@ -782,7 +782,7 @@ msgid "For"
 msgstr "Şunun için"
 
 #: src/pages/MigrateV2/index.tsx
-msgid "For each pool shown below, click migrate to remove your liquidity from Uniswap V2 and deposit it into Uniswap V3."
+msgid "For each pool shown below, click migrate to remove your liquidity from V2 and deposit it into V3 NOT TESTED."
 msgstr "Aşağıda gösterilen her bir havuz için, likiditenizi Uniswap V2'den kaldırmak ve Uniswap V3'e yatırmak için Geçir'e tıklayın."
 
 #: src/components/swap/SwapModalHeader.tsx

@@ -1,5 +1,5 @@
 import { Trans } from '@lingui/macro'
-import { L2_CHAIN_IDS, SupportedChainId, SupportedL2ChainId } from 'constants/chains'
+import { L1_CHAIN_IDS, SupportedChainId, SupportedL1ChainId } from 'constants/chains'
 import { useActiveWeb3React } from 'hooks/web3'
 import { useCallback, useState } from 'react'
 import { ArrowDownCircle, X } from 'react-feather'
@@ -34,24 +34,24 @@ const ContentWrapper = styled.div`
   }
 `
 export const ArbitrumWrapperBackgroundDarkMode = css`
-  background: radial-gradient(285% 8200% at 30% 50%, rgba(40, 160, 240, 0.1) 0%, rgba(219, 255, 0, 0) 100%),
-    radial-gradient(75% 75% at 0% 0%, rgba(150, 190, 220, 0.3) 0%, rgba(33, 114, 229, 0.3) 100%), hsla(0, 0%, 100%, 0.1);
+  background: radial-gradient(948% 292% at 42% 0%, #113824 0%, rgb(132 111 127 / 20%) 100%),
+    radial-gradient(98% 96% at 2% 0%, rgb (41 31 31 / 43%) 0%, rgba(235, 0, 255, 0.345) 96%);
 `
 export const ArbitrumWrapperBackgroundLightMode = css`
-  background: radial-gradient(285% 8200% at 30% 50%, rgba(40, 160, 240, 0.1) 0%, rgba(219, 255, 0, 0) 100%),
-    radial-gradient(circle at top left, hsla(206, 50%, 75%, 0.01), hsla(215, 79%, 51%, 0.12)), hsla(0, 0%, 100%, 0.1);
+  background: radial-gradient(948% 292% at 42% 0%, rgba(255, 58, 212, 0.2) 0%, #27ae60 100%),
+    radial-gradient(98% 96% at 2% 0%, #000000 0%, #435835 96%);
 `
 export const OptimismWrapperBackgroundDarkMode = css`
-  background: radial-gradient(948% 292% at 42% 0%, rgba(255, 58, 212, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%),
-    radial-gradient(98% 96% at 2% 0%, rgba(255, 39, 39, 0.5) 0%, rgba(235, 0, 255, 0.345) 96%);
+  background: radial-gradient(948% 292% at 42% 0%, rgb(97 48 86 / 20%) 0%, #266942 100%),
+    radial-gradient(98% 96% at 2% 0%, #000000 0%, #435835 96%);
 `
 export const OptimismWrapperBackgroundLightMode = css`
-  background: radial-gradient(92% 105% at 50% 7%, rgba(255, 58, 212, 0.04) 0%, rgba(255, 255, 255, 0.03) 100%),
+  background: radial-gradient(92% 105% at 50% 7%, #87d457 0%, #cacaca 100%),
     radial-gradient(100% 97% at 0% 12%, rgba(235, 0, 255, 0.1) 0%, rgba(243, 19, 19, 0.1) 100%), hsla(0, 0%, 100%, 0.5);
 `
 const RootWrapper = styled.div<{ chainId: SupportedChainId; darkMode: boolean; logoUrl: string }>`
   ${({ chainId, darkMode }) =>
-    [SupportedChainId.OPTIMISM, SupportedChainId.OPTIMISTIC_KOVAN].includes(chainId)
+    [SupportedChainId.AVA, SupportedChainId.OPTIMISTIC_KOVAN].includes(chainId)
       ? darkMode
         ? OptimismWrapperBackgroundDarkMode
         : OptimismWrapperBackgroundLightMode
@@ -133,11 +133,11 @@ export function NetworkAlert() {
       setLocallyDimissed(true)
     }
   }, [setArbitrumAlphaAcknowledged, userEthBalance])
-  if (!chainId || !L2_CHAIN_IDS.includes(chainId) || arbitrumAlphaAcknowledged || locallyDismissed) {
+  if (!chainId || !L1_CHAIN_IDS.includes(chainId) || arbitrumAlphaAcknowledged || locallyDismissed) {
     return null
   }
-  const info = CHAIN_INFO[chainId as SupportedL2ChainId]
-  const depositUrl = [SupportedChainId.OPTIMISM, SupportedChainId.OPTIMISTIC_KOVAN].includes(chainId)
+  const info = CHAIN_INFO[chainId as SupportedL1ChainId]
+  const depositUrl = [SupportedChainId.AVA, SupportedChainId.OPTIMISTIC_KOVAN].includes(chainId)
     ? `${info.bridge}?chainId=1`
     : info.bridge
 
@@ -147,14 +147,14 @@ export function NetworkAlert() {
       <ContentWrapper>
         <L2Icon src={info.logoUrl} />
         <Header>
-          <Trans>Uniswap on {info.label}</Trans>
+          <Trans>V3 on {info.label}</Trans>
         </Header>
         <Body>
           <Trans>
-            This is an alpha release of Uniswap on the {info.label} network. You must bridge L1 assets to the network to
-            swap them.
+            This is an test release of Uniswap V3 on the Avalanche live network. You can bridge Ethereum assets to this
+            EVM called C-CHAIN.
           </Trans>{' '}
-          <ReadMoreLink href="https://help.uniswap.org/en/articles/5392809-how-to-deposit-tokens-to-optimism">
+          <ReadMoreLink href="https://docs.avax.network/learn/avalanche-bridge-faq">
             <Trans>Read more</Trans>
           </ReadMoreLink>
         </Body>

@@ -1,5 +1,5 @@
 import { Trans } from '@lingui/macro'
-import { L2_CHAIN_IDS } from 'constants/chains'
+import { L1_CHAIN_IDS } from 'constants/chains'
 import { useActiveWeb3React } from 'hooks/web3'
 import styled from 'styled-components/macro'
 import { TYPE } from 'theme'
@@ -38,7 +38,7 @@ const EmptyState = ({ HeaderContent, SubHeaderContent }: EmptyStateProps) => (
 
 export default function ProposalEmptyState() {
   const { chainId } = useActiveWeb3React()
-  if (chainId && L2_CHAIN_IDS.includes(chainId)) {
+  if (chainId && L1_CHAIN_IDS.includes(chainId)) {
     return (
       <EmptyState
         HeaderContent={() => <Trans>Please connect to Layer 1 Ethereum</Trans>}

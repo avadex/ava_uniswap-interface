@@ -69,6 +69,6 @@ export const portis = new PortisConnector({
 // mainnet only
 export const walletlink = new WalletLinkConnector({
   url: NETWORK_URLS[SupportedChainId.MAINNET],
-  appName: 'Uniswap',
+  appName: 'Wavax.org',
   appLogoUrl: UNISWAP_LOGO_URL,
 })
