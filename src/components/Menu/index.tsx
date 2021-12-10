@@ -250,7 +250,7 @@ export default function Menu() {
                     </div>
                     <Code opacity={0.6} size={16} />
                   </MenuItem>
-                  <MenuItem href="https://t.me/avalanche_trading">
+                  <MenuItem href="https://t.me/wavaxorg">
                     <div>
                       <Trans>Community</Trans>
                     </div>

@@ -371,7 +371,8 @@ export default function AddLiquidity({
           currencyIdNew === 'AVAX' || (chainId !== undefined && currencyIdNew === WETH9_EXTENDED[chainId]?.address)
         const isETHOrWETHOther =
           currencyIdOther !== undefined &&
-          (currencyIdOther === 'AVAX' || (chainId !== undefined && currencyIdOther === WETH9_EXTENDED[chainId]?.address))
+          (currencyIdOther === 'AVAX' ||
+            (chainId !== undefined && currencyIdOther === WETH9_EXTENDED[chainId]?.address))
 
         if (isETHOrWETHNew && isETHOrWETHOther) {
           return [currencyIdNew, undefined]

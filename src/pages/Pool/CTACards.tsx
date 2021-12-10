@@ -129,7 +129,7 @@ export default function CTACards() {
         <CTA1 href={'https://help.uniswap.org/en/articles/5391541-providing-liquidity-on-uniswap-v3'}>
           <ResponsiveColumn>
             <HeaderText>
-              <Trans>V3 Testrelease on Avalanche</Trans> ↗
+              <Trans>V3 Test release on Avalanche</Trans> ↗
             </HeaderText>
             <TYPE.body fontWeight={300} style={{ alignItems: 'center', display: 'flex', maxWidth: '80%' }}>
               <Trans>Check out the original V3 LP walkthrough and migration guides.</Trans>

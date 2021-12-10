@@ -27,13 +27,13 @@ export function getExplorerLink(chainId: number, data: string, type: ExplorerDat
   if (chainId === SupportedChainId.AVA) {
     switch (type) {
       case ExplorerDataType.TRANSACTION:
-        return `https://cchain.explorer.avax.network/tx/${data}`
+        return `https://snowtrace.io/tx/${data}`
       case ExplorerDataType.ADDRESS:
-        return `https://cchain.explorer.avax.network/address/${data}`
+        return `https://snowtrace.io/address/${data}`
       case ExplorerDataType.BLOCK:
-        return `https://cchain.explorer.avax.network/${data}`
+        return `https://snowtrace.io/${data}`
       default:
-        return `https://cchain.explorer.avax.network`
+        return `https://snowtrace.io/`
     }
   }
 

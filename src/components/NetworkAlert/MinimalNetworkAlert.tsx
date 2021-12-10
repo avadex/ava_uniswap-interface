@@ -117,7 +117,7 @@ export function MinimalNetworkAlert() {
     <Wrapper darkMode={darkMode} chainId={chainId} logoUrl={info.logoUrl}>
       <L2Icon src={info.logoUrl} />
       <Body>
-        <Trans>This is an test release of Uniswap V3 on the {info.label} network.</Trans>
+        <Trans>This is an test release of Haydens V3 code on the {info.label} network.</Trans>
         <DesktopTextBreak /> <Trans>You can bridge Ethereum assets to Avalanche.</Trans>{' '}
         <ReadMoreLink href="https://docs.avax.network/learn/avalanche-bridge-faq">
           <Trans>Read more</Trans>

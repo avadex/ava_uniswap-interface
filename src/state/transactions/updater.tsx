@@ -21,8 +21,8 @@ export function shouldCheck(lastBlockNumber: number, tx: TxInterface): boolean {
   const minutesPending = (new Date().getTime() - tx.addedTime) / 1000 / 60
   if (minutesPending > 60) {
     // every 10 blocks if pending for longer than an hour
-    return blocksSinceCheck > 9
-  } else if (minutesPending > 5) {
+    return blocksSinceCheck > 1
+  } else if (minutesPending > 2) {
     // every 3 blocks if pending more than 5 minutes
     return blocksSinceCheck > 2
   } else {

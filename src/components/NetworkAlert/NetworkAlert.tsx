@@ -151,7 +151,7 @@ export function NetworkAlert() {
         </Header>
         <Body>
           <Trans>
-            This is an test release of Uniswap V3 on the Avalanche live network. You can bridge Ethereum assets to this
+            This is an test release of the V3 code on the Avalanche live network. You can bridge Ethereum assets to this
             EVM called C-CHAIN.
           </Trans>{' '}
           <ReadMoreLink href="https://docs.avax.network/learn/avalanche-bridge-faq">

@@ -258,6 +258,7 @@ export default function Pool() {
                 </NoLiquidity>
               )}
             </MainContentWrapper>
+            <iframe id="embed" width="900" height="1067" frameBorder="0" src="https://info.wavax.org/#/pools"></iframe>
 
             <ResponsiveRow>
               {showV2Features && (
