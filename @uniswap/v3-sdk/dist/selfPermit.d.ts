@@ -17,6 +17,9 @@ export interface AllowedPermitArguments {
 export declare type PermitOptions = StandardPermitArguments | AllowedPermitArguments;
 export declare abstract class SelfPermit {
     static INTERFACE: Interface;
-    protected constructor();
-    protected static encodePermit(token: Token, options: PermitOptions): string;
+    /**
+     * Cannot be constructed.
+     */
+    private constructor();
+    static encodePermit(token: Token, options: PermitOptions): string;
 }

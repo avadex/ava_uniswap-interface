@@ -1,26 +1,27 @@
+import { isAddress } from '@ethersproject/address'
+import { Trans } from '@lingui/macro'
+import { CurrencyAmount, Token } from '@uniswap/sdk-core'
 import { useState } from 'react'
-import { ExplorerDataType, getExplorerLink } from '../../utils/getExplorerLink'
-import Modal from '../Modal'
-import { AutoColumn, ColumnCenter } from '../Column'
-import styled from 'styled-components/macro'
-import { DataCard, CardSection, Break } from '../earn/styled'
-import { RowBetween } from '../Row'
-import { TYPE, ExternalLink, CloseIcon, CustomLightSpinner, UniTokenAnimated } from '../../theme'
-import { ButtonPrimary } from '../Button'
-import { useClaimCallback, useUserUnclaimedAmount, useUserHasAvailableClaim } from '../../state/claim/hooks'
-import tokenLogo from '../../assets/images/token-logo.png'
-import Circle from '../../assets/images/blue-loader.svg'
 import { Text } from 'rebass'
-import AddressInputPanel from '../AddressInputPanel'
+import styled from 'styled-components/macro'
+
+import Circle from '../../assets/images/blue-loader.svg'
+import tokenLogo from '../../assets/images/token-logo.png'
 import useENS from '../../hooks/useENS'
 import { useActiveWeb3React } from '../../hooks/web3'
-import { isAddress } from 'ethers/lib/utils'
-import Confetti from '../Confetti'
-import { CardNoise, CardBGImage, CardBGImageSmaller } from '../earn/styled'
+import { useClaimCallback, useUserHasAvailableClaim, useUserUnclaimedAmount } from '../../state/claim/hooks'
 import { useIsTransactionPending } from '../../state/transactions/hooks'
-import { CurrencyAmount, Token } from '@uniswap/sdk-core'
+import { CloseIcon, CustomLightSpinner, ExternalLink, TYPE, UniTokenAnimated } from '../../theme'
 import { shortenAddress } from '../../utils'
-import { Trans } from '@lingui/macro'
+import { ExplorerDataType, getExplorerLink } from '../../utils/getExplorerLink'
+import AddressInputPanel from '../AddressInputPanel'
+import { ButtonPrimary } from '../Button'
+import { AutoColumn, ColumnCenter } from '../Column'
+import Confetti from '../Confetti'
+import { Break, CardSection, DataCard } from '../earn/styled'
+import { CardBGImage, CardBGImageSmaller, CardNoise } from '../earn/styled'
+import Modal from '../Modal'
+import { RowBetween } from '../Row'
 
 const ContentWrapper = styled(AutoColumn)`
   width: 100%;
@@ -28,7 +29,7 @@ const ContentWrapper = styled(AutoColumn)`
 
 const ModalUpper = styled(DataCard)`
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  background: radial-gradient(76.02% 75.41% at 1.84% 0%, #2b2d2c 0%, #021d43 100%);
+  background: radial-gradient(76.02% 75.41% at 1.84% 0%, #ff007a 0%, #021d43 100%);
 `
 
 const ConfirmOrLoadingWrapper = styled.div<{ activeBG: boolean }>`
@@ -105,7 +106,7 @@ export default function AddressClaimModal({ isOpen, onDismiss }: { isOpen: boole
             <CardSection gap="md">
               <RowBetween>
                 <TYPE.white fontWeight={500}>
-                  <Trans>Nothing Token</Trans>
+                  <Trans>Claim UNI Token</Trans>
                 </TYPE.white>
                 <CloseIcon onClick={wrappedOnDismiss} style={{ zIndex: 99 }} stroke="white" />
               </RowBetween>
@@ -136,7 +137,7 @@ export default function AddressClaimModal({ isOpen, onDismiss }: { isOpen: boole
               mt="1rem"
               onClick={onClaim}
             >
-              <Trans>Nothing</Trans>
+              <Trans>Claim UNI</Trans>
             </ButtonPrimary>
           </AutoColumn>
         </ContentWrapper>
@@ -162,7 +163,7 @@ export default function AddressClaimModal({ isOpen, onDismiss }: { isOpen: boole
                 {claimConfirmed ? <Trans>Claimed</Trans> : <Trans>Claiming</Trans>}
               </TYPE.largeHeader>
               {!claimConfirmed && (
-                <Text fontSize={36} color={'#2b2d2c'} fontWeight={800}>
+                <Text fontSize={36} color={'#ff007a'} fontWeight={800}>
                   <Trans>{unclaimedAmount?.toFixed(0, { groupSeparator: ',' } ?? '-')} UNI</Trans>
                 </Text>
               )}

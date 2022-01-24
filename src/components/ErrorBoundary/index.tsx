@@ -1,11 +1,12 @@
 import { Trans } from '@lingui/macro'
 import React, { ErrorInfo } from 'react'
+import ReactGA from 'react-ga'
+import styled from 'styled-components/macro'
+
 import store, { AppState } from '../../state'
 import { ExternalLink, TYPE } from '../../theme'
+import { userAgent } from '../../utils/userAgent'
 import { AutoColumn } from '../Column'
-import styled from 'styled-components/macro'
-import ReactGA from 'react-ga'
-import { getUserAgent } from '../../utils/getUserAgent'
 import { AutoRow } from '../Row'
 
 const FallbackWrapper = styled.div`
@@ -86,7 +87,7 @@ export default class ErrorBoundary extends React.Component<unknown, ErrorBoundar
                 <LinkWrapper>
                   <ExternalLink
                     id="create-github-issue-link"
-                    href={`https://github.com/Avadex/uniswap-interface/issues/new?assignees=&labels=bug&body=${encodedBody}&title=${encodeURIComponent(
+                    href={`https://github.com/Uniswap/uniswap-interface/issues/new?assignees=&labels=bug&body=${encodedBody}&title=${encodeURIComponent(
                       `Crash report: \`${error.name}${error.message && `: ${error.message}`}\``
                     )}`}
                     target="_blank"
@@ -98,7 +99,7 @@ export default class ErrorBoundary extends React.Component<unknown, ErrorBoundar
                   </ExternalLink>
                 </LinkWrapper>
                 <LinkWrapper>
-                  <ExternalLink id="get-support-on-discord" href="https://t.me/wavaxorg" target="_blank">
+                  <ExternalLink id="get-support-on-discord" href="https://discord.gg/FCfyBSbCU5" target="_blank">
                     <TYPE.link fontSize={16}>
                       <Trans>Get support on Discord</Trans>
                       <span>↗</span>
@@ -136,7 +137,7 @@ function getRelevantState(): null | keyof AppState {
 
 function issueBody(error: Error): string {
   const relevantState = getRelevantState()
-  const deviceData = getUserAgent()
+  const deviceData = userAgent
   return `## URL
   
 ${window.location.href}

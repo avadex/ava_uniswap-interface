@@ -776,8 +776,8 @@
     {
       "chainId": 1,
       "address": "0x90f802c7e8fb5d40b0de583e34c065a3bd2020d8",
-      "name": "YD-AVAX-MAR21 Token Expiring 31 Mar 2021",
-      "symbol": "YD-AVAX-MAR21",
+      "name": "YD-ETH-MAR21 Token Expiring 31 Mar 2021",
+      "symbol": "YD-ETH-MAR21",
       "decimals": 18
     },
     {
@@ -917,7 +917,7 @@
       "chainId": 1,
       "address": "0xe813b65da6c38a04591aed3f082d32db7d53c382",
       "name": "Yield Dollar [WETH Dec 2021]",
-      "symbol": "YD-AVAX-DEC21",
+      "symbol": "YD-ETH-DEC21",
       "decimals": 18
     },
     {
@@ -959,7 +959,7 @@
       "chainId": 1,
       "address": "0xcbe430927370e95b4b10cfc702c6017ec7abefc3",
       "name": "Yield Dollar [WETH Jun 2021]",
-      "symbol": "YD-AVAX-JUN21",
+      "symbol": "YD-ETH-JUN21",
       "decimals": 18
     },
     {
@@ -1051,6 +1051,48 @@
       "address": "0xe82bbB62fA81d0701643d1675FB50ec52fD3Df92",
       "name": "DYDX Token",
       "symbol": "DYDX",
+      "decimals": 18
+    },
+    {
+      "chainId": 10,
+      "address": "0xE405de8F52ba7559f9df3C368500B6E6ae6Cee49",
+      "name": "sETH",
+      "symbol": "Synth Ether",
+      "decimals": 18
+    },
+    {
+      "chainId": 10,
+      "address": "0x298B9B95708152ff6968aafd889c6586e9169f1D",
+      "name": "sBTC",
+      "symbol": "Synth Bitcoin",
+      "decimals": 18
+    },
+    {
+      "chainId": 10,
+      "address": "0xc5Db22719A06418028A40A9B5E9A7c02959D0d08",
+      "name": "sLINK",
+      "symbol": "Synth Link",
+      "decimals": 18
+    },
+    {
+      "chainId": 1,
+      "address": "0x6B60eE11b73230045cF9095E6e43AE9Ea638e172",
+      "name": "Shatner",
+      "symbol": "SHAT",
+      "decimals": 18
+    },
+    {
+      "chainId": 1,
+      "address": "0x7277a44D1325D81Ac58893002a1B40a41bea43fe",
+      "name": "FAANG Index",
+      "symbol": "FAANG",
+      "decimals": 18
+    },
+    {
+      "chainId": 1,
+      "address": "0x76175599887730786bdA1545D0D7AcE8737fEBB1",
+      "name": "ENS DAO",
+      "symbol": "ENS",
       "decimals": 18
     }
   ]

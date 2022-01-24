@@ -1,10 +1,10 @@
 import { Trans } from '@lingui/macro'
 import { AutoColumn } from 'components/Column'
-import { MinimalNetworkAlert } from 'components/NetworkAlert/MinimalNetworkAlert'
 import { CHAIN_INFO, SupportedChainId } from 'constants/chains'
 import { useActiveWeb3React } from 'hooks/web3'
 import styled from 'styled-components/macro'
 import { TYPE } from 'theme'
+
 import Texture from '../../assets/images/sandtexture.webp'
 import { ExternalLink } from '../../theme'
 
@@ -22,8 +22,12 @@ const CTASection = styled.section`
 
 const CTA1 = styled(ExternalLink)`
   background-color: ${({ theme }) => theme.bg2};
-  background: radial-gradient(92.78% 103.09% at 50.06% 7.22%, #183e00 0%, rgba(255, 255, 255, 0.042) 100%),
-    radial-gradient(100% 97.16% at 0% 12.22%, #375821 0%, rgb(32 45 6 / 20%) 100%);
+  background: radial-gradient(
+      92.78% 103.09% at 50.06% 7.22%,
+      rgba(255, 58, 212, 0.072) 0%,
+      rgba(255, 255, 255, 0.042) 100%
+    ),
+    radial-gradient(100% 97.16% at 0% 12.22%, rgba(235, 0, 255, 0.2) 0%, rgba(243, 19, 19, 0.2) 100%);
   padding: 2rem;
   border-radius: 20px;
   display: flex;
@@ -121,32 +125,29 @@ const ResponsiveColumn = styled(AutoColumn)`
 
 export default function CTACards() {
   const { chainId } = useActiveWeb3React()
-  const { infoLink } = CHAIN_INFO[chainId ? chainId : SupportedChainId.AVA]
+  const { infoLink } = CHAIN_INFO[chainId ? chainId : SupportedChainId.MAINNET]
   return (
-    <div>
-      <MinimalNetworkAlert />
-      <CTASection>
-        <CTA1 href={'https://help.uniswap.org/en/articles/5391541-providing-liquidity-on-uniswap-v3'}>
-          <ResponsiveColumn>
-            <HeaderText>
-              <Trans>V3 Test release on Avalanche</Trans> ↗
-            </HeaderText>
-            <TYPE.body fontWeight={300} style={{ alignItems: 'center', display: 'flex', maxWidth: '80%' }}>
-              <Trans>Check out the original V3 LP walkthrough and migration guides.</Trans>
-            </TYPE.body>
-          </ResponsiveColumn>
-        </CTA1>
-        <CTA2 href={infoLink + 'pools'}>
-          <ResponsiveColumn>
-            <HeaderText style={{ alignSelf: 'flex-start' }}>
-              <Trans>Top pools</Trans> ↗
-            </HeaderText>
-            <TYPE.body fontWeight={300} style={{ alignSelf: 'flex-start' }}>
-              <Trans>Explore Test pools on V3 Analytics.</Trans>
-            </TYPE.body>
-          </ResponsiveColumn>
-        </CTA2>
-      </CTASection>
-    </div>
+    <CTASection>
+      <CTA1 href={'https://help.uniswap.org/en/articles/5391541-providing-liquidity-on-uniswap-v3'}>
+        <ResponsiveColumn>
+          <HeaderText>
+            <Trans>Learn about providing liquidity</Trans> ↗
+          </HeaderText>
+          <TYPE.body fontWeight={300} style={{ alignItems: 'center', display: 'flex', maxWidth: '80%' }}>
+            <Trans>Check out our v3 LP walkthrough and migration guides.</Trans>
+          </TYPE.body>
+        </ResponsiveColumn>
+      </CTA1>
+      <CTA2 href={infoLink + 'pools'}>
+        <ResponsiveColumn>
+          <HeaderText style={{ alignSelf: 'flex-start' }}>
+            <Trans>Top pools</Trans> ↗
+          </HeaderText>
+          <TYPE.body fontWeight={300} style={{ alignSelf: 'flex-start' }}>
+            <Trans>Explore popular pools on Uniswap Analytics.</Trans>
+          </TYPE.body>
+        </ResponsiveColumn>
+      </CTA2>
+    </CTASection>
   )
 }

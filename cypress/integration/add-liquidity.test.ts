@@ -1,4 +1,5 @@
 import { CyHttpMessages } from 'cypress/types/net-stubbing'
+
 import { aliasQuery, hasQuery } from '../utils/graphql-test-utils'
 
 describe('Add Liquidity', () => {
@@ -11,13 +12,13 @@ describe('Add Liquidity', () => {
   it('loads the two correct tokens', () => {
     cy.visit('/add/0xF9bA5210F91D0474bd1e1DcDAeC4C58E359AaD85/0xc778417E063141139Fce010982780140Aa0cD5Ab/500')
     cy.get('#add-liquidity-input-tokena .token-symbol-container').should('contain.text', 'MKR')
-    cy.get('#add-liquidity-input-tokenb .token-symbol-container').should('contain.text', 'AVAX')
+    cy.get('#add-liquidity-input-tokenb .token-symbol-container').should('contain.text', 'ETH')
   })
 
-  it('does not crash if AVAX is duplicated', () => {
+  it('does not crash if ETH is duplicated', () => {
     cy.visit('/add/0xc778417E063141139Fce010982780140Aa0cD5Ab/0xc778417E063141139Fce010982780140Aa0cD5Ab')
-    cy.get('#add-liquidity-input-tokena .token-symbol-container').should('contain.text', 'AVAX')
-    cy.get('#add-liquidity-input-tokenb .token-symbol-container').should('not.contain.text', 'AVAX')
+    cy.get('#add-liquidity-input-tokena .token-symbol-container').should('contain.text', 'ETH')
+    cy.get('#add-liquidity-input-tokenb .token-symbol-container').should('not.contain.text', 'ETH')
   })
 
   it('token not in storage is loaded', () => {
@@ -57,7 +58,7 @@ describe('Add Liquidity', () => {
       cy.wait('@feeTierDistributionQuery')
 
       cy.get('#add-liquidity-selected-fee .selected-fee-label').should('contain.text', '0.3% fee tier')
-      cy.get('#add-liquidity-selected-fee .selected-fee-percentage').should('contain.text', '70%')
+      cy.get('#add-liquidity-selected-fee .selected-fee-percentage').should('contain.text', '40%')
     })
   })
 })

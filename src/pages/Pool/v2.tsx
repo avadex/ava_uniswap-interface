@@ -1,30 +1,29 @@
-import { useContext, useMemo } from 'react'
-import styled, { ThemeContext } from 'styled-components/macro'
+import { Trans } from '@lingui/macro'
+import { Pair } from '@uniswap/v2-sdk'
+import { L2_CHAIN_IDS } from 'constants/chains'
 import JSBI from 'jsbi'
+import { useContext, useMemo } from 'react'
+import { ChevronsRight } from 'react-feather'
 import { Link } from 'react-router-dom'
+import { Text } from 'rebass'
+import styled, { ThemeContext } from 'styled-components/macro'
+
+import { ButtonOutlined, ButtonPrimary, ButtonSecondary } from '../../components/Button'
+import Card from '../../components/Card'
+import { AutoColumn } from '../../components/Column'
+import { CardBGImage, CardNoise, CardSection, DataCard } from '../../components/earn/styled'
 import { SwapPoolTabs } from '../../components/NavigationTabs'
 import FullPositionCard from '../../components/PositionCard'
-import { useTokenBalancesWithLoadingIndicator } from '../../state/wallet/hooks'
-import { ExternalLink, TYPE, HideSmall } from '../../theme'
-import { Text } from 'rebass'
-import Card from '../../components/Card'
 import { RowBetween, RowFixed } from '../../components/Row'
-import { ButtonPrimary, ButtonSecondary, ButtonOutlined } from '../../components/Button'
-import { ChevronsRight } from 'react-feather'
-
-import { AutoColumn } from '../../components/Column'
-
-import { useActiveWeb3React } from '../../hooks/web3'
-import { useV2Pairs } from '../../hooks/useV2Pairs'
-import { toV2LiquidityToken, useTrackedTokenPairs } from '../../state/user/hooks'
 import { Dots } from '../../components/swap/styleds'
-import { CardSection, DataCard, CardNoise, CardBGImage } from '../../components/earn/styled'
 import { SwitchLocaleLink } from '../../components/SwitchLocaleLink'
-import { useStakingInfo } from '../../state/stake/hooks'
 import { BIG_INT_ZERO } from '../../constants/misc'
-import { Pair } from '@uniswap/v2-sdk'
-import { Trans } from '@lingui/macro'
-import { L2_CHAIN_IDS } from 'constants/chains'
+import { useV2Pairs } from '../../hooks/useV2Pairs'
+import { useActiveWeb3React } from '../../hooks/web3'
+import { useStakingInfo } from '../../state/stake/hooks'
+import { toV2LiquidityToken, useTrackedTokenPairs } from '../../state/user/hooks'
+import { useTokenBalancesWithLoadingIndicator } from '../../state/wallet/hooks'
+import { ExternalLink, HideSmall, TYPE } from '../../theme'
 
 const PageWrapper = styled(AutoColumn)`
   max-width: 640px;
@@ -192,7 +191,7 @@ export default function Pool() {
                   </TYPE.mediumHeader>
                 </HideSmall>
                 <ButtonRow>
-                  <ResponsiveButtonSecondary as={Link} padding="6px 8px" to="/add/v2/AVAX">
+                  <ResponsiveButtonSecondary as={Link} padding="6px 8px" to="/add/v2/ETH">
                     <Trans>Create a pair</Trans>
                   </ResponsiveButtonSecondary>
                   <ResponsiveButtonPrimary id="find-pool-button" as={Link} to="/pool/v2/find" padding="6px 8px">
@@ -200,7 +199,7 @@ export default function Pool() {
                       <Trans>Import Pool</Trans>
                     </Text>
                   </ResponsiveButtonPrimary>
-                  <ResponsiveButtonPrimary id="join-pool-button" as={Link} to="/add/v2/AVAX" padding="6px 8px">
+                  <ResponsiveButtonPrimary id="join-pool-button" as={Link} to="/add/v2/ETH" padding="6px 8px">
                     <Text fontWeight={500} fontSize={16}>
                       <Trans>Add V2 Liquidity</Trans>
                     </Text>
@@ -227,7 +226,7 @@ export default function Pool() {
                   <ButtonSecondary>
                     <RowBetween>
                       <Trans>
-                        <ExternalLink href={'https://markr.io/#/wallet?address=' + account}>
+                        <ExternalLink href={'https://v2.info.uniswap.org/account/' + account}>
                           Account analytics and accrued fees
                         </ExternalLink>
                         <span> ↗ </span>

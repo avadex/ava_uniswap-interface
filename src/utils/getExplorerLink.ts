@@ -24,16 +24,31 @@ export enum ExplorerDataType {
  * @param type the type of the data
  */
 export function getExplorerLink(chainId: number, data: string, type: ExplorerDataType): string {
-  if (chainId === SupportedChainId.AVA) {
+  if (chainId === SupportedChainId.AVALANCHE) {
     switch (type) {
       case ExplorerDataType.TRANSACTION:
         return `https://snowtrace.io/tx/${data}`
       case ExplorerDataType.ADDRESS:
+      case ExplorerDataType.TOKEN:
         return `https://snowtrace.io/address/${data}`
       case ExplorerDataType.BLOCK:
-        return `https://snowtrace.io/${data}`
+        return `https://snowtrace.io/block/${data}`
       default:
         return `https://snowtrace.io/`
+    }
+  }
+
+  if (chainId === SupportedChainId.ARBITRUM_RINKEBY) {
+    switch (type) {
+      case ExplorerDataType.TRANSACTION:
+        return `https://rinkeby-explorer.avalanche.io/tx/${data}`
+      case ExplorerDataType.ADDRESS:
+      case ExplorerDataType.TOKEN:
+        return `https://rinkeby-explorer.avalanche.io/address/${data}`
+      case ExplorerDataType.BLOCK:
+        return `https://rinkeby-explorer.avalanche.io/block/${data}`
+      default:
+        return `https://rinkeby-explorer.avalanche.io/`
     }
   }
 

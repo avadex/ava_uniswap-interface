@@ -10,8 +10,8 @@ var invariant = _interopDefault(require('tiny-invariant'));
 var solidity = require('@ethersproject/solidity');
 var address = require('@ethersproject/address');
 
-var FACTORY_ADDRESS = '0xefa94DE7a4656D787667C749f7E1223D71E9FD88';
-var INIT_CODE_HASH = '0x40231f6b438bce0797c9ada29b718a87ea0a5cea3fe9a771abdd76bd41a3e545';
+var FACTORY_ADDRESS = '0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f';
+var INIT_CODE_HASH = '0x68b58c0c7cb7eee735ff41e28d34d055e34ebf55c6170f58890d725e87826579';
 var MINIMUM_LIQUIDITY = /*#__PURE__*/JSBI.BigInt(1000); // exports for internal consumption
 
 var ZERO = /*#__PURE__*/JSBI.BigInt(0);

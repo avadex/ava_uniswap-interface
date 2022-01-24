@@ -1,10 +1,12 @@
+import { DEFAULT_TXN_DISMISS_MS, L2_TXN_DISMISS_MS } from 'constants/misc'
 import { useCallback, useEffect, useMemo } from 'react'
 import { useAppDispatch, useAppSelector } from 'state/hooks'
-import { SupportedChainId } from '../../constants/chains'
+
+import { L2_CHAIN_IDS, SupportedChainId } from '../../constants/chains'
 import { useActiveWeb3React } from '../../hooks/web3'
 import { retry, RetryableError, RetryOptions } from '../../utils/retry'
-import { updateBlockNumber } from '../application/actions'
 import { useAddPopup, useBlockNumber } from '../application/hooks'
+import { updateBlockNumber } from '../application/reducer'
 import { checkedTransaction, finalizeTransaction } from './actions'
 
 interface TxInterface {
@@ -21,8 +23,8 @@ export function shouldCheck(lastBlockNumber: number, tx: TxInterface): boolean {
   const minutesPending = (new Date().getTime() - tx.addedTime) / 1000 / 60
   if (minutesPending > 60) {
     // every 10 blocks if pending for longer than an hour
-    return blocksSinceCheck > 1
-  } else if (minutesPending > 2) {
+    return blocksSinceCheck > 9
+  } else if (minutesPending > 5) {
     // every 3 blocks if pending more than 5 minutes
     return blocksSinceCheck > 2
   } else {
@@ -32,7 +34,7 @@ export function shouldCheck(lastBlockNumber: number, tx: TxInterface): boolean {
 }
 
 const RETRY_OPTIONS_BY_CHAIN_ID: { [chainId: number]: RetryOptions } = {
-  //[SupportedChainId.AVA]: { n: 1, minWait: 0, maxWait: 0 },
+  [SupportedChainId.AVALANCHE]: { n: 10, minWait: 250, maxWait: 1000 },
   [SupportedChainId.ARBITRUM_RINKEBY]: { n: 10, minWait: 250, maxWait: 1000 },
   [SupportedChainId.OPTIMISTIC_KOVAN]: { n: 10, minWait: 250, maxWait: 1000 },
   [SupportedChainId.OPTIMISM]: { n: 10, minWait: 250, maxWait: 1000 },
@@ -51,6 +53,9 @@ export default function Updater(): null {
 
   // show popup on confirm
   const addPopup = useAddPopup()
+
+  // speed up popup dismisall time if on L2
+  const isL2 = Boolean(chainId && L2_CHAIN_IDS.includes(chainId))
 
   const getReceipt = useCallback(
     (hash: string) => {
@@ -102,11 +107,10 @@ export default function Updater(): null {
                 {
                   txn: {
                     hash,
-                    success: receipt.status === 1,
-                    summary: transactions[hash]?.summary,
                   },
                 },
-                hash
+                hash,
+                isL2 ? L2_TXN_DISMISS_MS : DEFAULT_TXN_DISMISS_MS
               )
 
               // the receipt was fetched before the block, fast forward to that block to trigger balance updates
@@ -128,7 +132,7 @@ export default function Updater(): null {
     return () => {
       cancels.forEach((cancel) => cancel())
     }
-  }, [chainId, library, transactions, lastBlockNumber, dispatch, addPopup, getReceipt])
+  }, [chainId, library, transactions, lastBlockNumber, dispatch, addPopup, getReceipt, isL2])
 
   return null
 }

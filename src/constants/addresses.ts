@@ -1,5 +1,5 @@
-import { FACTORY_ADDRESS as V2_FACTORY_ADDRESS } from '@uniswap/v2-sdk'
 import { FACTORY_ADDRESS as V3_FACTORY_ADDRESS } from '@uniswap/v3-sdk'
+
 import { constructSameAddressMap } from '../utils/constructSameAddressMap'
 import { SupportedChainId } from './chains'
 
@@ -7,25 +7,33 @@ type AddressMap = { [chainId: number]: string }
 
 export const UNI_ADDRESS: AddressMap = constructSameAddressMap('0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984')
 export const MULTICALL_ADDRESS: AddressMap = {
-  ...constructSameAddressMap('0x1F98415757620B543A52E61c46B32eB19261F984', [SupportedChainId.OPTIMISTIC_KOVAN]),
-  [SupportedChainId.OPTIMISM]: '0x143430fD8449952f0f0E030dc78e84962ED40107',
-  [SupportedChainId.AVA]: '0xeD822906FA020614840D6676401283098f6100E5',
-  [SupportedChainId.ARBITRUM_RINKEBY]: '0x143430fD8449952f0f0E030dc78e84962ED40107',
+  ...constructSameAddressMap('0x1F98415757620B543A52E61c46B32eB19261F984', [
+    SupportedChainId.OPTIMISTIC_KOVAN,
+    SupportedChainId.OPTIMISM,
+  ]),
+  [SupportedChainId.AVALANCHE]: '0xeD822906FA020614840D6676401283098f6100E5',
+  [SupportedChainId.ARBITRUM_RINKEBY]: '0xa501c031958F579dB7676fF1CE78AD305794d579',
 }
-export const V2_FACTORY_ADDRESSES: AddressMap = constructSameAddressMap(V2_FACTORY_ADDRESS)
+export const V2_FACTORY_ADDRESSES: AddressMap = constructSameAddressMap('0xefa94DE7a4656D787667C749f7E1223D71E9FD88')
 export const V2_ROUTER_ADDRESS: AddressMap = constructSameAddressMap('0xE54Ca86531e17Ef3616d22Ca28b0D458b6C89106')
 
 /**
- * The older V0 governance account
+ * The oldest V0 governance address
  */
 export const GOVERNANCE_ALPHA_V0_ADDRESSES: AddressMap = constructSameAddressMap(
   '0x5e4be8Bc9637f0EAA1A755019e06A68ce081D58F'
 )
 /**
- * The latest governor alpha that is currently admin of timelock
+ * The older V1 governance address
  */
 export const GOVERNANCE_ALPHA_V1_ADDRESSES: AddressMap = {
   [SupportedChainId.MAINNET]: '0xC4e172459f1E7939D522503B81AFAaC1014CE6F6',
+}
+/**
+ * The latest governor bravo that is currently admin of timelock
+ */
+export const GOVERNANCE_BRAVO_ADDRESSES: AddressMap = {
+  [SupportedChainId.MAINNET]: '0x408ED6354d4973f66138C91495F2f2FCbd8724C3',
 }
 
 export const TIMELOCK_ADDRESS: AddressMap = constructSameAddressMap('0x1a9C8182C09F50C8318d769245beA52c32BE35BC')
@@ -39,13 +47,13 @@ export const ARGENT_WALLET_DETECTOR_ADDRESS: AddressMap = {
 export const V3_CORE_FACTORY_ADDRESSES: AddressMap = constructSameAddressMap(V3_FACTORY_ADDRESS, [
   SupportedChainId.OPTIMISM,
   SupportedChainId.OPTIMISTIC_KOVAN,
-  SupportedChainId.AVA,
+  SupportedChainId.AVALANCHE,
   SupportedChainId.ARBITRUM_RINKEBY,
 ])
 export const QUOTER_ADDRESSES: AddressMap = constructSameAddressMap('0xCa2E15056971a9F0B4f39c1662fd791E08E5Bd02', [
   SupportedChainId.OPTIMISM,
   SupportedChainId.OPTIMISTIC_KOVAN,
-  SupportedChainId.AVA,
+  SupportedChainId.AVALANCHE,
   SupportedChainId.ARBITRUM_RINKEBY,
 ])
 export const NONFUNGIBLE_POSITION_MANAGER_ADDRESSES: AddressMap = constructSameAddressMap(
@@ -53,7 +61,7 @@ export const NONFUNGIBLE_POSITION_MANAGER_ADDRESSES: AddressMap = constructSameA
   [
     SupportedChainId.OPTIMISM,
     SupportedChainId.OPTIMISTIC_KOVAN,
-    SupportedChainId.AVA,
+    SupportedChainId.AVALANCHE,
     SupportedChainId.ARBITRUM_RINKEBY,
   ]
 )
@@ -69,9 +77,10 @@ export const SOCKS_CONTROLLER_ADDRESSES: AddressMap = {
 export const SWAP_ROUTER_ADDRESSES: AddressMap = constructSameAddressMap('0x787Bd59120fb81f8BE4AD34280a621877516fe37', [
   SupportedChainId.OPTIMISM,
   SupportedChainId.OPTIMISTIC_KOVAN,
-  SupportedChainId.AVA,
+  SupportedChainId.AVALANCHE,
   SupportedChainId.ARBITRUM_RINKEBY,
 ])
 export const V3_MIGRATOR_ADDRESSES: AddressMap = constructSameAddressMap('0x80E70C7A3ecfDba88f3e1Fe572cFa5c081213762', [
+  SupportedChainId.AVALANCHE,
   SupportedChainId.ARBITRUM_RINKEBY,
 ])

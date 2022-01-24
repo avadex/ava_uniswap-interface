@@ -1,10 +1,10 @@
-import { DEFAULT_ACTIVE_LIST_URLS, UNSUPPORTED_LIST_URLS } from './../../constants/lists'
 import { createReducer } from '@reduxjs/toolkit'
-import { getVersionUpgrade, VersionUpgrade } from '@uniswap/token-lists'
-import { TokenList } from '@uniswap/token-lists/dist/types'
+import { getVersionUpgrade, TokenList, VersionUpgrade } from '@uniswap/token-lists'
+
+import { DEFAULT_ACTIVE_LIST_URLS } from '../../constants/lists'
 import { DEFAULT_LIST_OF_LISTS } from '../../constants/lists'
 import { updateVersion } from '../global/actions'
-import { acceptListUpdate, addList, fetchTokenList, removeList, enableList, disableList } from './actions'
+import { acceptListUpdate, addList, disableList, enableList, fetchTokenList, removeList } from './actions'
 
 export interface ListsState {
   readonly byUrl: {
@@ -36,7 +36,7 @@ type Mutable<T> = { -readonly [P in keyof T]: T[P] extends ReadonlyArray<infer U
 const initialState: ListsState = {
   lastInitializedDefaultListOfLists: DEFAULT_LIST_OF_LISTS,
   byUrl: {
-    ...DEFAULT_LIST_OF_LISTS.concat(UNSUPPORTED_LIST_URLS).reduce<Mutable<ListsState['byUrl']>>((memo, listUrl) => {
+    ...DEFAULT_LIST_OF_LISTS.reduce<Mutable<ListsState['byUrl']>>((memo, listUrl) => {
       memo[listUrl] = NEW_LIST_STATE
       return memo
     }, {}),
@@ -95,7 +95,7 @@ export default createReducer(initialState, (builder) =>
       }
 
       state.byUrl[url] = {
-        current: null,
+        current: state.byUrl[url].current ? state.byUrl[url].current : null,
         pendingUpdate: null,
         loadingRequestId: null,
         error: errorMessage,

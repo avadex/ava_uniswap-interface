@@ -2,7 +2,7 @@ import { BigintIsh, Percent, CurrencyAmount, Currency, NativeCurrency } from '@u
 import { Position } from './entities/position';
 import { MethodParameters } from './utils/calldata';
 import { Interface } from '@ethersproject/abi';
-import { PermitOptions, SelfPermit } from './selfPermit';
+import { PermitOptions } from './selfPermit';
 import { Pool } from './entities';
 export interface MintSpecificOptions {
     /**
@@ -48,6 +48,24 @@ export interface CommonAddLiquidityOptions {
 export declare type MintOptions = CommonAddLiquidityOptions & MintSpecificOptions;
 export declare type IncreaseOptions = CommonAddLiquidityOptions & IncreaseSpecificOptions;
 export declare type AddLiquidityOptions = MintOptions | IncreaseOptions;
+export interface SafeTransferOptions {
+    /**
+     * The account sending the NFT.
+     */
+    sender: string;
+    /**
+     * The account that should receive the NFT.
+     */
+    recipient: string;
+    /**
+     * The id of the token being sent.
+     */
+    tokenId: BigintIsh;
+    /**
+     * The optional parameter that passes data to the `onERC721Received` call for the staker
+     */
+    data?: string;
+}
 export interface CollectOptions {
     /**
      * Indicates the ID of the position to collect for.
@@ -106,7 +124,7 @@ export interface RemoveLiquidityOptions {
      */
     collectOptions: Omit<CollectOptions, 'tokenId'>;
 }
-export declare abstract class NonfungiblePositionManager extends SelfPermit {
+export declare abstract class NonfungiblePositionManager {
     static INTERFACE: Interface;
     /**
      * Cannot be constructed.
@@ -124,4 +142,5 @@ export declare abstract class NonfungiblePositionManager extends SelfPermit {
      * @returns The call parameters
      */
     static removeCallParameters(position: Position, options: RemoveLiquidityOptions): MethodParameters;
+    static safeTransferFromParameters(options: SafeTransferOptions): MethodParameters;
 }

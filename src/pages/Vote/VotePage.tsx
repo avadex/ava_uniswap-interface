@@ -1,14 +1,16 @@
+import { BigNumber } from '@ethersproject/bignumber'
+// eslint-disable-next-line no-restricted-imports
+import { t, Trans } from '@lingui/macro'
 import { CurrencyAmount, Token } from '@uniswap/sdk-core'
-import { BigNumber } from 'ethers'
 import useCurrentBlockTimestamp from 'hooks/useCurrentBlockTimestamp'
 import JSBI from 'jsbi'
-import { DateTime } from 'luxon'
+import { DateTime } from 'luxon/src/luxon'
 import { useState } from 'react'
 import { ArrowLeft } from 'react-feather'
 import ReactMarkdown from 'react-markdown'
-
 import { RouteComponentProps } from 'react-router-dom'
 import styled from 'styled-components/macro'
+
 import { ButtonPrimary } from '../../components/Button'
 import { GreyCard } from '../../components/Card'
 import { AutoColumn } from '../../components/Column'
@@ -25,8 +27,8 @@ import {
 import { ZERO_ADDRESS } from '../../constants/misc'
 import { UNI } from '../../constants/tokens'
 import { useActiveWeb3React } from '../../hooks/web3'
-import { ApplicationModal } from '../../state/application/actions'
 import { useBlockNumber, useModalOpen, useToggleDelegateModal, useToggleVoteModal } from '../../state/application/hooks'
+import { ApplicationModal } from '../../state/application/reducer'
 import {
   ProposalData,
   ProposalState,
@@ -34,12 +36,12 @@ import {
   useUserDelegatee,
   useUserVotesAsOfBlock,
 } from '../../state/governance/hooks'
+import { VoteOption } from '../../state/governance/types'
 import { useTokenBalance } from '../../state/wallet/hooks'
 import { ExternalLink, StyledInternalLink, TYPE } from '../../theme'
 import { isAddress } from '../../utils'
 import { ExplorerDataType, getExplorerLink } from '../../utils/getExplorerLink'
 import { ProposalStatus } from './styled'
-import { t, Trans } from '@lingui/macro'
 
 const PageWrapper = styled(AutoColumn)`
   width: 100%;
@@ -120,6 +122,21 @@ const ProposerAddressLink = styled(ExternalLink)`
   word-break: break-all;
 `
 
+function getDateFromBlock(
+  targetBlock: number | undefined,
+  currentBlock: number | undefined,
+  averageBlockTimeInSeconds: number | undefined,
+  currentTimestamp: BigNumber | undefined
+): DateTime | undefined {
+  return targetBlock && currentBlock && averageBlockTimeInSeconds && currentTimestamp
+    ? DateTime.fromSeconds(
+        currentTimestamp
+          .add(BigNumber.from(averageBlockTimeInSeconds).mul(BigNumber.from(targetBlock - currentBlock)))
+          .toNumber()
+      )
+    : undefined
+}
+
 export default function VotePage({
   match: {
     params: { governorIndex, id },
@@ -130,8 +147,8 @@ export default function VotePage({
   // get data for this specific proposal
   const proposalData: ProposalData | undefined = useProposalData(Number.parseInt(governorIndex), id)
 
-  // update support based on button interactions
-  const [support, setSupport] = useState<boolean>(true)
+  // update vote option based on button interactions
+  const [voteOption, setVoteOption] = useState<VoteOption | undefined>(undefined)
 
   // modal for casting votes
   const showVoteModal = useModalOpen(ApplicationModal.VOTE)
@@ -144,18 +161,18 @@ export default function VotePage({
   // get and format date from data
   const currentTimestamp = useCurrentBlockTimestamp()
   const currentBlock = useBlockNumber()
-  const endDate: DateTime | undefined =
-    proposalData && currentTimestamp && currentBlock
-      ? DateTime.fromSeconds(
-          currentTimestamp
-            .add(
-              BigNumber.from(
-                (chainId && AVERAGE_BLOCK_TIME_IN_SECS[chainId]) ?? DEFAULT_AVERAGE_BLOCK_TIME_IN_SECS
-              ).mul(BigNumber.from(proposalData.endBlock - currentBlock))
-            )
-            .toNumber()
-        )
-      : undefined
+  const startDate: DateTime | undefined = getDateFromBlock(
+    proposalData?.startBlock,
+    currentBlock,
+    (chainId && AVERAGE_BLOCK_TIME_IN_SECS[chainId]) ?? DEFAULT_AVERAGE_BLOCK_TIME_IN_SECS,
+    currentTimestamp
+  )
+  const endDate: DateTime | undefined = getDateFromBlock(
+    proposalData?.endBlock,
+    currentBlock,
+    (chainId && AVERAGE_BLOCK_TIME_IN_SECS[chainId]) ?? DEFAULT_AVERAGE_BLOCK_TIME_IN_SECS,
+    currentTimestamp
+  )
   const now: DateTime = DateTime.local()
 
   // get total votes and format percentages for UI
@@ -203,7 +220,12 @@ export default function VotePage({
   return (
     <>
       <PageWrapper gap="lg" justify="center">
-        <VoteModal isOpen={showVoteModal} onDismiss={toggleVoteModal} proposalId={proposalData?.id} support={support} />
+        <VoteModal
+          isOpen={showVoteModal}
+          onDismiss={toggleVoteModal}
+          proposalId={proposalData?.id}
+          voteOption={voteOption}
+        />
         <DelegateModal isOpen={showDelegateModal} onDismiss={toggleDelegateModal} title={<Trans>Unlock Votes</Trans>} />
         <ProposalInfo gap="lg" justify="start">
           <RowBetween style={{ width: '100%' }}>
@@ -218,12 +240,19 @@ export default function VotePage({
             <TYPE.largeHeader style={{ marginBottom: '.5rem' }}>{proposalData?.title}</TYPE.largeHeader>
             <RowBetween>
               <TYPE.main>
+                {startDate && startDate > now ? (
+                  <Trans>
+                    Voting starts approximately {startDate && startDate.toLocaleString(DateTime.DATETIME_FULL)}
+                  </Trans>
+                ) : null}
+              </TYPE.main>
+            </RowBetween>
+            <RowBetween>
+              <TYPE.main>
                 {endDate && endDate < now ? (
                   <Trans>Voting ended {endDate && endDate.toLocaleString(DateTime.DATETIME_FULL)}</Trans>
-                ) : proposalData ? (
-                  <Trans>Voting ends approximately {endDate && endDate.toLocaleString(DateTime.DATETIME_FULL)}</Trans>
                 ) : (
-                  ''
+                  <Trans>Voting ends approximately {endDate && endDate.toLocaleString(DateTime.DATETIME_FULL)}</Trans>
                 )}
               </TYPE.main>
             </RowBetween>
@@ -252,7 +281,7 @@ export default function VotePage({
                 padding="8px"
                 $borderRadius="8px"
                 onClick={() => {
-                  setSupport(true)
+                  setVoteOption(VoteOption.For)
                   toggleVoteModal()
                 }}
               >
@@ -262,7 +291,7 @@ export default function VotePage({
                 padding="8px"
                 $borderRadius="8px"
                 onClick={() => {
-                  setSupport(false)
+                  setVoteOption(VoteOption.Against)
                   toggleVoteModal()
                 }}
               >

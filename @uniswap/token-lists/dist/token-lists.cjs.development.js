@@ -68,7 +68,7 @@ var definitions = {
 		type: "string",
 		description: "The name of a token extension property",
 		minLength: 1,
-		maxLength: 30,
+		maxLength: 40,
 		pattern: "^[\\w]+$",
 		examples: [
 			"color",
@@ -76,7 +76,32 @@ var definitions = {
 			"aliases"
 		]
 	},
-	ExtensionValue: {
+	ExtensionMap: {
+		type: "object",
+		description: "An object containing any arbitrary or vendor-specific token metadata",
+		maxProperties: 10,
+		propertyNames: {
+			$ref: "#/definitions/ExtensionIdentifier"
+		},
+		additionalProperties: {
+			$ref: "#/definitions/ExtensionValue"
+		},
+		examples: [
+			{
+				color: "#000000",
+				is_verified_by_me: true
+			},
+			{
+				"x-bridged-addresses-by-chain": {
+					"1": {
+						bridgeAddress: "0x4200000000000000000000000000000000000010",
+						tokenAddress: "0x4200000000000000000000000000000000000010"
+					}
+				}
+			}
+		]
+	},
+	ExtensionPrimitiveValue: {
 		anyOf: [
 			{
 				type: "string",
@@ -103,6 +128,47 @@ var definitions = {
 			}
 		]
 	},
+	ExtensionValue: {
+		anyOf: [
+			{
+				$ref: "#/definitions/ExtensionPrimitiveValue"
+			},
+			{
+				type: "object",
+				maxProperties: 10,
+				propertyNames: {
+					$ref: "#/definitions/ExtensionIdentifier"
+				},
+				additionalProperties: {
+					$ref: "#/definitions/ExtensionValueInner0"
+				}
+			}
+		]
+	},
+	ExtensionValueInner0: {
+		anyOf: [
+			{
+				$ref: "#/definitions/ExtensionPrimitiveValue"
+			},
+			{
+				type: "object",
+				maxProperties: 10,
+				propertyNames: {
+					$ref: "#/definitions/ExtensionIdentifier"
+				},
+				additionalProperties: {
+					$ref: "#/definitions/ExtensionValueInner1"
+				}
+			}
+		]
+	},
+	ExtensionValueInner1: {
+		anyOf: [
+			{
+				$ref: "#/definitions/ExtensionPrimitiveValue"
+			}
+		]
+	},
 	TagDefinition: {
 		type: "object",
 		description: "Definition of a tag that can be associated with a token via its identifier",
@@ -118,7 +184,7 @@ var definitions = {
 			description: {
 				type: "string",
 				description: "A user-friendly description of the tag",
-				pattern: "^[ \\w\\.,]+$",
+				pattern: "^[ \\w\\.,:]+$",
 				minLength: 1,
 				maxLength: 200
 			}
@@ -170,7 +236,7 @@ var definitions = {
 				description: "The name of the token",
 				minLength: 1,
 				maxLength: 40,
-				pattern: "^[ \\w.'+\\-%\\/À-ÖØ-öø-ÿ:]+$",
+				pattern: "^[ \\w.'+\\-%/À-ÖØ-öø-ÿ:&\\[\\]\\(\\)]+$",
 				examples: [
 					"USD Coin"
 				]
@@ -178,7 +244,7 @@ var definitions = {
 			symbol: {
 				type: "string",
 				description: "The symbol for the token; must be alphanumeric",
-				pattern: "^[a-zA-Z0-9+\\-%\\/\\$]+$",
+				pattern: "^[a-zA-Z0-9+\\-%/$.]+$",
 				minLength: 1,
 				maxLength: 20,
 				examples: [
@@ -206,21 +272,7 @@ var definitions = {
 				]
 			},
 			extensions: {
-				type: "object",
-				description: "An object containing any arbitrary or vendor-specific token metadata",
-				propertyNames: {
-					$ref: "#/definitions/ExtensionIdentifier"
-				},
-				additionalProperties: {
-					$ref: "#/definitions/ExtensionValue"
-				},
-				maxProperties: 10,
-				examples: [
-					{
-						color: "#000000",
-						is_verified_by_me: true
-					}
-				]
+				$ref: "#/definitions/ExtensionMap"
 			}
 		},
 		required: [

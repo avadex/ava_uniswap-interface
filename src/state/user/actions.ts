@@ -15,13 +15,18 @@ export interface SerializedPair {
 }
 
 export const updateMatchesDarkMode = createAction<{ matchesDarkMode: boolean }>('user/updateMatchesDarkMode')
-export const updateArbitrumAlphaAcknowledged = createAction<{ arbitrumAlphaAcknowledged: boolean }>(
-  'user/updateArbitrumAlphaAcknowledged'
+export const updateAvalancheAlphaAcknowledged = createAction<{ avalancheAlphaAcknowledged: boolean }>(
+  'user/updateAvalancheAlphaAcknowledged'
+)
+export const updateOptimismAlphaAcknowledged = createAction<{ optimismAlphaAcknowledged: boolean }>(
+  'user/updateOptimismAlphaAcknowledged'
 )
 export const updateUserDarkMode = createAction<{ userDarkMode: boolean }>('user/updateUserDarkMode')
 export const updateUserExpertMode = createAction<{ userExpertMode: boolean }>('user/updateUserExpertMode')
 export const updateUserLocale = createAction<{ userLocale: SupportedLocale }>('user/updateUserLocale')
-export const updateUserSingleHopOnly = createAction<{ userSingleHopOnly: boolean }>('user/updateUserSingleHopOnly')
+export const updateUserClientSideRouter = createAction<{ userClientSideRouter: boolean }>(
+  'user/updateUserClientSideRouter'
+)
 export const updateHideClosedPositions = createAction<{ userHideClosedPositions: boolean }>('user/hideClosedPositions')
 export const updateUserSlippageTolerance = createAction<{ userSlippageTolerance: number | 'auto' }>(
   'user/updateUserSlippageTolerance'

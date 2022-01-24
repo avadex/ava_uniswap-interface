@@ -1,18 +1,9 @@
 import { Interface } from '@ethersproject/abi';
 import { BigintIsh, Currency, Percent, TradeType } from '@uniswap/sdk-core';
 import { Trade } from './entities/trade';
-import { PermitOptions, SelfPermit } from './selfPermit';
+import { PermitOptions } from './selfPermit';
 import { MethodParameters } from './utils/calldata';
-export interface FeeOptions {
-    /**
-     * The percent of the output that will be taken as a fee.
-     */
-    fee: Percent;
-    /**
-     * The recipient of the fee.
-     */
-    recipient: string;
-}
+import { FeeOptions } from './payments';
 /**
  * Options for producing the arguments to send calls to the router.
  */
@@ -43,9 +34,9 @@ export interface SwapOptions {
     fee?: FeeOptions;
 }
 /**
- * Represents the Uniswap V2 SwapRouter, and has static methods for helping execute trades.
+ * Represents the Uniswap V3 SwapRouter, and has static methods for helping execute trades.
  */
-export declare abstract class SwapRouter extends SelfPermit {
+export declare abstract class SwapRouter {
     static INTERFACE: Interface;
     /**
      * Cannot be constructed.

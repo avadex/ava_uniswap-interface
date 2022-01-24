@@ -1,9 +1,13 @@
 // a list of tokens by chain
 import { Currency, Token } from '@uniswap/sdk-core'
+
 import { SupportedChainId } from './chains'
 import {
   AMPL,
   DAI,
+  DAI_E,
+  DAI_OPTIMISM,
+  ETH2X_FLI,
   ExtendedEther,
   FEI,
   FRAX,
@@ -11,16 +15,16 @@ import {
   renBTC,
   TRIBE,
   USDC,
+  WETH_E,
+  USDC_OPTIMISM,
   USDT,
-  WBTC,
-  ETH2X_FLI,
-  WETH9_EXTENDED,
-  DAI_OPTIMISM,
+  USDT_E,
+  USDC_E,
   USDT_OPTIMISM,
+  WBTC,
+  WBTC_E,
   WBTC_OPTIMISM,
-  WETH_e,
-  UNI_e,
-  CRACK,
+  WETH9_EXTENDED,
 } from './tokens'
 
 type ChainTokenList = {
@@ -40,7 +44,13 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   ...WETH_ONLY,
   [SupportedChainId.MAINNET]: [...WETH_ONLY[SupportedChainId.MAINNET], DAI, USDC, USDT, WBTC],
   [SupportedChainId.OPTIMISM]: [...WETH_ONLY[SupportedChainId.OPTIMISM], DAI_OPTIMISM, USDT_OPTIMISM, WBTC_OPTIMISM],
-  [SupportedChainId.AVA]: [...WETH_ONLY[SupportedChainId.AVA], WETH_e, UNI_e, CRACK],
+  [SupportedChainId.AVALANCHE]: [
+    ...WETH_ONLY[SupportedChainId.AVALANCHE],
+    DAI_E,
+    WBTC_E,
+    USDC_E,
+    USDT_E,
+  ],
 }
 export const ADDITIONAL_BASES: { [chainId: number]: { [tokenAddress: string]: Token[] } } = {
   [SupportedChainId.MAINNET]: {
@@ -85,18 +95,25 @@ export const COMMON_BASES: ChainCurrencyList = {
   ],
   [SupportedChainId.GOERLI]: [ExtendedEther.onChain(SupportedChainId.GOERLI), WETH9_EXTENDED[SupportedChainId.GOERLI]],
   [SupportedChainId.KOVAN]: [ExtendedEther.onChain(SupportedChainId.KOVAN), WETH9_EXTENDED[SupportedChainId.KOVAN]],
-  [SupportedChainId.AVA]: [
-    ExtendedEther.onChain(SupportedChainId.AVA),
-    WETH_e,
-    UNI_e,
-    CRACK,
-    WETH9_EXTENDED[SupportedChainId.AVA],
+  [SupportedChainId.AVALANCHE]: [
+    ExtendedEther.onChain(SupportedChainId.AVALANCHE),
+    DAI_E,
+    USDT_E,
+    USDC_E,
+    WBTC_E,
+    WETH9_EXTENDED[SupportedChainId.AVALANCHE],
   ],
   [SupportedChainId.ARBITRUM_RINKEBY]: [
     ExtendedEther.onChain(SupportedChainId.ARBITRUM_RINKEBY),
     WETH9_EXTENDED[SupportedChainId.ARBITRUM_RINKEBY],
   ],
-  [SupportedChainId.OPTIMISM]: [ExtendedEther.onChain(SupportedChainId.OPTIMISM)],
+  [SupportedChainId.OPTIMISM]: [
+    ExtendedEther.onChain(SupportedChainId.OPTIMISM),
+    DAI_OPTIMISM,
+    USDC_OPTIMISM,
+    USDT_OPTIMISM,
+    WBTC_OPTIMISM,
+  ],
   [SupportedChainId.OPTIMISTIC_KOVAN]: [ExtendedEther.onChain(SupportedChainId.OPTIMISTIC_KOVAN)],
 }
 

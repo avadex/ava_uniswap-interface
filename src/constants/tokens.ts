@@ -1,4 +1,5 @@
-import { WETH9, Token, Ether } from '@uniswap/sdk-core'
+import { Ether, Token, WETH9 } from '@uniswap/sdk-core'
+
 import { UNI_ADDRESS } from './addresses'
 import { SupportedChainId } from './chains'
 
@@ -16,40 +17,12 @@ export const DAI = new Token(
   'DAI',
   'Dai Stablecoin'
 )
-export const USDC = new Token(
-  SupportedChainId.MAINNET,
-  '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
-  6,
-  'USDC',
-  'USD//C'
-)
-export const USDT_AVA = new Token(
-  SupportedChainId.AVA,
-  '0xc7198437980c041c805A1EDcbA50c1Ce5db95118',
-  6,
-  'USDT_e',
-  'USD//e'
-)
-export const CRACK = new Token(
-  SupportedChainId.AVA,
-  '0xE9D00cBC5f02614d7281D742E6E815A47ce31107',
-  9,
-  'CRACK',
-  'Crack.Fi'
-)
-export const UNI_e = new Token(
-  SupportedChainId.AVA,
-  '0x8eBAf22B6F053dFFeaf46f4Dd9eFA95D89ba8580',
-  8,
-  'UNI_e',
-  'Uniswap'
-)
-export const WETH_e = new Token(
-  SupportedChainId.AVA,
-  '0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB',
+export const DAI_E = new Token(
+  SupportedChainId.AVALANCHE,
+  '0xd586e7f844cea2f87f50152665bcbc2c279d8d70',
   18,
-  'WETH_e',
-  'Wrapped AVAX'
+  'DAI',
+  'Dai stable coin'
 )
 export const DAI_OPTIMISM = new Token(
   SupportedChainId.OPTIMISM,
@@ -57,6 +30,48 @@ export const DAI_OPTIMISM = new Token(
   18,
   'DAI',
   'Dai stable coin'
+)
+export const USDC = new Token(
+  SupportedChainId.MAINNET,
+  '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
+  6,
+  'USDC',
+  'USD//C'
+)
+export const USDT_E = new Token(
+  SupportedChainId.AVALANCHE,
+  '0xc7198437980c041c805A1EDcbA50c1Ce5db95118',
+  6,
+  'USDT_E',
+  'USD//T'
+)
+export const USDC_E = new Token(
+  SupportedChainId.AVALANCHE,
+  '0xa7d7079b0fead91f3e65f86e8915cb59c1a4c664',
+  6,
+  'USDC_E',
+  'USD//C'
+)
+export const UNI_e = new Token(
+  SupportedChainId.AVALANCHE,
+  '0x8eBAf22B6F053dFFeaf46f4Dd9eFA95D89ba8580',
+  8,
+  'UNI_e',
+  'Uniswap'
+)
+export const WETH_E = new Token(
+  SupportedChainId.AVALANCHE,
+  '0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB',
+  18,
+  'WETH_e',
+  'Wrapped ETH'
+)
+export const USDC_OPTIMISM = new Token(
+  SupportedChainId.OPTIMISM,
+  '0x7F5c764cBc14f9669B88837ca1490cCa17c31607',
+  6,
+  'USDC',
+  'USD//C'
 )
 export const USDT = new Token(
   SupportedChainId.MAINNET,
@@ -75,6 +90,13 @@ export const USDT_OPTIMISM = new Token(
 export const WBTC = new Token(
   SupportedChainId.MAINNET,
   '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599',
+  8,
+  'WBTC',
+  'Wrapped BTC'
+)
+export const WBTC_E = new Token(
+  SupportedChainId.AVALANCHE,
+  '0x50b7545627a5162f82a992c33b87adc75187b218',
   8,
   'WBTC',
   'Wrapped BTC'
@@ -126,7 +148,7 @@ export const ETH2X_FLI = new Token(
   '0xAa6E8127831c9DE45ae56bB1b0d4D4Da6e5665BD',
   18,
   'ETH2x-FLI',
-  'AVAX 2x Flexible Leverage Index'
+  'ETH 2x Flexible Leverage Index'
 )
 export const UNI: { [chainId: number]: Token } = {
   [SupportedChainId.MAINNET]: new Token(SupportedChainId.MAINNET, UNI_ADDRESS[1], 18, 'UNI', 'Uniswap'),
@@ -138,8 +160,8 @@ export const UNI: { [chainId: number]: Token } = {
 
 export const WETH9_EXTENDED: { [chainId: number]: Token } = {
   ...WETH9,
-  [SupportedChainId.AVA]: new Token(
-    SupportedChainId.AVA,
+  [SupportedChainId.AVALANCHE]: new Token(
+    SupportedChainId.AVALANCHE,
     '0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7',
     18,
     'WAVAX',

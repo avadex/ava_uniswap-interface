@@ -1,27 +1,27 @@
 import { Trans } from '@lingui/macro'
 import { CurrencyAmount, Token } from '@uniswap/sdk-core'
 import { useCallback, useEffect } from 'react'
-import ReactGA from 'react-ga'
 import { Heart, X } from 'react-feather'
+import ReactGA from 'react-ga'
 import styled, { keyframes } from 'styled-components/macro'
+
 import tokenLogo from '../../assets/images/token-logo.png'
 import { ButtonPrimary } from '../../components/Button'
 import { useActiveWeb3React } from '../../hooks/web3'
-import { ApplicationModal } from '../../state/application/actions'
 import {
   useModalOpen,
   useShowClaimPopup,
   useToggleSelfClaimModal,
   useToggleShowClaimPopup,
 } from '../../state/application/hooks'
-
+import { ApplicationModal } from '../../state/application/reducer'
 import { useUserHasAvailableClaim, useUserUnclaimedAmount } from '../../state/claim/hooks'
 import { TYPE } from '../../theme'
 import { AutoColumn } from '../Column'
 import { CardBGImage, CardNoise } from '../earn/styled'
 
 const StyledClaimPopup = styled(AutoColumn)`
-  background: radial-gradient(76.02% 75.41% at 1.84% 0%, #2b2d2c 0%, #021d43 100%);
+  background: radial-gradient(76.02% 75.41% at 1.84% 0%, #ff007a 0%, #021d43 100%);
   border-radius: 20px;
   padding: 1.5rem;
   overflow: hidden;

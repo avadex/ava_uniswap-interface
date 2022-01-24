@@ -10,8 +10,12 @@ var invariant = _interopDefault(require('tiny-invariant'));
 var abi = require('@ethersproject/abi');
 var address = require('@ethersproject/address');
 var solidity = require('@ethersproject/solidity');
+var IMulticall_json = require('@uniswap/v3-periphery/artifacts/contracts/interfaces/IMulticall.sol/IMulticall.json');
 var NonfungiblePositionManager_json = require('@uniswap/v3-periphery/artifacts/contracts/NonfungiblePositionManager.sol/NonfungiblePositionManager.json');
 var ISelfPermit_json = require('@uniswap/v3-periphery/artifacts/contracts/interfaces/ISelfPermit.sol/ISelfPermit.json');
+var IPeripheryPaymentsWithFee_json = require('@uniswap/v3-periphery/artifacts/contracts/interfaces/IPeripheryPaymentsWithFee.sol/IPeripheryPaymentsWithFee.json');
+var Quoter_json = require('@uniswap/v3-periphery/artifacts/contracts/lens/Quoter.sol/Quoter.json');
+var UniswapV3Staker_json = require('@uniswap/v3-staker/artifacts/contracts/UniswapV3Staker.sol/UniswapV3Staker.json');
 var SwapRouter_json = require('@uniswap/v3-periphery/artifacts/contracts/SwapRouter.sol/SwapRouter.json');
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
@@ -82,12 +86,6 @@ function _extends() {
   };
 
   return _extends.apply(this, arguments);
-}
-
-function _inheritsLoose(subClass, superClass) {
-  subClass.prototype = Object.create(superClass.prototype);
-  subClass.prototype.constructor = subClass;
-  subClass.__proto__ = superClass;
 }
 
 function _objectWithoutPropertiesLoose(source, excluded) {
@@ -882,7 +880,7 @@ var runtime = (function (exports) {
   // as the regeneratorRuntime namespace. Otherwise create a new empty
   // object. Either way, the resulting object will be used to initialize
   // the regeneratorRuntime variable at the top of this file.
-   module.exports
+   module.exports 
 ));
 
 try {
@@ -904,15 +902,11 @@ try {
 var _TICK_SPACINGS;
 
 var FACTORY_ADDRESS = '0xE06B9a3C0A4314E00B33d9090a190ddC00a4DD01';
-var FACTORY_ADDRESS_AVA = '0xE06B9a3C0A4314E00B33d9090a190ddC00a4DD01';
 var ADDRESS_ZERO = '0x0000000000000000000000000000000000000000';
 var POOL_INIT_CODE_HASH = '0x68b58c0c7cb7eee735ff41e28d34d055e34ebf55c6170f58890d725e87826579';
-var POOL_INIT_CODE_HASH_OPTIMISM = '0x0c231002d0970d2126e7e00ce88c3b0e5ec8e48dac71478d56245c34ea2f9447'; // historical artifact due to small compiler mismatch
-var POOL_INIT_CODE_HASH_AVA = '0x68b58c0c7cb7eee735ff41e28d34d055e34ebf55c6170f58890d725e87826579';
-
-var POOL_INIT_CODE_HASH_OPTIMISM_KOVAN = '0x1fc830513acbdb1608b8c18fd3cf4a4bee3329c69bb41d56400401c40fe02fd0';
 
 (function (FeeAmount) {
+  FeeAmount[FeeAmount["LOWEST"] = 100] = "LOWEST";
   FeeAmount[FeeAmount["LOW"] = 500] = "LOW";
   FeeAmount[FeeAmount["MEDIUM"] = 3000] = "MEDIUM";
   FeeAmount[FeeAmount["HIGH"] = 10000] = "HIGH";
@@ -922,7 +916,7 @@ var POOL_INIT_CODE_HASH_OPTIMISM_KOVAN = '0x1fc830513acbdb1608b8c18fd3cf4a4bee33
  */
 
 
-var TICK_SPACINGS = (_TICK_SPACINGS = {}, _TICK_SPACINGS[exports.FeeAmount.LOW] = 10, _TICK_SPACINGS[exports.FeeAmount.MEDIUM] = 60, _TICK_SPACINGS[exports.FeeAmount.HIGH] = 200, _TICK_SPACINGS);
+var TICK_SPACINGS = (_TICK_SPACINGS = {}, _TICK_SPACINGS[exports.FeeAmount.LOWEST] = 1, _TICK_SPACINGS[exports.FeeAmount.LOW] = 10, _TICK_SPACINGS[exports.FeeAmount.MEDIUM] = 60, _TICK_SPACINGS[exports.FeeAmount.HIGH] = 200, _TICK_SPACINGS);
 
 var NEGATIVE_ONE = /*#__PURE__*/JSBI.BigInt(-1);
 var ZERO = /*#__PURE__*/JSBI.BigInt(0);
@@ -937,6 +931,7 @@ var Q192 = /*#__PURE__*/JSBI.exponentiate(Q96, /*#__PURE__*/JSBI.BigInt(2));
  * @param tokenA The first token of the pair, irrespective of sort order
  * @param tokenB The second token of the pair, irrespective of sort order
  * @param fee The fee tier of the pool
+ * @param initCodeHashManualOverride Override the init code hash used to compute the pool address if necessary
  * @returns The pool address
  */
 
@@ -952,7 +947,7 @@ function computePoolAddress(_ref) {
       token1 = _ref2[1]; // does safety checks
 
 
-  return address.getCreate2Address(factoryAddress, solidity.keccak256(['bytes'], [abi.defaultAbiCoder.encode(['address', 'address', 'uint24'], [token0.address, token1.address, fee])]), initCodeHashManualOverride != null ? initCodeHashManualOverride : tokenA.chainId === 10 ? POOL_INIT_CODE_HASH_OPTIMISM : tokenA.chainId === 69 ? POOL_INIT_CODE_HASH_OPTIMISM_KOVAN : POOL_INIT_CODE_HASH);
+  return address.getCreate2Address(factoryAddress, solidity.keccak256(['bytes'], [abi.defaultAbiCoder.encode(['address', 'address', 'uint24'], [token0.address, token1.address, fee])]), initCodeHashManualOverride != null ? initCodeHashManualOverride : POOL_INIT_CODE_HASH);
 }
 
 var LiquidityMath = /*#__PURE__*/function () {
@@ -1802,7 +1797,7 @@ var Pool = /*#__PURE__*/function () {
 
   Pool.getAddress = function getAddress(tokenA, tokenB, fee, initCodeHashManualOverride) {
     return computePoolAddress({
-      factoryAddress: FACTORY_ADDRESS,FACTORY_ADDRESS_AVA,
+      factoryAddress: FACTORY_ADDRESS,
       fee: fee,
       tokenA: tokenA,
       tokenB: tokenB,
@@ -3387,11 +3382,32 @@ var Trade = /*#__PURE__*/function () {
   return Trade;
 }();
 
+var Multicall = /*#__PURE__*/function () {
+  /**
+   * Cannot be constructed.
+   */
+  function Multicall() {}
+
+  Multicall.encodeMulticall = function encodeMulticall(calldatas) {
+    if (!Array.isArray(calldatas)) {
+      calldatas = [calldatas];
+    }
+
+    return calldatas.length === 1 ? calldatas[0] : Multicall.INTERFACE.encodeFunctionData('multicall', [calldatas]);
+  };
+
+  return Multicall;
+}();
+Multicall.INTERFACE = /*#__PURE__*/new abi.Interface(IMulticall_json.abi);
+
 function isAllowedPermit(permitOptions) {
   return 'nonce' in permitOptions;
 }
 
 var SelfPermit = /*#__PURE__*/function () {
+  /**
+   * Cannot be constructed.
+   */
   function SelfPermit() {}
 
   SelfPermit.encodePermit = function encodePermit(token, options) {
@@ -3402,6 +3418,48 @@ var SelfPermit = /*#__PURE__*/function () {
 }();
 SelfPermit.INTERFACE = /*#__PURE__*/new abi.Interface(ISelfPermit_json.abi);
 
+var Payments = /*#__PURE__*/function () {
+  /**
+   * Cannot be constructed.
+   */
+  function Payments() {}
+
+  Payments.encodeFeeBips = function encodeFeeBips(fee) {
+    return toHex(fee.multiply(10000).quotient);
+  };
+
+  Payments.encodeUnwrapWETH9 = function encodeUnwrapWETH9(amountMinimum, recipient, feeOptions) {
+    recipient = sdkCore.validateAndParseAddress(recipient);
+
+    if (!!feeOptions) {
+      var feeBips = this.encodeFeeBips(feeOptions.fee);
+      var feeRecipient = sdkCore.validateAndParseAddress(feeOptions.recipient);
+      return Payments.INTERFACE.encodeFunctionData('unwrapWETH9WithFee', [toHex(amountMinimum), recipient, feeBips, feeRecipient]);
+    } else {
+      return Payments.INTERFACE.encodeFunctionData('unwrapWETH9', [toHex(amountMinimum), recipient]);
+    }
+  };
+
+  Payments.encodeSweepToken = function encodeSweepToken(token, amountMinimum, recipient, feeOptions) {
+    recipient = sdkCore.validateAndParseAddress(recipient);
+
+    if (!!feeOptions) {
+      var feeBips = this.encodeFeeBips(feeOptions.fee);
+      var feeRecipient = sdkCore.validateAndParseAddress(feeOptions.recipient);
+      return Payments.INTERFACE.encodeFunctionData('sweepTokenWithFee', [token.address, toHex(amountMinimum), recipient, feeBips, feeRecipient]);
+    } else {
+      return Payments.INTERFACE.encodeFunctionData('sweepToken', [token.address, toHex(amountMinimum), recipient]);
+    }
+  };
+
+  Payments.encodeRefundETH = function encodeRefundETH() {
+    return Payments.INTERFACE.encodeFunctionData('refundETH');
+  };
+
+  return Payments;
+}();
+Payments.INTERFACE = /*#__PURE__*/new abi.Interface(IPeripheryPaymentsWithFee_json.abi);
+
 var MaxUint128 = /*#__PURE__*/toHex( /*#__PURE__*/JSBI.subtract( /*#__PURE__*/JSBI.exponentiate( /*#__PURE__*/JSBI.BigInt(2), /*#__PURE__*/JSBI.BigInt(128)), /*#__PURE__*/JSBI.BigInt(1))); // type guard
 
 function isMint(options) {
@@ -3410,15 +3468,11 @@ function isMint(options) {
   });
 }
 
-var NonfungiblePositionManager = /*#__PURE__*/function (_SelfPermit) {
-  _inheritsLoose(NonfungiblePositionManager, _SelfPermit);
-
+var NonfungiblePositionManager = /*#__PURE__*/function () {
   /**
    * Cannot be constructed.
    */
-  function NonfungiblePositionManager() {
-    return _SelfPermit.call(this) || this;
-  }
+  function NonfungiblePositionManager() {}
 
   NonfungiblePositionManager.encodeCreate = function encodeCreate(pool) {
     return NonfungiblePositionManager.INTERFACE.encodeFunctionData('createAndInitializePoolIfNecessary', [pool.token0.address, pool.token1.address, pool.fee, toHex(pool.sqrtRatioX96)]);
@@ -3450,11 +3504,11 @@ var NonfungiblePositionManager = /*#__PURE__*/function (_SelfPermit) {
 
 
     if (options.token0Permit) {
-      calldatas.push(NonfungiblePositionManager.encodePermit(position.pool.token0, options.token0Permit));
+      calldatas.push(SelfPermit.encodePermit(position.pool.token0, options.token0Permit));
     }
 
     if (options.token1Permit) {
-      calldatas.push(NonfungiblePositionManager.encodePermit(position.pool.token1, options.token1Permit));
+      calldatas.push(SelfPermit.encodePermit(position.pool.token1, options.token1Permit));
     } // mint
 
 
@@ -3493,14 +3547,14 @@ var NonfungiblePositionManager = /*#__PURE__*/function (_SelfPermit) {
       var wrappedValue = position.pool.token0.equals(wrapped) ? amount0Desired : amount1Desired; // we only need to refund if we're actually sending ETH
 
       if (JSBI.greaterThan(wrappedValue, ZERO)) {
-        calldatas.push(NonfungiblePositionManager.INTERFACE.encodeFunctionData('refundETH'));
+        calldatas.push(Payments.encodeRefundETH());
       }
 
       value = toHex(wrappedValue);
     }
 
     return {
-      calldata: calldatas.length === 1 ? calldatas[0] : NonfungiblePositionManager.INTERFACE.encodeFunctionData('multicall', [calldatas]),
+      calldata: Multicall.encodeMulticall(calldatas),
       value: value
     };
   };
@@ -3522,8 +3576,8 @@ var NonfungiblePositionManager = /*#__PURE__*/function (_SelfPermit) {
       var ethAmount = options.expectedCurrencyOwed0.currency.isNative ? options.expectedCurrencyOwed0.quotient : options.expectedCurrencyOwed1.quotient;
       var token = options.expectedCurrencyOwed0.currency.isNative ? options.expectedCurrencyOwed1.currency : options.expectedCurrencyOwed0.currency;
       var tokenAmount = options.expectedCurrencyOwed0.currency.isNative ? options.expectedCurrencyOwed1.quotient : options.expectedCurrencyOwed0.quotient;
-      calldatas.push(NonfungiblePositionManager.INTERFACE.encodeFunctionData('unwrapWETH9', [toHex(ethAmount), recipient]));
-      calldatas.push(NonfungiblePositionManager.INTERFACE.encodeFunctionData('sweepToken', [token.address, toHex(tokenAmount), recipient]));
+      calldatas.push(Payments.encodeUnwrapWETH9(ethAmount, recipient));
+      calldatas.push(Payments.encodeSweepToken(token, tokenAmount, recipient));
     }
 
     return calldatas;
@@ -3532,7 +3586,7 @@ var NonfungiblePositionManager = /*#__PURE__*/function (_SelfPermit) {
   NonfungiblePositionManager.collectCallParameters = function collectCallParameters(options) {
     var calldatas = NonfungiblePositionManager.encodeCollect(options);
     return {
-      calldata: calldatas.length === 1 ? calldatas[0] : NonfungiblePositionManager.INTERFACE.encodeFunctionData('multicall', [calldatas]),
+      calldata: Multicall.encodeMulticall(calldatas),
       value: toHex(0)
     };
   }
@@ -3580,7 +3634,7 @@ var NonfungiblePositionManager = /*#__PURE__*/function (_SelfPermit) {
         rest = _objectWithoutPropertiesLoose(_options$collectOptio, ["expectedCurrencyOwed0", "expectedCurrencyOwed1"]);
 
     calldatas.push.apply(calldatas, NonfungiblePositionManager.encodeCollect(_extends({
-      tokenId: options.tokenId,
+      tokenId: toHex(options.tokenId),
       // add the underlying value to the expected currency already owed
       expectedCurrencyOwed0: expectedCurrencyOwed0.add(sdkCore.CurrencyAmount.fromRawAmount(expectedCurrencyOwed0.currency, amount0Min)),
       expectedCurrencyOwed1: expectedCurrencyOwed1.add(sdkCore.CurrencyAmount.fromRawAmount(expectedCurrencyOwed1.currency, amount1Min))
@@ -3595,28 +3649,232 @@ var NonfungiblePositionManager = /*#__PURE__*/function (_SelfPermit) {
     }
 
     return {
-      calldata: NonfungiblePositionManager.INTERFACE.encodeFunctionData('multicall', [calldatas]),
+      calldata: Multicall.encodeMulticall(calldatas),
+      value: toHex(0)
+    };
+  };
+
+  NonfungiblePositionManager.safeTransferFromParameters = function safeTransferFromParameters(options) {
+    var recipient = sdkCore.validateAndParseAddress(options.recipient);
+    var sender = sdkCore.validateAndParseAddress(options.sender);
+    var calldata;
+
+    if (options.data) {
+      calldata = NonfungiblePositionManager.INTERFACE.encodeFunctionData('safeTransferFrom(address,address,uint256,bytes)', [sender, recipient, toHex(options.tokenId), options.data]);
+    } else {
+      calldata = NonfungiblePositionManager.INTERFACE.encodeFunctionData('safeTransferFrom(address,address,uint256)', [sender, recipient, toHex(options.tokenId)]);
+    }
+
+    return {
+      calldata: calldata,
       value: toHex(0)
     };
   };
 
   return NonfungiblePositionManager;
-}(SelfPermit);
+}();
 NonfungiblePositionManager.INTERFACE = /*#__PURE__*/new abi.Interface(NonfungiblePositionManager_json.abi);
 
 /**
- * Represents the Uniswap V2 SwapRouter, and has static methods for helping execute trades.
+ * Represents the Uniswap V3 QuoterV1 contract with a method for returning the formatted
+ * calldata needed to call the quoter contract.
  */
 
-var SwapRouter = /*#__PURE__*/function (_SelfPermit) {
-  _inheritsLoose(SwapRouter, _SelfPermit);
+var SwapQuoter = /*#__PURE__*/function () {
+  function SwapQuoter() {}
 
+  /**
+   * Produces the on-chain method name of the appropriate function within QuoterV2,
+   * and the relevant hex encoded parameters.
+   * @template TInput The input token, either Ether or an ERC-20
+   * @template TOutput The output token, either Ether or an ERC-20
+   * @param route The swap route, a list of pools through which a swap can occur
+   * @param amount The amount of the quote, either an amount in, or an amount out
+   * @param tradeType The trade type, either exact input or exact output
+   * @returns The formatted calldata
+   */
+  SwapQuoter.quoteCallParameters = function quoteCallParameters(route, amount, tradeType, options) {
+    if (options === void 0) {
+      options = {};
+    }
+
+    var singleHop = route.pools.length === 1;
+    var quoteAmount = toHex(amount.quotient);
+    var calldata;
+
+    if (singleHop) {
+      if (tradeType === sdkCore.TradeType.EXACT_INPUT) {
+        var _options$sqrtPriceLim, _options;
+
+        calldata = SwapQuoter.INTERFACE.encodeFunctionData("quoteExactInputSingle", [route.tokenPath[0].address, route.tokenPath[1].address, route.pools[0].fee, quoteAmount, toHex((_options$sqrtPriceLim = (_options = options) == null ? void 0 : _options.sqrtPriceLimitX96) != null ? _options$sqrtPriceLim : 0)]);
+      } else {
+        var _options$sqrtPriceLim2, _options2;
+
+        calldata = SwapQuoter.INTERFACE.encodeFunctionData("quoteExactOutputSingle", [route.tokenPath[0].address, route.tokenPath[1].address, route.pools[0].fee, quoteAmount, toHex((_options$sqrtPriceLim2 = (_options2 = options) == null ? void 0 : _options2.sqrtPriceLimitX96) != null ? _options$sqrtPriceLim2 : 0)]);
+      }
+    } else {
+      var _options3;
+
+      !(((_options3 = options) == null ? void 0 : _options3.sqrtPriceLimitX96) === undefined) ?  invariant(false, 'MULTIHOP_PRICE_LIMIT')  : void 0;
+      var path = encodeRouteToPath(route, tradeType === sdkCore.TradeType.EXACT_OUTPUT);
+
+      if (tradeType === sdkCore.TradeType.EXACT_INPUT) {
+        calldata = SwapQuoter.INTERFACE.encodeFunctionData('quoteExactInput', [path, quoteAmount]);
+      } else {
+        calldata = SwapQuoter.INTERFACE.encodeFunctionData('quoteExactOutput', [path, quoteAmount]);
+      }
+    }
+
+    return {
+      calldata: calldata,
+      value: toHex(0)
+    };
+  };
+
+  return SwapQuoter;
+}();
+SwapQuoter.INTERFACE = /*#__PURE__*/new abi.Interface(Quoter_json.abi);
+
+var Staker = /*#__PURE__*/function () {
+  function Staker() {}
+  /**
+   *  To claim rewards, must unstake and then claim.
+   * @param incentiveKey The unique identifier of a staking program.
+   * @param options Options for producing the calldata to claim. Can't claim unless you unstake.
+   * @returns The calldatas for 'unstakeToken' and 'claimReward'.
+   */
+
+
+  Staker.encodeClaim = function encodeClaim(incentiveKey, options) {
+    var _options$amount;
+
+    var calldatas = [];
+    calldatas.push(Staker.INTERFACE.encodeFunctionData('unstakeToken', [this._encodeIncentiveKey(incentiveKey), toHex(options.tokenId)]));
+    var recipient = sdkCore.validateAndParseAddress(options.recipient);
+    var amount = (_options$amount = options.amount) != null ? _options$amount : 0;
+    calldatas.push(Staker.INTERFACE.encodeFunctionData('claimReward', [incentiveKey.rewardToken.address, recipient, toHex(amount)]));
+    return calldatas;
+  }
+  /**
+   *
+   * Note:  A `tokenId` can be staked in many programs but to claim rewards and continue the program you must unstake, claim, and then restake.
+   * @param incentiveKeys An IncentiveKey or array of IncentiveKeys that `tokenId` is staked in.
+   * Input an array of IncentiveKeys to claim rewards for each program.
+   * @param options ClaimOptions to specify tokenId, recipient, and amount wanting to collect.
+   * Note that you can only specify one amount and one recipient across the various programs if you are collecting from multiple programs at once.
+   * @returns
+   */
+  ;
+
+  Staker.collectRewards = function collectRewards(incentiveKeys, options) {
+    incentiveKeys = Array.isArray(incentiveKeys) ? incentiveKeys : [incentiveKeys];
+    var calldatas = [];
+
+    for (var i = 0; i < incentiveKeys.length; i++) {
+      // the unique program tokenId is staked in
+      var incentiveKey = incentiveKeys[i]; // unstakes and claims for the unique program
+
+      calldatas = calldatas.concat(this.encodeClaim(incentiveKey, options)); // re-stakes the position for the unique program
+
+      calldatas.push(Staker.INTERFACE.encodeFunctionData('stakeToken', [this._encodeIncentiveKey(incentiveKey), toHex(options.tokenId)]));
+    }
+
+    return {
+      calldata: Multicall.encodeMulticall(calldatas),
+      value: toHex(0)
+    };
+  }
+  /**
+   *
+   * @param incentiveKeys A list of incentiveKeys to unstake from. Should include all incentiveKeys (unique staking programs) that `options.tokenId` is staked in.
+   * @param withdrawOptions Options for producing claim calldata and withdraw calldata. Can't withdraw without unstaking all programs for `tokenId`.
+   * @returns Calldata for unstaking, claiming, and withdrawing.
+   */
+  ;
+
+  Staker.withdrawToken = function withdrawToken(incentiveKeys, withdrawOptions) {
+    var calldatas = [];
+    incentiveKeys = Array.isArray(incentiveKeys) ? incentiveKeys : [incentiveKeys];
+    var claimOptions = {
+      tokenId: withdrawOptions.tokenId,
+      recipient: withdrawOptions.recipient,
+      amount: withdrawOptions.amount
+    };
+
+    for (var i = 0; i < incentiveKeys.length; i++) {
+      var incentiveKey = incentiveKeys[i];
+      calldatas = calldatas.concat(this.encodeClaim(incentiveKey, claimOptions));
+    }
+
+    var owner = sdkCore.validateAndParseAddress(withdrawOptions.owner);
+    calldatas.push(Staker.INTERFACE.encodeFunctionData('withdrawToken', [toHex(withdrawOptions.tokenId), owner, withdrawOptions.data ? withdrawOptions.data : toHex(0)]));
+    return {
+      calldata: Multicall.encodeMulticall(calldatas),
+      value: toHex(0)
+    };
+  }
+  /**
+   *
+   * @param incentiveKeys A single IncentiveKey or array of IncentiveKeys to be encoded and used in the data parameter in `safeTransferFrom`
+   * @returns An IncentiveKey as a string
+   */
+  ;
+
+  Staker.encodeDeposit = function encodeDeposit(incentiveKeys) {
+    incentiveKeys = Array.isArray(incentiveKeys) ? incentiveKeys : [incentiveKeys];
+    var data;
+
+    if (incentiveKeys.length > 1) {
+      var keys = [];
+
+      for (var i = 0; i < incentiveKeys.length; i++) {
+        var incentiveKey = incentiveKeys[i];
+        keys.push(this._encodeIncentiveKey(incentiveKey));
+      }
+
+      data = abi.defaultAbiCoder.encode([Staker.INCENTIVE_KEY_ABI + "[]"], [keys]);
+    } else {
+      data = abi.defaultAbiCoder.encode([Staker.INCENTIVE_KEY_ABI], [this._encodeIncentiveKey(incentiveKeys[0])]);
+    }
+
+    return data;
+  }
+  /**
+   *
+   * @param incentiveKey An `IncentiveKey` which represents a unique staking program.
+   * @returns An encoded IncentiveKey to be read by ethers
+   */
+  ;
+
+  Staker._encodeIncentiveKey = function _encodeIncentiveKey(incentiveKey) {
+    var _incentiveKey$pool = incentiveKey.pool,
+        token0 = _incentiveKey$pool.token0,
+        token1 = _incentiveKey$pool.token1,
+        fee = _incentiveKey$pool.fee;
+    var refundee = sdkCore.validateAndParseAddress(incentiveKey.refundee);
+    return {
+      rewardToken: incentiveKey.rewardToken.address,
+      pool: Pool.getAddress(token0, token1, fee),
+      startTime: toHex(incentiveKey.startTime),
+      endTime: toHex(incentiveKey.endTime),
+      refundee: refundee
+    };
+  };
+
+  return Staker;
+}();
+Staker.INTERFACE = /*#__PURE__*/new abi.Interface(UniswapV3Staker_json.abi);
+Staker.INCENTIVE_KEY_ABI = 'tuple(address rewardToken, address pool, uint256 startTime, uint256 endTime, address refundee)';
+
+/**
+ * Represents the Uniswap V3 SwapRouter, and has static methods for helping execute trades.
+ */
+
+var SwapRouter = /*#__PURE__*/function () {
   /**
    * Cannot be constructed.
    */
-  function SwapRouter() {
-    return _SelfPermit.call(this) || this;
-  }
+  function SwapRouter() {}
   /**
    * Produces the on-chain method name to call and the hex encoded parameters to pass as arguments for a given trade.
    * @param trade to produce call parameters for
@@ -3657,7 +3915,7 @@ var SwapRouter = /*#__PURE__*/function (_SelfPermit) {
 
     if (options.inputTokenPermit) {
       !sampleTrade.inputAmount.currency.isToken ?  invariant(false, 'NON_TOKEN_PERMIT')  : void 0;
-      calldatas.push(SwapRouter.encodePermit(sampleTrade.inputAmount.currency, options.inputTokenPermit));
+      calldatas.push(SelfPermit.encodePermit(sampleTrade.inputAmount.currency, options.inputTokenPermit));
     }
 
     var recipient = sdkCore.validateAndParseAddress(options.recipient);
@@ -3736,50 +3994,47 @@ var SwapRouter = /*#__PURE__*/function (_SelfPermit) {
 
     if (routerMustCustody) {
       if (!!options.fee) {
-        var feeRecipient = sdkCore.validateAndParseAddress(options.fee.recipient);
-        var fee = toHex(options.fee.fee.multiply(10000).quotient);
-
         if (outputIsNative) {
-          calldatas.push(SwapRouter.INTERFACE.encodeFunctionData('unwrapWETH9WithFee', [toHex(totalAmountOut.quotient), recipient, fee, feeRecipient]));
+          calldatas.push(Payments.encodeUnwrapWETH9(totalAmountOut.quotient, recipient, options.fee));
         } else {
-          calldatas.push(SwapRouter.INTERFACE.encodeFunctionData('sweepTokenWithFee', [sampleTrade.outputAmount.currency.wrapped.address, toHex(totalAmountOut.quotient), recipient, fee, feeRecipient]));
+          calldatas.push(Payments.encodeSweepToken(sampleTrade.outputAmount.currency.wrapped, totalAmountOut.quotient, recipient, options.fee));
         }
       } else {
-        calldatas.push(SwapRouter.INTERFACE.encodeFunctionData('unwrapWETH9', [toHex(totalAmountOut.quotient), recipient]));
+        calldatas.push(Payments.encodeUnwrapWETH9(totalAmountOut.quotient, recipient));
       }
     } // refund
 
 
     if (mustRefund) {
-      calldatas.push(SwapRouter.INTERFACE.encodeFunctionData('refundETH'));
+      calldatas.push(Payments.encodeRefundETH());
     }
 
     return {
-      calldata: calldatas.length === 1 ? calldatas[0] : SwapRouter.INTERFACE.encodeFunctionData('multicall', [calldatas]),
+      calldata: Multicall.encodeMulticall(calldatas),
       value: toHex(totalValue.quotient)
     };
   };
 
   return SwapRouter;
-}(SelfPermit);
+}();
 SwapRouter.INTERFACE = /*#__PURE__*/new abi.Interface(SwapRouter_json.abi);
 
 exports.ADDRESS_ZERO = ADDRESS_ZERO;
 exports.FACTORY_ADDRESS = FACTORY_ADDRESS;
-exports.FACTORY_ADDRESS = FACTORY_ADDRESS_AVA;
 exports.FullMath = FullMath;
 exports.LiquidityMath = LiquidityMath;
+exports.Multicall = Multicall;
 exports.NoTickDataProvider = NoTickDataProvider;
 exports.NonfungiblePositionManager = NonfungiblePositionManager;
 exports.POOL_INIT_CODE_HASH = POOL_INIT_CODE_HASH;
-exports.POOL_INIT_CODE_HASH_OPTIMISM = POOL_INIT_CODE_HASH_OPTIMISM;
-exports.POOL_INIT_CODE_HASH_OPTIMISM_KOVAN = POOL_INIT_CODE_HASH_OPTIMISM_KOVAN;
-exports.POOL_INIT_CODE_HASH_AVA = POOL_INIT_CODE_HASH_AVA;
-
+exports.Payments = Payments;
 exports.Pool = Pool;
 exports.Position = Position;
 exports.Route = Route;
+exports.SelfPermit = SelfPermit;
 exports.SqrtPriceMath = SqrtPriceMath;
+exports.Staker = Staker;
+exports.SwapQuoter = SwapQuoter;
 exports.SwapRouter = SwapRouter;
 exports.TICK_SPACINGS = TICK_SPACINGS;
 exports.Tick = Tick;
