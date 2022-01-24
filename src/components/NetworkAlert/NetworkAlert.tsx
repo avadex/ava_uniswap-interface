@@ -113,8 +113,8 @@ const RootWrapper = styled.div`
   position: relative;
 `
 export const AvalancheWrapperBackgroundDarkMode = css`
-  background: radial-gradient(285% 8200% at 30% 50%, rgba(40, 160, 240, 0.1) 0%, rgba(219, 255, 0, 0) 100%),
-    radial-gradient(75% 75% at 0% 0%, rgba(150, 190, 220, 0.3) 0%, rgba(33, 114, 229, 0.3) 100%), hsla(0, 0%, 100%, 0.1);
+  background: radial-gradient(948% 292% at 42% 0%, #113824 0%, rgb(132 111 127 / 20%) 100%),
+    radial-gradient(98% 96% at 2% 0%, rgb (41 31 31 / 43%) 0%, rgba(235, 0, 255, 0.345) 96%);
 `
 export const AvalancheWrapperBackgroundLightMode = css`
   background: radial-gradient(285% 8200% at 30% 50%, rgba(40, 160, 240, 0.1) 0%, rgba(219, 255, 0, 0) 100%),
@@ -250,7 +250,7 @@ export function NetworkAlert(props: NetworkAlertProps) {
   const showCloseIcon = Boolean(userEthBalance?.greaterThan(0) && !props.thin)
   return (
     <RootWrapper>
-      <BetaTag color={isOptimism ? '#ff0420' : '#0490ed'}>Beta</BetaTag>
+      <BetaTag color={isOptimism ? '#ff0420' : '#2bd15e'}>Beta</BetaTag>
       <ContentWrapper chainId={chainId} darkMode={darkMode} logoUrl={info.logoUrl} thin={props.thin}>
         {showCloseIcon && <CloseIcon onClick={dismiss} />}
         <BodyText>
@@ -260,7 +260,7 @@ export function NetworkAlert(props: NetworkAlertProps) {
           </Header>
           <Body>
             <Trans>
-              This is an test release of the UNI V3 code on the {info.label}  live network.You can bridge Ethereum assets to this EVM called C-CHAIN.
+              This is an test release of Haydens V3 code on the {info.label}  live network. You can bridge Ethereum assets to this EVM called C-CHAIN.
             </Trans>
           </Body>
         </BodyText>

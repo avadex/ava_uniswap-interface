@@ -249,7 +249,7 @@ export default function Menu() {
                       </div>
                       <Info opacity={0.6} size={16} />
                     </MenuItem>
-                    <MenuItem href="https://help.uniswap.org/">
+                    <MenuItem href="https://avax.network/">
                       <div>
                         <Trans>Help Center</Trans>
                       </div>

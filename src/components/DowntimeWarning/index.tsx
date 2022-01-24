@@ -55,9 +55,8 @@ export default function DowntimeWarning() {
         return (
           <div>
             <Trans>
-              Avalanche is in Beta and may experience downtime. During downtime, your position will not earn fees and you
-              will be unable to remove liquidity.{' '}
-              <ReadMoreLink href="https://help.uniswap.org/en/articles/5576122-avalanche-network-downtime">
+              V3 on Avalanche is in Beta and you may experience subsecond order finality.{' '}
+              <ReadMoreLink href="https://avax.network">
                 Read more.
               </ReadMoreLink>
             </Trans>
