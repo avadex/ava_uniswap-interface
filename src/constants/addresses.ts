@@ -74,7 +74,7 @@ export const ENS_REGISTRAR_ADDRESSES: AddressMap = {
 export const SOCKS_CONTROLLER_ADDRESSES: AddressMap = {
   [SupportedChainId.MAINNET]: '0x65770b5283117639760beA3F867b69b3697a91dd',
 }
-export const SWAP_ROUTER_ADDRESSES: AddressMap = constructSameAddressMap('0x787Bd59120fb81f8BE4AD34280a621877516fe37', [
+export const SWAP_ROUTER_ADDRESSES: AddressMap = constructSameAddressMap('0x8CeDCec1fF61dB9fcb3d62cEc58D6feC38E2b645', [
   SupportedChainId.OPTIMISM,
   SupportedChainId.OPTIMISTIC_KOVAN,
   SupportedChainId.AVALANCHE,
