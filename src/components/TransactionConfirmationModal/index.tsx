@@ -1,7 +1,9 @@
 import { Trans } from '@lingui/macro'
 import { Currency } from '@uniswap/sdk-core'
 import Badge from 'components/Badge'
-import { CHAIN_INFO, L2_CHAIN_IDS, SupportedL2ChainId } from 'constants/chains'
+import { CHAIN_INFO } from 'constants/chainInfo'
+import { L1_CHAIN_IDS, SupportedL1ChainId } from 'constants/chains'
+import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import useAddTokenToMetamask from 'hooks/useAddTokenToMetamask'
 import { ReactNode, useContext } from 'react'
 import { AlertCircle, AlertTriangle, ArrowUpCircle, CheckCircle } from 'react-feather'
@@ -11,9 +13,8 @@ import styled, { ThemeContext } from 'styled-components/macro'
 
 import Circle from '../../assets/images/blue-loader.svg'
 import MetaMaskLogo from '../../assets/images/metamask.png'
-import { useActiveWeb3React } from '../../hooks/web3'
 import { ExternalLink } from '../../theme'
-import { CloseIcon, CustomLightSpinner } from '../../theme/components'
+import { CloseIcon, CustomLightSpinner } from '../../theme'
 import { ExplorerDataType, getExplorerLink } from '../../utils/getExplorerLink'
 import { TransactionSummary } from '../AccountDetails/TransactionSummary'
 import { ButtonLight, ButtonPrimary } from '../Button'
@@ -209,7 +210,7 @@ export function TransactionErrorContent({ message, onDismiss }: { message: React
   )
 }
 
-function L2Content({
+function L1Content({
   onDismiss,
   chainId,
   hash,
@@ -234,7 +235,7 @@ function L2Content({
     ? (transaction.confirmedTime - transaction.addedTime) / 1000
     : undefined
 
-  const info = CHAIN_INFO[chainId as SupportedL2ChainId]
+  const info = CHAIN_INFO[chainId as SupportedL1ChainId]
 
   return (
     <Wrapper>
@@ -284,16 +285,16 @@ function L2Content({
               </Text>
             </ExternalLink>
           ) : (
-            <div style={{ height: '17px' }}></div>
+            <div style={{ height: '17px' }} />
           )}
           <Text color={theme.text3} style={{ margin: '20px 0 0 0' }} fontSize={'14px'}>
             {!secondsToConfirm ? (
-              <div style={{ height: '24px' }}></div>
+              <div style={{ height: '24px' }} />
             ) : (
               <div>
                 <Trans>Transaction completed in </Trans>
                 <span style={{ fontWeight: 500, marginLeft: '4px', color: theme.text1 }}>
-                  {secondsToConfirm} seconds 🎉
+                  {secondsToConfirm} seconds 🚀
                 </span>
               </div>
             )}
@@ -330,15 +331,15 @@ export default function TransactionConfirmationModal({
 }: ConfirmationModalProps) {
   const { chainId } = useActiveWeb3React()
 
-  const isL2 = Boolean(chainId && L2_CHAIN_IDS.includes(chainId))
+  const isL1 = Boolean(chainId && L1_CHAIN_IDS.includes(chainId))
 
   if (!chainId) return null
 
   // confirmation screen
   return (
     <Modal isOpen={isOpen} onDismiss={onDismiss} maxHeight={90}>
-      {isL2 && (hash || attemptingTxn) ? (
-        <L2Content chainId={chainId} hash={hash} onDismiss={onDismiss} pendingText={pendingText} />
+      {isL1 && (hash || attemptingTxn) ? (
+        <L1Content chainId={chainId} hash={hash} onDismiss={onDismiss} pendingText={pendingText} />
       ) : attemptingTxn ? (
         <ConfirmationPendingContent onDismiss={onDismiss} pendingText={pendingText} />
       ) : hash ? (

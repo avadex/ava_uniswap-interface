@@ -1,14 +1,14 @@
 import { getVersionUpgrade, minVersionBump, VersionUpgrade } from '@uniswap/token-lists'
 import { SupportedChainId } from 'constants/chains'
-import { AVA_DEFI_LIST, OPTIMISM_LIST, UNSUPPORTED_LIST_URLS } from 'constants/lists'
+import { AVALANCHE_LIST, UNSUPPORTED_LIST_URLS } from 'constants/lists'
+import useActiveWeb3React from 'hooks/useActiveWeb3React'
+import useInterval from 'lib/hooks/useInterval'
 import { useCallback, useEffect } from 'react'
 import { useAppDispatch } from 'state/hooks'
 import { useAllLists } from 'state/lists/hooks'
 
 import { useFetchListCallback } from '../../hooks/useFetchListCallback'
-import useInterval from '../../hooks/useInterval'
 import useIsWindowVisible from '../../hooks/useIsWindowVisible'
-import { useActiveWeb3React } from '../../hooks/web3'
 import { acceptListUpdate, enableList } from './actions'
 import { useActiveListUrls } from './hooks'
 
@@ -31,10 +31,10 @@ export default function Updater(): null {
 
   useEffect(() => {
     if (chainId && [SupportedChainId.OPTIMISM, SupportedChainId.OPTIMISTIC_KOVAN].includes(chainId)) {
-      dispatch(enableList(OPTIMISM_LIST))
+      dispatch(enableList(AVALANCHE_LIST))
     }
     if (chainId && [SupportedChainId.AVALANCHE, SupportedChainId.ARBITRUM_RINKEBY].includes(chainId)) {
-      dispatch(enableList(AVA_DEFI_LIST))
+      dispatch(enableList(AVALANCHE_LIST))
     }
   }, [chainId, dispatch])
   // fetch all lists every 10 minutes, but only after we initialize library

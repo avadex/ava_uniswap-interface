@@ -1,13 +1,16 @@
 import { SupportedChainId } from '../constants/chains'
 
 const ETHERSCAN_PREFIXES: { [chainId: number]: string } = {
-  [SupportedChainId.MAINNET]: '',
-  [SupportedChainId.ROPSTEN]: 'ropsten.',
-  [SupportedChainId.RINKEBY]: 'rinkeby.',
-  [SupportedChainId.GOERLI]: 'goerli.',
-  [SupportedChainId.KOVAN]: 'kovan.',
-  [SupportedChainId.OPTIMISM]: 'optimistic.',
-  [SupportedChainId.OPTIMISTIC_KOVAN]: 'kovan-optimistic.',
+  [SupportedChainId.MAINNET]: 'https://etherscan.io',
+  [SupportedChainId.ROPSTEN]: 'https://ropsten.etherscan.io',
+  [SupportedChainId.RINKEBY]: 'https://rinkeby.etherscan.io',
+  [SupportedChainId.GOERLI]: 'https://goerli.etherscan.io',
+  [SupportedChainId.KOVAN]: 'https://kovan.etherscan.io',
+  [SupportedChainId.OPTIMISM]: 'https://optimistic.etherscan.io',
+  [SupportedChainId.OPTIMISTIC_KOVAN]: 'https://kovan-optimistic.etherscan.io',
+  [SupportedChainId.POLYGON_MUMBAI]: 'https://mumbai.polygonscan.com',
+  [SupportedChainId.POLYGON]: 'https://polygonscan.com',
+  [SupportedChainId.AVALANCHE]: 'https://snowtrace.io',
 }
 
 export enum ExplorerDataType {
@@ -41,18 +44,18 @@ export function getExplorerLink(chainId: number, data: string, type: ExplorerDat
   if (chainId === SupportedChainId.ARBITRUM_RINKEBY) {
     switch (type) {
       case ExplorerDataType.TRANSACTION:
-        return `https://rinkeby-explorer.avalanche.io/tx/${data}`
+        return `https://rinkeby-explorer.arbitrum.io/tx/${data}`
       case ExplorerDataType.ADDRESS:
       case ExplorerDataType.TOKEN:
-        return `https://rinkeby-explorer.avalanche.io/address/${data}`
+        return `https://rinkeby-explorer.arbitrum.io/address/${data}`
       case ExplorerDataType.BLOCK:
-        return `https://rinkeby-explorer.avalanche.io/block/${data}`
+        return `https://rinkeby-explorer.arbitrum.io/block/${data}`
       default:
-        return `https://rinkeby-explorer.avalanche.io/`
+        return `https://rinkeby-explorer.arbitrum.io/`
     }
   }
 
-  const prefix = `https://${ETHERSCAN_PREFIXES[chainId] ?? ''}etherscan.io`
+  const prefix = ETHERSCAN_PREFIXES[chainId] ?? 'https://etherscan.io'
 
   switch (type) {
     case ExplorerDataType.TRANSACTION:

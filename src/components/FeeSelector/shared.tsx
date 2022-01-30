@@ -9,22 +9,22 @@ export const FEE_AMOUNT_DETAIL: Record<
 > = {
   [FeeAmount.LOWEST]: {
     label: '0.01',
-    description: <Trans>Best for very stable pairs.</Trans>,
+    description: <Trans>Chill LP</Trans>,
     supportedChains: [SupportedChainId.AVALANCHE],
   },
   [FeeAmount.LOW]: {
     label: '0.05',
-    description: <Trans>Best for stable pairs.</Trans>,
+    description: <Trans>Cool LP</Trans>,
     supportedChains: ALL_SUPPORTED_CHAIN_IDS,
   },
   [FeeAmount.MEDIUM]: {
     label: '0.3',
-    description: <Trans>Best for most pairs.</Trans>,
+    description: <Trans>OG LP</Trans>,
     supportedChains: ALL_SUPPORTED_CHAIN_IDS,
   },
   [FeeAmount.HIGH]: {
     label: '1',
-    description: <Trans>Best for exotic pairs.</Trans>,
+    description: <Trans>Degfi LP</Trans>,
     supportedChains: ALL_SUPPORTED_CHAIN_IDS,
   },
 }

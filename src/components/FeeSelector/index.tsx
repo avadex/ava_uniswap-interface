@@ -5,16 +5,16 @@ import { ButtonGray } from 'components/Button'
 import Card from 'components/Card'
 import { AutoColumn } from 'components/Column'
 import { RowBetween } from 'components/Row'
+import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useFeeTierDistribution } from 'hooks/useFeeTierDistribution'
 import { PoolState, usePools } from 'hooks/usePools'
 import usePrevious from 'hooks/usePrevious'
-import { useActiveWeb3React } from 'hooks/web3'
 import { DynamicSection } from 'pages/AddLiquidity/styled'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import ReactGA from 'react-ga'
 import { Box } from 'rebass'
 import styled, { keyframes } from 'styled-components/macro'
-import { TYPE } from 'theme'
+import { ThemedText } from 'theme'
 
 import { FeeOption } from './FeeOption'
 import { FeeTierPercentageBadge } from './FeeTierPercentageBadge'
@@ -149,18 +149,18 @@ export default function FeeSelector({
             <AutoColumn id="add-liquidity-selected-fee">
               {!feeAmount ? (
                 <>
-                  <TYPE.label>
+                  <ThemedText.Label>
                     <Trans>Fee tier</Trans>
-                  </TYPE.label>
-                  <TYPE.main fontWeight={400} fontSize="12px" textAlign="left">
+                  </ThemedText.Label>
+                  <ThemedText.Main fontWeight={400} fontSize="12px" textAlign="left">
                     <Trans>The % you will earn in fees.</Trans>
-                  </TYPE.main>
+                  </ThemedText.Main>
                 </>
               ) : (
                 <>
-                  <TYPE.label className="selected-fee-label">
+                  <ThemedText.Label className="selected-fee-label">
                     <Trans>{FEE_AMOUNT_DETAIL[feeAmount].label}% fee tier</Trans>
-                  </TYPE.label>
+                  </ThemedText.Label>
                   <Box style={{ width: 'fit-content', marginTop: '8px' }} className="selected-fee-percentage">
                     {distributions && (
                       <FeeTierPercentageBadge

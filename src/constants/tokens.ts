@@ -1,4 +1,4 @@
-import { Ether, Token, WETH9 } from '@uniswap/sdk-core'
+import { Currency, Ether, NativeCurrency, Token, WETH9 } from '@uniswap/sdk-core'
 
 import { UNI_ADDRESS } from './addresses'
 import { SupportedChainId } from './chains'
@@ -65,6 +65,34 @@ export const WETH_E = new Token(
   18,
   'WETH_e',
   'Wrapped ETH'
+)
+export const USDC_POLYGON = new Token(
+  SupportedChainId.POLYGON,
+  '0x2791bca1f2de4661ed88a30c99a7a9449aa84174',
+  6,
+  'USDC',
+  'USD//C'
+)
+export const DAI_POLYGON = new Token(
+  SupportedChainId.POLYGON,
+  '0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063',
+  18,
+  'DAI',
+  'Dai Stablecoin'
+)
+export const USDT_POLYGON = new Token(
+  SupportedChainId.POLYGON,
+  '0xc2132d05d31c914a87c6611c10748aeb04b58e8f',
+  6,
+  'USDT',
+  'Tether USD'
+)
+export const WBTC_POLYGON = new Token(
+  SupportedChainId.POLYGON,
+  '0x1bfd67037b42cf73acf2047067bd4f2c47d9bfd6',
+  8,
+  'WBTC',
+  'Wrapped BTC'
 )
 export const USDC_OPTIMISM = new Token(
   SupportedChainId.OPTIMISM,
@@ -150,6 +178,42 @@ export const ETH2X_FLI = new Token(
   'ETH2x-FLI',
   'ETH 2x Flexible Leverage Index'
 )
+export const sETH2 = new Token(
+  SupportedChainId.MAINNET,
+  '0xFe2e637202056d30016725477c5da089Ab0A043A',
+  18,
+  'sETH2',
+  'StakeWise Staked ETH2'
+)
+export const rETH2 = new Token(
+  SupportedChainId.MAINNET,
+  '0x20BC832ca081b91433ff6c17f85701B6e92486c5',
+  18,
+  'rETH2',
+  'StakeWise Reward ETH2'
+)
+export const SWISE = new Token(
+  SupportedChainId.MAINNET,
+  '0x48C3399719B582dD63eB5AADf12A40B4C3f52FA2',
+  18,
+  'SWISE',
+  'StakeWise'
+)
+export const WETH_POLYGON_MUMBAI = new Token(
+  SupportedChainId.POLYGON_MUMBAI,
+  '0xa6fa4fb5f76172d178d61b04b0ecd319c5d1c0aa',
+  18,
+  'WETH',
+  'Wrapped Ether'
+)
+
+export const WETH_POLYGON = new Token(
+  SupportedChainId.POLYGON,
+  '0x7ceb23fd6bc0add59e62ac25578270cff1b9f619',
+  18,
+  'WETH',
+  'Wrapped Ether'
+)
 export const UNI: { [chainId: number]: Token } = {
   [SupportedChainId.MAINNET]: new Token(SupportedChainId.MAINNET, UNI_ADDRESS[1], 18, 'UNI', 'Uniswap'),
   [SupportedChainId.RINKEBY]: new Token(SupportedChainId.RINKEBY, UNI_ADDRESS[4], 18, 'UNI', 'Uniswap'),
@@ -158,7 +222,7 @@ export const UNI: { [chainId: number]: Token } = {
   [SupportedChainId.KOVAN]: new Token(SupportedChainId.KOVAN, UNI_ADDRESS[42], 18, 'UNI', 'Uniswap'),
 }
 
-export const WETH9_EXTENDED: { [chainId: number]: Token } = {
+export const WRAPPED_NATIVE_CURRENCY: { [chainId: number]: Token } = {
   ...WETH9,
   [SupportedChainId.AVALANCHE]: new Token(
     SupportedChainId.AVALANCHE,
@@ -188,17 +252,61 @@ export const WETH9_EXTENDED: { [chainId: number]: Token } = {
     'WETH',
     'Wrapped Ether'
   ),
+  [SupportedChainId.POLYGON]: new Token(
+    SupportedChainId.POLYGON,
+    '0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270',
+    18,
+    'WMATIC',
+    'Wrapped MATIC'
+  ),
+  [SupportedChainId.POLYGON_MUMBAI]: new Token(
+    SupportedChainId.POLYGON_MUMBAI,
+    '0x9c3C9283D3e44854697Cd22D3Faa240Cfb032889',
+    18,
+    'WMATIC',
+    'Wrapped MATIC'
+  ),
+}
+
+function isMatic(chainId: number): chainId is SupportedChainId.POLYGON | SupportedChainId.POLYGON_MUMBAI {
+  return chainId === SupportedChainId.POLYGON_MUMBAI || chainId === SupportedChainId.AVALANCHE
+}
+
+class MaticNativeCurrency extends NativeCurrency {
+  equals(other: Currency): boolean {
+    return other.isNative && other.chainId === this.chainId
+  }
+
+  get wrapped(): Token {
+    if (!isMatic(this.chainId)) throw new Error('Not matic')
+    return WRAPPED_NATIVE_CURRENCY[this.chainId]
+  }
+
+  public constructor(chainId: number) {
+    if (!isMatic(chainId)) throw new Error('Not matic')
+    super(chainId, 18, 'AVAX', 'AVAX')
+  }
 }
 
 export class ExtendedEther extends Ether {
   public get wrapped(): Token {
-    if (this.chainId in WETH9_EXTENDED) return WETH9_EXTENDED[this.chainId]
+    if (this.chainId in WRAPPED_NATIVE_CURRENCY) return WRAPPED_NATIVE_CURRENCY[this.chainId]
     throw new Error('Unsupported chain ID')
   }
 
-  private static _cachedEther: { [chainId: number]: ExtendedEther } = {}
+  private static _cachedExtendedEther: { [chainId: number]: NativeCurrency } = {}
 
   public static onChain(chainId: number): ExtendedEther {
-    return this._cachedEther[chainId] ?? (this._cachedEther[chainId] = new ExtendedEther(chainId))
+    return this._cachedExtendedEther[chainId] ?? (this._cachedExtendedEther[chainId] = new ExtendedEther(chainId))
   }
+}
+
+const cachedNativeCurrency: { [chainId: number]: NativeCurrency } = {}
+export function nativeOnChain(chainId: number): NativeCurrency {
+  return (
+    cachedNativeCurrency[chainId] ??
+    (cachedNativeCurrency[chainId] = isMatic(chainId)
+      ? new MaticNativeCurrency(chainId)
+      : ExtendedEther.onChain(chainId))
+  )
 }
