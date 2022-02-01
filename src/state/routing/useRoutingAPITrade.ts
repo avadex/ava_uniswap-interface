@@ -89,7 +89,7 @@ export function useRoutingAPITrade<TTradeType extends TradeType>(
   })
 
   const { isLoading, isError, data } = useGetQuoteQuery(queryArgs ?? skipToken, {
-    pollingInterval: ms`10s`,
+    pollingInterval: ms`15s`,
     refetchOnFocus: true,
   })
 

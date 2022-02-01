@@ -1,3 +1,4 @@
+import { FACTORY_ADDRESS as V2_FACTORY_ADDRESS } from '@uniswap/v2-sdk'
 import { FACTORY_ADDRESS as V3_FACTORY_ADDRESS } from '@uniswap/v3-sdk'
 
 import { constructSameAddressMap } from '../utils/constructSameAddressMap'
@@ -14,12 +15,14 @@ export const MULTICALL_ADDRESS: AddressMap = {
     SupportedChainId.POLYGON,
     SupportedChainId.AVALANCHE,
   ]),
-  [SupportedChainId.AVALANCHE]: '0xeD822906FA020614840D6676401283098f6100E5',
   [SupportedChainId.ARBITRUM_RINKEBY]: '0xa501c031958F579dB7676fF1CE78AD305794d579',
 }
-export const V2_FACTORY_ADDRESSES: AddressMap = constructSameAddressMap('0xefa94DE7a4656D787667C749f7E1223D71E9FD88')
+export const V2_FACTORY_ADDRESSES: AddressMap = constructSameAddressMap(V2_FACTORY_ADDRESS)
 
-export const V2_ROUTER_ADDRESS: AddressMap = constructSameAddressMap('0xE54Ca86531e17Ef3616d22Ca28b0D458b6C89106')
+export const V2_ROUTER_ADDRESS: AddressMap = constructSameAddressMap('0xE54Ca86531e17Ef3616d22Ca28b0D458b6C89106', [
+  SupportedChainId.AVALANCHE,
+])
+
 export const V3_ROUTER_ADDRESS: AddressMap = constructSameAddressMap('0xE592427A0AEce92De3Edee1F18E0157C05861564', [
   SupportedChainId.OPTIMISM,
   SupportedChainId.OPTIMISTIC_KOVAN,

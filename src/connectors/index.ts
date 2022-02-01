@@ -51,7 +51,7 @@ export const portis = new PortisConnector({
 
 export const walletlink = new WalletLinkConnector({
   url: INFURA_NETWORK_URLS[SupportedChainId.MAINNET],
-  appName: 'Wavax.org',
+  appName: 'WAVAXORG',
   appLogoUrl: UNISWAP_LOGO_URL,
-  supportedChainIds: [SupportedChainId.MAINNET, SupportedChainId.AVALANCHE],
+  supportedChainIds: [SupportedChainId.MAINNET, SupportedChainId.POLYGON],
 })
