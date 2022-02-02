@@ -49,9 +49,9 @@ export const USDC_ARBITRUM_RINKEBY = new Token(ChainId.ARBITRUM_RINKEBY, '0x09b9
 export const UNI_ARBITRUM_RINKEBY = new Token(ChainId.ARBITRUM_RINKEBY, '0x049251a7175071316e089d0616d8b6aacd2c93b8', 18, 'UNI', 'Uni token');
 //polygon tokens
 export const WAVAX = new Token(ChainId.AVALANCHE, '0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7', 18, 'WAVAX', 'Wrapped AVAX');
-export const WETH_E = new Token(ChainId.AVALANCHE, '0x49d5c2bdffac6ce2bfdb6640f4f80f226bc10bab', 18, 'WETH', 'Wrapped Ether');
-export const USDC_E = new Token(ChainId.AVALANCHE, '0x2791bca1f2de4661ed88a30c99a7a9449aa84174', 6, 'USDC', 'USD//C');
-export const DAI_E = new Token(ChainId.AVALANCHE, '0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063', 18, 'DAI', 'Dai Stablecoin');
+export const WETH_E = new Token(ChainId.AVALANCHE, '0x49d5c2bdffac6ce2bfdb6640f4f80f226bc10bab', 18, 'WETH_E', 'Wrapped Ether');
+export const USDC_E = new Token(ChainId.AVALANCHE, '0xa7d7079b0fead91f3e65f86e8915cb59c1a4c664', 6, 'USDC_E', 'USD//C');
+export const DAI_E = new Token(ChainId.AVALANCHE, '0xd586e7f844cea2f87f50152665bcbc2c279d8d70', 18, 'DAI_E', 'Dai Stablecoin');
 //polygon mumbai tokens
 export const WMATIC_POLYGON_MUMBAI = new Token(ChainId.POLYGON_MUMBAI, '0x9c3C9283D3e44854697Cd22D3Faa240Cfb032889', 18, 'WMATIC', 'Wrapped MATIC');
 export const USDC_POLYGON_MUMBAI = new Token(ChainId.POLYGON_MUMBAI, '0xe11a86849d99f524cac3e7a0ec1241828e332c62', 6, 'USDC', 'USD//C');
@@ -64,6 +64,12 @@ export const SEED_TOKENS = {
         USDT: USDT_MAINNET,
         WBTC: WBTC_MAINNET,
         DAI: DAI_MAINNET,
+    },
+    [ChainId.AVALANCHE]: {
+        WAVAX: WRAPPED_NATIVE_CURRENCY[ChainId.AVALANCHE],
+        USDC_E: USDC_E,
+        DAI_E: DAI_E,
+        WETH_E: WETH_E,
     },
     [ChainId.RINKEBY]: {
         WETH: WRAPPED_NATIVE_CURRENCY[ChainId.RINKEBY],
@@ -93,11 +99,7 @@ export const SEED_TOKENS = {
         UNI: UNI_ARBITRUM_RINKEBY,
         DAI: DAI_ARBITRUM_RINKEBY,
         USDC: USDC_ARBITRUM_RINKEBY,
-    },
-    [ChainId.AVALANCHE]: {
-        WAVAX: WAVAX,
-        USDC: USDC_E,
-        DAI: DAI_E,
+
     },
     [ChainId.POLYGON_MUMBAI]: {
         WMATIC: WMATIC_POLYGON_MUMBAI,

@@ -55,7 +55,7 @@ exports.USDC_ARBITRUM_RINKEBY = new sdk_core_1.Token(util_1.ChainId.ARBITRUM_RIN
 exports.UNI_ARBITRUM_RINKEBY = new sdk_core_1.Token(util_1.ChainId.ARBITRUM_RINKEBY, '0x049251a7175071316e089d0616d8b6aacd2c93b8', 18, 'UNI', 'Uni token');
 //polygon tokens
 exports.WAVAX = new sdk_core_1.Token(util_1.ChainId.AVALANCHE, '0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7', 18, 'WAVAX', 'Wrapped AVAX');
-exports.WETH_E = new sdk_core_1.Token(util_1.ChainId.AVALANCHE, '0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB', 18, 'WETH', 'Wrapped Ether');
+exports.WETH_E = new sdk_core_1.Token(util_1.ChainId.AVALANCHE, '0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB', 18, 'WETH_E', 'Wrapped Ether');
 exports.USDC_E = new sdk_core_1.Token(util_1.ChainId.AVALANCHE, '0xa7d7079b0fead91f3e65f86e8915cb59c1a4c664', 6, 'USDC_E', 'USD//C');
 exports.DAI_E = new sdk_core_1.Token(util_1.ChainId.AVALANCHE, '0xd586e7f844cea2f87f50152665bcbc2c279d8d70', 18, 'DAI_E', 'Dai Stablecoin');
 //polygon mumbai tokens
@@ -70,6 +70,12 @@ exports.SEED_TOKENS = {
         USDT: exports.USDT_MAINNET,
         WBTC: exports.WBTC_MAINNET,
         DAI: exports.DAI_MAINNET,
+    },
+      [util_1.ChainId.AVALANCHE]: {
+          WAVAX: util_1.WRAPPED_NATIVE_CURRENCY[util_1.ChainId.AVALANCHE],
+          USDC_E: exports.USDC_E,
+          DAI_E: exports.DAI_E,
+          WETH_E: exports.WETH_E,
     },
     [util_1.ChainId.RINKEBY]: {
         WETH: util_1.WRAPPED_NATIVE_CURRENCY[util_1.ChainId.RINKEBY],
@@ -99,10 +105,6 @@ exports.SEED_TOKENS = {
         UNI: exports.UNI_ARBITRUM_RINKEBY,
         DAI: exports.DAI_ARBITRUM_RINKEBY,
         USDC: exports.USDC_ARBITRUM_RINKEBY,
-    },
-    [util_1.ChainId.AVALANCHE]: {
-        WAVAX: exports.WAVAX,
-        USDC_E: exports.USDC_E,
     },
     [util_1.ChainId.POLYGON_MUMBAI]: {
         WMATIC: exports.WMATIC_POLYGON_MUMBAI,

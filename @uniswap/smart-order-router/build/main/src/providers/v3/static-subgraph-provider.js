@@ -73,7 +73,7 @@ const BASES_TO_CHECK_TRADES_AGAINST = {
         token_provider_1.USDT_OPTIMISTIC_KOVAN,
         token_provider_1.USDC_OPTIMISTIC_KOVAN,
     ],
-    [chains_1.ChainId.AVALANCHE]: [token_provider_1.USDC_E, token_provider_1.WETH_e, token_provider_1.WAVAX],
+    [chains_1.ChainId.AVALANCHE]: [token_provider_1.USDC_E, token_provider_1.DAI_E, token_provider_1.WAVAX],
     [chains_1.ChainId.POLYGON_MUMBAI]: [
         token_provider_1.DAI_POLYGON_MUMBAI,
         chains_1.WRAPPED_NATIVE_CURRENCY[chains_1.ChainId.POLYGON_MUMBAI],

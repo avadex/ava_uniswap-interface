@@ -17,7 +17,7 @@ exports.usdGasTokensByChain = {
     [chains_1.ChainId.KOVAN]: [token_provider_1.DAI_KOVAN, token_provider_1.USDC_KOVAN, token_provider_1.USDT_KOVAN],
     [chains_1.ChainId.GÖRLI]: [token_provider_1.USDC_GÖRLI, token_provider_1.USDT_GÖRLI, token_provider_1.WBTC_GÖRLI, token_provider_1.DAI_GÖRLI],
     [chains_1.ChainId.ROPSTEN]: [token_provider_1.DAI_ROPSTEN, token_provider_1.USDC_ROPSTEN, token_provider_1.USDT_ROPSTEN],
-    [chains_1.ChainId.AVALANCHE]: [token_provider_1.USDC_E],
+    [chains_1.ChainId.AVALANCHE]: [token_provider_1.USDC_E, token_provider_1.DAI_E],
     [chains_1.ChainId.POLYGON_MUMBAI]: [token_provider_1.DAI_POLYGON_MUMBAI],
 };
 /**

@@ -2,7 +2,7 @@ import { Pair } from '@uniswap/v2-sdk';
 import _ from 'lodash';
 import { ChainId, WRAPPED_NATIVE_CURRENCY } from '../../util/chains';
 import { log } from '../../util/log';
-import { DAI_MAINNET, DAI_RINKEBY_1, DAI_RINKEBY_2, USDC_MAINNET, USDT_MAINNET, WBTC_MAINNET, } from '../token-provider';
+import { DAI_MAINNET, DAI_RINKEBY_1, DAI_RINKEBY_2, DAI_E, USDC_MAINNET, USDC_E, USDT_MAINNET, WBTC_MAINNET, WETH_E, } from '../token-provider';
 const BASES_TO_CHECK_TRADES_AGAINST = {
     [ChainId.MAINNET]: [
         WRAPPED_NATIVE_CURRENCY[ChainId.MAINNET],
@@ -10,6 +10,12 @@ const BASES_TO_CHECK_TRADES_AGAINST = {
         USDC_MAINNET,
         USDT_MAINNET,
         WBTC_MAINNET,
+    ],
+    [ChainId.AVALANCHE]: [
+        WRAPPED_NATIVE_CURRENCY[ChainId.AVALANCHE],
+        DAI_E,
+        USDC_E,
+        WETH_E,
     ],
     [ChainId.ROPSTEN]: [WRAPPED_NATIVE_CURRENCY[ChainId.ROPSTEN]],
     [ChainId.RINKEBY]: [
@@ -24,7 +30,6 @@ const BASES_TO_CHECK_TRADES_AGAINST = {
     [ChainId.ARBITRUM_ONE]: [],
     [ChainId.ARBITRUM_RINKEBY]: [],
     [ChainId.OPTIMISTIC_KOVAN]: [],
-    [ChainId.AVALANCHE]: [],
     [ChainId.POLYGON_MUMBAI]: [],
 };
 /**

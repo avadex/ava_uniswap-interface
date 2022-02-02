@@ -9,6 +9,11 @@ export const BASES_TO_CHECK_TRADES_AGAINST = (_tokenProvider) => {
             USDT_MAINNET,
             WBTC_MAINNET,
         ],
+        [ChainId.AVALANCHE]: [
+            WRAPPED_NATIVE_CURRENCY[ChainId.AVALANCHE],
+            DAI_E,
+            USDC_E,
+        ],
         [ChainId.ROPSTEN]: [WRAPPED_NATIVE_CURRENCY[ChainId.ROPSTEN]],
         [ChainId.RINKEBY]: [WRAPPED_NATIVE_CURRENCY[ChainId.RINKEBY]],
         [ChainId.GÖRLI]: [WRAPPED_NATIVE_CURRENCY[ChainId.GÖRLI]],
@@ -21,7 +26,6 @@ export const BASES_TO_CHECK_TRADES_AGAINST = (_tokenProvider) => {
         [ChainId.ARBITRUM_RINKEBY]: [
             WRAPPED_NATIVE_CURRENCY[ChainId.ARBITRUM_RINKEBY],
         ],
-        [ChainId.AVALANCHE]: [WAVAX],
         [ChainId.POLYGON_MUMBAI]: [WMATIC_POLYGON_MUMBAI],
     };
 };

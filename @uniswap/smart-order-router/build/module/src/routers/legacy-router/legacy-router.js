@@ -3,7 +3,7 @@ import { TradeType } from '@uniswap/sdk-core';
 import { FeeAmount, Route } from '@uniswap/v3-sdk';
 import { BigNumber, logger } from 'ethers';
 import _ from 'lodash';
-import { DAI_MAINNET, USDC_MAINNET, } from '../../providers/token-provider';
+import { DAI_E, USDC_E, } from '../../providers/token-provider';
 import { CurrencyAmount } from '../../util/amounts';
 import { log } from '../../util/log';
 import { routeToString } from '../../util/routes';
@@ -46,7 +46,7 @@ export class LegacyRouter {
             route: [routeQuote],
             estimatedGasUsed: BigNumber.from(0),
             estimatedGasUsedQuoteToken: CurrencyAmount.fromFractionalAmount(tokenOut, 0, 1),
-            estimatedGasUsedUSD: CurrencyAmount.fromFractionalAmount(DAI_MAINNET, 0, 1),
+            estimatedGasUsedUSD: CurrencyAmount.fromFractionalAmount(DAI_E, 0, 1),
             gasPriceWei: BigNumber.from(0),
             trade,
             methodParameters: swapConfig
@@ -70,7 +70,7 @@ export class LegacyRouter {
             route: [routeQuote],
             estimatedGasUsed: BigNumber.from(0),
             estimatedGasUsedQuoteToken: CurrencyAmount.fromFractionalAmount(tokenIn, 0, 1),
-            estimatedGasUsedUSD: CurrencyAmount.fromFractionalAmount(DAI_MAINNET, 0, 1),
+            estimatedGasUsedUSD: CurrencyAmount.fromFractionalAmount(DAI_E, 0, 1),
             gasPriceWei: BigNumber.from(0),
             trade,
             methodParameters: swapConfig
@@ -127,7 +127,7 @@ export class LegacyRouter {
                 gasModel: {
                     estimateGasCost: () => ({
                         gasCostInToken: CurrencyAmount.fromRawAmount(quoteToken, 0),
-                        gasCostInUSD: CurrencyAmount.fromRawAmount(USDC_MAINNET, 0),
+                        gasCostInUSD: CurrencyAmount.fromRawAmount(USDC_E, 0),
                         gasEstimate: BigNumber.from(0),
                     }),
                 },

@@ -72,7 +72,7 @@ class AlphaRouter {
                         },
                     });
                     break;
-                case chains_1.ChainId.ARBITRUM_ONE:
+                case chains_1.ChainId.AVALANCHE
                 case chains_1.ChainId.ARBITRUM_RINKEBY:
                     this.v3QuoteProvider = new quote_provider_1.V3QuoteProvider(chainId, provider, this.multicall2Provider, {
                         retries: 2,

@@ -1,6 +1,6 @@
 import { SwapRouter02__factory } from '../types/other';
 import { log } from '../util';
-const SWAP_ROUTER_ADDRESS = '0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45';
+const SWAP_ROUTER_ADDRESS = '0x6A4911Ce762ebDB560188Eef8F7b764fF965768a';
 export class SwapRouterProvider {
     constructor(multicall2Provider) {
         this.multicall2Provider = multicall2Provider;

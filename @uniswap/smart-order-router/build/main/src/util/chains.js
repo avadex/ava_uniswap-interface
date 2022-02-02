@@ -130,7 +130,7 @@ const ID_TO_PROVIDER = (id) => {
         case ChainId.ARBITRUM_RINKEBY:
             return process.env.JSON_RPC_PROVIDER_ARBITRUM_RINKEBY;
         case ChainId.AVALANCHE:
-            return process.env.JSON_RPC_AVALANCHE;
+            return process.env.JSON_RPC_PROVIDER_AVALANCHE;
         case ChainId.POLYGON_MUMBAI:
             return process.env.JSON_RPC_PROVIDER_POLYGON_MUMBAI;
         default:
