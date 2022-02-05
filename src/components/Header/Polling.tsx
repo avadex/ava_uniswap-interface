@@ -140,7 +140,7 @@ export default function Polling() {
     <>
       <RowFixed>
         <StyledPolling onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)} warning={warning}>
-          <ExternalLink href={'https://snowtrace.io/gastracker'}>
+          <ExternalLink href={'https://etherscan.io/gastracker'}>
             {priceGwei ? (
               <RowFixed style={{ marginRight: '8px' }}>
                 <ThemedText.Main fontSize="11px" mr="8px" color={theme.text3}>

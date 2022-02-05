@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: uniswap-interface\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2022-01-27 01:28\n"
+"PO-Revision-Date: 2022-02-02 22:06\n"
 "Last-Translator: \n"
 "Language: el_GR\n"
 "Language-Team: Greek\n"
@@ -532,7 +532,7 @@ msgstr "Συνδεθείτε σε ένα πορτοφόλι για να δείτ
 msgid "Connect to a wallet to view your liquidity."
 msgstr "Συνδεθείτε σε ένα πορτοφόλι για να δείτε την ρευστότητά σας."
 
-#: src/lib/components/Swap/Toolbar.tsx
+#: src/lib/components/Swap/Toolbar/Caption.tsx
 msgid "Connect wallet to swap"
 msgstr "Συνδέστε το πορτοφόλι για ανταλλαγή"
 
@@ -591,10 +591,6 @@ msgstr "Τρέχουσα τιμή"
 #: src/pages/AddLiquidity/index.tsx
 msgid "Current {0} Price:"
 msgstr "Τρέχουσα τιμή {0}:"
-
-#: src/lib/components/Swap/Settings/MaxSlippageSelect.tsx
-msgid "Custom"
-msgstr "Εθιμο"
 
 #: src/components/Menu/index.tsx
 msgid "Dark Theme"
@@ -723,7 +719,7 @@ msgstr "Εισάγετε μια διεύθυνση για να εκκινήσε�
 
 #: src/components/earn/ClaimRewardModal.tsx
 #: src/components/earn/UnstakingModal.tsx
-#: src/lib/components/Swap/Toolbar.tsx
+#: src/lib/components/Swap/Toolbar/Caption.tsx
 #: src/lib/hooks/swap/useSwapInfo.tsx
 #: src/state/burn/hooks.tsx
 #: src/state/mint/hooks.tsx
@@ -825,7 +821,7 @@ msgstr "Επίπεδο χρεώσεων"
 msgid "Fetching best price..."
 msgstr "Λήψη της καλύτερης τιμής..."
 
-#: src/lib/components/Swap/Toolbar.tsx
+#: src/lib/components/Swap/Toolbar/Caption.tsx
 msgid "Fetching best price…"
 msgstr "Λήψη της καλύτερης τιμής…"
 
@@ -874,6 +870,10 @@ msgstr "Απόκρυψη κλειστών θέσεων"
 #: src/pages/Swap/index.tsx
 msgid "High Price Impact"
 msgstr "Υψηλή Επίδραση Τιμών"
+
+#: src/lib/components/Swap/Settings/MaxSlippageSelect.tsx
+msgid "High slippage increases the risk of price movement"
+msgstr "Η υψηλή ολίσθηση αυξάνει τον κίνδυνο μεταβολής των τιμών"
 
 #: src/components/WalletModal/index.tsx
 msgid "How this app uses APIs"
@@ -940,12 +940,13 @@ msgstr "Εγκατάσταση Metamask"
 msgid "Insufficient liquidity for this trade."
 msgstr "Ανεπαρκής ρευστότητα για αυτή τη διαπραγμάτευση."
 
-#: src/lib/components/Swap/Toolbar.tsx
-msgid "Insufficient {0}"
-msgstr "Ανεπαρκές {0}"
+#: src/lib/components/Swap/Toolbar/Caption.tsx
+msgid "Insufficient liquidity in the pool for your trade"
+msgstr "Ανεπαρκής ρευστότητα στο pool για τις συναλλαγές σας"
 
 #: src/hooks/useWrapCallback.tsx
 #: src/hooks/useWrapCallback.tsx
+#: src/lib/components/Swap/Toolbar/Caption.tsx
 #: src/lib/hooks/swap/useSwapInfo.tsx
 #: src/state/mint/hooks.tsx
 #: src/state/mint/hooks.tsx
@@ -1304,6 +1305,10 @@ msgstr "Συνδεθείτε στο Layer 1 Ethereum"
 msgid "Please connect to a supported network in the dropdown menu or in your wallet."
 msgstr "Συνδεθείτε σε ένα υποστηριζόμενο δίκτυο στο αναπτυσσόμενο μενού ή στο πορτοφόλι σας."
 
+#: src/lib/components/Swap/Settings/MaxSlippageSelect.tsx
+msgid "Please enter a valid slippage %"
+msgstr "Εισαγάγετε ένα έγκυρο ολίσθημα %"
+
 #: src/components/Settings/index.tsx
 msgid "Please type the word \"{confirmWord}\" to enable expert mode."
 msgstr "Παρακαλώ πληκτρολογήστε τη λέξη \"{confirmWord}\" για να ενεργοποιήσετε τη λειτουργία εμπειρογνωμόνων."
@@ -1352,6 +1357,10 @@ msgstr "Συγκεντρώθηκε(αν) {0}:"
 #: src/pages/Pool/index.tsx
 msgid "Pools Overview"
 msgstr "Επισκόπηση Δεξαμενών"
+
+#: src/lib/components/BrandedFooter.tsx
+msgid "Powered by the Uniswap protocol"
+msgstr "Τροφοδοτείται από το πρωτόκολλο Uniswap"
 
 #: src/pages/AddLiquidity/index.tsx
 msgid "Preview"
@@ -2015,9 +2024,9 @@ msgstr "Μη Υποστηριζόμενο Περιουσιακό Στοιχεί�
 msgid "Unsupported Assets"
 msgstr "Μη Υποστηριζόμενα Περιουσιακά Στοιχεία"
 
-#: src/lib/components/Swap/Toolbar.tsx
-msgid "Unsupported network–switch to another to trade."
-msgstr "Μη υποστηριζόμενο δίκτυο – μεταβείτε σε άλλο για συναλλαγές."
+#: src/lib/components/Swap/Toolbar/Caption.tsx
+msgid "Unsupported network - switch to another network to swap"
+msgstr "Μη υποστηριζόμενο δίκτυο - μεταβείτε σε άλλο δίκτυο για εναλλαγή"
 
 #: src/state/governance/hooks.ts
 msgid "Untitled"

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: uniswap-interface\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2022-01-27 01:28\n"
+"PO-Revision-Date: 2022-02-02 22:06\n"
 "Last-Translator: \n"
 "Language: sr_SP\n"
 "Language-Team: Serbian (Cyrillic)\n"
@@ -532,7 +532,7 @@ msgstr "Повежите се са новчаником да бисте виде
 msgid "Connect to a wallet to view your liquidity."
 msgstr "Повежите се са новчаником да бисте видели своју ликвидност."
 
-#: src/lib/components/Swap/Toolbar.tsx
+#: src/lib/components/Swap/Toolbar/Caption.tsx
 msgid "Connect wallet to swap"
 msgstr "Повежите новчаник за замену"
 
@@ -591,10 +591,6 @@ msgstr "Тренутна цена"
 #: src/pages/AddLiquidity/index.tsx
 msgid "Current {0} Price:"
 msgstr "Тренутна {0} цена:"
-
-#: src/lib/components/Swap/Settings/MaxSlippageSelect.tsx
-msgid "Custom"
-msgstr "Обичај"
 
 #: src/components/Menu/index.tsx
 msgid "Dark Theme"
@@ -723,7 +719,7 @@ msgstr "Унесите адресу да бисте покренули преу�
 
 #: src/components/earn/ClaimRewardModal.tsx
 #: src/components/earn/UnstakingModal.tsx
-#: src/lib/components/Swap/Toolbar.tsx
+#: src/lib/components/Swap/Toolbar/Caption.tsx
 #: src/lib/hooks/swap/useSwapInfo.tsx
 #: src/state/burn/hooks.tsx
 #: src/state/mint/hooks.tsx
@@ -825,7 +821,7 @@ msgstr "Ниво накнада"
 msgid "Fetching best price..."
 msgstr "Добијање најбоље цене..."
 
-#: src/lib/components/Swap/Toolbar.tsx
+#: src/lib/components/Swap/Toolbar/Caption.tsx
 msgid "Fetching best price…"
 msgstr "Дохваћање најбоље цене…"
 
@@ -874,6 +870,10 @@ msgstr "Сакриј затворене позиције"
 #: src/pages/Swap/index.tsx
 msgid "High Price Impact"
 msgstr "Утицај високе цене"
+
+#: src/lib/components/Swap/Settings/MaxSlippageSelect.tsx
+msgid "High slippage increases the risk of price movement"
+msgstr "Високо клизање повећава ризик од кретања цена"
 
 #: src/components/WalletModal/index.tsx
 msgid "How this app uses APIs"
@@ -940,12 +940,13 @@ msgstr "Инсталирајте Метамаск"
 msgid "Insufficient liquidity for this trade."
 msgstr "Недовољна ликвидност за ову трговину."
 
-#: src/lib/components/Swap/Toolbar.tsx
-msgid "Insufficient {0}"
-msgstr "Недовољно {0}"
+#: src/lib/components/Swap/Toolbar/Caption.tsx
+msgid "Insufficient liquidity in the pool for your trade"
+msgstr "Недовољна ликвидност у фонду за вашу трговину"
 
 #: src/hooks/useWrapCallback.tsx
 #: src/hooks/useWrapCallback.tsx
+#: src/lib/components/Swap/Toolbar/Caption.tsx
 #: src/lib/hooks/swap/useSwapInfo.tsx
 #: src/state/mint/hooks.tsx
 #: src/state/mint/hooks.tsx
@@ -1304,6 +1305,10 @@ msgstr "Повежите се са слојем 1 Етхереум"
 msgid "Please connect to a supported network in the dropdown menu or in your wallet."
 msgstr "Повежите се на подржану мрежу у падајућем менију или у свом новчанику."
 
+#: src/lib/components/Swap/Settings/MaxSlippageSelect.tsx
+msgid "Please enter a valid slippage %"
+msgstr "Унесите важећи % клизања"
+
 #: src/components/Settings/index.tsx
 msgid "Please type the word \"{confirmWord}\" to enable expert mode."
 msgstr "Унесите реч „{confirmWord}“ да бисте омогућили експертни режим."
@@ -1352,6 +1357,10 @@ msgstr "Сакупљено {0}:"
 #: src/pages/Pool/index.tsx
 msgid "Pools Overview"
 msgstr "Преглед фондова"
+
+#: src/lib/components/BrandedFooter.tsx
+msgid "Powered by the Uniswap protocol"
+msgstr "Покреће Унисвап протокол"
 
 #: src/pages/AddLiquidity/index.tsx
 msgid "Preview"
@@ -2015,9 +2024,9 @@ msgstr "Неподржано средство"
 msgid "Unsupported Assets"
 msgstr "Неподржана средства"
 
-#: src/lib/components/Swap/Toolbar.tsx
-msgid "Unsupported network–switch to another to trade."
-msgstr "Неподржана мрежа – пређите на другу да бисте трговали."
+#: src/lib/components/Swap/Toolbar/Caption.tsx
+msgid "Unsupported network - switch to another network to swap"
+msgstr "Неподржана мрежа - пређите на другу мрежу да бисте заменили"
 
 #: src/state/governance/hooks.ts
 msgid "Untitled"

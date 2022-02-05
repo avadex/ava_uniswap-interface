@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: uniswap-interface\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2022-01-27 01:28\n"
+"PO-Revision-Date: 2022-02-02 22:06\n"
 "Last-Translator: \n"
 "Language: es_ES\n"
 "Language-Team: Spanish\n"
@@ -532,7 +532,7 @@ msgstr "Conéctese a una cartera para ver su liquidez V2."
 msgid "Connect to a wallet to view your liquidity."
 msgstr "Conéctese a una cartera para ver su liquidez."
 
-#: src/lib/components/Swap/Toolbar.tsx
+#: src/lib/components/Swap/Toolbar/Caption.tsx
 msgid "Connect wallet to swap"
 msgstr "Conectar monedero para intercambiar"
 
@@ -591,10 +591,6 @@ msgstr "Precio actual"
 #: src/pages/AddLiquidity/index.tsx
 msgid "Current {0} Price:"
 msgstr "Precio {0} actual:"
-
-#: src/lib/components/Swap/Settings/MaxSlippageSelect.tsx
-msgid "Custom"
-msgstr "Personalizado"
 
 #: src/components/Menu/index.tsx
 msgid "Dark Theme"
@@ -723,7 +719,7 @@ msgstr "Introduzca una dirección para activar una reclamación de UNI. Si la di
 
 #: src/components/earn/ClaimRewardModal.tsx
 #: src/components/earn/UnstakingModal.tsx
-#: src/lib/components/Swap/Toolbar.tsx
+#: src/lib/components/Swap/Toolbar/Caption.tsx
 #: src/lib/hooks/swap/useSwapInfo.tsx
 #: src/state/burn/hooks.tsx
 #: src/state/mint/hooks.tsx
@@ -825,7 +821,7 @@ msgstr "Nivel de tarifa"
 msgid "Fetching best price..."
 msgstr "Obteniendo el mejor precio ..."
 
-#: src/lib/components/Swap/Toolbar.tsx
+#: src/lib/components/Swap/Toolbar/Caption.tsx
 msgid "Fetching best price…"
 msgstr "Buscando el mejor precio…"
 
@@ -874,6 +870,10 @@ msgstr "Ocultar posiciones cerradas"
 #: src/pages/Swap/index.tsx
 msgid "High Price Impact"
 msgstr "Impacto de precio alto"
+
+#: src/lib/components/Swap/Settings/MaxSlippageSelect.tsx
+msgid "High slippage increases the risk of price movement"
+msgstr "Un alto deslizamiento aumenta el riesgo de movimiento de precios"
 
 #: src/components/WalletModal/index.tsx
 msgid "How this app uses APIs"
@@ -940,12 +940,13 @@ msgstr "Instalar Metamask"
 msgid "Insufficient liquidity for this trade."
 msgstr "Liquidez insuficiente para esta operación."
 
-#: src/lib/components/Swap/Toolbar.tsx
-msgid "Insufficient {0}"
-msgstr "Insuficiente {0}"
+#: src/lib/components/Swap/Toolbar/Caption.tsx
+msgid "Insufficient liquidity in the pool for your trade"
+msgstr "Liquidez insuficiente en el grupo para su operación"
 
 #: src/hooks/useWrapCallback.tsx
 #: src/hooks/useWrapCallback.tsx
+#: src/lib/components/Swap/Toolbar/Caption.tsx
 #: src/lib/hooks/swap/useSwapInfo.tsx
 #: src/state/mint/hooks.tsx
 #: src/state/mint/hooks.tsx
@@ -1304,6 +1305,10 @@ msgstr "Conéctese a la capa 1 Ethereum"
 msgid "Please connect to a supported network in the dropdown menu or in your wallet."
 msgstr "Conéctese a una red compatible en el menú desplegable o en su billetera."
 
+#: src/lib/components/Swap/Settings/MaxSlippageSelect.tsx
+msgid "Please enter a valid slippage %"
+msgstr "Introduzca un porcentaje de deslizamiento válido"
+
 #: src/components/Settings/index.tsx
 msgid "Please type the word \"{confirmWord}\" to enable expert mode."
 msgstr "Escribe la palabra \"{confirmWord}\" para activar el modo experto."
@@ -1352,6 +1357,10 @@ msgstr "Conjunto {0}:"
 #: src/pages/Pool/index.tsx
 msgid "Pools Overview"
 msgstr "Vista general del fondo común"
+
+#: src/lib/components/BrandedFooter.tsx
+msgid "Powered by the Uniswap protocol"
+msgstr "Desarrollado por el protocolo Uniswap"
 
 #: src/pages/AddLiquidity/index.tsx
 msgid "Preview"
@@ -2015,9 +2024,9 @@ msgstr "Activo no soportado"
 msgid "Unsupported Assets"
 msgstr "Activos no soportados"
 
-#: src/lib/components/Swap/Toolbar.tsx
-msgid "Unsupported network–switch to another to trade."
-msgstr "Red no admitida: cambie a otra para intercambiar."
+#: src/lib/components/Swap/Toolbar/Caption.tsx
+msgid "Unsupported network - switch to another network to swap"
+msgstr "Red no admitida: cambie a otra red para intercambiar"
 
 #: src/state/governance/hooks.ts
 msgid "Untitled"

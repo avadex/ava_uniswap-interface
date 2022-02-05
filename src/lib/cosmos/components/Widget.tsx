@@ -23,7 +23,7 @@ export default function Wrapper({ children }: { children: ReactNode }) {
 
   const NO_JSON_RPC = 'None'
   const [jsonRpcEndpoint] = useSelect('JSON-RPC', {
-    defaultValue: INFURA_NETWORK_URLS[SupportedChainId.MAINNET],
+    defaultValue: INFURA_NETWORK_URLS[SupportedChainId.AVALANCHE],
     options: [NO_JSON_RPC, ...Object.values(INFURA_NETWORK_URLS).sort()],
   })
 

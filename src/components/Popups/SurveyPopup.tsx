@@ -15,7 +15,7 @@ import useTheme from '../../hooks/useTheme'
 const Wrapper = styled(AutoColumn)`
   background: #edeef2;
   position: relative;
-  border-radius: 12px;
+  border-radius: 7px;
   padding: 18px;
   max-width: 360px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);

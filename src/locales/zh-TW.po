@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: uniswap-interface\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2022-01-27 01:28\n"
+"PO-Revision-Date: 2022-02-02 22:06\n"
 "Last-Translator: \n"
 "Language: zh_TW\n"
 "Language-Team: Chinese Traditional\n"
@@ -532,7 +532,7 @@ msgstr "連接到錢包以查看您的 V2 流動資金。"
 msgid "Connect to a wallet to view your liquidity."
 msgstr "連接到錢包以查看您的流動資金。"
 
-#: src/lib/components/Swap/Toolbar.tsx
+#: src/lib/components/Swap/Toolbar/Caption.tsx
 msgid "Connect wallet to swap"
 msgstr "連接錢包以交換"
 
@@ -591,10 +591,6 @@ msgstr "當前兌換率"
 #: src/pages/AddLiquidity/index.tsx
 msgid "Current {0} Price:"
 msgstr "當前 {0} 兌換率："
-
-#: src/lib/components/Swap/Settings/MaxSlippageSelect.tsx
-msgid "Custom"
-msgstr "風俗"
 
 #: src/components/Menu/index.tsx
 msgid "Dark Theme"
@@ -723,7 +719,7 @@ msgstr "輸入地址來查看領取 UNI 代幣的資質。如果地址有任何�
 
 #: src/components/earn/ClaimRewardModal.tsx
 #: src/components/earn/UnstakingModal.tsx
-#: src/lib/components/Swap/Toolbar.tsx
+#: src/lib/components/Swap/Toolbar/Caption.tsx
 #: src/lib/hooks/swap/useSwapInfo.tsx
 #: src/state/burn/hooks.tsx
 #: src/state/mint/hooks.tsx
@@ -825,7 +821,7 @@ msgstr "手續費級別"
 msgid "Fetching best price..."
 msgstr "正在獲取最優兌換率..."
 
-#: src/lib/components/Swap/Toolbar.tsx
+#: src/lib/components/Swap/Toolbar/Caption.tsx
 msgid "Fetching best price…"
 msgstr "獲取最優價格…"
 
@@ -874,6 +870,10 @@ msgstr "隱藏已關閉的倉位"
 #: src/pages/Swap/index.tsx
 msgid "High Price Impact"
 msgstr "高兌換率影響"
+
+#: src/lib/components/Swap/Settings/MaxSlippageSelect.tsx
+msgid "High slippage increases the risk of price movement"
+msgstr "高滑點增加了價格變動的風險"
 
 #: src/components/WalletModal/index.tsx
 msgid "How this app uses APIs"
@@ -940,12 +940,13 @@ msgstr "安裝Metamask"
 msgid "Insufficient liquidity for this trade."
 msgstr "現有流動量不足以支持此交易。"
 
-#: src/lib/components/Swap/Toolbar.tsx
-msgid "Insufficient {0}"
-msgstr "不足 {0}"
+#: src/lib/components/Swap/Toolbar/Caption.tsx
+msgid "Insufficient liquidity in the pool for your trade"
+msgstr "您的交易池中的流動性不足"
 
 #: src/hooks/useWrapCallback.tsx
 #: src/hooks/useWrapCallback.tsx
+#: src/lib/components/Swap/Toolbar/Caption.tsx
 #: src/lib/hooks/swap/useSwapInfo.tsx
 #: src/state/mint/hooks.tsx
 #: src/state/mint/hooks.tsx
@@ -1304,6 +1305,10 @@ msgstr "請連接到以太坊 Layer 1"
 msgid "Please connect to a supported network in the dropdown menu or in your wallet."
 msgstr "請在下拉菜單或您的錢包中連接到支持的網絡。"
 
+#: src/lib/components/Swap/Settings/MaxSlippageSelect.tsx
+msgid "Please enter a valid slippage %"
+msgstr "請輸入有效的滑點百分比"
+
 #: src/components/Settings/index.tsx
 msgid "Please type the word \"{confirmWord}\" to enable expert mode."
 msgstr "請輸入單詞“{confirmWord}”以啟用專家模式。"
@@ -1352,6 +1357,10 @@ msgstr "流動池匯集 {0}:"
 #: src/pages/Pool/index.tsx
 msgid "Pools Overview"
 msgstr "流動池概覽"
+
+#: src/lib/components/BrandedFooter.tsx
+msgid "Powered by the Uniswap protocol"
+msgstr "由 Uniswap 協議提供支持"
 
 #: src/pages/AddLiquidity/index.tsx
 msgid "Preview"
@@ -2015,9 +2024,9 @@ msgstr "不支持的資產"
 msgid "Unsupported Assets"
 msgstr "不支持的資產"
 
-#: src/lib/components/Swap/Toolbar.tsx
-msgid "Unsupported network–switch to another to trade."
-msgstr "不支持的網絡——切換到另一個進行交易。"
+#: src/lib/components/Swap/Toolbar/Caption.tsx
+msgid "Unsupported network - switch to another network to swap"
+msgstr "不支持的網絡 - 切換到另一個網絡進行交換"
 
 #: src/state/governance/hooks.ts
 msgid "Untitled"

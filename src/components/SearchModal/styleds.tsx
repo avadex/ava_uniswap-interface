@@ -7,7 +7,7 @@ export const TextDot = styled.div`
   height: 3px;
   width: 3px;
   background-color: ${({ theme }) => theme.text2};
-  border-radius: 50%;
+  border-radius: 20%;
 `
 
 export const Checkbox = styled.input`
@@ -44,7 +44,7 @@ export const SearchInput = styled.input`
   background: none;
   border: none;
   outline: none;
-  border-radius: 20px;
+  border-radius: 10px;
   color: ${({ theme }) => theme.text1};
   border-style: solid;
   border: 1px solid ${({ theme }) => theme.bg3};

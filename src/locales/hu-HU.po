@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: uniswap-interface\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2022-01-27 01:28\n"
+"PO-Revision-Date: 2022-02-02 22:06\n"
 "Last-Translator: \n"
 "Language: hu_HU\n"
 "Language-Team: Hungarian\n"
@@ -532,7 +532,7 @@ msgstr "Csatlakozzon egy pénztárcához a V2 likviditás megtekintéséhez."
 msgid "Connect to a wallet to view your liquidity."
 msgstr "Csatlakozzon egy pénztárcához a likviditás megtekintéséhez."
 
-#: src/lib/components/Swap/Toolbar.tsx
+#: src/lib/components/Swap/Toolbar/Caption.tsx
 msgid "Connect wallet to swap"
 msgstr "Csatlakoztassa a pénztárcát a cseréhez"
 
@@ -591,10 +591,6 @@ msgstr "Jelenlegi ár"
 #: src/pages/AddLiquidity/index.tsx
 msgid "Current {0} Price:"
 msgstr "Jelenlegi {0} ár:"
-
-#: src/lib/components/Swap/Settings/MaxSlippageSelect.tsx
-msgid "Custom"
-msgstr "Egyedi"
 
 #: src/components/Menu/index.tsx
 msgid "Dark Theme"
@@ -723,7 +719,7 @@ msgstr "Adjon meg egy címet az UNI-követelés kiváltásához. Ha a címnek va
 
 #: src/components/earn/ClaimRewardModal.tsx
 #: src/components/earn/UnstakingModal.tsx
-#: src/lib/components/Swap/Toolbar.tsx
+#: src/lib/components/Swap/Toolbar/Caption.tsx
 #: src/lib/hooks/swap/useSwapInfo.tsx
 #: src/state/burn/hooks.tsx
 #: src/state/mint/hooks.tsx
@@ -826,7 +822,7 @@ msgstr "Díjszint"
 msgid "Fetching best price..."
 msgstr "A legjobb ár lekérése..."
 
-#: src/lib/components/Swap/Toolbar.tsx
+#: src/lib/components/Swap/Toolbar/Caption.tsx
 msgid "Fetching best price…"
 msgstr "A legjobb ár lekérése…"
 
@@ -875,6 +871,10 @@ msgstr "Zárt pozíciók elrejtése"
 #: src/pages/Swap/index.tsx
 msgid "High Price Impact"
 msgstr "Magas árhatás"
+
+#: src/lib/components/Swap/Settings/MaxSlippageSelect.tsx
+msgid "High slippage increases the risk of price movement"
+msgstr "A nagy csúszás növeli az ármozgások kockázatát"
 
 #: src/components/WalletModal/index.tsx
 msgid "How this app uses APIs"
@@ -941,12 +941,13 @@ msgstr "Metamask telepítése"
 msgid "Insufficient liquidity for this trade."
 msgstr "Nincs elegendő likviditás ehhez a kereskedéshez."
 
-#: src/lib/components/Swap/Toolbar.tsx
-msgid "Insufficient {0}"
-msgstr "Elégtelen {0}"
+#: src/lib/components/Swap/Toolbar/Caption.tsx
+msgid "Insufficient liquidity in the pool for your trade"
+msgstr "Nincs elegendő likviditás a poolban a kereskedéshez"
 
 #: src/hooks/useWrapCallback.tsx
 #: src/hooks/useWrapCallback.tsx
+#: src/lib/components/Swap/Toolbar/Caption.tsx
 #: src/lib/hooks/swap/useSwapInfo.tsx
 #: src/state/mint/hooks.tsx
 #: src/state/mint/hooks.tsx
@@ -1305,6 +1306,10 @@ msgstr "Kérjük, csatlakozzon az 1. réteg Ethereumhoz"
 msgid "Please connect to a supported network in the dropdown menu or in your wallet."
 msgstr "Kérjük, csatlakozzon egy támogatott hálózathoz a legördülő menüben vagy a pénztárcájában."
 
+#: src/lib/components/Swap/Settings/MaxSlippageSelect.tsx
+msgid "Please enter a valid slippage %"
+msgstr "Kérjük, adjon meg egy érvényes csúszást %"
+
 #: src/components/Settings/index.tsx
 msgid "Please type the word \"{confirmWord}\" to enable expert mode."
 msgstr "Írja be a \"{confirmWord}\" szót a szakértői mód engedélyezéséhez."
@@ -1353,6 +1358,10 @@ msgstr "Összevonva {0}:"
 #: src/pages/Pool/index.tsx
 msgid "Pools Overview"
 msgstr "Poolok áttekintése"
+
+#: src/lib/components/BrandedFooter.tsx
+msgid "Powered by the Uniswap protocol"
+msgstr "Az Uniswap protokoll működteti"
 
 #: src/pages/AddLiquidity/index.tsx
 msgid "Preview"
@@ -2016,9 +2025,9 @@ msgstr "Nem támogatott eszköz"
 msgid "Unsupported Assets"
 msgstr "Nem támogatott eszközök"
 
-#: src/lib/components/Swap/Toolbar.tsx
-msgid "Unsupported network–switch to another to trade."
-msgstr "Nem támogatott hálózat – váltson másikra a kereskedéshez."
+#: src/lib/components/Swap/Toolbar/Caption.tsx
+msgid "Unsupported network - switch to another network to swap"
+msgstr "Nem támogatott hálózat – váltson másik hálózatra a cseréhez"
 
 #: src/state/governance/hooks.ts
 msgid "Untitled"

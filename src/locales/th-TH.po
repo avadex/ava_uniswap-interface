@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: uniswap-interface\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2022-01-27 01:28\n"
+"PO-Revision-Date: 2022-02-02 22:06\n"
 "Last-Translator: \n"
 "Language: th_TH\n"
 "Language-Team: Thai\n"
@@ -532,7 +532,7 @@ msgstr "เชื่อมต่อกับกระเป๋าเงินเ
 msgid "Connect to a wallet to view your liquidity."
 msgstr "เชื่อมต่อกับกระเป๋าเงินเพื่อดูสภาพคล่องของคุณ"
 
-#: src/lib/components/Swap/Toolbar.tsx
+#: src/lib/components/Swap/Toolbar/Caption.tsx
 msgid "Connect wallet to swap"
 msgstr "เชื่อมต่อกระเป๋าเงินเพื่อแลกเปลี่ยน"
 
@@ -591,10 +591,6 @@ msgstr "ราคาปัจจุบัน"
 #: src/pages/AddLiquidity/index.tsx
 msgid "Current {0} Price:"
 msgstr "ปัจจุบัน {0} ราคา:"
-
-#: src/lib/components/Swap/Settings/MaxSlippageSelect.tsx
-msgid "Custom"
-msgstr "กำหนดเอง"
 
 #: src/components/Menu/index.tsx
 msgid "Dark Theme"
@@ -723,7 +719,7 @@ msgstr "ป้อนที่อยู่เพื่อเรียกใช้
 
 #: src/components/earn/ClaimRewardModal.tsx
 #: src/components/earn/UnstakingModal.tsx
-#: src/lib/components/Swap/Toolbar.tsx
+#: src/lib/components/Swap/Toolbar/Caption.tsx
 #: src/lib/hooks/swap/useSwapInfo.tsx
 #: src/state/burn/hooks.tsx
 #: src/state/mint/hooks.tsx
@@ -825,7 +821,7 @@ msgstr "ระดับค่าธรรมเนียม"
 msgid "Fetching best price..."
 msgstr "กำลังเรียกราคาที่ดีที่สุด..."
 
-#: src/lib/components/Swap/Toolbar.tsx
+#: src/lib/components/Swap/Toolbar/Caption.tsx
 msgid "Fetching best price…"
 msgstr "กำลังเรียกราคาที่ดีที่สุด…"
 
@@ -874,6 +870,10 @@ msgstr "ซ่อนตำแหน่งที่ปิด"
 #: src/pages/Swap/index.tsx
 msgid "High Price Impact"
 msgstr "ผลกระทบราคาสูง"
+
+#: src/lib/components/Swap/Settings/MaxSlippageSelect.tsx
+msgid "High slippage increases the risk of price movement"
+msgstr "Slippage สูงเพิ่มความเสี่ยงจากการเคลื่อนไหวของราคา"
 
 #: src/components/WalletModal/index.tsx
 msgid "How this app uses APIs"
@@ -940,12 +940,13 @@ msgstr "ติดตั้ง Metamask"
 msgid "Insufficient liquidity for this trade."
 msgstr "สภาพคล่องไม่เพียงพอสำหรับการค้านี้"
 
-#: src/lib/components/Swap/Toolbar.tsx
-msgid "Insufficient {0}"
-msgstr "ไม่เพียงพอ {0}"
+#: src/lib/components/Swap/Toolbar/Caption.tsx
+msgid "Insufficient liquidity in the pool for your trade"
+msgstr "สภาพคล่องไม่เพียงพอสำหรับการซื้อขายของคุณ"
 
 #: src/hooks/useWrapCallback.tsx
 #: src/hooks/useWrapCallback.tsx
+#: src/lib/components/Swap/Toolbar/Caption.tsx
 #: src/lib/hooks/swap/useSwapInfo.tsx
 #: src/state/mint/hooks.tsx
 #: src/state/mint/hooks.tsx
@@ -1304,6 +1305,10 @@ msgstr "โปรดเชื่อมต่อกับ Layer 1 Ethereum"
 msgid "Please connect to a supported network in the dropdown menu or in your wallet."
 msgstr "โปรดเชื่อมต่อกับเครือข่ายที่รองรับในเมนูแบบเลื่อนลงหรือในกระเป๋าเงินของคุณ"
 
+#: src/lib/components/Swap/Settings/MaxSlippageSelect.tsx
+msgid "Please enter a valid slippage %"
+msgstr "โปรดป้อน % การคลาดเคลื่อนที่ถูกต้อง"
+
 #: src/components/Settings/index.tsx
 msgid "Please type the word \"{confirmWord}\" to enable expert mode."
 msgstr "โปรดพิมพ์คำว่า \"{confirmWord}\" เพื่อเปิดใช้งานโหมดผู้เชี่ยวชาญ"
@@ -1352,6 +1357,10 @@ msgstr "รวม {0}:"
 #: src/pages/Pool/index.tsx
 msgid "Pools Overview"
 msgstr "ภาพรวมสระน้ำ"
+
+#: src/lib/components/BrandedFooter.tsx
+msgid "Powered by the Uniswap protocol"
+msgstr "ขับเคลื่อนโดยโปรโตคอล Uniswap"
 
 #: src/pages/AddLiquidity/index.tsx
 msgid "Preview"
@@ -2015,9 +2024,9 @@ msgstr "เนื้อหาที่ไม่รองรับ"
 msgid "Unsupported Assets"
 msgstr "สินทรัพย์ที่ไม่รองรับ"
 
-#: src/lib/components/Swap/Toolbar.tsx
-msgid "Unsupported network–switch to another to trade."
-msgstr "เครือข่ายที่ไม่รองรับ – เปลี่ยนไปใช้เครือข่ายอื่นเพื่อแลกเปลี่ยน"
+#: src/lib/components/Swap/Toolbar/Caption.tsx
+msgid "Unsupported network - switch to another network to swap"
+msgstr "เครือข่ายที่ไม่รองรับ - สลับไปยังเครือข่ายอื่นเพื่อสลับ"
 
 #: src/state/governance/hooks.ts
 msgid "Untitled"

@@ -36,12 +36,13 @@ const ContentWrapper = styled(Column)`
 
 const Footer = styled.div`
   width: 100%;
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 20px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   background-color: ${({ theme }) => theme.bg1};
   border-top: 1px solid ${({ theme }) => theme.bg2};
+  color: #6de521;
 `
 
 interface CurrencySearchProps {
@@ -178,7 +179,7 @@ export function CurrencySearch({
       <PaddedColumn gap="16px">
         <RowBetween>
           <Text fontWeight={500} fontSize={16}>
-            <Trans>Select a token</Trans>
+            <Trans>Selec token</Trans>
           </Text>
           <CloseIcon onClick={onDismiss} />
         </RowBetween>

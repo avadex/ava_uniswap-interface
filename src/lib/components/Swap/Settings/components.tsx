@@ -8,7 +8,7 @@ import Tooltip from '../../Tooltip'
 
 export const optionCss = (selected: boolean) => css`
   border: 1px solid ${({ theme }) => (selected ? theme.active : theme.outline)};
-  border-radius: ${({ theme }) => theme.borderRadius * 0.75}em;
+  border-radius: ${({ theme }) => theme.borderRadius * 0.2}em;
   color: ${({ theme }) => theme.primary} !important;
   display: grid;
   grid-gap: 0.25em;
@@ -16,6 +16,10 @@ export const optionCss = (selected: boolean) => css`
 
   :enabled:hover {
     border-color: ${({ theme }) => theme.onHover(selected ? theme.active : theme.outline)};
+  }
+
+  :enabled:focus-within {
+    border-color: ${({ theme }) => theme.active};
   }
 `
 

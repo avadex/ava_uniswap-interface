@@ -37,7 +37,7 @@ export function TokenSelectDialog({ value, onSelect }: TokenSelectDialogProps) {
 
   return (
     <>
-      <Header title={<Trans>Select a token</Trans>} />
+      <Header title={<Trans>Selec token</Trans>} />
       <Column gap={0.75}>
         <Row pad={0.75} grow>
           <ThemedText.Body1>

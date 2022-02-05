@@ -12,7 +12,7 @@ import invariant from 'tiny-invariant'
 import { Modal } from '../Dialog'
 import { SummaryDialog } from './Summary'
 
-const ETH = nativeOnChain(SupportedChainId.MAINNET)
+const AVAX = nativeOnChain(SupportedChainId.AVALANCHE)
 const UNI = (function () {
   const token = tokens.find(({ symbol }) => symbol === 'UNI')
   invariant(token)
@@ -30,7 +30,7 @@ function Fixture() {
     setState({
       independentField: Field.INPUT,
       amount: '1',
-      [Field.INPUT]: ETH,
+      [Field.INPUT]: AVAX,
       [Field.OUTPUT]: UNI,
     })
   }, [setState])

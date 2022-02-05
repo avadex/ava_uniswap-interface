@@ -31,7 +31,7 @@ export function shouldCheck(lastBlockNumber: number, tx: Transaction): boolean {
 }
 
 const RETRY_OPTIONS_BY_CHAIN_ID: { [chainId: number]: RetryOptions } = {
-  [SupportedChainId.AVALANCHE]: { n: 10, minWait: 25, maxWait: 100 },
+  //[SupportedChainId.AVALANCHE]: { n: 10, minWait: 25, maxWait: 100 },
   [SupportedChainId.ARBITRUM_RINKEBY]: { n: 10, minWait: 250, maxWait: 1000 },
   [SupportedChainId.OPTIMISTIC_KOVAN]: { n: 10, minWait: 250, maxWait: 1000 },
   [SupportedChainId.OPTIMISM]: { n: 10, minWait: 250, maxWait: 1000 },

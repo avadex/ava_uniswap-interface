@@ -73,7 +73,7 @@ const MenuItem = styled.div`
   font-weight: 500;
 `
 const MoreOptionsButton = styled(ButtonGray)`
-  border-radius: 12px;
+  border-radius: 7px;
   flex: 1 1 auto;
   padding: 6px 8px;
   width: 100%;
@@ -90,7 +90,7 @@ const NoLiquidity = styled.div`
   min-height: 25vh;
 `
 const ResponsiveButtonPrimary = styled(ButtonPrimary)`
-  border-radius: 12px;
+  border-radius: 7px;
   padding: 6px 8px;
   width: fit-content;
   ${({ theme }) => theme.mediaWidth.upToSmall`
@@ -102,7 +102,7 @@ const ResponsiveButtonPrimary = styled(ButtonPrimary)`
 const MainContentWrapper = styled.main`
   background-color: ${({ theme }) => theme.bg0};
   padding: 8px;
-  border-radius: 20px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
 `

@@ -22,7 +22,7 @@ const CTASection = styled.section`
 
 const CTA1 = styled(ExternalLink)`
   padding: 16px;
-  border-radius: 20px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -50,7 +50,7 @@ const CTA2 = styled(ExternalLink)`
   position: relative;
   overflow: hidden;
   padding: 16px;
-  border-radius: 20px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -94,7 +94,7 @@ const ResponsiveColumn = styled(AutoColumn)`
 
 export default function CTACards() {
   const { chainId } = useActiveWeb3React()
-  const { infoLink } = CHAIN_INFO[chainId ? chainId : SupportedChainId.MAINNET]
+  const { infoLink } = CHAIN_INFO[chainId ? chainId : SupportedChainId.AVALANCHE]
   return (
     <CTASection>
       <CTA1 href={'https://help.uniswap.org/en/articles/5391541-providing-liquidity-on-uniswap-v3'}>

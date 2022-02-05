@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: uniswap-interface\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2022-01-27 01:28\n"
+"PO-Revision-Date: 2022-02-02 22:06\n"
 "Last-Translator: \n"
 "Language: ja_JP\n"
 "Language-Team: Japanese\n"
@@ -532,7 +532,7 @@ msgstr "ウォレットに接続してV2の流動性を確認します。"
 msgid "Connect to a wallet to view your liquidity."
 msgstr "ウォレットに接続して流動性を確認します。"
 
-#: src/lib/components/Swap/Toolbar.tsx
+#: src/lib/components/Swap/Toolbar/Caption.tsx
 msgid "Connect wallet to swap"
 msgstr "ウォレットをスワップに接続します"
 
@@ -591,10 +591,6 @@ msgstr "現在価格"
 #: src/pages/AddLiquidity/index.tsx
 msgid "Current {0} Price:"
 msgstr "{0} の現在価格:"
-
-#: src/lib/components/Swap/Settings/MaxSlippageSelect.tsx
-msgid "Custom"
-msgstr "カスタム"
 
 #: src/components/Menu/index.tsx
 msgid "Dark Theme"
@@ -723,7 +719,7 @@ msgstr "UNIの請求を行うためのアドレスを入力してください。
 
 #: src/components/earn/ClaimRewardModal.tsx
 #: src/components/earn/UnstakingModal.tsx
-#: src/lib/components/Swap/Toolbar.tsx
+#: src/lib/components/Swap/Toolbar/Caption.tsx
 #: src/lib/hooks/swap/useSwapInfo.tsx
 #: src/state/burn/hooks.tsx
 #: src/state/mint/hooks.tsx
@@ -825,7 +821,7 @@ msgstr "手数料レベル"
 msgid "Fetching best price..."
 msgstr "最高の価格を取得しています..."
 
-#: src/lib/components/Swap/Toolbar.tsx
+#: src/lib/components/Swap/Toolbar/Caption.tsx
 msgid "Fetching best price…"
 msgstr "最安値を取得…"
 
@@ -874,6 +870,10 @@ msgstr "決済したポジションを隠す"
 #: src/pages/Swap/index.tsx
 msgid "High Price Impact"
 msgstr "大きな価格への影響"
+
+#: src/lib/components/Swap/Settings/MaxSlippageSelect.tsx
+msgid "High slippage increases the risk of price movement"
+msgstr "高いスリッページは価格変動のリスクを高めます"
 
 #: src/components/WalletModal/index.tsx
 msgid "How this app uses APIs"
@@ -940,12 +940,13 @@ msgstr "メタマスクのインストール"
 msgid "Insufficient liquidity for this trade."
 msgstr "流動性が不足しているため、取引できません。"
 
-#: src/lib/components/Swap/Toolbar.tsx
-msgid "Insufficient {0}"
-msgstr "不十分 {0}"
+#: src/lib/components/Swap/Toolbar/Caption.tsx
+msgid "Insufficient liquidity in the pool for your trade"
+msgstr "あなたの取引のためのプールの不十分な流動性"
 
 #: src/hooks/useWrapCallback.tsx
 #: src/hooks/useWrapCallback.tsx
+#: src/lib/components/Swap/Toolbar/Caption.tsx
 #: src/lib/hooks/swap/useSwapInfo.tsx
 #: src/state/mint/hooks.tsx
 #: src/state/mint/hooks.tsx
@@ -1304,6 +1305,10 @@ msgstr "イーサリアムのレイヤー1に接続してください"
 msgid "Please connect to a supported network in the dropdown menu or in your wallet."
 msgstr "ドロップダウンメニューまたはウォレットでサポートされているネットワークに接続してください。"
 
+#: src/lib/components/Swap/Settings/MaxSlippageSelect.tsx
+msgid "Please enter a valid slippage %"
+msgstr "有効なスリッページ％を入力してください"
+
 #: src/components/Settings/index.tsx
 msgid "Please type the word \"{confirmWord}\" to enable expert mode."
 msgstr "エキスパートモードを有効にするには、単語\"{confirmWord}\"を入力してください。"
@@ -1352,6 +1357,10 @@ msgstr "プールしている {0}:"
 #: src/pages/Pool/index.tsx
 msgid "Pools Overview"
 msgstr "プールの概要"
+
+#: src/lib/components/BrandedFooter.tsx
+msgid "Powered by the Uniswap protocol"
+msgstr "ユニスワッププロトコルを搭載"
 
 #: src/pages/AddLiquidity/index.tsx
 msgid "Preview"
@@ -2015,9 +2024,9 @@ msgstr "サポートされていないトークン"
 msgid "Unsupported Assets"
 msgstr "サポートされていないアセット"
 
-#: src/lib/components/Swap/Toolbar.tsx
-msgid "Unsupported network–switch to another to trade."
-msgstr "サポートされていないネットワーク–別のネットワークに切り替えて取引します。"
+#: src/lib/components/Swap/Toolbar/Caption.tsx
+msgid "Unsupported network - switch to another network to swap"
+msgstr "サポートされていないネットワーク-スワップするために別のネットワークに切り替えます"
 
 #: src/state/governance/hooks.ts
 msgid "Untitled"

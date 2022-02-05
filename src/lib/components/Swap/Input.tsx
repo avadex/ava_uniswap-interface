@@ -4,7 +4,7 @@ import { useSwapAmount, useSwapCurrency, useSwapInfo } from 'lib/hooks/swap'
 import { usePrefetchCurrencyColor } from 'lib/hooks/useCurrencyColor'
 import { Field } from 'lib/state/swap'
 import styled, { ThemedText } from 'lib/theme'
-import { useCallback } from 'react'
+import { useMemo } from 'react'
 import { formatCurrencyAmount } from 'utils/formatCurrencyAmount'
 
 import Column from '../Column'
@@ -42,10 +42,11 @@ export default function Input({ disabled }: InputProps) {
   //TODO(ianlapham): mimic logic from app swap page
   const mockApproved = true
 
-  const onMax = useCallback(() => {
-    if (balance) {
-      updateSwapInputAmount(balance.toExact())
+  const onMax = useMemo(() => {
+    if (balance?.greaterThan(0)) {
+      return () => updateSwapInputAmount(balance.toExact())
     }
+    return
   }, [balance, updateSwapInputAmount])
 
   return (
@@ -65,7 +66,7 @@ export default function Input({ disabled }: InputProps) {
       >
         <ThemedText.Body2 color="secondary">
           <Row>
-            {inputUSDC ? `~ $${inputUSDC.toFixed(2)}` : '-'}
+            <span>{inputUSDC ? `$${inputUSDC.toFixed(2)}` : '-'}</span>
             {balance && (
               <ThemedText.Body2 color={inputCurrencyAmount?.greaterThan(balance) ? 'error' : undefined}>
                 Balance: <span style={{ userSelect: 'text' }}>{formatCurrencyAmount(balance, 4)}</span>

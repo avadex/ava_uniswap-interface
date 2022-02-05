@@ -2,11 +2,11 @@
 import { t, Trans } from '@lingui/macro'
 import { Percent } from '@uniswap/sdk-core'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
+import { AUTO_ROUTER_SUPPORTED_CHAINS } from 'lib/hooks/routing/clientSideSmartOrderRouter/constants'
 import { useContext, useRef, useState } from 'react'
 import { Settings, X } from 'react-feather'
 import ReactGA from 'react-ga'
 import { Text } from 'rebass'
-import { AUTO_ROUTER_SUPPORTED_CHAINS } from 'state/routing/clientSideSmartOrderRouter/constants'
 import styled, { ThemeContext } from 'styled-components/macro'
 
 import { useOnClickOutside } from '../../hooks/useOnClickOutside'
@@ -55,7 +55,7 @@ const StyledMenuButton = styled.button`
   background-color: transparent;
   margin: 0;
   padding: 0;
-  border-radius: 0.5rem;
+  border-radius: 0.1rem;
   height: 20px;
 
   :hover,
@@ -85,9 +85,11 @@ const MenuFlyout = styled.span`
   min-width: 20.125rem;
   background-color: ${({ theme }) => theme.bg2};
   border: 1px solid ${({ theme }) => theme.bg3};
+  border-color: green;
+  color: #5ed56dc7;
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.01), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),
     0px 24px 32px rgba(0, 0, 0, 0.01);
-  border-radius: 12px;
+  border-radius: 3px;
   display: flex;
   flex-direction: column;
   font-size: 1rem;
@@ -115,7 +117,7 @@ const ModalContentWrapper = styled.div`
   justify-content: center;
   padding: 2rem 0;
   background-color: ${({ theme }) => theme.bg2};
-  border-radius: 20px;
+  border-radius: 5px;
 `
 
 export default function SettingsTab({ placeholderSlippage }: { placeholderSlippage: Percent }) {
@@ -164,7 +166,7 @@ export default function SettingsTab({ placeholderSlippage }: { placeholderSlippa
                 error={true}
                 padding={'12px'}
                 onClick={() => {
-                  const confirmWord = t`confirm`
+                  const confirmWord = t`degen`
                   if (window.prompt(t`Please type the word "${confirmWord}" to enable expert mode.`) === confirmWord) {
                     toggleExpertMode()
                     setShowConfirmation(false)
@@ -184,7 +186,7 @@ export default function SettingsTab({ placeholderSlippage }: { placeholderSlippa
         {expertMode ? (
           <EmojiWrapper>
             <span role="img" aria-label="wizard-icon">
-              🧙
+              🧑‍🚀🚀
             </span>
           </EmojiWrapper>
         ) : null}

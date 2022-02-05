@@ -36,7 +36,7 @@ const Web3StatusGeneric = styled(ButtonSecondary)`
   width: 100%;
   align-items: center;
   padding: 0.5rem;
-  border-radius: 14px;
+  border-radius: 5px;
   cursor: pointer;
   user-select: none;
   height: 36px;
@@ -74,7 +74,9 @@ const Web3StatusConnect = styled(Web3StatusGeneric)<{ faded?: boolean }>`
     faded &&
     css`
       background-color: ${({ theme }) => theme.primary5};
-      border: 1px solid ${({ theme }) => theme.primary5};
+      border: 3px solid ${({ theme }) => theme.primary5};
+      color: #2fd92d;
+
       color: ${({ theme }) => theme.primaryText1};
 
       :hover,
@@ -87,15 +89,18 @@ const Web3StatusConnect = styled(Web3StatusGeneric)<{ faded?: boolean }>`
 
 const Web3StatusConnected = styled(Web3StatusGeneric)<{ pending?: boolean }>`
   background-color: ${({ pending, theme }) => (pending ? theme.primary1 : theme.bg1)};
-  border: 1px solid ${({ pending, theme }) => (pending ? theme.primary1 : theme.bg1)};
+  border: 2px solid ${({ pending, theme }) => (pending ? theme.primary1 : theme.bg1)};
+  color: #2fd92d;
   color: ${({ pending, theme }) => (pending ? theme.white : theme.text1)};
   font-weight: 500;
   :hover,
   :focus {
     border: 1px solid ${({ theme }) => darken(0.05, theme.bg3)};
+    color: #2fd92d;
 
     :focus {
       border: 1px solid ${({ pending, theme }) => (pending ? darken(0.1, theme.primary1) : darken(0.1, theme.bg2))};
+      color: #2fd92d;
     }
   }
 `

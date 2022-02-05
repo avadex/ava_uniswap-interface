@@ -69,9 +69,9 @@ export function useSwapActionHandlers(): {
 }
 
 const BAD_RECIPIENT_ADDRESSES: { [address: string]: true } = {
-  '0xefa94DE7a4656D787667C749f7E1223D71E9FD88': true, // v2 factory
-  '0xf164fC0Ec4E93095b804a4795bBe1e041497b92a': true, // v2 router 01
-  '0xE54Ca86531e17Ef3616d22Ca28b0D458b6C89106': true, // v2 router 02
+  '0x9Ad6C38BE94206cA50bb0d90783181662f0Cfa10': true, // v2 factory
+  '0xE54Ca86531e17Ef3616d22Ca28b0D458b6C89106': true, // v2 router 01
+  '0x60aE616a2155Ee3d9A68541Ba4544862310933d4': true, // v2 router 02
 }
 
 // from the current swap inputs, compute the best trade and return it.

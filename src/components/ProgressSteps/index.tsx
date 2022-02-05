@@ -14,7 +14,7 @@ const Grouping = styled(AutoColumn)`
   width: fit-content;
   padding: 4px;
   /* background-color: ${({ theme }) => theme.bg2}; */
-  border-radius: 16px;
+  border-radius: 10px;
 `
 
 const Circle = styled.div<{ confirmed?: boolean; disabled?: boolean }>`

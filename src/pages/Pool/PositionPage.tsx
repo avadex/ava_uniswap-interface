@@ -117,7 +117,7 @@ const ResponsiveRow = styled(RowBetween)`
 `
 
 const ResponsiveButtonPrimary = styled(ButtonPrimary)`
-  border-radius: 12px;
+  border-radius: 7px;
   padding: 6px 8px;
   width: fit-content;
   ${({ theme }) => theme.mediaWidth.upToSmall`

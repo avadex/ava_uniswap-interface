@@ -1,7 +1,6 @@
 // eslint-disable-next-line no-restricted-imports
 import { t, Trans } from '@lingui/macro'
 import { PrivacyPolicyModal } from 'components/PrivacyPolicy'
-import { L2_CHAIN_IDS } from 'constants/chains'
 import { LOCALE_LABEL, SUPPORTED_LOCALES, SupportedLocale } from 'constants/locales'
 import { useActiveLocale } from 'hooks/useActiveLocale'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
@@ -53,7 +52,7 @@ const StyledMenuButton = styled.button`
   background-color: ${({ theme }) => theme.bg0};
   border: 1px solid ${({ theme }) => theme.bg0};
   padding: 0.15rem 0.5rem;
-  border-radius: 16px;
+  border-radius: 10px;
 
   :hover,
   :focus {
@@ -90,7 +89,7 @@ const MenuFlyout = styled.span<{ flyoutAlignment?: FlyoutAlignment }>`
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.01), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),
     0px 24px 32px rgba(0, 0, 0, 0.01);
   border: 1px solid ${({ theme }) => theme.bg0};
-  border-radius: 12px;
+  border-radius: 7px;
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
@@ -214,8 +213,6 @@ export default function Menu() {
   const toggleMenu = useToggleModal(ApplicationModal.MENU)
   useOnClickOutside(node, open ? toggleMenu : undefined)
   const togglePrivacyPolicy = useToggleModal(ApplicationModal.PRIVACY_POLICY)
-  const openClaimModal = useToggleModal(ApplicationModal.ADDRESS_CLAIM)
-  const showUNIClaimOption = Boolean(!!account && !!chainId && !L2_CHAIN_IDS.includes(chainId))
 
   const [darkMode, toggleDarkMode] = useDarkModeManager()
 
@@ -242,9 +239,9 @@ export default function Menu() {
               default:
                 return (
                   <MenuFlyout>
-                    <MenuItem href="https://uniswap.org/">
+                    <MenuItem href="https://github.com/avadex/">
                       <div>
-                        <Trans>About</Trans>
+                        <Trans>Code</Trans>
                       </div>
                       <Info opacity={0.6} size={16} />
                     </MenuItem>
@@ -260,9 +257,9 @@ export default function Menu() {
                       </div>
                       <Coffee opacity={0.6} size={16} />
                     </MenuItem>
-                    <MenuItem href="https://discord.gg/FCfyBSbCU5">
+                    <MenuItem href="https://t.me/wavaxorg">
                       <div>
-                        <Trans>Discord</Trans>
+                        <Trans>Telegramm</Trans>
                       </div>
                       <MessageCircle opacity={0.6} size={16} />
                     </MenuItem>
@@ -276,9 +273,9 @@ export default function Menu() {
                       <div>{darkMode ? <Trans>Light Theme</Trans> : <Trans>Dark Theme</Trans>}</div>
                       {darkMode ? <Moon opacity={0.6} size={16} /> : <Sun opacity={0.6} size={16} />}
                     </ToggleMenuItem>
-                    <MenuItem href="https://docs.uniswap.org/">
+                    <MenuItem href="https://bridge.avax.network/">
                       <div>
-                        <Trans>Docs</Trans>
+                        <Trans>Bridge</Trans>
                       </div>
                       <BookOpen opacity={0.6} size={16} />
                     </MenuItem>
@@ -288,17 +285,6 @@ export default function Menu() {
                       </div>
                       <FileText opacity={0.6} size={16} />
                     </ToggleMenuItem>
-                    {showUNIClaimOption && (
-                      <UNIbutton
-                        onClick={openClaimModal}
-                        padding="8px 16px"
-                        width="100%"
-                        $borderRadius="12px"
-                        mt="0.5rem"
-                      >
-                        <Trans>Claim UNI</Trans>
-                      </UNIbutton>
-                    )}
                   </MenuFlyout>
                 )
             }

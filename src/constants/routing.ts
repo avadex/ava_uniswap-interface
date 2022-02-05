@@ -1,5 +1,6 @@
 // a list of tokens by chain
 import { Currency, Token } from '@uniswap/sdk-core'
+
 import { SupportedChainId } from './chains'
 import {
   AMPL,
@@ -18,11 +19,11 @@ import {
   SWISE,
   TRIBE,
   USDC,
+  USDC_E,
   USDC_OPTIMISM,
   USDC_POLYGON,
   USDT,
   USDT_E,
-  USDC_E,
   USDT_OPTIMISM,
   USDT_POLYGON,
   WBTC,
@@ -59,9 +60,9 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   [SupportedChainId.AVALANCHE]: [
     ...WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.AVALANCHE],
     DAI_E,
-    WBTC_E,
     USDC_E,
     USDT_E,
+    WBTC_E,
   ],
   [SupportedChainId.POLYGON]: [
     ...WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.POLYGON],
@@ -119,8 +120,8 @@ export const COMMON_BASES: ChainCurrencyList = {
   [SupportedChainId.AVALANCHE]: [
     nativeOnChain(SupportedChainId.AVALANCHE),
     DAI_E,
-    USDT_E,
     USDC_E,
+    USDT_E,
     WBTC_E,
     WRAPPED_NATIVE_CURRENCY[SupportedChainId.AVALANCHE],
   ],

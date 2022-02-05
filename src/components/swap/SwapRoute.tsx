@@ -21,7 +21,7 @@ import { AutoRouterLabel, AutoRouterLogo } from './RouterLabel'
 
 const Wrapper = styled(AutoColumn)<{ darkMode?: boolean; fixedOpen?: boolean }>`
   padding: ${({ fixedOpen }) => (fixedOpen ? '12px' : '12px 8px 12px 12px')};
-  border-radius: 16px;
+  border-radius: 10px;
   border: 1px solid ${({ theme, fixedOpen }) => (fixedOpen ? 'transparent' : theme.bg2)};
   cursor: pointer;
 `
@@ -96,10 +96,7 @@ export default memo(function SwapRoute({ trade, syncing, fixedOpen = false, ...r
                   {trade?.gasUseEstimateUSD && chainId && SUPPORTED_GAS_ESTIMATE_CHAIN_IDS.includes(chainId) ? (
                     <Trans>Best price route costs ~{formattedGasPriceString} in gas. </Trans>
                   ) : null}{' '}
-                  <Trans>
-                    This route optimizes your total output by considering split routes, multiple hops, and the gas cost
-                    of each step.
-                  </Trans>
+                  <Trans> Cheeck DEX Aggregators like 1inch, paraswap or matcha for better rates. </Trans>
                 </ThemedText.Main>
               )}
             </>

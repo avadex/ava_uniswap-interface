@@ -15,8 +15,10 @@ const MobileWrapper = styled(AutoColumn)`
 `
 
 const BaseWrapper = styled.div<{ disable?: boolean }>`
-  border: 1px solid ${({ theme, disable }) => (disable ? 'transparent' : theme.bg3)};
-  border-radius: 10px;
+  border: 1.5px solid ${({ theme, disable }) => (disable ? 'transparent' : theme.bg3)};
+  border-radius: 5px;
+  color: #6de521;
+
   display: flex;
   padding: 6px;
 

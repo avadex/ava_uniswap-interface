@@ -50,7 +50,7 @@ const ProposalActionSelectorFlex = styled.div`
   margin-top: 10px;
   display: flex;
   flex-flow: column nowrap;
-  border-radius: 20px;
+  border-radius: 10px;
   border: 1px solid ${({ theme }) => theme.bg2};
   background-color: ${({ theme }) => theme.bg1};
 `

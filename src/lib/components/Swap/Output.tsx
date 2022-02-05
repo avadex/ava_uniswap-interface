@@ -2,11 +2,12 @@ import { Trans } from '@lingui/macro'
 import { useUSDCValue } from 'hooks/useUSDCPrice'
 import { atom } from 'jotai'
 import { useAtomValue } from 'jotai/utils'
+import BrandedFooter from 'lib/components/BrandedFooter'
 import { useSwapAmount, useSwapCurrency, useSwapInfo } from 'lib/hooks/swap'
 import useCurrencyColor from 'lib/hooks/useCurrencyColor'
 import { Field } from 'lib/state/swap'
 import styled, { DynamicThemeProvider, ThemedText } from 'lib/theme'
-import { ReactNode, useCallback, useMemo } from 'react'
+import { ReactNode, useMemo } from 'react'
 import { computeFiatValuePriceImpact } from 'utils/computeFiatValuePriceImpact'
 import { formatCurrencyAmount } from 'utils/formatCurrencyAmount'
 
@@ -20,12 +21,13 @@ const OutputColumn = styled(Column)<{ hasColor: boolean | null }>`
   background-color: ${({ theme }) => theme.module};
   border-radius: ${({ theme }) => theme.borderRadius - 0.25}em;
   padding: 0.75em;
+  padding-bottom: 0.5em;
   position: relative;
 
   // Set transitions to reduce color flashes when switching color/token.
   // When color loads, transition the background so that it transitions from the empty or last state, but not _to_ the empty state.
   transition: ${({ hasColor }) => (hasColor ? 'background-color 0.25s ease-out' : undefined)};
-  * {
+  > {
     // When color is loading, delay the color/stroke so that it seems to transition from the last state.
     transition: ${({ hasColor }) => (hasColor === null ? 'color 0.25s ease-in, stroke 0.25s ease-in' : undefined)};
   }
@@ -62,16 +64,10 @@ export default function Output({ disabled, children }: OutputProps) {
 
   const usdc = useMemo(() => {
     if (outputUSDC) {
-      return `~ $${outputUSDC.toFixed(2)}${priceImpact}`
+      return `$${outputUSDC.toFixed(2)} (${priceImpact && priceImpact > 0 ? '+' : ''}${priceImpact}%)`
     }
-    return '-'
+    return ''
   }, [priceImpact, outputUSDC])
-
-  const onMax = useCallback(() => {
-    if (balance) {
-      updateSwapOutputAmount(balance.toExact())
-    }
-  }, [balance, updateSwapOutputAmount])
 
   return (
     <DynamicThemeProvider color={color}>
@@ -85,13 +81,12 @@ export default function Output({ disabled, children }: OutputProps) {
           currency={swapOutputCurrency}
           amount={(swapOutputAmount !== undefined ? swapOutputAmount : outputCurrencyAmount?.toSignificant(6)) ?? ''}
           disabled={disabled}
-          onMax={onMax}
           onChangeInput={updateSwapOutputAmount}
           onChangeCurrency={updateSwapOutputCurrency}
         >
           <ThemedText.Body2 color="secondary">
             <Row>
-              {usdc}
+              <span>{usdc}</span>
               {balance && (
                 <span>
                   Balance: <span style={{ userSelect: 'text' }}>{formatCurrencyAmount(balance, 4)}</span>
@@ -101,6 +96,7 @@ export default function Output({ disabled, children }: OutputProps) {
           </ThemedText.Body2>
         </TokenInput>
         {children}
+        <BrandedFooter />
       </OutputColumn>
     </DynamicThemeProvider>
   )

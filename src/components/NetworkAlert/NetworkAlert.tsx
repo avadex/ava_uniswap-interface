@@ -27,7 +27,7 @@ const BodyText = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin: 8px;
+  margin: 24px;
   font-size: 14px;
 `
 const RootWrapper = styled.div`
@@ -97,7 +97,7 @@ const BetaTag = styled.span<{ color: string }>`
 
 const ContentWrapper = styled.div<{ chainId: NetworkAlertChains; darkMode: boolean; logoUrl: string }>`
   background: ${({ chainId, darkMode }) => BG_COLORS_BY_DARK_MODE_AND_CHAIN_ID[darkMode ? 'dark' : 'light'][chainId]};
-  border-radius: 10px;
+  border-radius: 7px;
   display: flex;
   flex-direction: row;
   overflow: hidden;
@@ -119,7 +119,7 @@ const ContentWrapper = styled.div<{ chainId: NetworkAlertChains; darkMode: boole
 `
 const Header = styled.h2`
   font-weight: 400;
-  font-size: 36px;
+  font-size: 24px;
   margin: 0;
 `
 

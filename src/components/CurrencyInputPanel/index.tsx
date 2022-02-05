@@ -25,7 +25,7 @@ import { FiatValue } from './FiatValue'
 const InputPanel = styled.div<{ hideInput?: boolean }>`
   ${({ theme }) => theme.flexColumnNoWrap}
   position: relative;
-  border-radius: ${({ hideInput }) => (hideInput ? '16px' : '20px')};
+  border-radius: ${({ hideInput }) => (hideInput ? '5px' : '10px')};
   background-color: ${({ theme, hideInput }) => (hideInput ? 'transparent' : theme.bg2)};
   z-index: 1;
   width: ${({ hideInput }) => (hideInput ? '100%' : 'initial')};
@@ -37,7 +37,7 @@ const FixedContainer = styled.div`
   width: 100%;
   height: 100%;
   position: absolute;
-  border-radius: 20px;
+  border-radius: 5px;
   background-color: ${({ theme }) => theme.bg2};
   display: flex;
   align-items: center;
@@ -46,13 +46,14 @@ const FixedContainer = styled.div`
 `
 
 const Container = styled.div<{ hideInput: boolean }>`
-  border-radius: ${({ hideInput }) => (hideInput ? '16px' : '20px')};
+  border-radius: ${({ hideInput }) => (hideInput ? '5px' : '10px')};
   border: 1px solid ${({ theme }) => theme.bg0};
   background-color: ${({ theme }) => theme.bg1};
   width: ${({ hideInput }) => (hideInput ? '100%' : 'initial')};
   :focus,
   :hover {
     border: 1px solid ${({ theme, hideInput }) => (hideInput ? ' transparent' : theme.bg3)};
+    border-color: #6de521;
   }
 `
 
@@ -63,7 +64,7 @@ const CurrencySelect = styled(ButtonGray)<{ visible: boolean; selected: boolean;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.075);
   color: ${({ selected, theme }) => (selected ? theme.text1 : theme.white)};
   cursor: pointer;
-  border-radius: 16px;
+  border-radius: 7px;
   outline: none;
   user-select: none;
   border: none;
@@ -131,7 +132,7 @@ const StyledBalanceMax = styled.button<{ disabled?: boolean }>`
   background-color: transparent;
   background-color: ${({ theme }) => theme.primary5};
   border: none;
-  border-radius: 12px;
+  border-radius: 5px;
   color: ${({ theme }) => theme.primary1};
   cursor: pointer;
   font-size: 11px;
@@ -222,7 +223,7 @@ export default function CurrencyInputPanel({
         </FixedContainer>
       )}
       <Container hideInput={hideInput}>
-        <InputRow style={hideInput ? { padding: '0', borderRadius: '8px' } : {}} selected={!onCurrencySelect}>
+        <InputRow style={hideInput ? { padding: '0', borderRadius: '0px' } : {}} selected={!onCurrencySelect}>
           {!hideInput && (
             <StyledNumericalInput
               className="token-amount-input"
@@ -262,7 +263,7 @@ export default function CurrencyInputPanel({
                       ? currency.symbol.slice(0, 4) +
                         '...' +
                         currency.symbol.slice(currency.symbol.length - 5, currency.symbol.length)
-                      : currency?.symbol) || <Trans>Select a token</Trans>}
+                      : currency?.symbol) || <Trans>Selec token</Trans>}
                   </StyledTokenName>
                 )}
               </RowFixed>
@@ -295,7 +296,7 @@ export default function CurrencyInputPanel({
                   </ThemedText.Body>
                   {showMaxButton && selectedCurrencyBalance ? (
                     <StyledBalanceMax onClick={onMax}>
-                      <Trans>MAX</Trans>
+                      <Trans>ALLIN</Trans>
                     </StyledBalanceMax>
                   ) : null}
                 </RowFixed>

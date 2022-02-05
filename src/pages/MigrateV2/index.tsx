@@ -35,9 +35,9 @@ function EmptyState({ message }: { message: ReactNode }) {
 const computeSushiPairAddress = ({ tokenA, tokenB }: { tokenA: Token; tokenB: Token }): string => {
   const [token0, token1] = tokenA.sortsBefore(tokenB) ? [tokenA, tokenB] : [tokenB, tokenA] // does safety checks
   return getCreate2Address(
-    '0xC0AEe478e3658e2610c5F7A4A2E1777cE9e4f2Ac',
+    '0x9Ad6C38BE94206cA50bb0d90783181662f0Cfa10',
     keccak256(['bytes'], [pack(['address', 'address'], [token0.address, token1.address])]),
-    '0xe18a34eb0e04b04f7a0ac29a6e80748dca96319b42c54d679cb821dca90c6303'
+    '0x0bbca9af0511ad1a1da383135cf3a8d2ac620e549ef9f6ae3a4c33c2fed0af91'
   )
 }
 

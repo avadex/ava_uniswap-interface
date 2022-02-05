@@ -1,18 +1,19 @@
 import { Trans } from '@lingui/macro'
 import { Currency, CurrencyAmount, Percent, TradeType } from '@uniswap/sdk-core'
+import { FeeOptions } from '@uniswap/v3-sdk'
 import useAutoSlippageTolerance from 'hooks/useAutoSlippageTolerance'
-import { useClientSideV3Trade } from 'hooks/useClientSideV3Trade'
 import { atom } from 'jotai'
 import { useAtomValue, useUpdateAtom } from 'jotai/utils'
 import { useCurrencyBalances } from 'lib/hooks/useCurrencyBalance'
 import { maxSlippageAtom } from 'lib/state/settings'
-import { Field, swapAtom } from 'lib/state/swap'
+import { feeOptionsAtom, Field, swapAtom } from 'lib/state/swap'
 import tryParseCurrencyAmount from 'lib/utils/tryParseCurrencyAmount'
 import { ReactNode, useEffect, useMemo } from 'react'
 import { InterfaceTrade, TradeState } from 'state/routing/types'
 
 import { isAddress } from '../../../utils'
 import useActiveWeb3React from '../useActiveWeb3React'
+import { useBestTrade } from './useBestTrade'
 
 interface SwapInfo {
   currencies: { [field in Field]?: Currency }
@@ -23,12 +24,13 @@ interface SwapInfo {
     state: TradeState
   }
   allowedSlippage: Percent
+  feeOptions: FeeOptions | undefined
 }
 
 const BAD_RECIPIENT_ADDRESSES: { [address: string]: true } = {
-  '0xefa94DE7a4656D787667C749f7E1223D71E9FD88': true, // v2 factory
-  '0xf164fC0Ec4E93095b804a4795bBe1e041497b92a': true, // v2 router 01
-  '0xE54Ca86531e17Ef3616d22Ca28b0D458b6C89106': true, // v2 router 02
+  '0x9Ad6C38BE94206cA50bb0d90783181662f0Cfa10': true, // v2 factory
+  '0xE54Ca86531e17Ef3616d22Ca28b0D458b6C89106': true, // v2 router 01
+  '0x60aE616a2155Ee3d9A68541Ba4544862310933d4': true, // v2 router 02
 }
 
 // from the current swap inputs, compute the best trade and return it.
@@ -41,6 +43,8 @@ function useComputeSwapInfo(): SwapInfo {
     [Field.INPUT]: inputCurrency,
     [Field.OUTPUT]: outputCurrency,
   } = useAtomValue(swapAtom)
+
+  const feeOptions = useAtomValue(feeOptionsAtom)
 
   const to = account
 
@@ -55,10 +59,8 @@ function useComputeSwapInfo(): SwapInfo {
     [inputCurrency, isExactIn, outputCurrency, amount]
   )
 
-  /**
-   * @TODO (ianlapham): eventually need a strategy for routing API here
-   */
-  const trade = useClientSideV3Trade(
+  //@TODO(ianlapham): this would eventually be replaced with routing api logic.
+  const trade = useBestTrade(
     isExactIn ? TradeType.EXACT_INPUT : TradeType.EXACT_OUTPUT,
     parsedAmount,
     (isExactIn ? outputCurrency : inputCurrency) ?? undefined
@@ -107,7 +109,7 @@ function useComputeSwapInfo(): SwapInfo {
     }
 
     if (!currencies[Field.INPUT] || !currencies[Field.OUTPUT]) {
-      inputError = inputError ?? <Trans>Select a token</Trans>
+      inputError = inputError ?? <Trans>Select token</Trans>
     }
 
     if (!parsedAmount) {
@@ -141,8 +143,9 @@ function useComputeSwapInfo(): SwapInfo {
       inputError,
       trade,
       allowedSlippage,
+      feeOptions,
     }),
-    [currencies, currencyBalances, currencyAmounts, inputError, trade, allowedSlippage]
+    [currencies, currencyBalances, currencyAmounts, inputError, trade, allowedSlippage, feeOptions]
   )
 }
 
@@ -152,6 +155,7 @@ const swapInfoAtom = atom<SwapInfo>({
   currencyAmounts: {},
   trade: { state: TradeState.INVALID },
   allowedSlippage: new Percent(0),
+  feeOptions: undefined,
 })
 
 export function SwapInfoUpdater() {

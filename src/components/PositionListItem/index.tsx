@@ -23,7 +23,7 @@ import { DAI, USDC, USDT, WBTC, WRAPPED_NATIVE_CURRENCY } from '../../constants/
 
 const LinkRow = styled(Link)`
   align-items: center;
-  border-radius: 20px;
+  border-radius: 10px;
   display: flex;
   cursor: pointer;
   user-select: none;
@@ -80,7 +80,7 @@ const RangeLineItem = styled(DataLineItem)`
 
   ${({ theme }) => theme.mediaWidth.upToSmall`
   background-color: ${({ theme }) => theme.bg2};
-    border-radius: 12px;
+    border-radius: 7px;
     padding: 8px 0;
 `};
 `

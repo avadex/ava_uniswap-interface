@@ -1,8 +1,9 @@
 import { Trans } from '@lingui/macro'
 import { TokenInfo } from '@uniswap/token-lists'
 import { useAtom } from 'jotai'
-import useSwapDefaults from 'lib/hooks/swap/useSwapDefaults'
 import { SwapInfoUpdater } from 'lib/hooks/swap/useSwapInfo'
+import useSyncConvenienceFee from 'lib/hooks/swap/useSyncConvenienceFee'
+import useSyncSwapDefaults from 'lib/hooks/swap/useSyncSwapDefaults'
 import { usePendingTransactions } from 'lib/hooks/transactions'
 import useActiveWeb3React from 'lib/hooks/useActiveWeb3React'
 import useTokenList from 'lib/hooks/useTokenList'
@@ -28,7 +29,7 @@ export type DefaultAddress = string | { [chainId: number]: string | 'NATIVE' } |
 function getSwapTx(txs: { [hash: string]: Transaction }, hash?: string): Transaction<SwapTransactionInfo> | undefined {
   if (hash) {
     const tx = txs[hash]
-    if (tx.info.type === TransactionType.SWAP) {
+    if (tx?.info?.type === TransactionType.SWAP) {
       return tx as Transaction<SwapTransactionInfo>
     }
   }
@@ -47,7 +48,8 @@ export interface SwapProps {
 
 export default function Swap(props: SwapProps) {
   useTokenList(props.tokenList)
-  useSwapDefaults(props)
+  useSyncSwapDefaults(props)
+  useSyncConvenienceFee(props)
 
   const { active, account } = useActiveWeb3React()
   const [boundary, setBoundary] = useState<HTMLDivElement | null>(null)
@@ -59,7 +61,7 @@ export default function Swap(props: SwapProps) {
   return (
     <SwapPropValidator {...props}>
       <SwapInfoUpdater />
-      <Header logo title={<Trans>Swap</Trans>}>
+      <Header title={<Trans>Swap</Trans>}>
         {active && <Wallet disabled={!account} />}
         <Settings disabled={!active} />
       </Header>

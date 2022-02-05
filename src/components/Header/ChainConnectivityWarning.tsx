@@ -32,7 +32,7 @@ const TitleText = styled.div`
 `
 const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.yellow3};
-  border-radius: 12px;
+  border-radius: 7px;
   bottom: 60px;
   display: none;
   max-width: 348px;
@@ -46,7 +46,7 @@ const Wrapper = styled.div`
 
 export function ChainConnectivityWarning() {
   const { chainId } = useActiveWeb3React()
-  const info = CHAIN_INFO[chainId ?? SupportedChainId.AVALANCHE]
+  const info = CHAIN_INFO[chainId ?? SupportedChainId.MAINNET]
   const label = info?.label
 
   return (
@@ -58,10 +58,10 @@ export function ChainConnectivityWarning() {
         </TitleText>
       </TitleRow>
       <BodyRow>
-        {chainId === SupportedChainId.AVALANCHE ? (
+        {chainId === SupportedChainId.MAINNET ? (
           <Trans>You may have lost your network connection.</Trans>
         ) : (
-          <Trans>You may have lost your network connection {label} </Trans>
+          <Trans>You may have lost your network connection, or {label} might be down right now.</Trans>
         )}{' '}
         {(info as L2ChainInfo).statusPage !== undefined && (
           <span>

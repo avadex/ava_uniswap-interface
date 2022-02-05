@@ -91,7 +91,7 @@ const HeaderLinks = styled(Row)`
   background-color: ${({ theme }) => theme.bg0};
   width: fit-content;
   padding: 2px;
-  border-radius: 16px;
+  border-radius: 10px;
   display: grid;
   grid-auto-flow: column;
   grid-gap: 10px;
@@ -123,7 +123,7 @@ const AccountElement = styled.div<{ active: boolean }>`
   flex-direction: row;
   align-items: center;
   background-color: ${({ theme, active }) => (!active ? theme.bg0 : theme.bg0)};
-  border-radius: 16px;
+  border-radius: 10px;
   white-space: nowrap;
   width: 100%;
   height: 40px;
@@ -204,7 +204,7 @@ const StyledNavLink = styled(NavLink).attrs({
   overflow: hidden;
   white-space: nowrap;
   &.${activeClassName} {
-    border-radius: 14px;
+    border-radius: 10px;
     font-weight: 600;
     justify-content: center;
     color: ${({ theme }) => theme.text1};
@@ -233,7 +233,7 @@ const StyledExternalLink = styled(ExternalLink).attrs({
   font-weight: 500;
 
   &.${activeClassName} {
-    border-radius: 14px;
+    border-radius: 10px;
     font-weight: 600;
     color: ${({ theme }) => theme.text1};
   }
@@ -267,7 +267,7 @@ export default function Header() {
     addNetworkInfo: {
       nativeCurrency: { symbol: nativeCurrencySymbol },
     },
-  } = CHAIN_INFO[chainId ? chainId : SupportedChainId.MAINNET]
+  } = CHAIN_INFO[chainId ? chainId : SupportedChainId.AVALANCHE]
 
   return (
     <HeaderFrame showBackground={scrollY > 45}>

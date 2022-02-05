@@ -4,7 +4,7 @@ import ms from 'ms.macro'
 import { SupportedChainId } from '../constants/chains'
 
 const NETWORK_POLLING_INTERVALS: { [chainId: number]: number } = {
-  [SupportedChainId.AVALANCHE]: ms`1s`,
+  //[SupportedChainId.AVALANCHE]: ms`1s`,
   [SupportedChainId.ARBITRUM_RINKEBY]: ms`1s`,
   [SupportedChainId.OPTIMISM]: ms`1s`,
   [SupportedChainId.OPTIMISTIC_KOVAN]: ms`1s`,
@@ -19,7 +19,7 @@ export default function getLibrary(provider: any): Web3Provider {
       ? parseInt(provider.chainId)
       : 'any'
   )
-  library.pollingInterval = 3_000
+  library.pollingInterval = 15_000
   library.detectNetwork().then((network) => {
     const networkPollingInterval = NETWORK_POLLING_INTERVALS[network.chainId]
     if (networkPollingInterval) {

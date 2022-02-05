@@ -22,7 +22,7 @@ import { SwapShowAcceptChanges, TruncatedText } from './styleds'
 
 const ArrowWrapper = styled.div`
   padding: 4px;
-  border-radius: 12px;
+  border-radius: 7px;
   height: 32px;
   width: 32px;
   position: relative;

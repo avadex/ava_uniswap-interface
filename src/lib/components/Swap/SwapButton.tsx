@@ -1,8 +1,6 @@
-import { BigNumber } from '@ethersproject/bignumber'
 import { Trans } from '@lingui/macro'
-import { Token } from '@uniswap/sdk-core'
+import { Token, TradeType } from '@uniswap/sdk-core'
 import { CHAIN_INFO } from 'constants/chainInfo'
-import useCurrentBlockTimestamp from 'hooks/useCurrentBlockTimestamp'
 import { useERC20PermitFromTrade } from 'hooks/useERC20Permit'
 import { useUpdateAtom } from 'jotai/utils'
 import { useAtomValue } from 'jotai/utils'
@@ -16,12 +14,13 @@ import { useSwapCallback } from 'lib/hooks/swap/useSwapCallback'
 import { useAddTransaction } from 'lib/hooks/transactions'
 import { usePendingApproval } from 'lib/hooks/transactions'
 import useActiveWeb3React from 'lib/hooks/useActiveWeb3React'
+import useTransactionDeadline from 'lib/hooks/useTransactionDeadline'
 import { Link, Spinner } from 'lib/icons'
-import { transactionTtlAtom } from 'lib/state/settings'
-import { displayTxHashAtom, Field } from 'lib/state/swap'
+import { displayTxHashAtom, Field, independentFieldAtom } from 'lib/state/swap'
 import { TransactionType } from 'lib/state/transactions'
-import styled from 'lib/theme'
+import styled, { useTheme } from 'lib/theme'
 import { useCallback, useEffect, useMemo, useState } from 'react'
+import invariant from 'tiny-invariant'
 
 import ActionButton from '../ActionButton'
 import Dialog from '../Dialog'
@@ -44,13 +43,18 @@ function useIsPendingApproval(token?: Token, spender?: string): boolean {
 export default function SwapButton({ disabled }: SwapButtonProps) {
   const { account, chainId } = useActiveWeb3React()
 
+  const { tokenColorExtraction } = useTheme()
+
   const {
     trade,
     allowedSlippage,
     currencies: { [Field.INPUT]: inputCurrency },
     currencyBalances: { [Field.INPUT]: inputCurrencyBalance },
-    currencyAmounts: { [Field.INPUT]: inputCurrencyAmount },
+    currencyAmounts: { [Field.INPUT]: inputCurrencyAmount, [Field.OUTPUT]: outputCurrencyAmount },
+    feeOptions,
   } = useSwapInfo()
+
+  const independentField = useAtomValue(independentFieldAtom)
 
   const [activeTrade, setActiveTrade] = useState<typeof trade.trade | undefined>()
   useEffect(() => {
@@ -111,41 +115,48 @@ export default function SwapButton({ disabled }: SwapButtonProps) {
     return { disabled: true }
   }, [approval, approvalHash, chainId, disabled, inputCurrencyAmount, inputCurrencyBalance])
 
-  // @TODO(ianlapham): connect deadline from state instead of passing undefined.
-  const { signatureData } = useERC20PermitFromTrade(optimizedTrade, allowedSlippage, undefined)
-
-  const currentBlockTimestamp = useCurrentBlockTimestamp()
-  const userDeadline = useAtomValue(transactionTtlAtom)
-  const deadline = currentBlockTimestamp?.add(BigNumber.from(userDeadline))
+  const deadline = useTransactionDeadline()
+  const { signatureData } = useERC20PermitFromTrade(optimizedTrade, allowedSlippage, deadline)
 
   // the callback to execute the swap
-  const { callback: swapCallback } = useSwapCallback(
-    optimizedTrade,
+  const { callback: swapCallback } = useSwapCallback({
+    trade: optimizedTrade,
     allowedSlippage,
-    account ?? null,
+    recipientAddressOrName: account ?? null,
     signatureData,
-    deadline
-  )
+    deadline,
+    feeOptions,
+  })
 
   //@TODO(ianlapham): add a loading state, process errors
   const setDisplayTxHash = useUpdateAtom(displayTxHashAtom)
+
   const onConfirm = useCallback(() => {
     swapCallback?.()
-      .then((transactionResponse) => {
-        // TODO(ianlapham): Add the swap tx to transactionsAtom
-        console.log(transactionResponse)
-        setDisplayTxHash(transactionResponse.hash)
+      .then((response) => {
+        setDisplayTxHash(response.hash)
+        invariant(inputCurrencyAmount && outputCurrencyAmount)
+        addTransaction({
+          response,
+          type: TransactionType.SWAP,
+          tradeType: independentField === Field.INPUT ? TradeType.EXACT_INPUT : TradeType.EXACT_OUTPUT,
+          inputCurrencyAmount,
+          outputCurrencyAmount,
+        })
       })
       .catch((error) => {
         //@TODO(ianlapham): add error handling
         console.log(error)
       })
-  }, [setDisplayTxHash, swapCallback])
+      .finally(() => {
+        setActiveTrade(undefined)
+      })
+  }, [addTransaction, independentField, inputCurrencyAmount, outputCurrencyAmount, setDisplayTxHash, swapCallback])
 
   return (
     <>
       <ActionButton
-        color="interactive"
+        color={tokenColorExtraction ? 'interactive' : 'accent'}
         onClick={() => setActiveTrade(trade.trade)}
         onUpdate={addApprovalTransaction}
         {...actionProps}

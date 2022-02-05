@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: uniswap-interface\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2022-01-27 01:28\n"
+"PO-Revision-Date: 2022-02-02 22:06\n"
 "Last-Translator: \n"
 "Language: tr_TR\n"
 "Language-Team: Turkish\n"
@@ -532,7 +532,7 @@ msgstr "V2 likiditenizi görüntülemek için bir cüzdana bağlanın."
 msgid "Connect to a wallet to view your liquidity."
 msgstr "Likiditenizi görüntülemek için bir cüzdana bağlanın."
 
-#: src/lib/components/Swap/Toolbar.tsx
+#: src/lib/components/Swap/Toolbar/Caption.tsx
 msgid "Connect wallet to swap"
 msgstr "Takas için cüzdanı bağlayın"
 
@@ -591,10 +591,6 @@ msgstr "Güncel fiyat"
 #: src/pages/AddLiquidity/index.tsx
 msgid "Current {0} Price:"
 msgstr "Güncel {0} Fiyatı:"
-
-#: src/lib/components/Swap/Settings/MaxSlippageSelect.tsx
-msgid "Custom"
-msgstr "Gelenek"
 
 #: src/components/Menu/index.tsx
 msgid "Dark Theme"
@@ -723,7 +719,7 @@ msgstr "Bir UNI talebini tetiklemek için bir adres girin. Adreste talep edilebi
 
 #: src/components/earn/ClaimRewardModal.tsx
 #: src/components/earn/UnstakingModal.tsx
-#: src/lib/components/Swap/Toolbar.tsx
+#: src/lib/components/Swap/Toolbar/Caption.tsx
 #: src/lib/hooks/swap/useSwapInfo.tsx
 #: src/state/burn/hooks.tsx
 #: src/state/mint/hooks.tsx
@@ -825,7 +821,7 @@ msgstr "Ücret katmanı"
 msgid "Fetching best price..."
 msgstr "En iyi fiyat alınıyor..."
 
-#: src/lib/components/Swap/Toolbar.tsx
+#: src/lib/components/Swap/Toolbar/Caption.tsx
 msgid "Fetching best price…"
 msgstr "En iyi fiyat getiriliyor…"
 
@@ -874,6 +870,10 @@ msgstr "Kapalı pozisyonları gizle"
 #: src/pages/Swap/index.tsx
 msgid "High Price Impact"
 msgstr "Yüksek Fiyat Etkisi"
+
+#: src/lib/components/Swap/Settings/MaxSlippageSelect.tsx
+msgid "High slippage increases the risk of price movement"
+msgstr "Yüksek kayma, fiyat hareketi riskini artırır"
 
 #: src/components/WalletModal/index.tsx
 msgid "How this app uses APIs"
@@ -940,12 +940,13 @@ msgstr "Metamask'ı yükleyin"
 msgid "Insufficient liquidity for this trade."
 msgstr "Bu işlem için yetersiz likidite."
 
-#: src/lib/components/Swap/Toolbar.tsx
-msgid "Insufficient {0}"
-msgstr "Yetersiz {0}"
+#: src/lib/components/Swap/Toolbar/Caption.tsx
+msgid "Insufficient liquidity in the pool for your trade"
+msgstr "İşleminiz için havuzda yetersiz likidite"
 
 #: src/hooks/useWrapCallback.tsx
 #: src/hooks/useWrapCallback.tsx
+#: src/lib/components/Swap/Toolbar/Caption.tsx
 #: src/lib/hooks/swap/useSwapInfo.tsx
 #: src/state/mint/hooks.tsx
 #: src/state/mint/hooks.tsx
@@ -1304,6 +1305,10 @@ msgstr "Lütfen Katman 1 Ethereum'a bağlanın"
 msgid "Please connect to a supported network in the dropdown menu or in your wallet."
 msgstr "Lütfen açılır menüden veya cüzdanınızdan desteklenen bir ağa bağlanın."
 
+#: src/lib/components/Swap/Settings/MaxSlippageSelect.tsx
+msgid "Please enter a valid slippage %"
+msgstr "Lütfen geçerli bir kayma yüzdesi girin"
+
 #: src/components/Settings/index.tsx
 msgid "Please type the word \"{confirmWord}\" to enable expert mode."
 msgstr "Uzman modunu etkinleştirmek için lütfen \"{confirmWord}\" sözcüğünü yazın."
@@ -1352,6 +1357,10 @@ msgstr "Havuza alınmış {0}:"
 #: src/pages/Pool/index.tsx
 msgid "Pools Overview"
 msgstr "Havuzlara Genel Bakış"
+
+#: src/lib/components/BrandedFooter.tsx
+msgid "Powered by the Uniswap protocol"
+msgstr "Uniswap protokolü tarafından desteklenmektedir"
 
 #: src/pages/AddLiquidity/index.tsx
 msgid "Preview"
@@ -2015,9 +2024,9 @@ msgstr "Desteklenmeyen Varlık"
 msgid "Unsupported Assets"
 msgstr "Desteklenmeyen Varlıklar"
 
-#: src/lib/components/Swap/Toolbar.tsx
-msgid "Unsupported network–switch to another to trade."
-msgstr "Desteklenmeyen ağ– ticaret yapmak için diğerine geçin."
+#: src/lib/components/Swap/Toolbar/Caption.tsx
+msgid "Unsupported network - switch to another network to swap"
+msgstr "Desteklenmeyen ağ - takas için başka bir ağa geçin"
 
 #: src/state/governance/hooks.ts
 msgid "Untitled"

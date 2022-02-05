@@ -5,7 +5,7 @@ import avalancheLogoUrl from '../assets/svg/avalanche_logo.svg'
 import optimismLogoUrl from '../assets/svg/optimistic_ethereum.svg'
 import polygonMaticLogo from '../assets/svg/polygon-matic-logo.svg'
 import { SupportedChainId, SupportedL1ChainId, SupportedL2ChainId } from './chains'
-import { AVALANCHE_LIST } from './lists'
+import { AVA_JOE_LIST } from './lists'
 
 const INFURA_KEY = process.env.REACT_APP_INFURA_KEY
 if (typeof INFURA_KEY === 'undefined') {
@@ -140,7 +140,7 @@ export const CHAIN_INFO: ChainInfoMap = {
     networkType: NetworkType.L2,
     blockWaitMsBeforeWarning: ms`25m`,
     bridge: 'https://gateway.optimism.io/?chainId=1',
-    defaultListUrl: AVALANCHE_LIST,
+    defaultListUrl: AVA_JOE_LIST,
     docs: 'https://optimism.io/',
     explorer: 'https://optimistic.etherscan.io/',
     infoLink: 'https://info.uniswap.org/#/optimism/',
@@ -157,7 +157,7 @@ export const CHAIN_INFO: ChainInfoMap = {
     networkType: NetworkType.L2,
     blockWaitMsBeforeWarning: ms`25m`,
     bridge: 'https://gateway.optimism.io/',
-    defaultListUrl: AVALANCHE_LIST,
+    defaultListUrl: AVA_JOE_LIST,
     docs: 'https://optimism.io/',
     explorer: 'https://optimistic.etherscan.io/',
     infoLink: 'https://info.uniswap.org/#/optimism/',
@@ -194,7 +194,7 @@ export const CHAIN_INFO: ChainInfoMap = {
     infoLink: 'https://info.uniswap.org/#/arbitrum/',
     label: 'Arbitrum Rinkeby',
     logoUrl: avalancheLogoUrl,
-    defaultListUrl: AVALANCHE_LIST,
+    defaultListUrl: AVA_JOE_LIST,
     helpCenterUrl: 'https://help.uniswap.org/en/collections/3137787-uniswap-on-arbitrum',
     addNetworkInfo: {
       nativeCurrency: { name: 'Rinkeby Arbitrum Ether', symbol: 'rinkArbETH', decimals: 18 },

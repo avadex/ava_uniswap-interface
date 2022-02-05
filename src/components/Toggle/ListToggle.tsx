@@ -4,7 +4,7 @@ import styled from 'styled-components/macro'
 import { ThemedText } from '../../theme'
 
 const Wrapper = styled.button<{ isActive?: boolean; activeElement?: boolean }>`
-  border-radius: 20px;
+  border-radius: 10px;
   border: none;
   background: ${({ theme }) => theme.bg1};
   display: flex;

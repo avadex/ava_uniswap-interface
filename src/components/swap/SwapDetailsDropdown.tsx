@@ -40,7 +40,7 @@ const StyledCard = styled(OutlineCard)`
 
 const StyledHeaderRow = styled(RowBetween)<{ disabled: boolean; open: boolean }>`
   padding: 4px 8px;
-  border-radius: 12px;
+  border-radius: 7px;
   background-color: ${({ open, theme }) => (open ? theme.bg1 : 'transparent')};
   align-items: center;
   cursor: ${({ disabled }) => (disabled ? 'initial' : 'pointer')};
