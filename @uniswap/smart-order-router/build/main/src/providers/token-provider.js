@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TokenProvider = exports.SEED_TOKENS = exports.WETH_POLYGON_MUMBAI = exports.DAI_POLYGON_MUMBAI = exports.USDC_POLYGON_MUMBAI = exports.WMATIC_POLYGON_MUMBAI = exports.DAI_E = exports.USDC_E = exports.WETH_POLYGON = exports.WAVAX = exports.UNI_ARBITRUM_RINKEBY = exports.USDC_ARBITRUM_RINKEBY = exports.USDT_ARBITRUM_RINKEBY = exports.DAI_ARBITRUM_RINKEBY = exports.DAI_ARBITRUM = exports.WBTC_ARBITRUM = exports.USDT_ARBITRUM = exports.USDC_ARBITRUM = exports.DAI_OPTIMISTIC_KOVAN = exports.WBTC_OPTIMISTIC_KOVAN = exports.USDT_OPTIMISTIC_KOVAN = exports.USDC_OPTIMISTIC_KOVAN = exports.DAI_OPTIMISM = exports.WBTC_OPTIMISM = exports.USDT_OPTIMISM = exports.USDC_OPTIMISM = exports.DAI_KOVAN = exports.WBTC_KOVAN = exports.USDT_KOVAN = exports.USDC_KOVAN = exports.DAI_GÖRLI = exports.WBTC_GÖRLI = exports.USDT_GÖRLI = exports.USDC_GÖRLI = exports.USDT_RINKEBY = exports.USDC_RINKEBY = exports.DAI_RINKEBY_2 = exports.DAI_RINKEBY_1 = exports.DAI_ROPSTEN = exports.USDT_ROPSTEN = exports.USDC_ROPSTEN = exports.FEI_MAINNET = exports.DAI_MAINNET = exports.WBTC_MAINNET = exports.USDT_MAINNET = exports.USDC_MAINNET = void 0;
+exports.TokenProvider = exports.SEED_TOKENS = exports.WETH_POLYGON_MUMBAI = exports.DAI_POLYGON_MUMBAI = exports.USDC_POLYGON_MUMBAI = exports.WMATIC_POLYGON_MUMBAI = exports.DAI_POLYGON = exports.USDC_POLYGON = exports.WETH_POLYGON = exports.WMATIC_POLYGON = exports.UNI_ARBITRUM_RINKEBY = exports.USDC_ARBITRUM_RINKEBY = exports.USDT_ARBITRUM_RINKEBY = exports.DAI_ARBITRUM_RINKEBY = exports.DAI_ARBITRUM = exports.WBTC_ARBITRUM = exports.USDT_ARBITRUM = exports.USDC_ARBITRUM = exports.DAI_OPTIMISTIC_KOVAN = exports.WBTC_OPTIMISTIC_KOVAN = exports.USDT_OPTIMISTIC_KOVAN = exports.USDC_OPTIMISTIC_KOVAN = exports.DAI_OPTIMISM = exports.WBTC_OPTIMISM = exports.USDT_OPTIMISM = exports.USDC_OPTIMISM = exports.DAI_KOVAN = exports.WBTC_KOVAN = exports.USDT_KOVAN = exports.USDC_KOVAN = exports.DAI_GÖRLI = exports.WBTC_GÖRLI = exports.USDT_GÖRLI = exports.USDC_GÖRLI = exports.USDT_RINKEBY = exports.USDC_RINKEBY = exports.DAI_RINKEBY_2 = exports.DAI_RINKEBY_1 = exports.DAI_ROPSTEN = exports.USDT_ROPSTEN = exports.USDC_ROPSTEN = exports.FEI_MAINNET = exports.DAI_MAINNET = exports.WBTC_MAINNET = exports.USDT_MAINNET = exports.USDC_MAINNET = exports.DAI_AVALANCHE = exports.WBTC_AVALANCHE = exports.USDT_AVALANCHE = exports.USDC_AVALANCHE = exports.WAVAX = void 0;
 const sdk_core_1 = require("@uniswap/sdk-core");
 const lodash_1 = __importDefault(require("lodash"));
 const v3_1 = require("../types/v3");
@@ -14,6 +14,11 @@ exports.USDT_MAINNET = new sdk_core_1.Token(util_1.ChainId.MAINNET, '0xdAC17F958
 exports.WBTC_MAINNET = new sdk_core_1.Token(util_1.ChainId.MAINNET, '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599', 8, 'WBTC', 'Wrapped BTC');
 exports.DAI_MAINNET = new sdk_core_1.Token(util_1.ChainId.MAINNET, '0x6B175474E89094C44Da98b954EedeAC495271d0F', 18, 'DAI', 'Dai Stablecoin');
 exports.FEI_MAINNET = new sdk_core_1.Token(util_1.ChainId.MAINNET, '0x956F47F50A910163D8BF957Cf5846D573E7f87CA', 18, 'FEI', 'Fei USD');
+exports.USDC_AVALANCHE = new sdk_core_1.Token(util_1.ChainId.AVALANCHE, '0xA7D7079b0FEaD91F3e65f86E8915Cb59c1a4C664', 6, 'USDC', 'USD//C');
+exports.USDT_AVALANCHE = new sdk_core_1.Token(util_1.ChainId.AVALANCHE, '0xc7198437980c041c805A1EDcbA50c1Ce5db95118', 6, 'USDT', 'Tether USD');
+exports.WBTC_AVALANCHE = new sdk_core_1.Token(util_1.ChainId.AVALANCHE, '0x50b7545627a5162F82A992c33b87aDc75187B218', 8, 'WBTC', 'Wrapped BTC');
+exports.DAI_AVALANCHE = new sdk_core_1.Token(util_1.ChainId.AVALANCHE, '0xd586E7F844cEa2F87f50152665BCbc2C279D8d70', 18, 'DAI', 'Dai Stablecoin');
+exports.WAVAX = new sdk_core_1.Token(util_1.ChainId.AVALANCHE, '0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7', 18, 'WAVAX', 'Wrapped AVAX');
 exports.USDC_ROPSTEN = new sdk_core_1.Token(util_1.ChainId.ROPSTEN, '0x07865c6e87b9f70255377e024ace6630c1eaa37f', 6, 'USDC', 'USD//C');
 exports.USDT_ROPSTEN = new sdk_core_1.Token(util_1.ChainId.ROPSTEN, '0x516de3a7a567d81737e3a46ec4ff9cfd1fcb0136', 6, 'USDT', 'Tether USD');
 exports.DAI_ROPSTEN = new sdk_core_1.Token(util_1.ChainId.ROPSTEN, '0xad6d458402f60fd3bd25163575031acdce07538d', 18, 'DAI', 'Dai Stablecoin');
@@ -54,10 +59,10 @@ exports.USDT_ARBITRUM_RINKEBY = new sdk_core_1.Token(util_1.ChainId.ARBITRUM_RIN
 exports.USDC_ARBITRUM_RINKEBY = new sdk_core_1.Token(util_1.ChainId.ARBITRUM_RINKEBY, '0x09b98f8b2395d076514037ff7d39a091a536206c', 6, 'USDC', 'USD//C');
 exports.UNI_ARBITRUM_RINKEBY = new sdk_core_1.Token(util_1.ChainId.ARBITRUM_RINKEBY, '0x049251a7175071316e089d0616d8b6aacd2c93b8', 18, 'UNI', 'Uni token');
 //polygon tokens
-exports.WAVAX = new sdk_core_1.Token(util_1.ChainId.AVALANCHE, '0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7', 18, 'WAVAX', 'Wrapped AVAX');
-exports.WETH_E = new sdk_core_1.Token(util_1.ChainId.AVALANCHE, '0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB', 18, 'WETH_E', 'Wrapped Ether');
-exports.USDC_E = new sdk_core_1.Token(util_1.ChainId.AVALANCHE, '0xa7d7079b0fead91f3e65f86e8915cb59c1a4c664', 6, 'USDC_E', 'USD//C');
-exports.DAI_E = new sdk_core_1.Token(util_1.ChainId.AVALANCHE, '0xd586e7f844cea2f87f50152665bcbc2c279d8d70', 18, 'DAI_E', 'Dai Stablecoin');
+exports.WMATIC_POLYGON = new sdk_core_1.Token(util_1.ChainId.POLYGON, '0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270', 18, 'WMATIC', 'Wrapped MATIC');
+exports.WETH_POLYGON = new sdk_core_1.Token(util_1.ChainId.POLYGON, '0x7ceb23fd6bc0add59e62ac25578270cff1b9f619', 18, 'WETH', 'Wrapped Ether');
+exports.USDC_POLYGON = new sdk_core_1.Token(util_1.ChainId.POLYGON, '0x2791bca1f2de4661ed88a30c99a7a9449aa84174', 6, 'USDC', 'USD//C');
+exports.DAI_POLYGON = new sdk_core_1.Token(util_1.ChainId.POLYGON, '0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063', 18, 'DAI', 'Dai Stablecoin');
 //polygon mumbai tokens
 exports.WMATIC_POLYGON_MUMBAI = new sdk_core_1.Token(util_1.ChainId.POLYGON_MUMBAI, '0x9c3C9283D3e44854697Cd22D3Faa240Cfb032889', 18, 'WMATIC', 'Wrapped MATIC');
 exports.USDC_POLYGON_MUMBAI = new sdk_core_1.Token(util_1.ChainId.POLYGON_MUMBAI, '0xe11a86849d99f524cac3e7a0ec1241828e332c62', 6, 'USDC', 'USD//C');
@@ -71,11 +76,12 @@ exports.SEED_TOKENS = {
         WBTC: exports.WBTC_MAINNET,
         DAI: exports.DAI_MAINNET,
     },
-      [util_1.ChainId.AVALANCHE]: {
-          WAVAX: util_1.WRAPPED_NATIVE_CURRENCY[util_1.ChainId.AVALANCHE],
-          USDC_E: exports.USDC_E,
-          DAI_E: exports.DAI_E,
-          WETH_E: exports.WETH_E,
+    [util_1.ChainId.AVALANCHE: {
+        WAVAX: util_1.WRAPPED_NATIVE_CURRENCY[util_1.ChainId.AVALANCHE,
+        USDC: exports.USDC_AVALANCHE,
+        USDT: exports.USDT_AVALANCHE,
+        WBTC: exports.WBTC_AVALANCHE,
+        DAI: exports.DAI_AVALANCHE,
     },
     [util_1.ChainId.RINKEBY]: {
         WETH: util_1.WRAPPED_NATIVE_CURRENCY[util_1.ChainId.RINKEBY],
@@ -105,6 +111,10 @@ exports.SEED_TOKENS = {
         UNI: exports.UNI_ARBITRUM_RINKEBY,
         DAI: exports.DAI_ARBITRUM_RINKEBY,
         USDC: exports.USDC_ARBITRUM_RINKEBY,
+    },
+    [util_1.ChainId.POLYGON]: {
+        WMATIC: exports.WMATIC_POLYGON,
+        USDC: exports.USDC_POLYGON,
     },
     [util_1.ChainId.POLYGON_MUMBAI]: {
         WMATIC: exports.WMATIC_POLYGON_MUMBAI,

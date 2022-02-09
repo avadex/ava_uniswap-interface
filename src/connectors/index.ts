@@ -4,8 +4,8 @@ import { InjectedConnector } from '@web3-react/injected-connector'
 import { PortisConnector } from '@web3-react/portis-connector'
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
 import { WalletLinkConnector } from '@web3-react/walletlink-connector'
-import { INFURA_NETWORK_URLS } from 'constants/chainInfo'
 import { ALL_SUPPORTED_CHAIN_IDS, SupportedChainId } from 'constants/chains'
+import { INFURA_NETWORK_URLS } from 'constants/infura'
 
 import UNISWAP_LOGO_URL from '../assets/svg/logo.svg'
 import getLibrary from '../utils/getLibrary'
@@ -50,8 +50,8 @@ export const portis = new PortisConnector({
 })
 
 export const walletlink = new WalletLinkConnector({
-  url: INFURA_NETWORK_URLS[SupportedChainId.MAINNET],
+  url: INFURA_NETWORK_URLS[SupportedChainId.AVALANCHE],
   appName: 'WAVAXORG',
   appLogoUrl: UNISWAP_LOGO_URL,
-  supportedChainIds: [SupportedChainId.MAINNET, SupportedChainId.POLYGON],
+  supportedChainIds: [SupportedChainId.AVALANCHE],
 })

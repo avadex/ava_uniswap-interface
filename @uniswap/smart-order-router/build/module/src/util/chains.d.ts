@@ -1,27 +1,32 @@
 import { Ether, NativeCurrency, Token } from '@uniswap/sdk-core';
 export declare enum ChainId {
     MAINNET = 1,
+    AVALANCHE = 43114,
     ROPSTEN = 3,
     RINKEBY = 4,
     GÖRLI = 5,
     KOVAN = 42,
     OPTIMISM = 10,
     OPTIMISTIC_KOVAN = 69,
+    ARBITRUM_ONE = 42161,
     ARBITRUM_RINKEBY = 421611,
     AVALANCHE = 43114,
+    POLYGON = 137,
     POLYGON_MUMBAI = 80001
 }
 export declare const ID_TO_CHAIN_ID: (id: number) => ChainId;
 export declare enum ChainName {
     MAINNET = "mainnet",
+    AVALANCHE = "avalanche",
     ROPSTEN = "ropsten",
     RINKEBY = "rinkeby",
     GÖRLI = "goerli",
     KOVAN = "kovan",
     OPTIMISM = "optimism-mainnet",
     OPTIMISTIC_KOVAN = "optimism-kovan",
+    ARBITRUM_ONE = "arbitrum-mainnet",
     ARBITRUM_RINKEBY = "arbitrum-rinkeby",
-    AVALANCHE = "avalanche",
+    POLYGON = "polygon-mainnet",
     POLYGON_MUMBAI = "polygon-mumbai"
 }
 export declare enum NativeCurrencyName {

@@ -10,8 +10,6 @@ const DEFAULT_EIP_1559_SUPPORTED_CHAINS = [
     chains_1.ChainId.GÖRLI,
     chains_1.ChainId.POLYGON_MUMBAI,
     chains_1.ChainId.AVALANCHE,
-
-
     // infura endpoint having difficulty w/ eip-1559 on kovan
     // ChainId.KOVAN,
 ];

@@ -169,15 +169,16 @@ export function useSwapCallArguments(
       ]
     }
   }, [
-    trade,
-    recipient,
-    library,
     account,
-    chainId,
-    deadline,
-    routerContract,
     allowedSlippage,
     argentWalletContract,
+    chainId,
+    deadline,
+    feeOptions,
+    library,
+    recipient,
+    routerContract,
     signatureData,
+    trade,
   ])
 }

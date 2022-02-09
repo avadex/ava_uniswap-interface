@@ -2,7 +2,7 @@ import { Protocol } from '@uniswap/router-sdk';
 import { TradeType } from '@uniswap/sdk-core';
 import { FeeAmount } from '@uniswap/v3-sdk';
 import _ from 'lodash';
-import { DAI_ARBITRUM, DAI_ARBITRUM_RINKEBY, DAI_MAINNET, DAI_OPTIMISM, DAI_OPTIMISTIC_KOVAN, DAI_POLYGON_MUMBAI, DAI_RINKEBY_1, DAI_RINKEBY_2, FEI_MAINNET, USDC_ARBITRUM, USDC_MAINNET, USDC_OPTIMISM, USDC_OPTIMISTIC_KOVAN, USDC_E, USDT_ARBITRUM, USDT_ARBITRUM_RINKEBY, USDT_MAINNET, USDT_OPTIMISM, USDT_OPTIMISTIC_KOVAN, WBTC_ARBITRUM, WBTC_MAINNET, WBTC_OPTIMISM, WBTC_OPTIMISTIC_KOVAN, WAVAX, WMATIC_POLYGON_MUMBAI, } from '../../../providers/token-provider';
+import { DAI_ARBITRUM, DAI_ARBITRUM_RINKEBY,DAI_AVALANCHE, DAI_MAINNET, DAI_OPTIMISM, DAI_OPTIMISTIC_KOVAN, DAI_POLYGON_MUMBAI, DAI_RINKEBY_1, DAI_RINKEBY_2, FEI_MAINNET, USDC_AVALANCHE, USDC_ARBITRUM, USDC_MAINNET, USDC_OPTIMISM, USDC_OPTIMISTIC_KOVAN, USDC_POLYGON, USDT_AVALANCHE, USDT_ARBITRUM, USDT_ARBITRUM_RINKEBY, USDT_MAINNET, USDT_OPTIMISM, USDT_OPTIMISTIC_KOVAN, WBTC_AVALANCHE, WBTC_ARBITRUM, WBTC_MAINNET, WBTC_OPTIMISM, WBTC_OPTIMISTIC_KOVAN, WAVAX, WMATIC_POLYGON, WMATIC_POLYGON_MUMBAI, } from '../../../providers/token-provider';
 import { ChainId, WRAPPED_NATIVE_CURRENCY } from '../../../util';
 import { parseFeeAmount, unparseFeeAmount } from '../../../util/amounts';
 import { log } from '../../../util/log';
@@ -15,6 +15,13 @@ const baseTokensByChain = {
         DAI_MAINNET,
         WRAPPED_NATIVE_CURRENCY[1],
         FEI_MAINNET,
+    ],
+    [ChainId.AVALANCHE]: [
+        USDC_AVALANCHE,
+        USDT_AVALANCHE,
+        WBTC_AVALANCHE,
+        DAI_AVALANCHE,
+        WRAPPED_NATIVE_CURRENCY[43114],
     ],
     [ChainId.RINKEBY]: [DAI_RINKEBY_1, DAI_RINKEBY_2],
     [ChainId.OPTIMISM]: [
@@ -36,7 +43,7 @@ const baseTokensByChain = {
         USDT_ARBITRUM,
     ],
     [ChainId.ARBITRUM_RINKEBY]: [DAI_ARBITRUM_RINKEBY, USDT_ARBITRUM_RINKEBY],
-    [ChainId.AVALANCHE]: [USDC_E, WAVAX],
+    [ChainId.POLYGON]: [USDC_POLYGON, WMATIC_POLYGON],
     [ChainId.POLYGON_MUMBAI]: [DAI_POLYGON_MUMBAI, WMATIC_POLYGON_MUMBAI],
 };
 export async function getV3CandidatePools({ tokenIn, tokenOut, routeType, routingConfig, subgraphProvider, tokenProvider, poolProvider, blockedTokenListProvider, chainId, }) {

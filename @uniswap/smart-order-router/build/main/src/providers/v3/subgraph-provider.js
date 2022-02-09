@@ -30,6 +30,7 @@ const SUBGRAPH_URL_BY_CHAIN = {
     [chains_1.ChainId.RINKEBY]: 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v3-rinkeby',
     [chains_1.ChainId.OPTIMISM]: 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-optmism-regen',
     [chains_1.ChainId.ARBITRUM_ONE]: 'https://api.thegraph.com/subgraphs/name/ianlapham/arbitrum-minimal',
+    [chains_1.ChainId.POLYGON]: 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v3-polygon',
     [chains_1.ChainId.AVALANCHE]: 'https://api.thegraph.com/subgraphs/name/avadex/v35',
 };
 const PAGE_SIZE = 1000; // 1k is max possible query size from subgraph.

@@ -1673,6 +1673,8 @@ export type Position = {
   depositedToken1: Scalars['BigDecimal'];
   withdrawnToken0: Scalars['BigDecimal'];
   withdrawnToken1: Scalars['BigDecimal'];
+  collectedToken0: Scalars['BigDecimal'];
+  collectedToken1: Scalars['BigDecimal'];
   collectedFeesToken0: Scalars['BigDecimal'];
   collectedFeesToken1: Scalars['BigDecimal'];
   transaction: Transaction;
@@ -1991,6 +1993,22 @@ export type Position_Filter = {
   withdrawnToken1_lte?: Maybe<Scalars['BigDecimal']>;
   withdrawnToken1_in?: Maybe<Array<Scalars['BigDecimal']>>;
   withdrawnToken1_not_in?: Maybe<Array<Scalars['BigDecimal']>>;
+  collectedToken0?: Maybe<Scalars['BigDecimal']>;
+  collectedToken0_not?: Maybe<Scalars['BigDecimal']>;
+  collectedToken0_gt?: Maybe<Scalars['BigDecimal']>;
+  collectedToken0_lt?: Maybe<Scalars['BigDecimal']>;
+  collectedToken0_gte?: Maybe<Scalars['BigDecimal']>;
+  collectedToken0_lte?: Maybe<Scalars['BigDecimal']>;
+  collectedToken0_in?: Maybe<Array<Scalars['BigDecimal']>>;
+  collectedToken0_not_in?: Maybe<Array<Scalars['BigDecimal']>>;
+  collectedToken1?: Maybe<Scalars['BigDecimal']>;
+  collectedToken1_not?: Maybe<Scalars['BigDecimal']>;
+  collectedToken1_gt?: Maybe<Scalars['BigDecimal']>;
+  collectedToken1_lt?: Maybe<Scalars['BigDecimal']>;
+  collectedToken1_gte?: Maybe<Scalars['BigDecimal']>;
+  collectedToken1_lte?: Maybe<Scalars['BigDecimal']>;
+  collectedToken1_in?: Maybe<Array<Scalars['BigDecimal']>>;
+  collectedToken1_not_in?: Maybe<Array<Scalars['BigDecimal']>>;
   collectedFeesToken0?: Maybe<Scalars['BigDecimal']>;
   collectedFeesToken0_not?: Maybe<Scalars['BigDecimal']>;
   collectedFeesToken0_gt?: Maybe<Scalars['BigDecimal']>;
@@ -2052,6 +2070,8 @@ export enum Position_OrderBy {
   DepositedToken1 = 'depositedToken1',
   WithdrawnToken0 = 'withdrawnToken0',
   WithdrawnToken1 = 'withdrawnToken1',
+  CollectedToken0 = 'collectedToken0',
+  CollectedToken1 = 'collectedToken1',
   CollectedFeesToken0 = 'collectedFeesToken0',
   CollectedFeesToken1 = 'collectedFeesToken1',
   Transaction = 'transaction',

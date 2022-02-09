@@ -13,7 +13,7 @@ const log_1 = require("../../util/log");
 const SUBGRAPH_URL_BY_CHAIN = {
     [chains_1.ChainId.MAINNET]: 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswapv2',
     [chains_1.ChainId.RINKEBY]: 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v2-rinkeby',
-    [chains_1.ChainId.AVALANCHE]: 'https://api.thegraph.com/subgraphs/name/dasconnor/pangolin-dex',
+    [chains_1.ChainId.AVALANCHE]: 'https://api.thegraph.com/subgraphs/name/traderjoe-xyz/exchange',
 };
 const threshold = 0.025;
 const PAGE_SIZE = 1000; // 1k is max possible query size from subgraph.
@@ -111,7 +111,7 @@ class V2SubgraphProvider {
         // https://github.com/Uniswap/v2-subgraph/blob/7c82235cad7aee4cfce8ea82f0030af3d224833e/src/mappings/pricing.ts#L43
         // Which helps filter pools with manipulated prices/liquidity.
         // TODO: Remove. Temporary fix to ensure tokens without trackedReserveETH are in the list.
-        const FEI = '0x956f47f50a910163d8bf957cf5846d573e7f87ca';
+        const FEI = '0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E';
         const poolsSanitized = pools
             .filter((pool) => {
             return (pool.token0.id == FEI ||

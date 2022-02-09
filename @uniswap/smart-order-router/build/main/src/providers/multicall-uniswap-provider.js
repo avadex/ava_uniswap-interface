@@ -13,12 +13,11 @@ const log_1 = require("../util/log");
 const multicall_provider_1 = require("./multicall-provider");
 const contractAddressByChain = {
     [util_1.ChainId.MAINNET]: addresses_1.UNISWAP_MULTICALL_ADDRESS,
+    [util_1.ChainId.AVALANCHE]: addresses_1.UNISWAP_MULTICALL_ADDRESS,
     [util_1.ChainId.RINKEBY]: addresses_1.UNISWAP_MULTICALL_ADDRESS,
     [util_1.ChainId.KOVAN]: addresses_1.UNISWAP_MULTICALL_ADDRESS,
     [util_1.ChainId.ROPSTEN]: addresses_1.UNISWAP_MULTICALL_ADDRESS,
     [util_1.ChainId.GÖRLI]: addresses_1.UNISWAP_MULTICALL_ADDRESS,
-    [util_1.ChainId.AVALANCHE]: addresses_1.UNISWAP_MULTICALL_ADDRESS,
-
 };
 /**
  * The UniswapMulticall contract has added functionality for limiting the amount of gas

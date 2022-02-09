@@ -5,6 +5,7 @@ const token_provider_1 = require("../../../providers/token-provider");
 const chains_1 = require("../../../util/chains");
 exports.usdGasTokensByChain = {
     [chains_1.ChainId.MAINNET]: [token_provider_1.DAI_MAINNET, token_provider_1.USDC_MAINNET, token_provider_1.USDT_MAINNET],
+    [chains_1.ChainId.AVALANCHE]: [token_provider_1.DAI_AVALANCHE, token_provider_1.USDC_AVALANCHE, token_provider_1.USDT_AVALANCHE],
     [chains_1.ChainId.RINKEBY]: [token_provider_1.DAI_RINKEBY_1, token_provider_1.DAI_RINKEBY_2],
     [chains_1.ChainId.ARBITRUM_ONE]: [token_provider_1.DAI_ARBITRUM, token_provider_1.USDC_ARBITRUM, token_provider_1.USDT_ARBITRUM],
     [chains_1.ChainId.OPTIMISM]: [token_provider_1.DAI_OPTIMISM, token_provider_1.USDC_OPTIMISM, token_provider_1.USDT_OPTIMISM],
@@ -17,7 +18,7 @@ exports.usdGasTokensByChain = {
     [chains_1.ChainId.KOVAN]: [token_provider_1.DAI_KOVAN, token_provider_1.USDC_KOVAN, token_provider_1.USDT_KOVAN],
     [chains_1.ChainId.GÖRLI]: [token_provider_1.USDC_GÖRLI, token_provider_1.USDT_GÖRLI, token_provider_1.WBTC_GÖRLI, token_provider_1.DAI_GÖRLI],
     [chains_1.ChainId.ROPSTEN]: [token_provider_1.DAI_ROPSTEN, token_provider_1.USDC_ROPSTEN, token_provider_1.USDT_ROPSTEN],
-    [chains_1.ChainId.AVALANCHE]: [token_provider_1.USDC_E, token_provider_1.DAI_E],
+    [chains_1.ChainId.POLYGON]: [token_provider_1.USDC_POLYGON],
     [chains_1.ChainId.POLYGON_MUMBAI]: [token_provider_1.DAI_POLYGON_MUMBAI],
 };
 /**

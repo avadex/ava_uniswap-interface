@@ -2,6 +2,7 @@ import { Ether, NativeCurrency, Token } from '@uniswap/sdk-core';
 export var ChainId;
 (function (ChainId) {
     ChainId[ChainId["MAINNET"] = 1] = "MAINNET";
+    ChainId[ChainId["AVALANCHE"] = 43114] = "AVALANCHE";
     ChainId[ChainId["ROPSTEN"] = 3] = "ROPSTEN";
     ChainId[ChainId["RINKEBY"] = 4] = "RINKEBY";
     ChainId[ChainId["G\u00D6RLI"] = 5] = "G\u00D6RLI";
@@ -10,13 +11,15 @@ export var ChainId;
     ChainId[ChainId["OPTIMISTIC_KOVAN"] = 69] = "OPTIMISTIC_KOVAN";
     ChainId[ChainId["ARBITRUM_ONE"] = 42161] = "ARBITRUM_ONE";
     ChainId[ChainId["ARBITRUM_RINKEBY"] = 421611] = "ARBITRUM_RINKEBY";
-    ChainId[ChainId["AVALANCHE"] = 43114] = "AVALANCHE";
+    ChainId[ChainId["POLYGON"] = 137] = "POLYGON";
     ChainId[ChainId["POLYGON_MUMBAI"] = 80001] = "POLYGON_MUMBAI";
 })(ChainId || (ChainId = {}));
 export const ID_TO_CHAIN_ID = (id) => {
     switch (id) {
         case 1:
             return ChainId.MAINNET;
+        case 43114:
+            return ChainId.AVALANCHE;
         case 3:
             return ChainId.ROPSTEN;
         case 4:
@@ -33,8 +36,8 @@ export const ID_TO_CHAIN_ID = (id) => {
             return ChainId.ARBITRUM_ONE;
         case 421611:
             return ChainId.ARBITRUM_RINKEBY;
-        case 43114:
-            return ChainId.AVALANCHE;
+        case 137:
+            return ChainId.POLYGON;
         case 80001:
             return ChainId.POLYGON_MUMBAI;
         default:
@@ -45,6 +48,7 @@ export var ChainName;
 (function (ChainName) {
     // ChainNames match infura network strings
     ChainName["MAINNET"] = "mainnet";
+    ChainName["AVALANCHE"] = "avalanche";
     ChainName["ROPSTEN"] = "ropsten";
     ChainName["RINKEBY"] = "rinkeby";
     ChainName["G\u00D6RLI"] = "goerli";
@@ -53,7 +57,7 @@ export var ChainName;
     ChainName["OPTIMISTIC_KOVAN"] = "optimism-kovan";
     ChainName["ARBITRUM_ONE"] = "arbitrum-mainnet";
     ChainName["ARBITRUM_RINKEBY"] = "arbitrum-rinkeby";
-    ChainName["AVALANCHE"] = "AVALANCHE";
+    ChainName["POLYGON"] = "polygon-mainnet";
     ChainName["POLYGON_MUMBAI"] = "polygon-mumbai";
 })(ChainName || (ChainName = {}));
 export var NativeCurrencyName;
@@ -79,6 +83,8 @@ export const ID_TO_NETWORK_NAME = (id) => {
     switch (id) {
         case 1:
             return ChainName.MAINNET;
+	      case 43114:
+            return ChainName.AVALANCHE;
         case 3:
             return ChainName.ROPSTEN;
         case 4:
@@ -97,6 +103,8 @@ export const ID_TO_NETWORK_NAME = (id) => {
             return ChainName.ARBITRUM_RINKEBY;
         case 43114:
             return ChainName.AVALANCHE;
+        case 137:
+            return ChainName.POLYGON;
         case 80001:
             return ChainName.POLYGON_MUMBAI;
         default:
@@ -107,6 +115,8 @@ export const CHAIN_IDS_LIST = Object.values(ChainId).map((c) => c.toString());
 export const ID_TO_PROVIDER = (id) => {
     switch (id) {
         case ChainId.MAINNET:
+            return process.env.JSON_RPC_PROVIDER;
+        case ChainId.AVALANCHE:
             return process.env.JSON_RPC_PROVIDER;
         case ChainId.ROPSTEN:
             return process.env.JSON_RPC_PROVIDER_ROPSTEN;
@@ -124,8 +134,8 @@ export const ID_TO_PROVIDER = (id) => {
             return process.env.JSON_RPC_PROVIDER_ARBITRUM_ONE;
         case ChainId.ARBITRUM_RINKEBY:
             return process.env.JSON_RPC_PROVIDER_ARBITRUM_RINKEBY;
-        case ChainId.AVALANCHE:
-            return process.env.JSON_RPC_PROVIDER_AVALANCHE;
+        case ChainId.POLYGON:
+            return process.env.JSON_RPC_PROVIDER_POLYGON;
         case ChainId.POLYGON_MUMBAI:
             return process.env.JSON_RPC_PROVIDER_POLYGON_MUMBAI;
         default:
@@ -134,6 +144,7 @@ export const ID_TO_PROVIDER = (id) => {
 };
 export const WRAPPED_NATIVE_CURRENCY = {
     [ChainId.MAINNET]: new Token(1, '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2', 18, 'WETH', 'Wrapped Ether'),
+    [ChainId.AVALANCHE]: new Token(ChainId.AVALANCHE, '0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7', 18, 'WAVAX', 'Wrapped AVAX'),
     [ChainId.ROPSTEN]: new Token(3, '0xc778417E063141139Fce010982780140Aa0cD5Ab', 18, 'WETH', 'Wrapped Ether'),
     [ChainId.RINKEBY]: new Token(4, '0xc778417E063141139Fce010982780140Aa0cD5Ab', 18, 'WETH', 'Wrapped Ether'),
     [ChainId.GÖRLI]: new Token(5, '0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6', 18, 'WETH', 'Wrapped Ether'),
@@ -142,7 +153,7 @@ export const WRAPPED_NATIVE_CURRENCY = {
     [ChainId.OPTIMISTIC_KOVAN]: new Token(ChainId.OPTIMISTIC_KOVAN, '0x4200000000000000000000000000000000000006', 18, 'WETH', 'Wrapped Ether'),
     [ChainId.ARBITRUM_ONE]: new Token(ChainId.ARBITRUM_ONE, '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1', 18, 'WETH', 'Wrapped Ether'),
     [ChainId.ARBITRUM_RINKEBY]: new Token(ChainId.ARBITRUM_RINKEBY, '0xB47e6A5f8b33b3F17603C83a0535A9dcD7E32681', 18, 'WETH', 'Wrapped Ether'),
-    [ChainId.AVALANCHE]: new Token(ChainId.AVALANCHE, '0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7', 18, 'WAVAX', 'Wrapped AVAX'),
+    [ChainId.POLYGON]: new Token(ChainId.POLYGON, '0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270', 18, 'WMATIC', 'Wrapped MATIC'),
     [ChainId.POLYGON_MUMBAI]: new Token(ChainId.POLYGON_MUMBAI, '0x9c3C9283D3e44854697Cd22D3Faa240Cfb032889', 18, 'WMATIC', 'Wrapped MATIC'),
 };
 function isMatic(chainId) {

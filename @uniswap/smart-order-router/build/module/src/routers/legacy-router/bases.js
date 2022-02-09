@@ -1,4 +1,4 @@
-import { DAI_MAINNET, USDC_MAINNET, USDT_MAINNET, WBTC_MAINNET, WAVAX, WMATIC_POLYGON_MUMBAI, } from '../../providers/token-provider';
+import { DAI_AVALANCHE, USDC_AVALANCHE, USDT_AVALANCHE, WBTC_AVALANCHE,WAVAX, DAI_MAINNET, USDC_MAINNET, USDT_MAINNET, WBTC_MAINNET, WMATIC_POLYGON, WMATIC_POLYGON_MUMBAI, } from '../../providers/token-provider';
 import { ChainId, WRAPPED_NATIVE_CURRENCY } from '../../util/chains';
 export const BASES_TO_CHECK_TRADES_AGAINST = (_tokenProvider) => {
     return {
@@ -9,11 +9,13 @@ export const BASES_TO_CHECK_TRADES_AGAINST = (_tokenProvider) => {
             USDT_MAINNET,
             WBTC_MAINNET,
         ],
-        [ChainId.AVALANCHE]: [
-            WRAPPED_NATIVE_CURRENCY[ChainId.AVALANCHE],
-            DAI_E,
-            USDC_E,
-        ],
+	[ChainId.AVALANCHE]: [
+    	      WRAPPED_NATIVE_CURRENCY[ChainId.AVALANCHE],
+    	      DAI_AVALANCHE,
+   	        USDC_AVALANCHE,
+   	        USDT_AVALANCHE,
+   	        WBTC_AVALANCHE,
+	],
         [ChainId.ROPSTEN]: [WRAPPED_NATIVE_CURRENCY[ChainId.ROPSTEN]],
         [ChainId.RINKEBY]: [WRAPPED_NATIVE_CURRENCY[ChainId.RINKEBY]],
         [ChainId.GÖRLI]: [WRAPPED_NATIVE_CURRENCY[ChainId.GÖRLI]],
@@ -26,6 +28,7 @@ export const BASES_TO_CHECK_TRADES_AGAINST = (_tokenProvider) => {
         [ChainId.ARBITRUM_RINKEBY]: [
             WRAPPED_NATIVE_CURRENCY[ChainId.ARBITRUM_RINKEBY],
         ],
+        [ChainId.POLYGON]: [WMATIC_POLYGON],
         [ChainId.POLYGON_MUMBAI]: [WMATIC_POLYGON_MUMBAI],
     };
 };

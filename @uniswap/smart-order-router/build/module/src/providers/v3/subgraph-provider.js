@@ -8,10 +8,11 @@ export const printV3SubgraphPool = (s) => `${s.token0.id}/${s.token1.id}/${s.fee
 export const printV2SubgraphPool = (s) => `${s.token0.id}/${s.token1.id}`;
 const SUBGRAPH_URL_BY_CHAIN = {
     [ChainId.MAINNET]: 'https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3',
+    [ChainId.AVALANCHE]: 'https://api.thegraph.com/subgraphs/name/avadex/v35',
     [ChainId.RINKEBY]: 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v3-rinkeby',
     [ChainId.OPTIMISM]: 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-optmism-regen',
     [ChainId.ARBITRUM_ONE]: 'https://api.thegraph.com/subgraphs/name/ianlapham/arbitrum-minimal',
-    [ChainId.AVALANCHE]: 'https://api.thegraph.com/subgraphs/name/avadex/v35',
+    [ChainId.POLYGON]: 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v3-polygon',
 };
 const PAGE_SIZE = 1000; // 1k is max possible query size from subgraph.
 export class V3SubgraphProvider {

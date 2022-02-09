@@ -4,13 +4,13 @@ import invariant from 'tiny-invariant';
 import { defaultAbiCoder, Interface } from '@ethersproject/abi';
 import { getCreate2Address } from '@ethersproject/address';
 import { keccak256, pack } from '@ethersproject/solidity';
-import { abi } from '@uniswap/v3-periphery/artifacts/contracts/interfaces/IMulticall.sol/IMulticall.json';
-import { abi as abi$3 } from '@uniswap/v3-periphery/artifacts/contracts/NonfungiblePositionManager.sol/NonfungiblePositionManager.json';
-import { abi as abi$1 } from '@uniswap/v3-periphery/artifacts/contracts/interfaces/ISelfPermit.sol/ISelfPermit.json';
-import { abi as abi$2 } from '@uniswap/v3-periphery/artifacts/contracts/interfaces/IPeripheryPaymentsWithFee.sol/IPeripheryPaymentsWithFee.json';
-import { abi as abi$4 } from '@uniswap/v3-periphery/artifacts/contracts/lens/Quoter.sol/Quoter.json';
-import { abi as abi$5 } from '@uniswap/v3-staker/artifacts/contracts/UniswapV3Staker.sol/UniswapV3Staker.json';
-import { abi as abi$6 } from '@uniswap/v3-periphery/artifacts/contracts/SwapRouter.sol/SwapRouter.json';
+import IMulticall from '@uniswap/v3-periphery/artifacts/contracts/interfaces/IMulticall.sol/IMulticall.json';
+import INonfungiblePositionManager from '@uniswap/v3-periphery/artifacts/contracts/NonfungiblePositionManager.sol/NonfungiblePositionManager.json';
+import ISelfPermit from '@uniswap/v3-periphery/artifacts/contracts/interfaces/ISelfPermit.sol/ISelfPermit.json';
+import IPeripheryPaymentsWithFee from '@uniswap/v3-periphery/artifacts/contracts/interfaces/IPeripheryPaymentsWithFee.sol/IPeripheryPaymentsWithFee.json';
+import IQuoter from '@uniswap/v3-periphery/artifacts/contracts/lens/Quoter.sol/Quoter.json';
+import IUniswapV3Staker from '@uniswap/v3-staker/artifacts/contracts/UniswapV3Staker.sol/UniswapV3Staker.json';
+import ISwapRouter from '@uniswap/v3-periphery/artifacts/contracts/SwapRouter.sol/SwapRouter.json';
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
   try {
@@ -1446,7 +1446,7 @@ var TickList = /*#__PURE__*/function () {
     } else {
       var _wordPos = compressed + 1 >> 8;
 
-      var maximum = (_wordPos + 1 << 8) * tickSpacing - 1;
+      var maximum = ((_wordPos + 1 << 8) - 1) * tickSpacing;
 
       if (this.isAtOrAboveLargest(ticks, tick)) {
         return [maximum, false];
@@ -1641,6 +1641,23 @@ function nearestUsableTick(tick, tickSpacing) {
   if (rounded < TickMath.MIN_TICK) return rounded + tickSpacing;else if (rounded > TickMath.MAX_TICK) return rounded - tickSpacing;else return rounded;
 }
 
+var Q128 = /*#__PURE__*/JSBI.exponentiate( /*#__PURE__*/JSBI.BigInt(2), /*#__PURE__*/JSBI.BigInt(128));
+var PositionLibrary = /*#__PURE__*/function () {
+  /**
+   * Cannot be constructed.
+   */
+  function PositionLibrary() {} // replicates the portions of Position#update required to compute unaccounted fees
+
+
+  PositionLibrary.getTokensOwed = function getTokensOwed(feeGrowthInside0LastX128, feeGrowthInside1LastX128, liquidity, feeGrowthInside0X128, feeGrowthInside1X128) {
+    var tokensOwed0 = JSBI.divide(JSBI.multiply(subIn256(feeGrowthInside0X128, feeGrowthInside0LastX128), liquidity), Q128);
+    var tokensOwed1 = JSBI.divide(JSBI.multiply(subIn256(feeGrowthInside1X128, feeGrowthInside1LastX128), liquidity), Q128);
+    return [tokensOwed0, tokensOwed1];
+  };
+
+  return PositionLibrary;
+}();
+
 /**
  * Returns a price object corresponding to the input tick and the base/quote token
  * Inputs must be tokens because the address order is used to interpret the price represented by the tick
@@ -1678,6 +1695,51 @@ function priceToClosestTick(price) {
 
   return tick;
 }
+
+var Q256 = /*#__PURE__*/JSBI.exponentiate( /*#__PURE__*/JSBI.BigInt(2), /*#__PURE__*/JSBI.BigInt(256));
+function subIn256(x, y) {
+  var difference = JSBI.subtract(x, y);
+
+  if (JSBI.lessThan(difference, ZERO)) {
+    return JSBI.add(Q256, difference);
+  } else {
+    return difference;
+  }
+}
+var TickLibrary = /*#__PURE__*/function () {
+  /**
+   * Cannot be constructed.
+   */
+  function TickLibrary() {}
+
+  TickLibrary.getFeeGrowthInside = function getFeeGrowthInside(feeGrowthOutsideLower, feeGrowthOutsideUpper, tickLower, tickUpper, tickCurrent, feeGrowthGlobal0X128, feeGrowthGlobal1X128) {
+    var feeGrowthBelow0X128;
+    var feeGrowthBelow1X128;
+
+    if (tickCurrent >= tickLower) {
+      feeGrowthBelow0X128 = feeGrowthOutsideLower.feeGrowthOutside0X128;
+      feeGrowthBelow1X128 = feeGrowthOutsideLower.feeGrowthOutside1X128;
+    } else {
+      feeGrowthBelow0X128 = subIn256(feeGrowthGlobal0X128, feeGrowthOutsideLower.feeGrowthOutside0X128);
+      feeGrowthBelow1X128 = subIn256(feeGrowthGlobal1X128, feeGrowthOutsideLower.feeGrowthOutside1X128);
+    }
+
+    var feeGrowthAbove0X128;
+    var feeGrowthAbove1X128;
+
+    if (tickCurrent < tickUpper) {
+      feeGrowthAbove0X128 = feeGrowthOutsideUpper.feeGrowthOutside0X128;
+      feeGrowthAbove1X128 = feeGrowthOutsideUpper.feeGrowthOutside1X128;
+    } else {
+      feeGrowthAbove0X128 = subIn256(feeGrowthGlobal0X128, feeGrowthOutsideUpper.feeGrowthOutside0X128);
+      feeGrowthAbove1X128 = subIn256(feeGrowthGlobal1X128, feeGrowthOutsideUpper.feeGrowthOutside1X128);
+    }
+
+    return [subIn256(subIn256(feeGrowthGlobal0X128, feeGrowthBelow0X128), feeGrowthAbove0X128), subIn256(subIn256(feeGrowthGlobal1X128, feeGrowthBelow1X128), feeGrowthAbove1X128)];
+  };
+
+  return TickLibrary;
+}();
 
 var Tick = function Tick(_ref) {
   var index = _ref.index,
@@ -3397,7 +3459,7 @@ var Multicall = /*#__PURE__*/function () {
 
   return Multicall;
 }();
-Multicall.INTERFACE = /*#__PURE__*/new Interface(abi);
+Multicall.INTERFACE = /*#__PURE__*/new Interface(IMulticall.abi);
 
 function isAllowedPermit(permitOptions) {
   return 'nonce' in permitOptions;
@@ -3415,7 +3477,7 @@ var SelfPermit = /*#__PURE__*/function () {
 
   return SelfPermit;
 }();
-SelfPermit.INTERFACE = /*#__PURE__*/new Interface(abi$1);
+SelfPermit.INTERFACE = /*#__PURE__*/new Interface(ISelfPermit.abi);
 
 var Payments = /*#__PURE__*/function () {
   /**
@@ -3457,7 +3519,7 @@ var Payments = /*#__PURE__*/function () {
 
   return Payments;
 }();
-Payments.INTERFACE = /*#__PURE__*/new Interface(abi$2);
+Payments.INTERFACE = /*#__PURE__*/new Interface(IPeripheryPaymentsWithFee.abi);
 
 var MaxUint128 = /*#__PURE__*/toHex( /*#__PURE__*/JSBI.subtract( /*#__PURE__*/JSBI.exponentiate( /*#__PURE__*/JSBI.BigInt(2), /*#__PURE__*/JSBI.BigInt(128)), /*#__PURE__*/JSBI.BigInt(1))); // type guard
 
@@ -3672,7 +3734,7 @@ var NonfungiblePositionManager = /*#__PURE__*/function () {
 
   return NonfungiblePositionManager;
 }();
-NonfungiblePositionManager.INTERFACE = /*#__PURE__*/new Interface(abi$3);
+NonfungiblePositionManager.INTERFACE = /*#__PURE__*/new Interface(INonfungiblePositionManager.abi);
 
 /**
  * Represents the Uniswap V3 QuoterV1 contract with a method for returning the formatted
@@ -3732,7 +3794,7 @@ var SwapQuoter = /*#__PURE__*/function () {
 
   return SwapQuoter;
 }();
-SwapQuoter.INTERFACE = /*#__PURE__*/new Interface(abi$4);
+SwapQuoter.INTERFACE = /*#__PURE__*/new Interface(IQuoter.abi);
 
 var Staker = /*#__PURE__*/function () {
   function Staker() {}
@@ -3862,7 +3924,7 @@ var Staker = /*#__PURE__*/function () {
 
   return Staker;
 }();
-Staker.INTERFACE = /*#__PURE__*/new Interface(abi$5);
+Staker.INTERFACE = /*#__PURE__*/new Interface(IUniswapV3Staker.abi);
 Staker.INCENTIVE_KEY_ABI = 'tuple(address rewardToken, address pool, uint256 startTime, uint256 endTime, address refundee)';
 
 /**
@@ -4016,7 +4078,7 @@ var SwapRouter = /*#__PURE__*/function () {
 
   return SwapRouter;
 }();
-SwapRouter.INTERFACE = /*#__PURE__*/new Interface(abi$6);
+SwapRouter.INTERFACE = /*#__PURE__*/new Interface(ISwapRouter.abi);
 
-export { ADDRESS_ZERO, FACTORY_ADDRESS, FeeAmount, FullMath, LiquidityMath, Multicall, NoTickDataProvider, NonfungiblePositionManager, POOL_INIT_CODE_HASH, Payments, Pool, Position, Route, SelfPermit, SqrtPriceMath, Staker, SwapQuoter, SwapRouter, TICK_SPACINGS, Tick, TickList, TickListDataProvider, TickMath, Trade, computePoolAddress, encodeRouteToPath, encodeSqrtRatioX96, isSorted, maxLiquidityForAmounts, mostSignificantBit, nearestUsableTick, priceToClosestTick, tickToPrice, toHex, tradeComparator };
+export { ADDRESS_ZERO, FACTORY_ADDRESS, FeeAmount, FullMath, LiquidityMath, Multicall, NoTickDataProvider, NonfungiblePositionManager, POOL_INIT_CODE_HASH, Payments, Pool, Position, PositionLibrary, Route, SelfPermit, SqrtPriceMath, Staker, SwapMath, SwapQuoter, SwapRouter, TICK_SPACINGS, Tick, TickLibrary, TickList, TickListDataProvider, TickMath, Trade, computePoolAddress, encodeRouteToPath, encodeSqrtRatioX96, isSorted, maxLiquidityForAmounts, mostSignificantBit, nearestUsableTick, priceToClosestTick, subIn256, tickToPrice, toHex, tradeComparator };
 //# sourceMappingURL=v3-sdk.esm.js.map

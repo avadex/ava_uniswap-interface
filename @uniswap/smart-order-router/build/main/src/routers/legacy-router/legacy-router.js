@@ -52,7 +52,7 @@ class LegacyRouter {
             route: [routeQuote],
             estimatedGasUsed: ethers_1.BigNumber.from(0),
             estimatedGasUsedQuoteToken: amounts_1.CurrencyAmount.fromFractionalAmount(tokenOut, 0, 1),
-            estimatedGasUsedUSD: amounts_1.CurrencyAmount.fromFractionalAmount(token_provider_1.DAI_MAINNET, 0, 1),
+            estimatedGasUsedUSD: amounts_1.CurrencyAmount.fromFractionalAmount(token_provider_1.DAI_AVALANCHE, 0, 1),
             gasPriceWei: ethers_1.BigNumber.from(0),
             trade,
             methodParameters: swapConfig
@@ -76,7 +76,7 @@ class LegacyRouter {
             route: [routeQuote],
             estimatedGasUsed: ethers_1.BigNumber.from(0),
             estimatedGasUsedQuoteToken: amounts_1.CurrencyAmount.fromFractionalAmount(tokenIn, 0, 1),
-            estimatedGasUsedUSD: amounts_1.CurrencyAmount.fromFractionalAmount(token_provider_1.DAI_MAINNET, 0, 1),
+            estimatedGasUsedUSD: amounts_1.CurrencyAmount.fromFractionalAmount(token_provider_1.DAI_AVALANCHE, 0, 1),
             gasPriceWei: ethers_1.BigNumber.from(0),
             trade,
             methodParameters: swapConfig
@@ -133,7 +133,7 @@ class LegacyRouter {
                 gasModel: {
                     estimateGasCost: () => ({
                         gasCostInToken: amounts_1.CurrencyAmount.fromRawAmount(quoteToken, 0),
-                        gasCostInUSD: amounts_1.CurrencyAmount.fromRawAmount(token_provider_1.USDC_MAINNET, 0),
+                        gasCostInUSD: amounts_1.CurrencyAmount.fromRawAmount(token_provider_1.USDC_AVALANCHE, 0),
                         gasEstimate: ethers_1.BigNumber.from(0),
                     }),
                 },

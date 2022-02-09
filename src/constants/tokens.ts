@@ -21,7 +21,7 @@ export const DAI_E = new Token(
   SupportedChainId.AVALANCHE,
   '0xd586e7f844cea2f87f50152665bcbc2c279d8d70',
   18,
-  'DAI',
+  'DAI_E',
   'Dai stable coin'
 )
 export const DAI_OPTIMISM = new Token(
@@ -52,18 +52,18 @@ export const USDC_E = new Token(
   'USDC_E',
   'USD//C'
 )
-export const UNI_e = new Token(
+export const UNI_E = new Token(
   SupportedChainId.AVALANCHE,
   '0x8eBAf22B6F053dFFeaf46f4Dd9eFA95D89ba8580',
   8,
-  'UNI_e',
+  'UNI_E',
   'Uniswap'
 )
 export const WETH_E = new Token(
   SupportedChainId.AVALANCHE,
   '0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB',
   18,
-  'WETH_e',
+  'WETH_E',
   'Wrapped ETH'
 )
 export const USDC_POLYGON = new Token(
@@ -126,7 +126,7 @@ export const WBTC_E = new Token(
   SupportedChainId.AVALANCHE,
   '0x50b7545627a5162f82a992c33b87adc75187b218',
   8,
-  'WBTC',
+  'WBTC_E',
   'Wrapped BTC'
 )
 export const WBTC_OPTIMISM = new Token(

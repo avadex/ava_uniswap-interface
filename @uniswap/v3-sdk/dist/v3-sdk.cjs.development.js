@@ -10,13 +10,13 @@ var invariant = _interopDefault(require('tiny-invariant'));
 var abi = require('@ethersproject/abi');
 var address = require('@ethersproject/address');
 var solidity = require('@ethersproject/solidity');
-var IMulticall_json = require('@uniswap/v3-periphery/artifacts/contracts/interfaces/IMulticall.sol/IMulticall.json');
-var NonfungiblePositionManager_json = require('@uniswap/v3-periphery/artifacts/contracts/NonfungiblePositionManager.sol/NonfungiblePositionManager.json');
-var ISelfPermit_json = require('@uniswap/v3-periphery/artifacts/contracts/interfaces/ISelfPermit.sol/ISelfPermit.json');
-var IPeripheryPaymentsWithFee_json = require('@uniswap/v3-periphery/artifacts/contracts/interfaces/IPeripheryPaymentsWithFee.sol/IPeripheryPaymentsWithFee.json');
-var Quoter_json = require('@uniswap/v3-periphery/artifacts/contracts/lens/Quoter.sol/Quoter.json');
-var UniswapV3Staker_json = require('@uniswap/v3-staker/artifacts/contracts/UniswapV3Staker.sol/UniswapV3Staker.json');
-var SwapRouter_json = require('@uniswap/v3-periphery/artifacts/contracts/SwapRouter.sol/SwapRouter.json');
+var IMulticall = _interopDefault(require('@uniswap/v3-periphery/artifacts/contracts/interfaces/IMulticall.sol/IMulticall.json'));
+var INonfungiblePositionManager = _interopDefault(require('@uniswap/v3-periphery/artifacts/contracts/NonfungiblePositionManager.sol/NonfungiblePositionManager.json'));
+var ISelfPermit = _interopDefault(require('@uniswap/v3-periphery/artifacts/contracts/interfaces/ISelfPermit.sol/ISelfPermit.json'));
+var IPeripheryPaymentsWithFee = _interopDefault(require('@uniswap/v3-periphery/artifacts/contracts/interfaces/IPeripheryPaymentsWithFee.sol/IPeripheryPaymentsWithFee.json'));
+var IQuoter = _interopDefault(require('@uniswap/v3-periphery/artifacts/contracts/lens/Quoter.sol/Quoter.json'));
+var IUniswapV3Staker = _interopDefault(require('@uniswap/v3-staker/artifacts/contracts/UniswapV3Staker.sol/UniswapV3Staker.json'));
+var ISwapRouter = _interopDefault(require('@uniswap/v3-periphery/artifacts/contracts/SwapRouter.sol/SwapRouter.json'));
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
   try {
@@ -1447,7 +1447,7 @@ var TickList = /*#__PURE__*/function () {
     } else {
       var _wordPos = compressed + 1 >> 8;
 
-      var maximum = (_wordPos + 1 << 8) * tickSpacing - 1;
+      var maximum = ((_wordPos + 1 << 8) - 1) * tickSpacing;
 
       if (this.isAtOrAboveLargest(ticks, tick)) {
         return [maximum, false];
@@ -1642,6 +1642,23 @@ function nearestUsableTick(tick, tickSpacing) {
   if (rounded < TickMath.MIN_TICK) return rounded + tickSpacing;else if (rounded > TickMath.MAX_TICK) return rounded - tickSpacing;else return rounded;
 }
 
+var Q128 = /*#__PURE__*/JSBI.exponentiate( /*#__PURE__*/JSBI.BigInt(2), /*#__PURE__*/JSBI.BigInt(128));
+var PositionLibrary = /*#__PURE__*/function () {
+  /**
+   * Cannot be constructed.
+   */
+  function PositionLibrary() {} // replicates the portions of Position#update required to compute unaccounted fees
+
+
+  PositionLibrary.getTokensOwed = function getTokensOwed(feeGrowthInside0LastX128, feeGrowthInside1LastX128, liquidity, feeGrowthInside0X128, feeGrowthInside1X128) {
+    var tokensOwed0 = JSBI.divide(JSBI.multiply(subIn256(feeGrowthInside0X128, feeGrowthInside0LastX128), liquidity), Q128);
+    var tokensOwed1 = JSBI.divide(JSBI.multiply(subIn256(feeGrowthInside1X128, feeGrowthInside1LastX128), liquidity), Q128);
+    return [tokensOwed0, tokensOwed1];
+  };
+
+  return PositionLibrary;
+}();
+
 /**
  * Returns a price object corresponding to the input tick and the base/quote token
  * Inputs must be tokens because the address order is used to interpret the price represented by the tick
@@ -1679,6 +1696,51 @@ function priceToClosestTick(price) {
 
   return tick;
 }
+
+var Q256 = /*#__PURE__*/JSBI.exponentiate( /*#__PURE__*/JSBI.BigInt(2), /*#__PURE__*/JSBI.BigInt(256));
+function subIn256(x, y) {
+  var difference = JSBI.subtract(x, y);
+
+  if (JSBI.lessThan(difference, ZERO)) {
+    return JSBI.add(Q256, difference);
+  } else {
+    return difference;
+  }
+}
+var TickLibrary = /*#__PURE__*/function () {
+  /**
+   * Cannot be constructed.
+   */
+  function TickLibrary() {}
+
+  TickLibrary.getFeeGrowthInside = function getFeeGrowthInside(feeGrowthOutsideLower, feeGrowthOutsideUpper, tickLower, tickUpper, tickCurrent, feeGrowthGlobal0X128, feeGrowthGlobal1X128) {
+    var feeGrowthBelow0X128;
+    var feeGrowthBelow1X128;
+
+    if (tickCurrent >= tickLower) {
+      feeGrowthBelow0X128 = feeGrowthOutsideLower.feeGrowthOutside0X128;
+      feeGrowthBelow1X128 = feeGrowthOutsideLower.feeGrowthOutside1X128;
+    } else {
+      feeGrowthBelow0X128 = subIn256(feeGrowthGlobal0X128, feeGrowthOutsideLower.feeGrowthOutside0X128);
+      feeGrowthBelow1X128 = subIn256(feeGrowthGlobal1X128, feeGrowthOutsideLower.feeGrowthOutside1X128);
+    }
+
+    var feeGrowthAbove0X128;
+    var feeGrowthAbove1X128;
+
+    if (tickCurrent < tickUpper) {
+      feeGrowthAbove0X128 = feeGrowthOutsideUpper.feeGrowthOutside0X128;
+      feeGrowthAbove1X128 = feeGrowthOutsideUpper.feeGrowthOutside1X128;
+    } else {
+      feeGrowthAbove0X128 = subIn256(feeGrowthGlobal0X128, feeGrowthOutsideUpper.feeGrowthOutside0X128);
+      feeGrowthAbove1X128 = subIn256(feeGrowthGlobal1X128, feeGrowthOutsideUpper.feeGrowthOutside1X128);
+    }
+
+    return [subIn256(subIn256(feeGrowthGlobal0X128, feeGrowthBelow0X128), feeGrowthAbove0X128), subIn256(subIn256(feeGrowthGlobal1X128, feeGrowthBelow1X128), feeGrowthAbove1X128)];
+  };
+
+  return TickLibrary;
+}();
 
 var Tick = function Tick(_ref) {
   var index = _ref.index,
@@ -3398,7 +3460,7 @@ var Multicall = /*#__PURE__*/function () {
 
   return Multicall;
 }();
-Multicall.INTERFACE = /*#__PURE__*/new abi.Interface(IMulticall_json.abi);
+Multicall.INTERFACE = /*#__PURE__*/new abi.Interface(IMulticall.abi);
 
 function isAllowedPermit(permitOptions) {
   return 'nonce' in permitOptions;
@@ -3416,7 +3478,7 @@ var SelfPermit = /*#__PURE__*/function () {
 
   return SelfPermit;
 }();
-SelfPermit.INTERFACE = /*#__PURE__*/new abi.Interface(ISelfPermit_json.abi);
+SelfPermit.INTERFACE = /*#__PURE__*/new abi.Interface(ISelfPermit.abi);
 
 var Payments = /*#__PURE__*/function () {
   /**
@@ -3458,7 +3520,7 @@ var Payments = /*#__PURE__*/function () {
 
   return Payments;
 }();
-Payments.INTERFACE = /*#__PURE__*/new abi.Interface(IPeripheryPaymentsWithFee_json.abi);
+Payments.INTERFACE = /*#__PURE__*/new abi.Interface(IPeripheryPaymentsWithFee.abi);
 
 var MaxUint128 = /*#__PURE__*/toHex( /*#__PURE__*/JSBI.subtract( /*#__PURE__*/JSBI.exponentiate( /*#__PURE__*/JSBI.BigInt(2), /*#__PURE__*/JSBI.BigInt(128)), /*#__PURE__*/JSBI.BigInt(1))); // type guard
 
@@ -3673,7 +3735,7 @@ var NonfungiblePositionManager = /*#__PURE__*/function () {
 
   return NonfungiblePositionManager;
 }();
-NonfungiblePositionManager.INTERFACE = /*#__PURE__*/new abi.Interface(NonfungiblePositionManager_json.abi);
+NonfungiblePositionManager.INTERFACE = /*#__PURE__*/new abi.Interface(INonfungiblePositionManager.abi);
 
 /**
  * Represents the Uniswap V3 QuoterV1 contract with a method for returning the formatted
@@ -3733,7 +3795,7 @@ var SwapQuoter = /*#__PURE__*/function () {
 
   return SwapQuoter;
 }();
-SwapQuoter.INTERFACE = /*#__PURE__*/new abi.Interface(Quoter_json.abi);
+SwapQuoter.INTERFACE = /*#__PURE__*/new abi.Interface(IQuoter.abi);
 
 var Staker = /*#__PURE__*/function () {
   function Staker() {}
@@ -3863,7 +3925,7 @@ var Staker = /*#__PURE__*/function () {
 
   return Staker;
 }();
-Staker.INTERFACE = /*#__PURE__*/new abi.Interface(UniswapV3Staker_json.abi);
+Staker.INTERFACE = /*#__PURE__*/new abi.Interface(IUniswapV3Staker.abi);
 Staker.INCENTIVE_KEY_ABI = 'tuple(address rewardToken, address pool, uint256 startTime, uint256 endTime, address refundee)';
 
 /**
@@ -4017,7 +4079,7 @@ var SwapRouter = /*#__PURE__*/function () {
 
   return SwapRouter;
 }();
-SwapRouter.INTERFACE = /*#__PURE__*/new abi.Interface(SwapRouter_json.abi);
+SwapRouter.INTERFACE = /*#__PURE__*/new abi.Interface(ISwapRouter.abi);
 
 exports.ADDRESS_ZERO = ADDRESS_ZERO;
 exports.FACTORY_ADDRESS = FACTORY_ADDRESS;
@@ -4030,14 +4092,17 @@ exports.POOL_INIT_CODE_HASH = POOL_INIT_CODE_HASH;
 exports.Payments = Payments;
 exports.Pool = Pool;
 exports.Position = Position;
+exports.PositionLibrary = PositionLibrary;
 exports.Route = Route;
 exports.SelfPermit = SelfPermit;
 exports.SqrtPriceMath = SqrtPriceMath;
 exports.Staker = Staker;
+exports.SwapMath = SwapMath;
 exports.SwapQuoter = SwapQuoter;
 exports.SwapRouter = SwapRouter;
 exports.TICK_SPACINGS = TICK_SPACINGS;
 exports.Tick = Tick;
+exports.TickLibrary = TickLibrary;
 exports.TickList = TickList;
 exports.TickListDataProvider = TickListDataProvider;
 exports.TickMath = TickMath;
@@ -4050,6 +4115,7 @@ exports.maxLiquidityForAmounts = maxLiquidityForAmounts;
 exports.mostSignificantBit = mostSignificantBit;
 exports.nearestUsableTick = nearestUsableTick;
 exports.priceToClosestTick = priceToClosestTick;
+exports.subIn256 = subIn256;
 exports.tickToPrice = tickToPrice;
 exports.toHex = toHex;
 exports.tradeComparator = tradeComparator;

@@ -23,7 +23,7 @@ export const V2_ROUTER_ADDRESS: AddressMap = constructSameAddressMap('0x60aE616a
   SupportedChainId.AVALANCHE,
 ])
 
-export const V3_ROUTER_ADDRESS: AddressMap = constructSameAddressMap('0xE592427A0AEce92De3Edee1F18E0157C05861564', [
+export const V3_ROUTER_ADDRESS: AddressMap = constructSameAddressMap('0x787Bd59120fb81f8BE4AD34280a621877516fe37', [
   SupportedChainId.OPTIMISM,
   SupportedChainId.OPTIMISTIC_KOVAN,
   SupportedChainId.AVALANCHE,
@@ -112,6 +112,6 @@ export const V3_MIGRATOR_ADDRESSES: AddressMap = constructSameAddressMap('0x80E7
 ])
 
 export const TICK_LENS_ADDRESSES: AddressMap = {
-  [SupportedChainId.AVALANCHE]: '0x813CB4bC45f9BD01f6f6ea8a361daD1860085425',
+  //[SupportedChainId.AVALANCHE]: '0x813CB4bC45f9BD01f6f6ea8a361daD1860085425',
   [SupportedChainId.ARBITRUM_RINKEBY]: '0xbfd8137f7d1516D3ea5cA83523914859ec47F573',
 }

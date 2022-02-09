@@ -19,8 +19,10 @@ const BASES_TO_CHECK_TRADES_AGAINST = {
     ],
     [chains_1.ChainId.AVALANCHE]: [
         chains_1.WRAPPED_NATIVE_CURRENCY[chains_1.ChainId.AVALANCHE],
-        token_provider_1.DAI_E,
-        token_provider_1.USDC_E,
+        token_provider_1.DAI_AVALANCHE,
+        token_provider_1.USDC_AVALANCHE,
+        token_provider_1.USDT_AVALANCHE,
+        token_provider_1.WBTC_AVALANCHE,
     ],
     [chains_1.ChainId.ROPSTEN]: [chains_1.WRAPPED_NATIVE_CURRENCY[chains_1.ChainId.ROPSTEN]],
     [chains_1.ChainId.RINKEBY]: [
@@ -32,8 +34,10 @@ const BASES_TO_CHECK_TRADES_AGAINST = {
     [chains_1.ChainId.KOVAN]: [chains_1.WRAPPED_NATIVE_CURRENCY[chains_1.ChainId.KOVAN]],
     //v2 not deployed on optimism/arbitrum or their testnets
     [chains_1.ChainId.OPTIMISM]: [],
+    [chains_1.ChainId.ARBITRUM_ONE]: [],
     [chains_1.ChainId.ARBITRUM_RINKEBY]: [],
     [chains_1.ChainId.OPTIMISTIC_KOVAN]: [],
+    [chains_1.ChainId.POLYGON]: [],
     [chains_1.ChainId.POLYGON_MUMBAI]: [],
 };
 /**

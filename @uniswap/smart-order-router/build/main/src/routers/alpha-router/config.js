@@ -33,7 +33,7 @@ const DEFAULT_ROUTING_CONFIG_BY_CHAIN = (chainId) => {
         // Arbitrum calls have lower gas limits and tend to timeout more, which causes us to reduce the multicall
         // batch size and send more multicalls per quote. To reduce the amount of requests each quote sends, we
         // have to adjust the routing config so we explore fewer routes.
-        case chains_1.ChainId.AVALANCHE:
+        case chains_1.ChainId.ARBITRUM_ONE:
         case chains_1.ChainId.ARBITRUM_RINKEBY:
             return {
                 v2PoolSelection: {

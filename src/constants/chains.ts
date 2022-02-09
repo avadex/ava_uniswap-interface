@@ -9,6 +9,7 @@ export enum SupportedChainId {
   KOVAN = 42,
 
   AVALANCHE = 43114,
+  ARBITRUM_ONE = 42161,
   ARBITRUM_RINKEBY = 421611,
 
   OPTIMISM = 10,
@@ -27,6 +28,7 @@ export const CHAIN_IDS_TO_NAMES = {
   [SupportedChainId.POLYGON]: 'polygon',
   [SupportedChainId.POLYGON_MUMBAI]: 'polygon_mumbai',
   [SupportedChainId.AVALANCHE]: 'avalanche',
+  [SupportedChainId.ARBITRUM_ONE]: 'arbitrum',
   [SupportedChainId.ARBITRUM_RINKEBY]: 'arbitrum_rinkeby',
   [SupportedChainId.OPTIMISM]: 'optimism',
   [SupportedChainId.OPTIMISTIC_KOVAN]: 'optimistic_kovan',
@@ -62,6 +64,7 @@ export type SupportedL1ChainId = typeof L1_CHAIN_IDS[number]
  * The expectation is that all of these networks have immediate transaction confirmation.
  */
 export const L2_CHAIN_IDS = [
+  SupportedChainId.ARBITRUM_ONE,
   SupportedChainId.ARBITRUM_RINKEBY,
   SupportedChainId.OPTIMISM,
   SupportedChainId.OPTIMISTIC_KOVAN,

@@ -7,7 +7,7 @@ import { log } from '../../util/log';
 const SUBGRAPH_URL_BY_CHAIN = {
     [ChainId.MAINNET]: 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswapv2',
     [ChainId.RINKEBY]: 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v2-rinkeby',
-    [ChainId.AVALANCHE]: 'https://api.thegraph.com/subgraphs/name/dasconnor/pangolin-dex',
+    [ChainId.AVALANCHE]: 'https://api.thegraph.com/subgraphs/name/traderjoe-xyz/exchange',
 
 };
 const threshold = 0.025;

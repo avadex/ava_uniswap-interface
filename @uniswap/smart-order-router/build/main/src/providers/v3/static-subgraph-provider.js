@@ -19,6 +19,13 @@ const BASES_TO_CHECK_TRADES_AGAINST = {
         token_provider_1.USDT_MAINNET,
         token_provider_1.WBTC_MAINNET,
     ],
+    [chains_1.ChainId.AVALANCHE]: [
+        chains_1.WRAPPED_NATIVE_CURRENCY[chains_1.ChainId.AVALANCHE],
+        token_provider_1.DAI_AVALANCHE,
+        token_provider_1.USDC_AVALANCHE,
+        token_provider_1.USDT_AVALANCHE
+        token_provider_1.WBTC_AVALANCHE
+    ],
     [chains_1.ChainId.ROPSTEN]: [
         chains_1.WRAPPED_NATIVE_CURRENCY[chains_1.ChainId.ROPSTEN],
         token_provider_1.DAI_ROPSTEN,
@@ -73,7 +80,7 @@ const BASES_TO_CHECK_TRADES_AGAINST = {
         token_provider_1.USDT_OPTIMISTIC_KOVAN,
         token_provider_1.USDC_OPTIMISTIC_KOVAN,
     ],
-    [chains_1.ChainId.AVALANCHE]: [token_provider_1.USDC_E, token_provider_1.DAI_E, token_provider_1.WAVAX],
+    [chains_1.ChainId.POLYGON]: [token_provider_1.USDC_POLYGON, token_provider_1.WETH_POLYGON, token_provider_1.WMATIC_POLYGON],
     [chains_1.ChainId.POLYGON_MUMBAI]: [
         token_provider_1.DAI_POLYGON_MUMBAI,
         chains_1.WRAPPED_NATIVE_CURRENCY[chains_1.ChainId.POLYGON_MUMBAI],

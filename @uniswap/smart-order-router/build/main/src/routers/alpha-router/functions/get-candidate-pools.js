@@ -22,6 +22,13 @@ const baseTokensByChain = {
         util_1.WRAPPED_NATIVE_CURRENCY[1],
         token_provider_1.FEI_MAINNET,
     ],
+    [util_1.ChainId.AVALANCHE]: [
+        token_provider_1.USDC_AVALANCHE,
+        token_provider_1.USDT_AVALANCHE,
+        token_provider_1.WBTC_AVALANCHE,
+        token_provider_1.DAI_AVALANCHE,
+        util_1.WRAPPED_NATIVE_CURRENCY[43114],
+    ],
     [util_1.ChainId.RINKEBY]: [token_provider_1.DAI_RINKEBY_1, token_provider_1.DAI_RINKEBY_2],
     [util_1.ChainId.OPTIMISM]: [
         token_provider_1.DAI_OPTIMISM,
@@ -42,7 +49,7 @@ const baseTokensByChain = {
         token_provider_1.USDT_ARBITRUM,
     ],
     [util_1.ChainId.ARBITRUM_RINKEBY]: [token_provider_1.DAI_ARBITRUM_RINKEBY, token_provider_1.USDT_ARBITRUM_RINKEBY],
-    [util_1.ChainId.AVALANCHE]: [token_provider_1.USDC_E, token_provider_1.WAVAX],
+    [util_1.ChainId.POLYGON]: [token_provider_1.USDC_POLYGON, token_provider_1.WMATIC_POLYGON],
     [util_1.ChainId.POLYGON_MUMBAI]: [token_provider_1.DAI_POLYGON_MUMBAI, token_provider_1.WMATIC_POLYGON_MUMBAI],
 };
 async function getV3CandidatePools({ tokenIn, tokenOut, routeType, routingConfig, subgraphProvider, tokenProvider, poolProvider, blockedTokenListProvider, chainId, }) {

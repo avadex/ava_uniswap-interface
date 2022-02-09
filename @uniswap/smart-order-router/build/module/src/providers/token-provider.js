@@ -8,6 +8,11 @@ export const USDT_MAINNET = new Token(ChainId.MAINNET, '0xdAC17F958D2ee523a22062
 export const WBTC_MAINNET = new Token(ChainId.MAINNET, '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599', 8, 'WBTC', 'Wrapped BTC');
 export const DAI_MAINNET = new Token(ChainId.MAINNET, '0x6B175474E89094C44Da98b954EedeAC495271d0F', 18, 'DAI', 'Dai Stablecoin');
 export const FEI_MAINNET = new Token(ChainId.MAINNET, '0x956F47F50A910163D8BF957Cf5846D573E7f87CA', 18, 'FEI', 'Fei USD');
+export const USDC_AVALANCHE = new Token(ChainId.AVALANCHE, '0xA7D7079b0FEaD91F3e65f86E8915Cb59c1a4C664', 6, 'USDC', 'USD//C');
+export const USDT_AVALANCHE = new Token(ChainId.AVALANCHE, '0xc7198437980c041c805A1EDcbA50c1Ce5db95118', 6, 'USDT', 'Tether USD');
+export const WBTC_AVALANCHE = new Token(ChainId.AVALANCHE, '0x50b7545627a5162F82A992c33b87aDc75187B218', 8, 'WBTC', 'Wrapped BTC');
+export const DAI_AVALANCHE = new Token(ChainId.AVALANCHE, '0xd586E7F844cEa2F87f50152665BCbc2C279D8d70', 18, 'DAI', 'Dai Stablecoin');
+export const WAVAX = new Token(ChainId.AVALANCHE, '0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7', 18, 'WAVAX', 'Wrapped AVAX');
 export const USDC_ROPSTEN = new Token(ChainId.ROPSTEN, '0x07865c6e87b9f70255377e024ace6630c1eaa37f', 6, 'USDC', 'USD//C');
 export const USDT_ROPSTEN = new Token(ChainId.ROPSTEN, '0x516de3a7a567d81737e3a46ec4ff9cfd1fcb0136', 6, 'USDT', 'Tether USD');
 export const DAI_ROPSTEN = new Token(ChainId.ROPSTEN, '0xad6d458402f60fd3bd25163575031acdce07538d', 18, 'DAI', 'Dai Stablecoin');
@@ -48,10 +53,10 @@ export const USDT_ARBITRUM_RINKEBY = new Token(ChainId.ARBITRUM_RINKEBY, '0x920b
 export const USDC_ARBITRUM_RINKEBY = new Token(ChainId.ARBITRUM_RINKEBY, '0x09b98f8b2395d076514037ff7d39a091a536206c', 6, 'USDC', 'USD//C');
 export const UNI_ARBITRUM_RINKEBY = new Token(ChainId.ARBITRUM_RINKEBY, '0x049251a7175071316e089d0616d8b6aacd2c93b8', 18, 'UNI', 'Uni token');
 //polygon tokens
-export const WAVAX = new Token(ChainId.AVALANCHE, '0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7', 18, 'WAVAX', 'Wrapped AVAX');
-export const WETH_E = new Token(ChainId.AVALANCHE, '0x49d5c2bdffac6ce2bfdb6640f4f80f226bc10bab', 18, 'WETH_E', 'Wrapped Ether');
-export const USDC_E = new Token(ChainId.AVALANCHE, '0xa7d7079b0fead91f3e65f86e8915cb59c1a4c664', 6, 'USDC_E', 'USD//C');
-export const DAI_E = new Token(ChainId.AVALANCHE, '0xd586e7f844cea2f87f50152665bcbc2c279d8d70', 18, 'DAI_E', 'Dai Stablecoin');
+export const WMATIC_POLYGON = new Token(ChainId.POLYGON, '0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270', 18, 'WMATIC', 'Wrapped MATIC');
+export const WETH_POLYGON = new Token(ChainId.POLYGON, '0x7ceb23fd6bc0add59e62ac25578270cff1b9f619', 18, 'WETH', 'Wrapped Ether');
+export const USDC_POLYGON = new Token(ChainId.POLYGON, '0x2791bca1f2de4661ed88a30c99a7a9449aa84174', 6, 'USDC', 'USD//C');
+export const DAI_POLYGON = new Token(ChainId.POLYGON, '0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063', 18, 'DAI', 'Dai Stablecoin');
 //polygon mumbai tokens
 export const WMATIC_POLYGON_MUMBAI = new Token(ChainId.POLYGON_MUMBAI, '0x9c3C9283D3e44854697Cd22D3Faa240Cfb032889', 18, 'WMATIC', 'Wrapped MATIC');
 export const USDC_POLYGON_MUMBAI = new Token(ChainId.POLYGON_MUMBAI, '0xe11a86849d99f524cac3e7a0ec1241828e332c62', 6, 'USDC', 'USD//C');
@@ -67,9 +72,10 @@ export const SEED_TOKENS = {
     },
     [ChainId.AVALANCHE]: {
         WAVAX: WRAPPED_NATIVE_CURRENCY[ChainId.AVALANCHE],
-        USDC_E: USDC_E,
-        DAI_E: DAI_E,
-        WETH_E: WETH_E,
+        USDC: USDC_AVALANCHE,
+        USDT: USDT_AVALANCHE,
+        WBTC: WBTC_AVALANCHE,
+        DAI: DAI_AVALANCHE,
     },
     [ChainId.RINKEBY]: {
         WETH: WRAPPED_NATIVE_CURRENCY[ChainId.RINKEBY],
@@ -99,7 +105,10 @@ export const SEED_TOKENS = {
         UNI: UNI_ARBITRUM_RINKEBY,
         DAI: DAI_ARBITRUM_RINKEBY,
         USDC: USDC_ARBITRUM_RINKEBY,
-
+    },
+    [ChainId.POLYGON]: {
+        WMATIC: WMATIC_POLYGON,
+        USDC: USDC_POLYGON,
     },
     [ChainId.POLYGON_MUMBAI]: {
         WMATIC: WMATIC_POLYGON_MUMBAI,
