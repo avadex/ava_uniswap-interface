@@ -1,4 +1,4 @@
-import { Provider as EthProvider } from '@widgets/web3-react/types'
+import { Provider as EthProvider } from '@web3-react/types'
 import { DEFAULT_LOCALE, SupportedLocale } from 'constants/locales'
 import { Provider as AtomProvider } from 'jotai'
 import { TransactionsUpdater } from 'lib/hooks/transactions'

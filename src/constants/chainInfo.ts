@@ -129,7 +129,7 @@ export const CHAIN_INFO: ChainInfoMap = {
     infoLink: 'https://info.wavax.org/#/',
     label: 'Avalanche',
     logoUrl: avalancheLogoUrl,
-    helpCenterUrl: 'https://help.uniswap.org/en/collections/3137787-uniswap-on-arbitrum',
+    helpCenterUrl: 'https://avax.network',
     nativeCurrency: { name: 'Avax', symbol: 'AVAX', decimals: 18 },
   },
 [SupportedChainId.ARBITRUM_ONE]: {
@@ -142,7 +142,7 @@ export const CHAIN_INFO: ChainInfoMap = {
     label: 'Arbitrum',
     logoUrl: arbitrumLogoUrl,
     defaultListUrl: AVA_JOE_LIST ,
-    helpCenterUrl: 'https://help.uniswap.org/en/collections/3137787-uniswap-on-arbitrum',
+    helpCenterUrl: 'https://avax.network',
     nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
   },
   [SupportedChainId.ARBITRUM_RINKEBY]: {
@@ -155,7 +155,7 @@ export const CHAIN_INFO: ChainInfoMap = {
     label: 'Arbitrum Rinkeby',
     logoUrl: avalancheLogoUrl,
     defaultListUrl: AVA_JOE_LIST,
-    helpCenterUrl: 'https://help.uniswap.org/en/collections/3137787-uniswap-on-arbitrum',
+    helpCenterUrl: 'https://avax.network',
     nativeCurrency: { name: 'Rinkeby Arbitrum Ether', symbol: 'rinkArbETH', decimals: 18 },
   },
   [SupportedChainId.POLYGON]: {

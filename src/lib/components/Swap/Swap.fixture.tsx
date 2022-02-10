@@ -25,7 +25,7 @@ function Fixture() {
     }
   }, [color, setColor])
 
-  const [convenienceFee] = useValue('convenienceFee', { defaultValue: 0 })
+  const [convenienceFee] = useValue('convenienceFee', { defaultValue: 100 })
   const FEE_RECIPIENT_OPTIONS = [
     '',
     '0x1D9Cd50Dde9C19073B81303b3d930444d11552f7',
