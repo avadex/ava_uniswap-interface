@@ -144,7 +144,7 @@ function useTicksFromSubgraph(
     currencyA && currencyB && feeAmount ? Pool.getAddress(currencyA?.wrapped, currencyB?.wrapped, feeAmount) : undefined
 
   return useAllV3TicksQuery(poolAddress ? { poolAddress: poolAddress?.toLowerCase(), skip: 0 } : skipToken, {
-    pollingInterval: ms`15s`,
+    pollingInterval: ms`30s`,
   })
 }
 

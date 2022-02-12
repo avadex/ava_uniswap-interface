@@ -268,7 +268,7 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId: number]: Token } = {
   ),
 }
 
-function isMatic(chainId: number): chainId is SupportedChainId.POLYGON | SupportedChainId.POLYGON_MUMBAI {
+function isMatic(chainId: number): chainId is SupportedChainId.AVALANCHE | SupportedChainId.POLYGON_MUMBAI {
   return chainId === SupportedChainId.POLYGON_MUMBAI || chainId === SupportedChainId.AVALANCHE
 }
 

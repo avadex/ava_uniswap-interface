@@ -94,9 +94,9 @@ export default memo(function SwapRoute({ trade, syncing, fixedOpen = false, ...r
               ) : (
                 <ThemedText.Main fontSize={12} width={400} margin={0}>
                   {trade?.gasUseEstimateUSD && chainId && SUPPORTED_GAS_ESTIMATE_CHAIN_IDS.includes(chainId) ? (
-                    <Trans>Best price route costs ~{formattedGasPriceString} in gas. </Trans>
+                    <Trans>Route costs ~{formattedGasPriceString} in gas. </Trans>
                   ) : null}{' '}
-                  <Trans> Cheeck DEX Aggregators like 1inch, paraswap or matcha for better rates. </Trans>
+                  <Trans> Please cheeck DEX Aggregators like 1inch, paraswap or matcha for better rates. </Trans>
                 </ThemedText.Main>
               )}
             </>
