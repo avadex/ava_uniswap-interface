@@ -213,7 +213,7 @@ BaseCommand.flags = {
     chainId: flags.integer({
         char: 'c',
         required: false,
-        default: ChainId.MAINNET,
+        default: ChainId.AVALANCHE,
         options: CHAIN_IDS_LIST,
     }),
     tokenListURI: flags.string({

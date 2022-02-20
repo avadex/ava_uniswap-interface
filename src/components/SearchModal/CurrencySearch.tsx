@@ -36,7 +36,7 @@ const ContentWrapper = styled(Column)`
 
 const Footer = styled.div`
   width: 100%;
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 20px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
@@ -187,7 +187,7 @@ export function CurrencySearch({
           <SearchInput
             type="text"
             id="token-search-input"
-            placeholder={t`Search name or paste address`}
+            placeholder={t`..Enter token or paste contract`}
             autoComplete="off"
             value={searchQuery}
             ref={inputRef as RefObject<HTMLInputElement>}

@@ -7,12 +7,13 @@ const StyledInput = styled.input<{ error?: boolean; fontSize?: string; align?: s
   color: ${({ error, theme }) => (error ? theme.red1 : theme.text1)};
   width: 0;
   position: relative;
-  font-weight: 500;
-  outline: none;
-  border: none;
+  font-weight: 677;
+  outline: none; color:#cce5d4c4;
+  border: 1;   borderRadius: 5;
+  borderRadius: 5;
   flex: 1 1 auto;
-  background-color: ${({ theme }) => theme.bg1};
-  font-size: ${({ fontSize }) => fontSize ?? '28px'};
+  background-color: #0d182b;
+  font-size: ${({ fontSize }) => fontSize ?? '25px'};
   text-align: ${({ align }) => align && align};
   white-space: nowrap;
   overflow: hidden;
@@ -87,7 +88,7 @@ export const Input = React.memo(function InnerInput({
       // text-specific options
       type="text"
       pattern="^[0-9]*[.,]?[0-9]*$"
-      placeholder={placeholder || '0.0'}
+      placeholder={placeholder || '0.00'}
       minLength={1}
       maxLength={79}
       spellCheck="false"

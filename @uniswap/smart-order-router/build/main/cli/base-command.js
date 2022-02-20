@@ -220,7 +220,7 @@ BaseCommand.flags = {
     chainId: command_1.flags.integer({
         char: 'c',
         required: false,
-        default: src_1.ChainId.MAINNET,
+        default: src_1.ChainId.AVALANCHE,
         options: src_1.CHAIN_IDS_LIST,
     }),
     tokenListURI: command_1.flags.string({

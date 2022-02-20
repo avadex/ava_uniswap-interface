@@ -1,4 +1,4 @@
-import {SwapRouter, Trade } from '@uniswap/router-sdk';
+import { SwapRouter, Trade } from '@uniswap/router-sdk';
 import { TradeType } from '@uniswap/sdk-core';
 import { FeeAmount, Route } from '@uniswap/v3-sdk';
 import { BigNumber, logger } from 'ethers';

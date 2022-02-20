@@ -14,20 +14,20 @@ import { ResponsiveTooltipContainer } from './styleds'
 import SwapRoute from './SwapRoute'
 
 const GasWrapper = styled(RowFixed)`
-  border-radius: 8px;
+  border-radius: 3px;
   padding: 4px 6px;
   height: 24px;
-  color: ${({ theme }) => theme.text3};
-  background-color: ${({ theme }) => theme.bg1};
+  color: #911f1f;
+  background-color: #67681938;
   font-size: 14px;
   font-weight: 500;
   user-select: none;
 `
 const StyledGasIcon = styled(GasIcon)`
   margin-right: 4px;
-  height: 14px;
+  height: 17px;
   & > * {
-    stroke: ${({ theme }) => theme.text3};
+    stroke: green;
   }
 `
 

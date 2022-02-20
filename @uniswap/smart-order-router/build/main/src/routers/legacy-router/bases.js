@@ -14,7 +14,7 @@ const BASES_TO_CHECK_TRADES_AGAINST = (_tokenProvider) => {
         ],
 	[chains_1.ChainId.AVALANCHE]: [
     	    chains_1.WRAPPED_NATIVE_CURRENCY[chains_1.ChainId.AVALANCHE],
-    	    token_provider_1.DAI_AVALANCHE,
+            token_provider_1.DAI_AVALANCHE,
             token_provider_1.USDC_AVALANCHE,
             token_provider_1.USDT_AVALANCHE,
             token_provider_1.WBTC_AVALANCHE,

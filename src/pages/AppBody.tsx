@@ -8,10 +8,10 @@ export const BodyWrapper = styled.main<{ margin?: string; maxWidth?: string }>`
   max-width: ${({ maxWidth }) => maxWidth ?? '480px'};
   width: 100%;
   background: ${({ theme }) => theme.bg0};
-  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.01), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),
+  box-shadow: rgb(0 247 113 / 41%) 0px 0px 20px -8px,
     0px 24px 32px rgba(0, 0, 0, 0.01);
-  border-radius: 5px;
-  border: 14px solid ${({ theme }) => theme.bg0};
+  border-radius: 10px;
+  border: 10px solid ${({ theme }) => theme.bg0};
   background-color: #00000052;
   margin-top: 1rem;
   margin-left: auto;

@@ -60,7 +60,7 @@ const Container = styled.div<{ hideInput: boolean }>`
 const CurrencySelect = styled(ButtonGray)<{ visible: boolean; selected: boolean; hideInput?: boolean }>`
   align-items: center;
   background-color: ${({ selected, theme }) => (selected ? theme.bg2 : theme.primary1)};
-  box-shadow: ${({ selected }) => (selected ? 'none' : '0px 6px 10px rgba(0, 0, 0, 0.075)')};
+  box-shadow: ${({ selected }) => (selected ? '1' : '0px 6px 10px rgba(0, 0, 0, 0.075)')};
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.075);
   color: ${({ selected, theme }) => (selected ? theme.text1 : theme.white)};
   cursor: pointer;
