@@ -32,6 +32,7 @@ const ActiveRowLinkList = styled.div`
     justify-content: space-between;
     padding: 8px 0 4px;
     text-decoration: none;
+    box-shadow: rgb(0 54 113 / 41%) 0px 0px 20px -3px, 0px 24px 32px rgb(0 0 0 / 1%);
   }
   & > a:first-child {
     margin: 0;
@@ -51,6 +52,16 @@ const FlyoutHeader = styled.div`
   font-weight: 400;
 `
 const FlyoutMenu = styled.div`
+  position: absolute;
+  top: 54px;
+  width: 272px;
+  z-index: 99;
+  padding-top: 10px;
+  @media screen and (min-width: ${MEDIA_WIDTHS.upToSmall}px) {
+    top: 40px;
+  }
+`
+const FlyoutMenuContents = styled.div`
   align-items: flex-start;
   background-color: ${({ theme }) => theme.bg0};
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.01), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),
@@ -67,9 +78,6 @@ const FlyoutMenu = styled.div`
   z-index: 99;
   & > *:not(:last-child) {
     margin-bottom: 12px;
-  }
-  @media screen and (min-width: ${MEDIA_WIDTHS.upToSmall}px) {
-    top: 50px;
   }
 `
 const FlyoutRow = styled.div<{ active: boolean }>`
@@ -252,8 +260,8 @@ export default function NetworkSelector() {
 
   const handleChainSwitch = useCallback(
     (targetChain: number, skipToggle?: boolean) => {
-      if (!library) return
-      switchToNetwork({ library, chainId: targetChain })
+      if (!library?.provider) return
+      switchToNetwork({ provider: library.provider, chainId: targetChain })
         .then(() => {
           if (!skipToggle) {
             toggle()
@@ -305,19 +313,20 @@ export default function NetworkSelector() {
   }
 
   return (
-    <SelectorWrapper ref={node as any}>
-      <SelectorControls onClick={toggle} interactive>
+    <SelectorWrapper ref={node as any} onMouseEnter={toggle} onMouseLeave={toggle}>
+      <SelectorControls interactive>
         <SelectorLogo interactive src={info.logoUrl} />
         <SelectorLabel>{info.label}</SelectorLabel>
         <StyledChevronDown />
       </SelectorControls>
       {open && (
-        <FlyoutMenu onMouseLeave={toggle}>
-          <FlyoutHeader>
-            <Trans>Select a network</Trans>
-          </FlyoutHeader>
-          <Row onSelectChain={handleChainSwitch} targetChain={SupportedChainId.OPTIMISM} />
-          <Row onSelectChain={handleChainSwitch} targetChain={SupportedChainId.AVALANCHE} />
+        <FlyoutMenu>
+          <FlyoutMenuContents>
+            <FlyoutHeader>
+              <Trans>Select a network</Trans>
+            </FlyoutHeader>
+            <Row onSelectChain={handleChainSwitch} targetChain={SupportedChainId.AVALANCHE} />
+          </FlyoutMenuContents>
         </FlyoutMenu>
       )}
     </SelectorWrapper>

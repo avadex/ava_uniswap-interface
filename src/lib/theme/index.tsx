@@ -1,9 +1,4 @@
 import 'lib/assets/fonts.scss'
-import '@fontsource/ibm-plex-mono/400.css'
-import '@fontsource/inter/variable.css'
-import '@fontsource/inter/400.css'
-import '@fontsource/inter/500.css'
-import '@fontsource/inter/600.css'
 
 import { mix, transparentize } from 'polished'
 import { createContext, ReactNode, useContext, useMemo, useState } from 'react'
@@ -78,8 +73,10 @@ export const darkTheme: Colors = {
 
 export const defaultTheme = {
   borderRadius: 1,
-  fontFamily: '"Inter", sans-serif',
-  fontFamilyVariable: '"InterVariable", sans-serif',
+  fontFamily: {
+    font: '"Inter", sans-serif',
+    variable: '"InterVariable", sans-serif',
+  },
   fontFamilyCode: 'IBM Plex Mono',
   tokenColorExtraction: false,
   ...lightTheme,

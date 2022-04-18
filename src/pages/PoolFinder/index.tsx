@@ -88,7 +88,7 @@ export default function PoolFinder() {
         {!account ? (
           <Trans>Connect to a wallet to find pools</Trans>
         ) : (
-          <Trans>Selec token to find your v2 liquidity.</Trans>
+          <Trans>Select token to find your v2 liquidity.</Trans>
         )}
       </Text>
     </LightCard>
@@ -123,7 +123,7 @@ export default function PoolFinder() {
               </Row>
             ) : (
               <Text fontWeight={500} fontSize={20} marginLeft={'12px'}>
-                <Trans>Selec token</Trans>
+                <Trans>Select token</Trans>
               </Text>
             )}
           </ButtonDropdownLight>
@@ -147,7 +147,7 @@ export default function PoolFinder() {
               </Row>
             ) : (
               <Text fontWeight={500} fontSize={20} marginLeft={'12px'}>
-                <Trans>Selec token</Trans>
+                <Trans>Select token</Trans>
               </Text>
             )}
           </ButtonDropdownLight>

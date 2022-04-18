@@ -14,8 +14,11 @@ const linguiConfig = {
     lineNumbers: false,
   },
   locales: [
+    'cs-CZ',
     'de-DE',
     'en-US',
+    'ko-KR',
+    'zh-CN',
     'pseudo',
   ],
   orderBy: 'messageId',

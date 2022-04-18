@@ -73,7 +73,7 @@ const BG_COLORS_BY_DARK_MODE_AND_CHAIN_ID: {
     [SupportedChainId.OPTIMISTIC_KOVAN]:
       'radial-gradient(92% 105% at 50% 7%, rgba(255, 58, 212, 0.04) 0%, rgba(255, 255, 255, 0.03) 100%),radial-gradient(100% 97% at 0% 12%, rgba(235, 0, 255, 0.1) 0%, rgba(243, 19, 19, 0.1) 100%), hsla(0, 0%, 100%, 0.1)',
     [SupportedChainId.AVALANCHE]:
-     'radial-gradient(285% 8200% at 30% 50%, rgba(40, 160, 240, 0.01) 0%, rgba(219, 255, 0, 0) 100%),radial-gradient(75% 75% at 0% 0%, rgba(150, 190, 220, 0.05) 0%, rgba(33, 114, 229, 0.05) 100%), hsla(0, 0%, 100%, 0.05)',
+      'radial-gradient(285% 8200% at 30% 50%, rgba(40, 160, 240, 0.01) 0%, rgba(219, 255, 0, 0) 100%),radial-gradient(75% 75% at 0% 0%, rgba(150, 190, 220, 0.05) 0%, rgba(33, 114, 229, 0.05) 100%), hsla(0, 0%, 100%, 0.05)',
     [SupportedChainId.ARBITRUM_RINKEBY]:
       'radial-gradient(285% 8200% at 30% 50%, rgba(40, 160, 240, 0.1) 0%, rgba(219, 255, 0, 0) 100%),radial-gradient(circle at top left, hsla(206, 50%, 75%, 0.01), hsla(215, 79%, 51%, 0.12)), hsla(0, 0%, 100%, 0.1)',
   },
@@ -93,11 +93,12 @@ const BetaTag = styled.span<{ color: string }>`
   top: -16px;
   width: 80px;
   z-index: 1;
-  `
+`
 
 const ContentWrapper = styled.div<{ chainId: NetworkAlertChains; darkMode: boolean; logoUrl: string }>`
   background: ${({ chainId, darkMode }) => BG_COLORS_BY_DARK_MODE_AND_CHAIN_ID[darkMode ? 'dark' : 'light'][chainId]};
-  border-radius: 7px;
+  border-radius: 13px;
+  box-shadow: rgb(0 247 113 / 41%) 0px 0px 20px -5px, 0px 24px 32px rgba(0, 0, 0, 0.01);
   display: flex;
   flex-direction: row;
   overflow: hidden;
@@ -107,13 +108,13 @@ const ContentWrapper = styled.div<{ chainId: NetworkAlertChains; darkMode: boole
   :before {
     background-image: url(${({ logoUrl }) => logoUrl});
     background-repeat: no-repeat;
-    background-size: 300px;
+    background-size: 249px;
     content: '';
-    height: 300px;
-    opacity: 0.3;
+    height: 790px;
+    opacity: 0.6;
     position: absolute;
-    transform: rotate(20deg) translate(-90px, -40px);
-    width: 300px;
+    transform: rotate(18deg) translate(-90px, -40px);
+    width: 340px;
     z-index: -1;
   }
 `
@@ -168,7 +169,7 @@ export function NetworkAlert() {
 
   return bridge ? (
     <RootWrapper>
-    <BetaTag color={ '#2bd15e'}>Beta </BetaTag>
+      <BetaTag color={'#2bd15e'}>Beta </BetaTag>
       <ContentWrapper chainId={chainId} darkMode={darkMode} logoUrl={logoUrl}>
         <LinkOutToBridge href={bridge}>
           <BodyText color={textColor}>

@@ -15,8 +15,8 @@
   },
   "ignorePatterns": [
     "src/types/v3",
-    "src/components/NetworkAlert/NetworkAlert.tsx",
     "src/abis/types",
+    "src/constants/chainInfo.ts",
     "src/locales/**/*.js",
     "src/locales/**/en-US.po",
     "src/state/data/generated.ts",

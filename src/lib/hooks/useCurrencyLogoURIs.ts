@@ -4,10 +4,10 @@ import useHttpLocations from 'hooks/useHttpLocations'
 import { useMemo } from 'react'
 import { WrappedTokenInfo } from 'state/lists/wrappedTokenInfo'
 
-import EthereumLogo from '../../assets/images/ethereum-logo.png'
+import AvalancheLogo from '../../assets/images/avalanche-logo.png'
 import MaticLogo from '../../assets/svg/matic-token-icon.svg'
 
-type Network = 'ethereum' | 'arbitrum' | 'optimism' | 'avalanche'
+type Network = 'ethereum' | 'avalanche' | 'optimism'
 
 function chainIdToNetworkName(networkId: SupportedChainId): Network {
   switch (networkId) {
@@ -24,17 +24,16 @@ function chainIdToNetworkName(networkId: SupportedChainId): Network {
 
 function getNativeLogoURI(chainId: SupportedChainId = SupportedChainId.MAINNET): string {
   switch (chainId) {
-    case SupportedChainId.POLYGON_MUMBAI:
     case SupportedChainId.POLYGON:
       return MaticLogo
     default:
-      return EthereumLogo
+      return AvalancheLogo
   }
 }
 
 function getTokenLogoURI(address: string, chainId: SupportedChainId = SupportedChainId.MAINNET): string | void {
   const networkName = chainIdToNetworkName(chainId)
-  const networksWithUrls = [SupportedChainId.AVALANCHE, SupportedChainId.MAINNET, SupportedChainId.OPTIMISM]
+  const networksWithUrls = [SupportedChainId.MAINNET, SupportedChainId.OPTIMISM]
   if (networksWithUrls.includes(chainId)) {
     return `https://raw.githubusercontent.com/Uniswap/assets/master/blockchains/${networkName}/assets/${address}/logo.png`
   }

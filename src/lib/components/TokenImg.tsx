@@ -1,31 +1,42 @@
 import { Currency } from '@uniswap/sdk-core'
+import { useToken } from 'lib/hooks/useCurrency'
 import useCurrencyLogoURIs from 'lib/hooks/useCurrencyLogoURIs'
-import { Slash } from 'lib/icons'
+import { MissingToken } from 'lib/icons'
 import styled from 'lib/theme'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 
 const badSrcs = new Set<string>()
 
-interface TokenImgProps {
-  className?: string
+interface BaseProps {
   token: Currency
 }
 
-function TokenImg({ className, token }: TokenImgProps) {
-  const srcs = useCurrencyLogoURIs(token)
-  const [src, setSrc] = useState<string | undefined>()
-  useEffect(() => {
-    setSrc(srcs.find((src) => !badSrcs.has(src)))
-  }, [srcs])
-  const onError = useCallback(() => {
-    if (src) badSrcs.add(src)
-    setSrc(srcs.find((src) => !badSrcs.has(src)))
-  }, [src, srcs])
+type TokenImgProps = BaseProps & Omit<React.ImgHTMLAttributes<HTMLImageElement>, keyof BaseProps>
 
-  if (src) {
-    return <img className={className} src={src} alt={token.name || token.symbol} onError={onError} />
-  }
-  return <Slash className={className} color="secondary" />
+function TokenImg({ token, ...rest }: TokenImgProps) {
+  // Use the wrapped token info so that it includes the logoURI.
+  const tokenInfo = useToken(token.isToken ? token.wrapped.address : undefined) ?? token
+
+  // TODO(zzmp): TokenImg takes a frame to switch.
+  const srcs = useCurrencyLogoURIs(tokenInfo)
+
+  const [attempt, setAttempt] = useState(0)
+  const onError = useCallback((e) => {
+    if (e.target.src) badSrcs.add(e.target.src)
+    setAttempt((attempt) => ++attempt)
+  }, [])
+
+  const src = useMemo(() => {
+    // Trigger a re-render when an error occurs.
+    void attempt
+
+    return srcs.find((src) => !badSrcs.has(src))
+  }, [attempt, srcs])
+
+  if (!src) return <MissingToken color="secondary" {...rest} />
+
+  const alt = tokenInfo.name || tokenInfo.symbol
+  return <img src={src} alt={alt} key={alt} onError={onError} {...rest} />
 }
 
 export default styled(TokenImg)<{ size?: number }>`

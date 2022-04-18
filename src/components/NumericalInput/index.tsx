@@ -8,17 +8,20 @@ const StyledInput = styled.input<{ error?: boolean; fontSize?: string; align?: s
   width: 0;
   position: relative;
   font-weight: 677;
-  outline: none; color:#cce5d4c4;
-  border: 1;   borderRadius: 5;
-  borderRadius: 5;
+  outline: none;
+  color: #cce5d4c4;
+  border: 1;
+  borderradius: 5;
+  borderradius: 5;
   flex: 1 1 auto;
-  background-color: #0d182b;
+  background-color: #153145;
+  box-shadow: rgb(219 203 59 / 41%) 0px 0px 20px -10px, 0px 24px 32px rgba(0, 0, 0, 0.01);
   font-size: ${({ fontSize }) => fontSize ?? '25px'};
   text-align: ${({ align }) => align && align};
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 0px;
+  padding: 1px;
   -webkit-appearance: textfield;
   text-align: right;
 
@@ -37,6 +40,7 @@ const StyledInput = styled.input<{ error?: boolean; fontSize?: string; align?: s
 
   ::placeholder {
     color: ${({ theme }) => theme.text4};
+    box-shadow: rgb(219 203 59 / 41%) 0px 0px 20px -1px, 0px 24px 32px rgba(0, 0, 0, 0.01);
   }
 `
 

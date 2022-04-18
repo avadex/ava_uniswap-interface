@@ -1,10 +1,11 @@
 import { ALL_SUPPORTED_CHAIN_IDS } from 'constants/chains'
 import { useIsAmountPopulated, useSwapInfo } from 'lib/hooks/swap'
+import useWrapCallback, { WrapType } from 'lib/hooks/swap/useWrapCallback'
 import useActiveWeb3React from 'lib/hooks/useActiveWeb3React'
 import { largeIconCss } from 'lib/icons'
 import { Field } from 'lib/state/swap'
 import styled, { ThemedText } from 'lib/theme'
-import { useMemo } from 'react'
+import { memo, useMemo } from 'react'
 import { TradeState } from 'state/routing/types'
 
 import Row from '../../Row'
@@ -16,47 +17,63 @@ const ToolbarRow = styled(Row)`
   ${largeIconCss}
 `
 
-export default function Toolbar({ disabled }: { disabled?: boolean }) {
-  const { chainId } = useActiveWeb3React()
+export default memo(function Toolbar() {
+  const { active, activating, chainId } = useActiveWeb3React()
   const {
+    [Field.INPUT]: { currency: inputCurrency, balance: inputBalance, amount: inputAmount },
+    [Field.OUTPUT]: { currency: outputCurrency, usdc: outputUSDC },
     trade: { trade, state },
-    currencies: { [Field.INPUT]: inputCurrency, [Field.OUTPUT]: outputCurrency },
-    currencyBalances: { [Field.INPUT]: balance },
+    impact,
   } = useSwapInfo()
-
-  const [routeFound, routeIsLoading] = useMemo(
-    () => [Boolean(trade?.swaps), TradeState.LOADING === state || TradeState.SYNCING === state],
-    [state, trade?.swaps]
-  )
-
   const isAmountPopulated = useIsAmountPopulated()
-
+  const { type: wrapType } = useWrapCallback()
   const caption = useMemo(() => {
-    if (disabled) {
+    if (!active || !chainId) {
+      if (activating) return <Caption.Connecting />
       return <Caption.ConnectWallet />
     }
 
-    if (chainId && !ALL_SUPPORTED_CHAIN_IDS.includes(chainId)) {
+    if (!ALL_SUPPORTED_CHAIN_IDS.includes(chainId)) {
       return <Caption.UnsupportedNetwork />
     }
 
     if (inputCurrency && outputCurrency && isAmountPopulated) {
-      if (!trade || routeIsLoading) {
+      if (state === TradeState.SYNCING || state === TradeState.LOADING) {
         return <Caption.LoadingTrade />
       }
-      if (!routeFound) {
+      if (inputBalance && inputAmount?.greaterThan(inputBalance)) {
+        return <Caption.InsufficientBalance currency={inputCurrency} />
+      }
+      if (wrapType !== WrapType.NONE) {
+        return <Caption.WrapCurrency inputCurrency={inputCurrency} outputCurrency={outputCurrency} />
+      }
+      if (state === TradeState.NO_ROUTE_FOUND || (trade && !trade.swaps)) {
         return <Caption.InsufficientLiquidity />
       }
-      if (balance && trade?.inputAmount.greaterThan(balance)) {
-        return <Caption.InsufficientBalance currency={trade.inputAmount.currency} />
+      if (trade?.inputAmount && trade.outputAmount) {
+        return <Caption.Trade trade={trade} outputUSDC={outputUSDC} impact={impact} />
       }
-      if (trade.inputAmount && trade.outputAmount) {
-        return <Caption.Trade trade={trade} />
+      if (state === TradeState.INVALID) {
+        return <Caption.Error />
       }
     }
 
     return <Caption.Empty />
-  }, [balance, chainId, disabled, inputCurrency, isAmountPopulated, outputCurrency, routeFound, routeIsLoading, trade])
+  }, [
+    activating,
+    active,
+    chainId,
+    impact,
+    inputAmount,
+    inputBalance,
+    inputCurrency,
+    isAmountPopulated,
+    outputCurrency,
+    outputUSDC,
+    state,
+    trade,
+    wrapType,
+  ])
 
   return (
     <>
@@ -68,4 +85,4 @@ export default function Toolbar({ disabled }: { disabled?: boolean }) {
       </ThemedText.Caption>
     </>
   )
-}
+})

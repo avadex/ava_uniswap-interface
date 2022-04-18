@@ -5,7 +5,7 @@ import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { AUTO_ROUTER_SUPPORTED_CHAINS } from 'lib/hooks/routing/clientSideSmartOrderRouter'
 import { useContext, useRef, useState } from 'react'
 import { Settings, X } from 'react-feather'
-import ReactGA from 'react-ga'
+import ReactGA from 'react-ga4'
 import { Text } from 'rebass'
 import styled, { ThemeContext } from 'styled-components/macro'
 
@@ -83,7 +83,7 @@ const StyledMenu = styled.div`
 
 const MenuFlyout = styled.span`
   min-width: 20.125rem;
-  background-color: ${({ theme }) => theme.bg2};
+  background-color: #111a2cf5;
   border: 1px solid ${({ theme }) => theme.bg3};
   border-color: green;
   color: #5ed56dc7;

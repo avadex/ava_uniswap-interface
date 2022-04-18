@@ -11,7 +11,7 @@ import { PoolState, usePools } from 'hooks/usePools'
 import usePrevious from 'hooks/usePrevious'
 import { DynamicSection } from 'pages/AddLiquidity/styled'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import ReactGA from 'react-ga'
+import ReactGA from 'react-ga4'
 import { Box } from 'rebass'
 import styled, { keyframes } from 'styled-components/macro'
 import { ThemedText } from 'theme'
@@ -44,6 +44,7 @@ const Select = styled.div`
   display: grid;
   grid-auto-flow: column;
   grid-gap: 8px;
+  box-shadow: rgb(0 247 113 / 41%) 0px 0px 20px -12px, 0px 24px 32px rgb(0 0 0 / 1%);
 `
 
 export default function FeeSelector({

@@ -105,6 +105,7 @@ const MainContentWrapper = styled.main`
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+  box-shadow: rgb(0 247 113 / 41%) 0px 0px 20px -8px, 0px 24px 32px rgb(0 0 0 / 1%);
 `
 
 function PositionsLoadingPlaceholder() {

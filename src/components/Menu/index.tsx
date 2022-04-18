@@ -28,7 +28,6 @@ import { useOnClickOutside } from '../../hooks/useOnClickOutside'
 import { useModalOpen, useToggleModal } from '../../state/application/hooks'
 import { ApplicationModal } from '../../state/application/reducer'
 import { ExternalLink } from '../../theme'
-import { ButtonPrimary } from '../Button'
 
 export enum FlyoutAlignment {
   LEFT = 'LEFT',
@@ -64,12 +63,6 @@ const StyledMenuButton = styled.button`
   svg {
     margin-top: 2px;
   }
-`
-
-const UNIbutton = styled(ButtonPrimary)`
-  background-color: ${({ theme }) => theme.bg3};
-  background: radial-gradient(174.47% 188.91% at 1.84% 0%, #ff007a 0%, #2172e5 100%), #edeef2;
-  border: none;
 `
 
 const StyledMenu = styled.div`
@@ -239,7 +232,7 @@ export default function Menu() {
               default:
                 return (
                   <MenuFlyout>
-                    <MenuItem href="https://github.com/avadex/">
+                    <MenuItem href="https://github.com/@uniswap/">
                       <div>
                         <Trans>Code</Trans>
                       </div>

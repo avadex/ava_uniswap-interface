@@ -165,7 +165,11 @@ export default function Polling() {
                 chainId && blockNumber ? getExplorerLink(chainId, blockNumber.toString(), ExplorerDataType.BLOCK) : ''
               }
             >
-              <MouseoverTooltip text={<Trans>BLOCK</Trans>}>{blockNumber}&ensp; </MouseoverTooltip>
+              <MouseoverTooltip
+                text={<Trans>The most recent block number on this network. Prices update on every block.</Trans>}
+              >
+                {blockNumber}&ensp;
+              </MouseoverTooltip>
             </ExternalLink>
           </StyledPollingNumber>
           <StyledPollingDot warning={warning}>{isMounting && <Spinner warning={warning} />}</StyledPollingDot>{' '}

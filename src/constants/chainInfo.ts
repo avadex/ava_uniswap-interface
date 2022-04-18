@@ -1,6 +1,5 @@
+import avalancheLogoUrl from 'assets/svg/avalanche_logo.svg'
 import ethereumLogoUrl from 'assets/images/ethereum-logo.png'
-import avalancheLogoUrl from '../assets/svg/avalanche_logo.svg'
-import arbitrumLogoUrl from 'assets/svg/arbitrum_logo.svg'
 import optimismLogoUrl from 'assets/svg/optimistic_ethereum.svg'
 import polygonMaticLogo from 'assets/svg/polygon-matic-logo.svg'
 import ms from 'ms.macro'
@@ -47,6 +46,18 @@ export type ChainInfoMap = { readonly [chainId: number]: L1ChainInfo | L2ChainIn
   { readonly [chainId in SupportedL1ChainId]: L1ChainInfo }
 
 export const CHAIN_INFO: ChainInfoMap = {
+  [SupportedChainId.AVALANCHE]: {
+    networkType: NetworkType.L1,
+    blockWaitMsBeforeWarning: ms`10m`,
+    bridge: 'https://bridge.avax.network/',
+    docs: 'https://avax.network.com/',
+    explorer: 'https://snowtrace.io/',
+    infoLink: 'https://info.wavax.org/#/',
+    label: 'Avalanche',
+    logoUrl: avalancheLogoUrl,
+    helpCenterUrl: 'https://avax.network',
+    nativeCurrency: { name: 'Avax', symbol: 'AVAX', decimals: 18 },
+  },
   [SupportedChainId.MAINNET]: {
     networkType: NetworkType.L1,
     docs: 'https://docs.uniswap.org/',
@@ -119,31 +130,6 @@ export const CHAIN_INFO: ChainInfoMap = {
     statusPage: 'https://optimism.io/status',
     helpCenterUrl: 'https://help.uniswap.org/en/collections/3137778-uniswap-on-optimistic-ethereum-oξ',
     nativeCurrency: { name: 'Optimistic Kovan Ether', symbol: 'kovOpETH', decimals: 18 },
-  },
-  [SupportedChainId.AVALANCHE]: {
-    networkType: NetworkType.L1,
-    blockWaitMsBeforeWarning: ms`10m`,
-    bridge: 'https://bridge.avax.network/',
-    docs: 'https://avax.network.com/',
-    explorer: 'https://snowtrace.io/',
-    infoLink: 'https://info.wavax.org/#/',
-    label: 'Avalanche',
-    logoUrl: avalancheLogoUrl,
-    helpCenterUrl: 'https://avax.network',
-    nativeCurrency: { name: 'Avax', symbol: 'AVAX', decimals: 18 },
-  },
-[SupportedChainId.ARBITRUM_ONE]: {
-    networkType: NetworkType.L2,
-    blockWaitMsBeforeWarning: ms`10m`,
-    bridge: 'https://bridge.arbitrum.io/',
-    docs: 'https://offchainlabs.com/',
-    explorer: 'https://arbiscan.io/',
-    infoLink: 'https://info.uniswap.org/#/arbitrum',
-    label: 'Arbitrum',
-    logoUrl: arbitrumLogoUrl,
-    defaultListUrl: AVA_JOE_LIST ,
-    helpCenterUrl: 'https://avax.network',
-    nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
   },
   [SupportedChainId.ARBITRUM_RINKEBY]: {
     networkType: NetworkType.L2,
