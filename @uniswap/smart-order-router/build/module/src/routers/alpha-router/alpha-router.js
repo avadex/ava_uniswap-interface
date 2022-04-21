@@ -114,7 +114,7 @@ export class AlphaRouter {
         }
         else {
             this.v2SubgraphProvider = new V2SubgraphProviderWithFallBacks([
-                new CachingV2SubgraphProvider(chainId, new URISubgraphProvider(chainId, `https://cloudflare-ipfs.com/ipns/api.uniswap.org/v1/pools/v2/${chainName}.json`, undefined, 0), new NodeJSCache(new NodeCache({ stdTTL: 300, useClones: false }))),
+                new CachingV2SubgraphProvider(chainId),
                 new StaticV2SubgraphProvider(chainId),
             ]);
         }
@@ -123,7 +123,7 @@ export class AlphaRouter {
         }
         else {
             this.v3SubgraphProvider = new V3SubgraphProviderWithFallBacks([
-                new CachingV3SubgraphProvider(chainId, new URISubgraphProvider(chainId, `https://cloudflare-ipfs.com/ipns/api.uniswap.org/v1/pools/v3/${chainName}.json`, undefined, 0), new NodeJSCache(new NodeCache({ stdTTL: 300, useClones: false }))),
+                new CachingV3SubgraphProvider(chainId),
                 new StaticV3SubgraphProvider(chainId, this.v3PoolProvider),
             ]);
         }
